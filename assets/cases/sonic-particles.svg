@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <radialGradient id="glow1" cx="35%" cy="45%" r="45%">
+      <stop offset="0%" stop-color="#0066ff" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#0a0a0a" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="65%" cy="55%" r="40%">
+      <stop offset="0%" stop-color="#ff7700" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#0a0a0a" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow3" cx="50%" cy="50%" r="30%">
+      <stop offset="0%" stop-color="#b464ff" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#0a0a0a" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blur1">
+      <feGaussianBlur stdDeviation="2"/>
+    </filter>
+    <filter id="blur2">
+      <feGaussianBlur stdDeviation="1"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0a0a0a"/>
+
+  <!-- Ambient glows -->
+  <rect width="1200" height="630" fill="url(#glow1)"/>
+  <rect width="1200" height="630" fill="url(#glow2)"/>
+  <rect width="1200" height="630" fill="url(#glow3)"/>
+
+  <!-- Particle field (scattered dots simulating 50K particles) -->
+  <!-- Left hand cluster (blue) -->
+  <g opacity="0.6" filter="url(#blur2)">
+    <circle cx="320" cy="260" r="2.5" fill="#0088ff"/>
+    <circle cx="335" cy="245" r="1.8" fill="#0099ff"/>
+    <circle cx="310" cy="275" r="2" fill="#0077ee"/>
+    <circle cx="345" cy="270" r="1.5" fill="#00aaff"/>
+    <circle cx="300" cy="250" r="2.2" fill="#0088ff"/>
+    <circle cx="355" cy="255" r="1.2" fill="#00bbff"/>
+    <circle cx="325" cy="290" r="1.8" fill="#0077dd"/>
+    <circle cx="340" cy="230" r="1.5" fill="#0099ff"/>
+    <circle cx="360" cy="280" r="2" fill="#0088ee"/>
+    <circle cx="290" cy="265" r="1.3" fill="#00aaff"/>
+    <circle cx="370" cy="240" r="1" fill="#00ccff"/>
+    <circle cx="315" cy="235" r="1.6" fill="#0088ff"/>
+    <circle cx="350" cy="295" r="1.2" fill="#0066dd"/>
+    <circle cx="280" cy="280" r="1.8" fill="#0077ee"/>
+    <circle cx="330" cy="310" r="1" fill="#0088ff"/>
+    <circle cx="305" cy="225" r="1.4" fill="#00aaff"/>
+    <circle cx="375" cy="260" r="0.8" fill="#00bbff"/>
+    <circle cx="295" cy="240" r="1.6" fill="#0099ee"/>
+    <circle cx="365" cy="300" r="1.3" fill="#0077dd"/>
+    <circle cx="285" cy="295" r="1" fill="#0088ff"/>
+  </g>
+
+  <!-- Right hand cluster (orange) -->
+  <g opacity="0.5" filter="url(#blur2)">
+    <circle cx="820" cy="300" r="2.5" fill="#ff8800"/>
+    <circle cx="835" cy="285" r="1.8" fill="#ff9922"/>
+    <circle cx="810" cy="315" r="2" fill="#ff7711"/>
+    <circle cx="845" cy="310" r="1.5" fill="#ffaa33"/>
+    <circle cx="800" cy="290" r="2.2" fill="#ff8800"/>
+    <circle cx="855" cy="295" r="1.2" fill="#ffbb44"/>
+    <circle cx="825" cy="330" r="1.8" fill="#ff6600"/>
+    <circle cx="840" cy="270" r="1.5" fill="#ff9922"/>
+    <circle cx="860" cy="320" r="2" fill="#ff7711"/>
+    <circle cx="790" cy="305" r="1.3" fill="#ffaa33"/>
+    <circle cx="870" cy="280" r="1" fill="#ffcc44"/>
+    <circle cx="815" cy="275" r="1.6" fill="#ff8800"/>
+    <circle cx="850" cy="335" r="1.2" fill="#ff5500"/>
+    <circle cx="780" cy="320" r="1.8" fill="#ff7711"/>
+    <circle cx="830" cy="350" r="1" fill="#ff8800"/>
+    <circle cx="805" cy="265" r="1.4" fill="#ffaa33"/>
+  </g>
+
+  <!-- Face cluster (purple) -->
+  <g opacity="0.4" filter="url(#blur1)">
+    <circle cx="580" cy="200" r="2" fill="#b464ff"/>
+    <circle cx="600" cy="190" r="1.5" fill="#cc77ff"/>
+    <circle cx="620" cy="205" r="1.8" fill="#aa55ee"/>
+    <circle cx="590" cy="215" r="1.2" fill="#bb66ff"/>
+    <circle cx="610" cy="180" r="1" fill="#dd88ff"/>
+    <circle cx="570" cy="210" r="1.6" fill="#9944dd"/>
+    <circle cx="630" cy="195" r="1.3" fill="#cc77ff"/>
+    <circle cx="585" cy="185" r="1.4" fill="#bb66ff"/>
+    <circle cx="615" cy="220" r="1" fill="#aa55ee"/>
+    <circle cx="595" cy="175" r="0.8" fill="#dd88ff"/>
+  </g>
+
+  <!-- Scattered ambient particles -->
+  <g opacity="0.15">
+    <circle cx="150" cy="120" r="1" fill="#ffffff"/>
+    <circle cx="450" cy="80" r="0.8" fill="#ffffff"/>
+    <circle cx="750" cy="150" r="1.2" fill="#ffffff"/>
+    <circle cx="1050" cy="100" r="0.6" fill="#ffffff"/>
+    <circle cx="200" cy="400" r="0.8" fill="#ffffff"/>
+    <circle cx="500" cy="450" r="1" fill="#ffffff"/>
+    <circle cx="900" cy="420" r="0.7" fill="#ffffff"/>
+    <circle cx="1100" cy="350" r="0.9" fill="#ffffff"/>
+    <circle cx="100" cy="550" r="0.6" fill="#ffffff"/>
+    <circle cx="400" cy="520" r="0.8" fill="#ffffff"/>
+    <circle cx="700" cy="500" r="1" fill="#ffffff"/>
+    <circle cx="1000" cy="530" r="0.7" fill="#ffffff"/>
+    <circle cx="250" cy="180" r="0.5" fill="#0088ff"/>
+    <circle cx="950" cy="200" r="0.5" fill="#ff8800"/>
+    <circle cx="600" cy="400" r="0.5" fill="#b464ff"/>
+    <circle cx="180" cy="320" r="0.6" fill="#0088ff"/>
+    <circle cx="1020" cy="280" r="0.6" fill="#ff8800"/>
+    <circle cx="550" cy="350" r="0.4" fill="#b464ff"/>
+    <circle cx="680" cy="120" r="0.4" fill="#ffffff"/>
+    <circle cx="420" cy="380" r="0.5" fill="#ffffff"/>
+  </g>
+
+  <!-- Hand cursor rings -->
+  <!-- Left hand -->
+  <circle cx="320" cy="265" r="24" stroke="#0088ff" stroke-width="1.5" fill="none" opacity="0.4"/>
+  <circle cx="320" cy="265" r="3" fill="#0088ff" opacity="0.6"/>
+  <!-- Right hand -->
+  <circle cx="825" cy="300" r="20" stroke="#ff8800" stroke-width="1.5" fill="none" opacity="0.35"/>
+  <circle cx="825" cy="300" r="3" fill="#ff8800" opacity="0.5"/>
+  <!-- Face crosshair -->
+  <line x1="590" y1="195" x2="610" y2="195" stroke="#b464ff" stroke-width="1" opacity="0.3"/>
+  <line x1="600" y1="185" x2="600" y2="205" stroke="#b464ff" stroke-width="1" opacity="0.3"/>
+
+  <!-- Flow lines (connecting particles) -->
+  <g stroke-width="0.5" opacity="0.08" fill="none">
+    <path d="M320,265 C400,240 500,220 600,200" stroke="#0088ff"/>
+    <path d="M600,200 C700,230 750,260 825,300" stroke="#ff8800"/>
+    <path d="M320,265 Q450,350 600,380 Q750,350 825,300" stroke="#b464ff"/>
+  </g>
+
+  <!-- Title -->
+  <text x="600" y="480" text-anchor="middle" font-family="JetBrains Mono, SF Mono, monospace" font-size="42" fill="rgba(255,255,255,0.7)" letter-spacing="0.08em">SonicParticles</text>
+
+  <!-- Subtitle -->
+  <text x="600" y="520" text-anchor="middle" font-family="JetBrains Mono, SF Mono, monospace" font-size="14" fill="rgba(255,255,255,0.25)" letter-spacing="0.15em">hands + face + voice = instrument</text>
+
+  <!-- Subtle border -->
+  <rect x="0.5" y="0.5" width="1199" height="629" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+</svg>

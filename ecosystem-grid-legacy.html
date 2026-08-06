@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="ru" data-rev="45"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Экосистема AI Mindset — карточная схема</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#ffffff; --ink:#000000; --soft:#d9d9d9; --hair:#ececec; --pale:#f7f7f7;
+    --muted:#8a8a8a; --frame:1px;
+    --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  ::selection{background:var(--ink);color:var(--bg)}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:var(--mono);font-size:13px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;text-rendering:geometricPrecision;font-feature-settings:"tnum"}
+  a{color:inherit;text-decoration:none;border-bottom:1px solid var(--soft);transition:border-color .15s}
+  a:hover{border-color:var(--ink)}
+  a.plain{border-bottom:none}
+  .wrap{max-width:980px;margin:0 auto;padding:0 24px}
+
+  /* top strip */
+  .top{border-bottom:var(--frame) solid var(--ink);position:sticky;top:0;background:var(--bg);z-index:40}
+  .top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:14px;padding-bottom:14px}
+  .brand{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:650;letter-spacing:.04em}
+  .brand-mark{width:22px;height:22px;background:var(--ink);flex:none}
+  .top .meta{font-size:10px;text-transform:uppercase;letter-spacing:.18em;color:var(--muted);white-space:nowrap}
+  .top .meta b{color:var(--ink);font-weight:500}
+  @media(max-width:640px){.top .meta{display:none}}
+
+  /* tabs nav */
+  .tabs{border-bottom:var(--frame) solid var(--ink);position:sticky;top:51px;background:var(--bg);z-index:39;overflow-x:auto}
+  .tabs .wrap{display:flex;gap:2px;padding-left:12px;padding-right:12px}
+  .tabs a{border-bottom:2px solid transparent;padding:9px 12px;font-size:11.5px;letter-spacing:.04em;text-transform:lowercase;color:var(--muted);flex:none}
+  .tabs a:hover{color:var(--ink)}
+
+  main{padding-bottom:80px}
+  section{padding:64px 0 56px;border-bottom:var(--frame) solid var(--hair);scroll-margin-top:92px}
+  .sec-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:30px}
+  .sec-head .num{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  h1{font-size:clamp(24px,3.6vw,34px);font-weight:700;letter-spacing:-.01em;line-height:1.25;max-width:760px;margin-bottom:18px}
+  h2{font-size:clamp(17px,2.2vw,21px);font-weight:650;letter-spacing:-.005em;line-height:1.35;margin-bottom:14px;max-width:680px}
+  h3{font-size:13.5px;font-weight:650;margin-bottom:2px}
+  p{max-width:640px}
+  .muted{color:var(--muted)}
+  .lead{font-size:14.5px;max-width:640px;color:#333}
+  .small{font-size:11px;letter-spacing:.04em;color:var(--muted)}
+  .k{background:var(--pale);border:var(--frame) solid var(--hair);padding:1px 6px;border-radius:3px;font-size:12px}
+
+  /* stat line */
+  .stats{display:flex;gap:36px;flex-wrap:wrap;margin:26px 0}
+  .stats b{display:block;font-size:22px;font-weight:700;letter-spacing:-.01em}
+  .stats span{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  @media(max-width:640px){.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 24px}}
+
+  .btn{display:inline-block;background:var(--ink);color:var(--bg);border:var(--frame) solid var(--ink);border-bottom:var(--frame) solid var(--ink);padding:9px 18px;font-size:12px;letter-spacing:.04em}
+  .btn:hover{background:var(--bg);color:var(--ink)}
+
+  /* rows (universal hairline lists) */
+  .rows{border-top:var(--frame) solid var(--ink)}
+  .row{display:grid;grid-template-columns:150px 1fr auto;gap:20px;align-items:baseline;padding:14px 2px;border-bottom:var(--frame) solid var(--hair)}
+  @media(max-width:700px){.row{grid-template-columns:1fr;gap:4px}}
+  .row .key{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding-top:2px}
+  .row .key.live{color:var(--ink);font-weight:600}
+  .row .key.live::before{content:"●";margin-right:6px;animation:pulse 2.4s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+  .row p{font-size:12.5px;color:#444;max-width:560px}
+  .row .go{font-size:12px;white-space:nowrap}
+  .company-proof{display:grid;grid-template-columns:150px minmax(0,1fr);gap:20px;margin-top:18px;padding:14px 2px;border-top:var(--frame) solid var(--hair)}
+  .company-proof .label{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  .company-proof p{max-width:none;font-size:11px;line-height:1.75;letter-spacing:.025em;color:var(--muted)}
+  @media(max-width:700px){.company-proof{grid-template-columns:1fr;gap:5px}}
+
+  /* values grid */
+  .values-intro{margin-top:28px;font-size:13px;font-weight:650;letter-spacing:.01em}
+  .values{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--hair);border:var(--frame) solid var(--hair);margin-top:12px}
+  @media(max-width:640px){.values{grid-template-columns:1fr}}
+  .value{background:var(--bg);padding:18px 20px}
+  .value h3{font-size:13px}
+  .value p{font-size:12px;color:var(--muted)}
+
+  /* team */
+  .team-inline{scroll-margin-top:92px}
+  .team-inline-head{display:flex;align-items:baseline;justify-content:space-between;gap:20px;padding:0 2px 22px;border-bottom:1px solid var(--ink)}
+  .team-inline-head h3{margin:0;font-size:17px;line-height:1.3}
+  .team-inline-head span{font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+  .team-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--hair);border:1px solid var(--hair);border-top:0}
+  .team-member{min-width:0;background:var(--bg)}
+  .team-member img{display:block;width:100%;height:auto;aspect-ratio:.92;object-fit:cover;filter:grayscale(1);transition:filter .5s ease;border-bottom:1px solid var(--hair)}
+  .team-member--alexander img{object-position:50% 44%}
+  .team-member--vlada img{object-position:50% 14%}
+  .team-member--irina img{object-position:50% 48%}
+  .team-member--dan img{object-position:50% 46%}
+  .team-member:hover img{filter:grayscale(0)}
+  .team-member-copy{padding:14px 14px 17px}
+  .team-role{display:block;font-size:9px;line-height:1.35;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .team-member h3{margin:6px 0 5px;font-size:13px;line-height:1.35}
+  .team-member p{font-size:11px;line-height:1.55;color:#555}
+  .team-note{margin-top:14px;font-size:10.5px;line-height:1.55;letter-spacing:.03em;color:var(--muted)}
+
+  .about-intro{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(270px,.8fr);gap:32px;align-items:start}
+  .about-copy{min-width:0}
+  .about-copy h2{margin-bottom:14px}
+  .about-quote{margin:0;max-width:none;padding:0;border:0;background:transparent;color:var(--ink);font-size:18px;line-height:1.62}
+  .about-quote .quote-line+.quote-line{margin-top:8px}
+  .about-quote .quote-highlight{font-weight:400;letter-spacing:-.01em;background:var(--ink);color:var(--bg);padding:3px 4px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+  .about-quote .quote-highlight--title{font-weight:650}
+  .about-quote--origin{margin-top:30px}
+  .about-quote--origin .quote-src{margin-top:10px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .about-quote--origin .quote-src a{border-bottom:1px solid var(--soft)}
+  .about-quote--origin .quote-src a:hover{border-color:var(--ink)}
+  @media(max-width:700px){
+    .about-intro{grid-template-columns:1fr;gap:22px}
+    .about-copy h2,.about-copy p,.about-quote{max-width:100%;overflow-wrap:anywhere}
+    .about-quote{font-size:17px;line-height:1.68}
+    .team-inline-head{align-items:flex-start;flex-direction:column;gap:5px;padding:18px 0}
+    .team-inline-head h3{font-size:15px}
+    .team-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .team-member-copy{padding:12px 11px 15px}
+    .team-member h3{font-size:12.5px}
+    .team-member p{font-size:10.5px}
+  }
+
+  blockquote{border-left:2px solid var(--ink);padding:4px 0 4px 18px;font-size:13.5px;max-width:640px;margin:22px 0;color:#222}
+  blockquote .src{display:block;margin-top:8px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .reviews-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--hair);border:1px solid var(--hair);border-top-color:var(--ink)}
+  .reviews-grid>blockquote{min-width:0;max-width:none;margin:0;padding:19px 20px;border:0;background:var(--bg)}
+  .reviews-grid>blockquote:not(.about-quote){display:grid;grid-template-rows:1fr auto;gap:14px;font-size:12.5px;line-height:1.65}
+  .reviews-grid>.about-quote--origin{grid-column:1/-1;margin:0!important;padding:23px 20px}
+  @media(max-width:700px){
+    .reviews-grid{grid-template-columns:1fr}
+    .reviews-grid>blockquote{padding:17px 16px}
+    .reviews-grid>.about-quote--origin{grid-column:auto;padding:20px 16px}
+  }
+
+  details{border-bottom:var(--frame) solid var(--hair);padding:13px 2px}
+  details:first-of-type{border-top:var(--frame) solid var(--ink)}
+  summary{cursor:pointer;font-weight:600;font-size:13px;list-style:none;display:flex;justify-content:space-between;gap:14px}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";color:var(--muted)}
+  details[open] summary::after{content:"–"}
+  details p{margin-top:8px;font-size:12.5px;color:#444}
+
+  footer{padding:44px 0 80px;font-size:12px;color:var(--muted)}
+  footer .cols{display:flex;gap:40px;flex-wrap:wrap;margin-bottom:28px}
+  footer .h{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--soft);margin-bottom:8px;color:#b5b5b5}
+  footer ul{list-style:none}
+  footer li{margin-bottom:5px}
+
+  /* ecosystem tree */
+  .eco-map{margin:6px 0 34px;border:var(--frame) solid var(--ink);background:#f4f4ef;overflow:hidden}
+  .eco-tree{padding:24px;background-image:linear-gradient(#ddddda 1px,transparent 1px),linear-gradient(90deg,#ddddda 1px,transparent 1px);background-size:40px 40px}
+  .eco-root-wrap{position:relative;display:flex;justify-content:center;padding:12px 0 58px}
+  .eco-root-wrap::after{content:"";position:absolute;left:50%;bottom:0;width:1px;height:58px;background:#111}
+  .eco-root{position:relative;z-index:2;width:min(520px,62%);min-height:164px;display:flex;flex-direction:column;justify-content:space-between;padding:22px 24px;border:1px solid #000;border-bottom-color:#000;background:#050505;color:#fff;box-shadow:9px 9px 0 #c3ff00}
+  .eco-root:hover{border-bottom-color:#000}
+  .eco-root:focus-visible,.eco-card:focus-visible{outline:3px solid #e6372f;outline-offset:3px}
+  .eco-root .eco-kicker{font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:#aaa}
+  .eco-root strong{font-size:28px;line-height:1.1;letter-spacing:.01em}
+  .eco-root .eco-copy{font-size:10.5px;line-height:1.5;color:#c4c4c4}
+  .eco-root .eco-arrow,.eco-card .eco-arrow{position:absolute;right:11px;top:9px;color:#888}
+  .eco-branches{position:relative;display:grid;grid-template-columns:2.05fr 1.1fr 1.1fr .9fr;gap:12px;align-items:start;padding-top:34px}
+  .eco-branches::before{content:"";position:absolute;left:10.5%;right:9%;top:0;height:1px;background:#111}
+  .eco-branch{position:relative;min-width:0;border:1px solid #111;background:rgba(255,255,255,.82)}
+  .eco-branch::before{content:"";position:absolute;left:50%;top:-34px;width:1px;height:34px;background:#111}
+  .eco-branch-head{min-height:106px;padding:14px 15px;border-bottom:1px solid #111;background:#fff}
+  .eco-branch-head .eco-index{display:block;margin-bottom:10px;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:#777}
+  .eco-branch-head h3{margin:0 0 5px;font-size:16px;line-height:1.15;text-transform:uppercase;overflow-wrap:anywhere}
+  .eco-branch-head p{font-size:9.5px;line-height:1.4;color:#666}
+  .eco-branch--learning .eco-branch-head{background:#c3ff00}
+  .eco-items{display:grid;gap:1px;background:#c7c7c3}
+  .eco-branch--learning .eco-items{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .eco-card{position:relative;min-width:0;min-height:116px;display:flex;flex-direction:column;justify-content:space-between;padding:13px 14px;border:0;border-bottom:0;background:#fff;transition:background .18s ease,color .18s ease}
+  .eco-card:hover{border-bottom:0;background:#f1f1ec}
+  .eco-card .eco-type{font-size:8.5px;line-height:1.25;letter-spacing:.13em;text-transform:uppercase;color:#777}
+  .eco-card strong{display:block;margin:9px 0 6px;font-size:12px;line-height:1.2;letter-spacing:.04em;text-transform:uppercase;overflow-wrap:anywhere}
+  .eco-card .eco-note{font-size:9.5px;line-height:1.4;color:#666}
+  .eco-card--featured{min-height:136px}
+  .eco-card--active{background:#111;color:#fff}
+  .eco-card--active:hover{background:#1d1d1d}
+  .eco-card--active .eco-type,.eco-card--active .eco-note,.eco-card--active .eco-arrow{color:#bdbdbd}
+  .eco-card--active::before{content:"";position:absolute;left:9px;top:9px;width:7px;height:7px;background:#c3ff00;border:1px solid #000;animation:pulse 2.4s infinite}
+  .eco-card--active .eco-type{padding-left:13px}
+  .eco-card--wide{grid-column:1/-1;min-height:86px}
+  .eco-branch--research .eco-card{min-height:166px}
+  .eco-branch-note{padding:10px 12px;border-top:1px solid #111;background:#f4f4ef;font-size:8px;line-height:1.4;letter-spacing:.1em;text-transform:uppercase;color:#777}
+  @media(max-width:760px){
+    .eco-tree{padding:14px 12px;background-size:28px 28px}
+    .eco-root-wrap{justify-content:flex-start;padding:4px 0 28px}
+    .eco-root-wrap::after{left:18px;height:28px}
+    .eco-root{width:100%;min-height:150px;padding:18px;box-shadow:6px 6px 0 #c3ff00}
+    .eco-root strong{font-size:23px}
+    .eco-branches{display:grid;grid-template-columns:1fr;gap:16px;padding:16px 0 0 38px}
+    .eco-branches::before{left:18px;right:auto;top:0;bottom:24px;width:1px;height:auto}
+    .eco-branch::before{left:-20px;top:26px;width:20px;height:1px}
+    .eco-branch-head{min-height:auto;padding:13px 14px}
+    .eco-branch-head .eco-index{margin-bottom:7px}
+    .eco-branch--learning .eco-items{grid-template-columns:1fr 1fr}
+    .eco-card{min-height:112px}
+    .eco-card--featured{min-height:124px}
+    .eco-card--wide{min-height:84px}
+    .eco-branch--research .eco-card{min-height:120px}
+  }
+  @media(max-width:440px){.eco-branch--learning .eco-items{grid-template-columns:1fr}.eco-card--wide{grid-column:auto}}
+  @media(prefers-reduced-motion:reduce){.eco-card--active::before{animation:none}.eco-card{transition:none}}
+
+  /* ————— edit harness ————— */
+  .edit-bar{position:fixed;right:16px;bottom:16px;z-index:100;display:flex;gap:8px;align-items:center;
+    background:var(--bg);border:var(--frame) solid var(--ink);padding:8px 10px;font-size:11px}
+  .edit-bar button{font-family:var(--mono);font-size:11px;letter-spacing:.04em;background:var(--bg);color:var(--ink);
+    border:var(--frame) solid var(--ink);padding:6px 12px;cursor:pointer}
+  .edit-bar button:hover{background:var(--ink);color:var(--bg)}
+  .edit-bar button.primary{background:var(--ink);color:var(--bg)}
+  .edit-bar button.primary:hover{background:var(--bg);color:var(--ink)}
+  .edit-bar .status{color:var(--muted);max-width:220px}
+  .edit-bar .status.is-error{color:#c02020}
+  @media(max-width:640px){body{padding-bottom:72px}}
+  body.editing [data-editable]{outline:1px dashed #b5b5b5;outline-offset:3px;cursor:text;pointer-events:auto!important;white-space:pre-wrap;min-width:.5em;min-height:1em}
+  body.editing [data-editable]:hover,body.editing [data-editable]:focus{outline-color:var(--ink);background:#fffdf0}
+  body.editing summary[data-editable]{display:block;position:relative;padding-right:24px}
+  body.editing summary[data-editable]::after{position:absolute;right:2px;top:0}
+
+  /* duplicate section navigation + edit-time reorder rail */
+  .section-rail{position:fixed;right:16px;top:106px;z-index:38;width:196px;background:rgba(255,255,255,.97);border:var(--frame) solid var(--ink)}
+  .section-rail-head{display:flex;align-items:baseline;justify-content:space-between;gap:8px;padding:9px 10px;border-bottom:var(--frame) solid var(--ink)}
+  .section-rail-title{font-size:9.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+  .section-rail-hint{display:none;font-size:8.5px;letter-spacing:.08em;color:var(--muted)}
+  .section-rail-list{list-style:none;max-height:calc(100vh - 166px);overflow:auto;overscroll-behavior:contain}
+  .section-rail-item{display:grid;grid-template-columns:1fr;min-width:0;border-bottom:var(--frame) solid var(--hair);background:var(--bg)}
+  .section-rail-item:last-child{border-bottom:0}
+  .section-rail-link{display:grid;grid-template-columns:26px minmax(0,1fr);gap:7px;align-items:center;min-width:0;padding:8px 10px;border:0;color:var(--muted)}
+  .section-rail-link:hover,.section-rail-item.is-current .section-rail-link{color:var(--ink);background:var(--pale);border:0}
+  .section-rail-item.is-current .section-rail-link{box-shadow:inset 3px 0 0 var(--ink)}
+  .section-rail-index{font-size:8.5px;letter-spacing:.12em;color:var(--muted)}
+  .section-rail-label{min-width:0;font-size:10.5px;line-height:1.35;overflow-wrap:anywhere}
+  .section-drag-handle{display:none;align-items:center;justify-content:center;width:28px;min-height:34px;padding:0;border:0;border-right:var(--frame) solid var(--hair);background:var(--bg);color:var(--muted);font:600 14px/1 var(--mono);cursor:grab;touch-action:none}
+  .section-drag-handle:hover,.section-drag-handle:focus-visible{background:var(--ink);color:var(--bg);outline:none}
+  body.editing .section-rail{z-index:101}
+  body.editing .section-rail-head{background:var(--ink);color:var(--bg)}
+  body.editing .section-rail-hint{display:inline;color:#bbb}
+  body.editing .section-rail-item{grid-template-columns:28px minmax(0,1fr)}
+  body.editing .section-drag-handle{display:flex}
+  body.editing .section-rail-item.is-dragging{opacity:.38}
+  body.editing .section-rail-item.is-drop-before{box-shadow:inset 0 3px 0 var(--ink)}
+  body.editing .section-rail-item.is-drop-after{box-shadow:inset 0 -3px 0 var(--ink)}
+  @media(max-width:1320px){
+    .section-rail{display:none}
+  }
+  @media(min-width:761px) and (max-width:1320px){
+    body.editing{padding-right:226px}
+    body.editing .section-rail{display:block}
+  }
+  @media(max-width:760px){
+    body.editing .section-rail{display:block;left:10px;right:10px;top:auto;bottom:110px;width:auto;max-height:44vh}
+    body.editing .section-rail-list{max-height:calc(44vh - 39px)}
+    .edit-bar{left:10px;right:10px;bottom:10px;flex-wrap:wrap}
+    .edit-bar .status{max-width:none;flex:1 1 170px}
+  }
+  /* standalone preservation of the former main-page ecosystem map */
+  body{min-height:100vh;padding:34px 0;background:#fff}
+  body>.top,body>.tabs,body>.section-rail,body>.edit-bar,body>footer{display:none!important}
+  main.wrap{max-width:1480px;padding:0 24px 40px}
+  main>section:not(#products){display:none!important}
+  #products{padding:0;border:0}
+  #products>.sec-head,#products>.rows{display:none!important}
+  #products>.eco-map{margin:0}
+  @media(max-width:760px){body{padding:14px 0}main.wrap{padding:0 10px 24px}}
+</style>
+</head>
+<body class="">
+
+<div class="top">
+  <div class="wrap">
+    <div class="brand"><span class="brand-mark"></span><span>AI Mindset · главная</span></div>
+    <div class="meta"><b>главная</b> ·&nbsp;labs · для&nbsp;команд · что-то&nbsp;ещё</div>
+  </div>
+</div>
+
+<div class="tabs">
+  <div class="wrap">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  <a href="#about">кто мы</a><a href="#team">команда</a><a href="#manifesto">манифест</a><a href="#approach">подход</a><a href="#learning">обучение</a><a href="#cases">сделано внутри</a><a href="#products">продукты</a><a href="#research">исследования</a><a href="#reviews">слова</a><a href="#faq">вопросы</a></div>
+</div>
+
+<aside class="section-rail" id="sectionRail" aria-label="Навигация по разделам" data-editor-ui="">
+  <div class="section-rail-head"><span class="section-rail-title">разделы</span><span class="section-rail-hint">↕ порядок</span></div>
+  <ol class="section-rail-list">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  <li class="section-rail-item" data-section-id="hero"><button class="section-drag-handle" type="button" aria-label="Перетащить раздел «Главная»" title="Перетащить">↕</button><a class="section-rail-link" href="#hero"><span class="section-rail-index">00</span><span class="section-rail-label">главная</span></a></li><li class="section-rail-item" data-section-id="about"><button class="section-drag-handle" type="button" aria-label="Перетащить раздел «Кто мы»" title="Перетащить">↕</button><a class="section-rail-link" href="#about"><span class="section-rail-index">01</span><span class="section-rail-label">кто мы</span></a></li><li class="section-rail-item" data-section-id="team"><button class="section-drag-handle" type="button" aria-label="Перетащить раздел «Команда»" title="Перетащить">↕</button><a class="section-rail-link" href="#team"><span class="section-rail-index">02</span><span class="section-rail-label">команда</span></a></li><li class="section-rail-item" data-section-id="manifesto"><button class="section-drag-handle" type="button" aria-label="Перетащить раздел «Манифест»" title="Перетащить">↕</button><a class="section-rail-link" href="#manifesto"><span class="section-rail-index">03</span><span class="section-rail-label">манифест</span></a></li><li class="section-rail-item" data-section-id="approach"><button class="section-drag-handle" type="button" aria-label="Перетащить раздел «Подход»" title="Перетащить">↕</button><a class="section-rail-link" href="#approach"><span class="section-rail-index">04</span><span class="section-rail-label">подход</span></a></li><li class="section-rail-item" data-section-id="learning"><button class="section-drag-handle" type="button" aria-label="Перетащить раздел «Обучение»" title="Перетащить">↕</button><a class="section-rail-link" href="#learning"><span class="section-rail-index">05</span><span class="section-rail-label">обучение</span></a></li><li class="section-rail-item" data-section-id="cases"><button class="section-drag-handle" type="button" aria-label="Перетащить раздел «Сделано внутри»" title="Перетащить">↕</button><a class="section-rail-link" href="#cases"><span class="section-rail-index">06</span><span class="section-rail-label">сделано внутри</span></a></li><li class="section-rail-item" data-section-id="products"><button class="section-drag-handle" type="button" aria-label="Перетащить раздел «Продукты»" title="Перетащить">↕</button><a class="section-rail-link" href="#products"><span class="section-rail-index">07</span><span class="section-rail-label">продукты</span></a></li><li class="section-rail-item" data-section-id="research"><button class="section-drag-handle" type="button" aria-label="Перетащить раздел «Исследования»" title="Перетащить">↕</button><a class="section-rail-link" href="#research"><span class="section-rail-index">08</span><span class="section-rail-label">исследования</span></a></li><li class="section-rail-item" data-section-id="reviews"><button class="section-drag-handle" type="button" aria-label="Перетащить раздел «Слова»" title="Перетащить">↕</button><a class="section-rail-link" href="#reviews"><span class="section-rail-index">09</span><span class="section-rail-label">слова</span></a></li><li class="section-rail-item" data-section-id="faq"><button class="section-drag-handle" type="button" aria-label="Перетащить раздел «Вопросы»" title="Перетащить">↕</button><a class="section-rail-link" href="#faq"><span class="section-rail-index">10</span><span class="section-rail-label">вопросы</span></a></li></ol>
+</aside>
+
+<main class="wrap">
+
+<!-- HERO -->
+
+
+<!-- 01 ABOUT -->
+
+
+<!-- AGENT RULE — USER-OWNED TEAM COPY:
+     Automated agents must not rewrite, translate, reorder, or otherwise change the names, roles,
+     descriptions, or order below unless the user explicitly asks for that exact text change.
+     This rule constrains agent edits only. It must never disable or interfere with the user's inline editor. -->
+
+
+<!-- 02 MANIFESTO -->
+
+
+<!-- 03 APPROACH -->
+
+
+<!-- 04 LEARNING -->
+
+
+<!-- 05 CASES -->
+
+
+<!-- 06 PRODUCTS -->
+
+
+<!-- 07 RESEARCH -->
+
+
+<!-- 08 REVIEWS -->
+
+
+<!-- 09 FAQ -->
+
+
+<section id="hero" style="border-bottom:var(--frame) solid var(--ink)">
+  <p class="small" style="margin-bottom:18px"><br></p>
+  <h1>AI&nbsp;Mindset.&nbsp;Среда, в которой технологический сдвиг проходят не&nbsp;теряя себя.</h1>
+  <p class="lead">Мы – это лаборатории, спринты, образовательная платформа, сообщество и спец проекты для тех, кто создаёт вместе с AI. Это среда для тех, кто проходит технологический сдвиг и хочет сохранить авторство, внимание и собственный ритм.<br></p>
+  <div class="stats">
+    <div><b>&gt;25</b><span>ЛАБОРАТОРИЙ</span></div>
+    <div><b>10+</b><span>направлений<br>и спецпроектов</span></div>
+    <div><b>1600+</b><span>участников</span></div>
+    <div><b>30+</b><span>стран</span></div>
+    <div><b>&gt;40</b><span>спикеров<br>на всех потоках</span></div>
+  </div>
+  <p><a class="btn plain" href="#learning">присоединиться</a></p>
+  <p class="small" style="margin-top:22px">● сейчас идёт набор: ИИ-нативные организации · спринт 3 — старт 13 июля · <br>● ближайшие лаборатории: лето 2026 · </p>
+</section><section id="about">
+  <div class="sec-head"><span class="num">01 · {кто мы}</span><span class="num">делается для себя</span></div>
+  <div class="about-intro">
+    <div class="about-copy">
+      <h2>Кто&nbsp;мы:&nbsp;жизнь внутри экспоненты</h2>
+      <p class="quote-src" style="margin:-6px 0 14px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)"><a href="https://t.me/ai_mind_set/3">с этой фразы начинался канал @ai_mind_set ↗</a></p>
+      <p class="lead">Проект начался в 2022 году, когда мы разбирались, как устроено мышление и куда складывать знания: вели личные базы в Obsidian, собирали сообщества, проводили лаборатории под другим названием компании. Мы все что-то практиковали до AI. Кто-то медитацию, кто-то психонетику, кто-то терапию — у каждого за плечами была своя школа внимания. В 2023-м появились AI-ассистенты — и работа со знаниями перетекла в работу с искусственным интеллектом. Но мы никогда не были про технологии в чистом виде. И не будем. Мы&nbsp;про&nbsp;то,&nbsp;как&nbsp;с&nbsp;этими&nbsp;технологиями&nbsp;жить,&nbsp;оставаясь&nbsp;в&nbsp;контакте&nbsp;с&nbsp;собой.<br><br>Лёгким этот путь не был ни для нас, ни для участников: «страшно, больно, полезно, волшебно и интересно», как нам честно писали после пятой лабы, напоминает и наш путь — скорость изменений порой ошеломляет даже тех, кто в них живёт. В какой-то момент мы поняли, что это уже не обучение как услуга, а совместное исследование, — и перестроили всё вокруг этого.<br>Сначала ведущих было двое. Потом появились первые приглашенные спикеры, команда, сообщество, кураторы — теперь почти весь спикерский слой приходит из нашего же сообщества {space}. То, что начиналось как личная практика, теперь держится общей средой.<br>Мы строим то, чем пользуемся сами, — и приглашаем внутрь. И измеряем свой успех одним признаком: возвращаются ли люди. Возвращаются. <br></p>
+    </div>
+    <blockquote class="about-quote"><p class="quote-line"><strong class="quote-highlight quote-highlight--title">Это не обучение работе с ИИ</strong></p><p class="quote-line"><span class="quote-highlight">Это практическая метафизика адаптации.</span></p></blockquote>
+  </div>
+  <p class="values-intro">В AI Mindset мы верим:</p>
+  <div class="values">
+    <div class="value"><h3>Человек остаётся автором</h3><p>ИИ усиливает мышление и действие, но выбор, внимание и ответственность остаются у человека</p></div>
+    <div class="value"><h3>Рабочий результат важнее моды</h3><p>Выбираем не самое громкое, а то, что действительно помогает и выдерживает ежедневную работу</p></div>
+    <div class="value"><h3>Опыт каждого работает на всех</h3><p>Мы собираем находки участников в общую практику — и личный опыт становится опорой для всей группы</p></div>
+    <div class="value"><h3>Персональная система, а&nbsp;не&nbsp;чужие рецепты</h3><p>Каждый собирает способ работы с ИИ под свои задачи, ограничения и ритм</p></div>
+  </div>
+</section><section class="team-inline" id="team" aria-labelledby="team-title">
+  <div class="team-inline-head"><h3 id="team-title">Команда</h3><span><br></span></div>
+  <div class="team-grid">
+    <article class="team-member team-member--alexander"><img src="assets/team/alexander-povaliaev.jpg" alt="Александр Поваляев" width="800" height="800" loading="lazy"><div class="team-member-copy"><span class="team-role">founder / product &amp; education.</span><h3>Александр Поваляев</h3><p>видение, методология, продуктовая архитектура и ключевые форматы.</p></div></article>
+    <article class="team-member team-member--irina"><img src="assets/team/irina-nazarova-bw.jpg" alt="Ирина Назарова" width="800" height="800" loading="lazy"><div class="team-member-copy"><span class="team-role">partner / operations.</span><h3>Ирина Назарова</h3><p>запуски, финансы, HR, договоры, оплаты, клиентский путь.</p></div></article>
+    <article class="team-member team-member--dan"><img src="assets/team/dan-vasiliev-bw.jpg" alt="Дан Васильев" width="800" height="800" loading="lazy"><div class="team-member-copy"><span class="team-role">tech lead / AI infrastructure.</span><h3>Дан Васильев</h3><p>LMS, платежи, боты, NocoDB, n8n, интеграции.</p></div></article>
+    <article class="team-member team-member--vlada"><img src="assets/team/vlada-zorina-bw.jpg" alt="Влада Зорина" width="533" height="800" loading="lazy"><div class="team-member-copy"><span class="team-role">partnerships &amp; growth.</span><h3>Влада Зорина</h3><p>партнёрства, growth-гипотезы, продуктовые запуски, внешняя сеть.</p></div></article>
+  </div>
+  <p class="team-note">В каждом сезоне маршрут дополняют спикеры из сообщества — сильные практики из разных областей, исследующие AI изнутри своей профессии.</p>
+  <blockquote class="about-quote about-quote--origin" style="margin:28px 0 0"><p class="quote-line"><span class="quote-highlight">«я ищу с каждым человеком точку контакта/входа: одно слово, в котором у него поменяется рабочий процесс»</span></p></blockquote>
+</section><section id="manifesto">
+  <div class="sec-head"><span class="num">02 · {манифест}</span><span class="num"><a href="https://manifest.aimindset.org">сайт манифеста ↗</a></span></div>
+  <h2>Данных становится больше. Выбирать становится труднее.</h2>
+  <p class="lead">Машина производит больше данных, чем человек успевает осмыслить, — возникает разрыв контекста. Не успевая проверить и выбрать, человек начинает реагировать на поток или отдаёт выбор системе. Так он теряет авторство собственных решений — и агентность. Мы возвращаем человеку паузу, критерии и последнее слово.</p>
+  <div class="rows" style="margin-top:24px">
+    <div class="row"><span class="key">01</span><div><h3>{внимание} &gt; {запросы}</h3><p>Запрос без внимания — лотерея. Надёжность начинается, когда ИИ видит ваши решения, календарь и ограничения.</p></div><span></span></div>
+    <div class="row"><span class="key">02</span><div><h3>{системы} &gt; {трюки}</h3><p>Мы строим устойчивые циклы: ввод → контекст → действие. Запрос — это интерфейс; память и агенты — система.</p></div><span></span></div>
+    <div class="row"><span class="key">03</span><div><h3>{смысл} &gt; {шум}</h3><p>ИИ должен усиливать фокус, а не плодить хаос. Цель — человеческая. Машина — усилитель.</p></div><span></span></div>
+  </div>
+  <p style="margin-top:22px;font-size:12.5px">Ядро практики — <span class="k">контекстная система</span>: система внимания из четырёх слоёв <span class="k">собрать → осмыслить → сохранить → найти и применить</span>. Отдельные запросы хрупки; контекстную систему можно постоянно улучшать. Наш ответ сдвигу — показывать дистанцию между тем, откуда человек вошёл, и тем, куда вышел.</p>
+  <p class="small" style="margin-top:16px"><a href="https://manifest.aimindset.org">читать манифест целиком →</a> &nbsp;·&nbsp; <a href="https://gap.aimindset.org">выводы 2025 года о разрыве контекста →</a></p>
+</section><section id="approach">
+  <div class="sec-head"><span class="num">03 · {подход}</span><span class="num">лаборатория &gt; курс</span></div>
+  <blockquote class="about-quote about-quote--origin" style="margin:0 0 26px"><p class="quote-line"><span class="quote-highlight">Начиная наши лабы, мы никогда не знаем, какие технологии станут доступны. Поэтому обучать только технологиям точно нет смысла</span></p><p class="quote-src"><a href="https://t.me/ai_mind_set/55">канал @ai_mind_set, анонс третьей лаборатории ↗</a></p></blockquote>
+  <div class="rows">
+    <div class="row"><span class="key">контекст король</span><div><h3>Контекст-инжиниринг</h3><p>Правильная среда важнее правильного запроса. Работа со смыслами — главная компетенция.</p></div><span></span></div>
+    <div class="row"><span class="key">экзоскелет</span><div><h3>Напарник, не сервис</h3><p>Приручение и ограничение силы, а не победа. ИИ расширяет то, что вы уже умеете.</p></div><span></span></div>
+    <div class="row"><span class="key">создавать</span><div><h3>Руками, не конспектом</h3><p>Каждую неделю — работающая система: свои ассистенты, свои процессы.</p></div><span></span></div>
+    <div class="row"><span class="key">замедление</span><div><h3>Две ноты вместо аккорда</h3><p>При безумной скорости технологий осмысленное замедление — стратегический выбор.</p></div><span></span></div>
+  </div>
+</section><section id="learning">
+  <div class="sec-head"><span class="num">04 · {обучение}</span><span class="num">вход → трение → выход</span></div>
+  <div class="rows">
+    <div class="row"><span class="key live">набор открыт</span><div><h3>ИИ-нативные организации · поток 03</h3><p>Три недели для команд: диагностика → пилот → план на 90 дней. Ведут Алекс П. и Стёпа Гершуни. Направления: крупные компании / малый и средний бизнес / индивидуально. Старт 13 июля.</p></div><a class="go" href="https://ai-native.aimindset.org">открыть ↗</a></div>
+    <div class="row"><span class="key">квартальная лаба</span><div><h3>главная {лаборатория}</h3><p>4 недели на стыке человека и машины: воркшопы, коворкинги, вопросы и ответы, библиотека, кураторы. Базовый / продвинутый / премиальный уровни, €250–600.</p></div><a class="go" href="https://aimindset.org/ai-mindset-lab-x26">открыть ↗</a></div>
+    <div class="row"><span class="key">спринты · 2–3 нед</span><div><h3>{спринты}</h3><p>Одна тема — глубоко и быстро: глубокое саморазвитие × ИИ, здоровье, личная система.</p></div><a class="go" href="https://selfdev.aimindset.org">пример ↗</a></div>
+    <div class="row"><span class="key">воркшопы</span><div><h3>{практикумы}</h3><p>Точечные навыки за один вечер: от вайб-кодинга до планирования с агентами. Анонсы — в телеграм-канале.</p></div><a class="go" href="https://t.me/ai_mind_set">анонсы ↗</a></div>
+  </div>
+  <p class="small" style="margin-top:18px">сезонный ритм: зима 2026 · весна 2026 · лето 2026 · осень 2026 &nbsp;·&nbsp; выпускникам −20% навсегда</p>
+</section><section id="cases">
+  <div class="sec-head"><span class="num">05 · {сделано внутри}</span><span class="num">делается для себя — руками команды</span></div>
+  <p class="lead" style="margin-bottom:26px">Маленькие проекты, из которых складывается наша собственная практика.</p>
+  <div class="rows">
+    <div class="row"><span class="key">веб-инструмент</span><div><h3>Keyboard Cost Visualizer</h3><p>«не удержался и на выходных сделал ещё один небольшой веб-проект» — визуализатор эргономической стоимости шорткатов.</p></div><span class="go"><a href="http://keyboard.aimindset.org/">проект ↗</a> · <a href="https://t.me/ai_mind_set/295">пост ↗</a></span></div>
+    <div class="row"><span class="key">тело как интерфейс</span><div><h3>Sonic Particles</h3><p>«сегодня я сделал инструмент, в котором 50 тысяч частиц реагируют на мои руки, лицо и голос».</p></div><span class="go"><a href="https://sonic-particles.netlify.app/">проект ↗</a> · <a href="https://t.me/ai_mind_set/330">пост ↗</a></span></div>
+    <div class="row"><span class="key">цифровой питомец</span><div><h3>Claude Buddies</h3><p>«детерминированный цифровой питомец, привязанный к аккаунту» — и галерея компаньонов сообщества.</p></div><span class="go"><a href="https://claude-buddies.netlify.app/">проект ↗</a> · <a href="https://t.me/ai_mind_set/338">пост ↗</a></span></div>
+    <div class="row"><span class="key">один экран</span><div><h3>Дашборд как зеркало</h3><p>«есть дашборд — генерируется одной командой»: Linear, TickTick и Obsidian в одном HTML без бэкенда.</p></div><span class="go"><a href="http://github.com/ai-mindset-org/pos-sprint">код ↗</a> · <a href="https://t.me/ai_mind_set/332">пост ↗</a></span></div>
+    <div class="row"><span class="key">70 скилов</span><div><h3>Personal OS</h3><p>«не знаю, какой интерфейс приживётся… но строить — уже способ думать»: каждый скил — из повторяющегося действия.</p></div><span class="go"><a href="https://pos-pipelines.netlify.app/naming.html">проект ↗</a> · <a href="https://t.me/ai_mind_set/331">пост ↗</a></span></div>
+  </div>
+</section><section id="products">
+  <div class="sec-head"><span class="num">06 · {продукты}</span><span class="num"><a href="https://aimindset-visual.netlify.app/">визуальный конструктор ↗</a></span></div>
+  
+  <div class="eco-map">
+    <div class="eco-tree" role="group" aria-label="Экосистема AI Mindset">
+      <div class="eco-root-wrap">
+        <a href="#about" class="eco-root"><span class="eco-arrow">↘</span><span class="eco-kicker">ядро экосистемы · третий год</span><strong>AI Mindset</strong><span class="eco-copy">2500+ участников · 30+ стран<br>среда → практика → собственная система</span></a>
+      </div>
+
+      <div class="eco-branches">
+        <section class="eco-branch eco-branch--learning" aria-labelledby="eco-learning-title">
+          <div class="eco-branch-head"><span class="eco-index">01 · главный контур</span><h3 id="eco-learning-title">Обучение</h3><p>Лаборатории, спринты и воркшопы</p></div>
+          <div class="eco-items">
+            <a href="https://aimindset.org/ai-mindset-lab-x26" class="eco-card eco-card--featured"><span class="eco-arrow">↗</span><span class="eco-type">флагман · 4 недели</span><strong>Главная {лаборатория}</strong><span class="eco-note">зима · весна · лето · осень<br>базовый — премиальный</span></a>
+            <a href="https://ai-native.aimindset.org" class="eco-card eco-card--featured eco-card--active"><span class="eco-arrow">↗</span><span class="eco-type">набор открыт</span><strong>ИИ-нативность</strong><span class="eco-note">поток 03 · 13.07<br>компании · команды · лично</span></a>
+            <a href="https://selfdev.aimindset.org" class="eco-card"><span class="eco-arrow">↗</span><span class="eco-type">2–3 недели</span><strong>{Спринты}</strong><span class="eco-note">одна тема · глубоко</span></a>
+            <a href="https://t.me/ai_mind_set" class="eco-card"><span class="eco-arrow">↗</span><span class="eco-type">один вечер</span><strong>Практикумы</strong><span class="eco-note">точечная практика</span></a>
+            <a href="https://aimindset.org/non-profit" class="eco-card eco-card--wide"><span class="eco-arrow">↗</span><span class="eco-type">доступ к программам · некоммерческие организации</span><strong>3 бесплатных места</strong><span class="eco-note">на каждом наборе · для некоммерческих и творческих организаций</span></a>
+          </div>
+        </section>
+
+        <section class="eco-branch eco-branch--platform" aria-labelledby="eco-platform-title">
+          <div class="eco-branch-head"><span class="eco-index">02 · инфраструктура</span><h3 id="eco-platform-title">Платформа и сообщество</h3><p>Память обучения и совместная практика</p></div>
+          <div class="eco-items">
+            <a href="https://learn.aimindset.org" class="eco-card"><span class="eco-arrow">↗</span><span class="eco-type">платформа</span><strong>Учебная платформа</strong><span class="eco-note">материалы · записи · прогресс<br>доступ остаётся</span></a>
+            <a href="https://aimindset.org/ai-mindset-community" class="eco-card"><span class="eco-arrow">↗</span><span class="eco-type">сообщество · бесплатно</span><strong>{Пространство}</strong><span class="eco-note">еженедельно · 237 участников<br>взаимный вклад</span></a>
+          </div>
+        </section>
+
+        <section class="eco-branch eco-branch--consulting" aria-labelledby="eco-consulting-title">
+          <div class="eco-branch-head"><span class="eco-index">03 · работа с задачами</span><h3 id="eco-consulting-title">Консалтинг</h3><p>Для организаций и один на один</p></div>
+          <div class="eco-items">
+            <a href="https://aimindset.org/ai-mindset-consulting" class="eco-card"><span class="eco-arrow">↗</span><span class="eco-type">для организаций</span><strong>{Для команд}</strong><span class="eco-note">пилоты для 3–5+ человек</span></a>
+            <a href="https://aimindset.org/ai-mindset-consulting" class="eco-card"><span class="eco-arrow">↗</span><span class="eco-type">индивидуально · личная консультация</span><strong>1:1</strong><span class="eco-note">глубокая работа · €200 / час</span></a>
+          </div>
+        </section>
+
+        <section class="eco-branch eco-branch--research" aria-labelledby="eco-research-title">
+          <div class="eco-branch-head"><span class="eco-index">04 · новые вопросы</span><h3 id="eco-research-title">Исследования и спецпроекты</h3><p>Каждый вопрос становится артефактом</p></div>
+          <div class="eco-items">
+            <a href="https://manifest.aimindset.org" class="eco-card"><span class="eco-arrow">↗</span><span class="eco-type">8 спецпроектов</span><strong>Исследования</strong><span class="eco-note">манифест · разрыв контекста<br>психика · внимание · усилие</span></a>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="rows">
+    <div class="row"><span class="key">платформа</span><div><h3>Учебная платформа</h3><p>Материалы, записи и прогресс в одном месте. Доступ остаётся после маршрута.</p></div><a class="go" href="https://learn.aimindset.org">открыть платформу ↗</a></div>
+    <div class="row"><span class="key">совместный путь</span><div><h3>пространство сообщества</h3><p>Бесплатная еженедельная практика: показы работ, коворкинги и взаимный вклад — сюда приходят вкладываться, а не потреблять.</p></div><a class="go" href="https://aimindset.org/ai-mindset-community">заявка ↗</a></div>
+    <div class="row"><span class="key">для организаций</span><div><h3>{для команд}</h3><p>Пилот-первым: 3–5+ человек проходят лабораторию вместе, собирают общую контекстную систему и рабочие прототипы. Оплата по счёту.</p></div><a class="go" href="https://aimindset.org/ai-mindset-consulting">открыть ↗</a></div>
+    <div class="row"><span class="key">индивидуально</span><div><h3>{личная консультация}</h3><p>Разбор задачи один на один и сборка системы под неё. €200/час, глубокая работа.</p></div><a class="go" href="https://aimindset.org/ai-mindset-consulting">открыть ↗</a></div>
+    <div class="row"><span class="key">некоммерческие</span><div><h3>Бесплатные места</h3><p>3 места на каждом наборе по мотивационным письмам — для некоммерческих и творческих организаций.</p></div><a class="go" href="https://aimindset.org/non-profit">условия ↗</a></div>
+  </div>
+</section><section id="research">
+  <div class="sec-head"><span class="num">07 · {исследования}</span><span class="num">каждый вопрос — артефакт</span></div>
+  <div class="rows">
+    <div class="row"><span class="key">манифест</span><div><h3>{манифест} — экосистемный манифест</h3><p>Соберите собственную систему работы с ИИ: запрос → внимание → мышление → жизнь. Контекстные системы и карта экосистемы.</p></div><a class="go" href="https://manifest.aimindset.org">открыть ↗</a></div>
+    <div class="row"><span class="key">отчёт</span><div><h3>Разрыв контекста · годовой отчёт</h3><p>Что на самом деле произошло в ИИ за год. 72 первоисточника.</p></div><a class="go" href="https://gap.aimindset.org">открыть ↗</a></div>
+    <div class="row"><span class="key">психика</span><div><h3>Глубокое саморазвитие × ИИ</h3><p>С Алексеем Ивановым: модель внутренних семейных систем и ИИ, защита психики в эпоху машинной близости.</p></div><a class="go" href="https://selfdev.aimindset.org">открыть ↗</a></div>
+    <div class="row"><span class="key">философия</span><div><h3>Прагматичный романтизм</h3><p>С Максимом Спиридоновым: защита от холодной машинной логики.</p></div><a class="go" href="https://spiridonov.aimindset.org">открыть ↗</a></div>
+    <div class="row"><span class="key">усилие</span><div><h3>Философия усилия</h3><p>С Виктором Осокиным: ИИ как усилитель человека, трансформация, дисциплина и спорт как бизнес.</p></div><a class="go" href="https://osokin.aimindset.org">открыть ↗</a></div>
+    <div class="row"><span class="key">внимание</span><div><h3>Система намерения</h3><p>С Майком Яном: управление вниманием, когда контекст взрывается.</p></div><a class="go" href="https://intention.aimindset.org">открыть ↗</a></div>
+    <div class="row"><span class="key">основатели</span><div><h3>Founder OS</h3><p>Серия разговоров с основателями о том, как они собирают собственные ИИ-системы.</p></div><a class="go" href="https://www.youtube.com/@A-I-Mindset">открыть ↗</a></div>
+    <div class="row"><span class="key">карта</span><div><h3>Карта Реальностей × ИИ</h3><p>С Олей Ерёминой: навыки, ценности, система, сообщество — четыре логики одного вопроса.</p></div><a class="go" href="https://future.aimindset.org">открыть ↗</a></div>
+  </div>
+</section><section id="reviews">
+  <div class="sec-head"><span class="num">08 · {слова вокруг проекта}</span><span class="num"><a href="https://ai-native.aimindset.org">все отзывы ↗</a></span></div>
+  <div class="reviews-grid">
+  <blockquote>Я засучила рукава и ночами сижу пишу контекст - все, что наработала. Спасибо ребятам AI Mindset за проект. За то, что они пришли ко мне и дали возможность у них учиться. За то, что они говорят на понятном языке. За то, что они сигнал из будущего в настоящем о том, что использовать ИИ - это не писать промт. Использовать ИИ - это самому создавать контекст<span class="src">Оля Еремина · <a href="https://t.me/olya_v_trende/1038">первоисточник ↗</a></span></blockquote>
+  <blockquote>Это про спокойную инициацию: снять страх перед сложностью, собрать свою систему, увидеть, как AI усиливает ваш Второй Мозг, а не засоряет его.<span class="src">Дмитрий Лаухин · евангелист Obsidian · <a href="https://t.me/second_brain_ru/364">первоисточник ↗</a></span></blockquote>
+  <blockquote>Был удивлен. Сильно. Никогда не думал, что на искусственный интеллект можно смотреть с такой стороны.<span class="src">Олег Цербаев · историк и культуролог · <a href="https://t.me/tserbaevchannel/1674">первоисточник ↗</a></span></blockquote>
+  <blockquote>После лабы появился новый уровень — связки, системность и скорость. AI Mindset Lab оказался для меня не обучением, а инициацией — переходом на следующий уровень.<span class="src">Екатерина Грачева · HR-коммуникации · <a href="https://t.me/Gracheva_HR/211">первоисточник ↗</a></span></blockquote>
+  <blockquote>На первых трех-четырех уроках я был в шоке: казалось, я ничего не понимаю, хотя полгода уже активно использовал ИИ в работе и личных проектах.<span class="src">Дмитрий Комратов · основатель Forward Group · <a href="https://ai-native.aimindset.org">первоисточник ↗</a></span></blockquote>
+  <blockquote>это служение, которое вы делаете<span class="src">участник F25 · из итогового интервью · <a href="https://t.me/ai_mind_set/273">пост в канале ↗</a></span></blockquote>
+  <blockquote class="about-quote about-quote--origin"><p class="quote-line"><span class="quote-highlight">«жизнь разделилась на до и после»</span></p><p class="quote-src">участники пятой лаборатории · <a href="https://t.me/ai_mind_set/177">из итогов в канале ↗</a></p></blockquote>
+  </div>
+  <div class="company-proof"><span class="label">люди из компаний</span><p>Профи.ру · Сеттерс · Альфа-Банк · Блумберг · Сколково · Авито · Сбер · МТС · Яндекс · VK · Nebius · MOEX · Альфа-Капитал · Semrush · tutu</p></div>
+</section><section id="faq" style="border-bottom:none">
+  <div class="sec-head"><span class="num">09 · {вопросы}</span><span class="num">вопросы и ответы</span></div>
+  <details>
+    <summary>&nbsp;Кому лаборатория подходит, а кому нет?</summary>
+    <p>Подходит тем, кто готов выбрать рабочий процесс, разбираться в ИИ и делать практику. Не подходит, если хочется пассивно посмотреть лекции или получить универсальный рецепт без самостоятельной работы.</p>
+  </details>
+  <details>
+    <summary>Нужен ли технический бэкграунд?</summary>
+    <p>Нет. Начинаем с готовых инструментов и понятных сценариев. Важнее готовность пробовать и доводить процесс до результата.</p>
+  </details>
+  <details>
+    <summary>Какие инструменты мы реально будем использовать?</summary>
+    <p>Мы не проходим витрину сервисов. Набор инструментов меняется от лаборатории к лаборатории. База: языковые модели, ИИ-редакторы, исследовательские инструменты, автоматизации, редакторы кода, агентские процессы и рабочие правила.</p>
+  </details>
+  <details>
+    <summary>С каким результатом я выйду?</summary>
+    <p>Структура, записи, материалы, сообщество, живые встречи с авторами и кураторами. Обычно участник выходит с выбранным процессом, первыми ассистентами или автоматизациями — и пониманием, как продолжать внедрение.</p>
+  </details>
+  <details>
+    <summary>Что будет, если я не успеваю на живые встречи?</summary>
+    <p>Записи и материалы остаются. Но эффект сильнее, когда вы сразу пробуете на своей задаче и приносите застревания на разборы.</p>
+  </details>
+  <details>
+    <summary>Какие варианты оплаты?</summary>
+    <p>Рубли, евро, доллары, криптовалюты, банковские переводы и другие платёжные сервисы. Для команд — счёт и командный тариф.</p>
+  </details>
+  <details>
+    <summary>Есть ли программа лояльности?</summary>
+    <p>Да: выпускники получают −20% на все лаборатории навсегда; по реферальной ссылке — 10% кэшбэка вам и −10% другу; команды от трёх человек — −15%.</p>
+  </details>
+  <details>
+    <summary>Возможен ли возврат?</summary>
+    <p>Да. После первой недели можно вернуть оплату за вычетом комиссий платёжных систем.</p>
+  </details>
+</section></main>
+
+<footer style="border-top:var(--frame) solid var(--ink)">
+  <div class="wrap">
+    <div class="cols">
+      <div><div class="h">каналы</div><ul>
+        <li><a href="https://t.me/ai_mind_set">телеграм-канал</a></li>
+        <li><a href="https://t.me/aimindset_community">телеграм-сообщество</a></li>
+        <li><a href="https://aimindsetspace.substack.com">рассылка</a></li>
+        <li><a href="https://podcast.aimindset.ru">подкаст</a></li>
+        <li><a href="https://www.youtube.com/@A-I-Mindset">видеоканал</a></li>
+      </ul></div>
+      <div><div class="h">документы</div><ul>
+        <li><a href="https://aimindset.org/confpolicy">политика конфиденциальности</a></li>
+        <li><a href="https://aimindset.org/oferta">публичный договор-оферта</a></li>
+        <li><a href="mailto:info@aimindset.org">info@aimindset.org</a></li>
+      </ul></div>
+      <div><div class="h">суть</div><ul>
+        <li>давать людям опору</li>
+        <li>в быстро меняющемся мире</li>
+      </ul></div>
+    </div>
+    <p class="small">© 2026 AI Mindset · главная страница · версия 5 · вход → трение → выход</p>
+  </div>
+</footer>
+
+<div class="edit-bar" id="editBar">
+  <button id="editToggle">править</button>
+  <button id="editSave" class="primary" style="display: none;" disabled="">сохранить</button>
+  <span class="status" id="editStatus" title="сохраняю…"></span>
+</div>
+
+<script>
+// ————— ОБВЯЗКА РЕДАКТИРОВАНИЯ v3 —————
+// Порт проверенной обвязки из ai-native-landing (авто-детект текстов, пробел/enter
+// в contenteditable, блокировка кликов) + ревизии + проверка записи с перепроверкой.
+(() => {
+  const NBSP = " ";
+  const ANCHOR = "\u200B";
+  const INTERACTIVE = "a, button, summary, label, [role='button']";
+  const toggle = document.getElementById("editToggle");
+  const save = document.getElementById("editSave");
+  const status = document.getElementById("editStatus");
+  let enabled = false;
+  let dirty = false;
+  let refreshTimer = 0;
+  let recheckTimer = 0;
+
+  const myRev = () => Number(document.documentElement.dataset.rev || 0);
+  const t = () => new Date().toTimeString().slice(0, 8);
+  function setStatus(text, isError = false, detail = "") {
+    status.textContent = text;
+    status.title = detail || text;
+    status.classList.toggle("is-error", !!isError);
+  }
+
+  // ——— авто-детект редактируемых (порт isEditableCandidate) ———
+  function hasOwnText(node) {
+    return Array.from(node.childNodes).some(c => c.nodeType === Node.TEXT_NODE && c.textContent.replaceAll(ANCHOR, "").trim());
+  }
+  function hasElementChildren(node) {
+    return Array.from(node.children).some(c => c instanceof HTMLElement && !c.matches("br, wbr"));
+  }
+  function hasLayoutBox(node) {
+    if (node.hidden || !node.getClientRects().length) return false;
+    const st = getComputedStyle(node);
+    return st.display !== "none" && st.visibility !== "hidden" && st.opacity !== "0";
+  }
+  function isEditableCandidate(node) {
+    if (!(node instanceof HTMLElement) || node.matches("br, wbr")) return false;
+    if (node.closest(".edit-bar, [data-editor-ui], script, style, svg, canvas, input, textarea, select, option, iframe, video, audio")) return false;
+    const known = node.matches("p, h1, h2, h3, h4, h5, h6, summary, dt, dd, li, figcaption, blockquote, span, a, b, i, em, strong, button");
+    if (!node.textContent.trim() && !known) return false;
+    if (!hasLayoutBox(node)) return false;
+    if (hasOwnText(node)) return true;
+    return known && !hasElementChildren(node);
+  }
+  function collectEditables() {
+    return Array.from(document.querySelectorAll("body *")).filter(isEditableCandidate);
+  }
+  function ensureAnchor(el) {
+    const empty = !el.textContent.replaceAll(ANCHOR, "").trim() && !Array.from(el.children).some(c => !c.matches("br, wbr"));
+    if (!empty) return;
+    if (!el.textContent.includes(ANCHOR)) el.appendChild(document.createTextNode(ANCHOR));
+  }
+  function applyMarkers() {
+    if (!enabled) return;
+    const set = new Set(collectEditables());
+    document.querySelectorAll("[data-editable]").forEach(el => {
+      if (set.has(el)) return;
+      el.removeAttribute("contenteditable"); el.removeAttribute("data-editable"); el.removeAttribute("spellcheck");
+    });
+    set.forEach(el => {
+      el.setAttribute("contenteditable", "true");
+      el.setAttribute("data-editable", "");
+      el.setAttribute("spellcheck", "true");
+      ensureAnchor(el);
+    });
+  }
+  function clearMarkers() {
+    document.querySelectorAll("[data-editable]").forEach(el => {
+      el.removeAttribute("contenteditable"); el.removeAttribute("data-editable"); el.removeAttribute("spellcheck");
+    });
+  }
+  const observer = new MutationObserver(muts => {
+    if (!enabled) return;
+    if (!muts.some(m => [...m.addedNodes, ...m.removedNodes].some(n => {
+      const el = n instanceof Element ? n : n.parentElement;
+      return el && !el.closest(".edit-bar, [data-editor-ui]");
+    }))) return;
+    clearTimeout(refreshTimer);
+    refreshTimer = setTimeout(applyMarkers, 40);
+  });
+
+  // ——— вставка текста/переноса (порт insertTextAtSelection и др.) ——���
+  function getEditableTarget(ev) {
+    return ev.target instanceof Element ? ev.target.closest("[data-editable]") : null;
+  }
+  function editableFromSelection() {
+    const sel = getSelection();
+    if (!sel || !sel.rangeCount) return null;
+    const node = sel.anchorNode;
+    const el = node instanceof Element ? node : node?.parentElement;
+    return el?.closest?.("[data-editable]") || null;
+  }
+  function getActiveEditable(ev) {
+    const fromEvent = ev ? getEditableTarget(ev) : null;
+    if (fromEvent) return fromEvent;
+    const a = document.activeElement;
+    const fromActive = a instanceof Element ? a.closest("[data-editable]") : null;
+    return fromActive || editableFromSelection();
+  }
+  function lock(ev) { ev.preventDefault(); ev.stopImmediatePropagation(); }
+  function insertText(editable, text) {
+    ensureAnchor(editable);
+    editable.focus({ preventScroll: true });
+    const sel = getSelection();
+    if (!sel) return;
+    let range = sel.rangeCount ? sel.getRangeAt(0) : null;
+    if (!range || !editable.contains(range.commonAncestorContainer)) {
+      range = document.createRange();
+      range.selectNodeContents(editable); range.collapse(false);
+      sel.removeAllRanges(); sel.addRange(range);
+    }
+    range.deleteContents();
+    const frag = document.createDocumentFragment();
+    let lastNode = null;
+    String(text).split("\n").forEach((line, index) => {
+      if (index) { const br = document.createElement("br"); frag.appendChild(br); lastNode = br; }
+      const node = document.createTextNode(line);
+      frag.appendChild(node); lastNode = node;
+    });
+    range.insertNode(frag);
+    if (lastNode) range.setStartAfter(lastNode);
+    range.collapse(true);
+    sel.removeAllRanges(); sel.addRange(range);
+    editable.dispatchEvent(new InputEvent("input", { bubbles: true, inputType: "insertText", data: text }));
+  }
+  function insertBreak(editable) {
+    ensureAnchor(editable);
+    editable.focus({ preventScroll: true });
+    const sel = getSelection();
+    if (!sel) return;
+    let range = sel.rangeCount ? sel.getRangeAt(0) : null;
+    if (!range || !editable.contains(range.commonAncestorContainer)) {
+      range = document.createRange();
+      range.selectNodeContents(editable); range.collapse(false);
+      sel.removeAllRanges(); sel.addRange(range);
+    }
+    range.deleteContents();
+    const br = document.createElement("br");
+    range.insertNode(br);
+    const anchor = document.createTextNode(ANCHOR);
+    br.after(anchor);
+    range.setStart(anchor, ANCHOR.length); range.collapse(true);
+    sel.removeAllRanges(); sel.addRange(range);
+    editable.dispatchEvent(new InputEvent("input", { bubbles: true, inputType: "insertLineBreak", data: null }));
+  }
+  function caretFromPoint(x, y) {
+    if (document.caretRangeFromPoint) return document.caretRangeFromPoint(x, y);
+    if (document.caretPositionFromPoint) {
+      const pos = document.caretPositionFromPoint(x, y);
+      if (!pos) return null;
+      const r = document.createRange();
+      r.setStart(pos.offsetNode, pos.offset); r.collapse(true);
+      return r;
+    }
+    return null;
+  }
+  function placeCaret(editable, ev) {
+    ensureAnchor(editable);
+    editable.focus({ preventScroll: true });
+    const sel = getSelection();
+    if (!sel) return;
+    let range = null;
+    if (Number.isFinite(ev.clientX)) {
+      const pr = caretFromPoint(ev.clientX, ev.clientY);
+      if (pr && editable.contains(pr.startContainer)) range = pr;
+    }
+    if (!range) {
+      range = document.createRange();
+      range.selectNodeContents(editable); range.collapse(false);
+    }
+    sel.removeAllRanges(); sel.addRange(range);
+  }
+  function hasSelectionInside(editable) {
+    const sel = getSelection();
+    if (!sel || sel.isCollapsed || !sel.rangeCount) return false;
+    return editable.contains(sel.anchorNode) && editable.contains(sel.focusNode) && String(sel).length > 0;
+  }
+
+  // ——— capture-глушители: клики не переходят, summary не схлопывается, пробел печатается ———
+  document.addEventListener("click", ev => {
+    if (!enabled || ev.target.closest(".edit-bar, .section-drag-handle")) return;
+    if (getEditableTarget(ev) || ev.target.closest(INTERACTIVE)) lock(ev);
+  }, true);
+  document.addEventListener("pointerdown", ev => {
+    if (!enabled || ev.target.closest(".edit-bar, .section-drag-handle")) return;
+    if (getEditableTarget(ev)) { ev.stopImmediatePropagation(); return; }
+    if (ev.target.closest(INTERACTIVE)) lock(ev);
+  }, true);
+  document.addEventListener("pointerup", ev => {
+    if (!enabled) return;
+    const editable = getEditableTarget(ev);
+    if (!editable) return;
+    ev.stopImmediatePropagation();
+    const caretEv = { clientX: ev.clientX, clientY: ev.clientY };
+    setTimeout(() => { if (enabled && !hasSelectionInside(editable)) placeCaret(editable, caretEv); }, 0);
+  }, true);
+  document.addEventListener("keydown", ev => {
+    if (!enabled) return;
+    const editable = getActiveEditable(ev);
+    if (!editable) return;
+    const plain = !ev.altKey && !ev.ctrlKey && !ev.metaKey;
+    if ((ev.key === " " || ev.code === "Space") && plain) {
+      lock(ev); insertText(editable, NBSP); markDirty(); return;   // пробел печатается, summary не схлопывается
+    }
+    if (ev.key === "Enter" && plain) {
+      lock(ev); insertBreak(editable); markDirty(); return;
+    }
+    ev.stopPropagation();
+  }, true);
+  document.addEventListener("paste", ev => {
+    if (!enabled) return;
+    const editable = getActiveEditable(ev);
+    if (!editable) return;
+    const text = (ev.clipboardData?.getData("text/plain") || "").replace(/\r\n?/g, "\n").replace(/ /g, " ");
+    lock(ev);
+    if (text) { insertText(editable, text); markDirty(); }
+  }, true);
+  document.addEventListener("input", ev => {
+    if (!enabled || !getEditableTarget(ev)) return;
+    markDirty();
+  }, true);
+  document.addEventListener("site:changed", ev => {
+    if (!enabled) return;
+    markDirty(ev.detail?.message || "● порядок разделов изменён — не сохранено");
+  });
+  window.addEventListener("beforeunload", ev => {
+    if (enabled && dirty) { ev.preventDefault(); ev.returnValue = "есть несохранённые правки"; }
+  });
+
+  function markDirty(message = "● не сохранено — есть правки") {
+    dirty = true;
+    save.disabled = false;
+    setStatus(message);
+  }
+
+  function setEditing(on) {
+    enabled = on;
+    document.body.classList.toggle("editing", on);
+    if (on) { applyMarkers(); observer.observe(document.body, { childList: true, subtree: true }); }
+    else { observer.disconnect(); clearTimeout(refreshTimer); clearMarkers(); }
+    toggle.textContent = on ? "закончить правку" : "править";
+    save.style.display = on || dirty ? "" : "none";
+    save.disabled = saving || !dirty;
+    if (on) {
+      const wrong = location.protocol === "file:";
+      setStatus(wrong ? "⚠ открыто не через порт 4179 — сохранение может не сработать" : "текст редактируется на странице · разделы двигаются справа · rev " + myRev());
+    } else if (!dirty) setStatus("");
+  }
+
+  // ——— сериализация: чистим служебное и мусор contenteditable (порт flattenEditorBlockWrappers) ———
+  function serialize() {
+    const clone = document.documentElement.cloneNode(true);
+    clone.querySelectorAll("#codex-browser-sidebar-comments-root, [id^='codex-browser-']").forEach(el => el.remove());
+    // Любые случайные block-обёртки внутри текстовых полей превращаем в обычные переносы.
+    clone.querySelectorAll("[data-editable] div, [data-editable] p").forEach(block => {
+      const frag = document.createDocumentFragment();
+      if (block.previousSibling) frag.appendChild(document.createElement("br"));
+      while (block.firstChild) frag.appendChild(block.firstChild);
+      block.replaceWith(frag);
+    });
+    clone.querySelectorAll("[contenteditable]").forEach(el => el.removeAttribute("contenteditable"));
+    clone.querySelectorAll("[data-editable]").forEach(el => el.removeAttribute("data-editable"));
+    clone.querySelectorAll("[spellcheck]").forEach(el => el.removeAttribute("spellcheck"));
+    clone.querySelectorAll(".section-rail-item").forEach(el => {
+      el.classList.remove("is-current", "is-dragging", "is-drop-before", "is-drop-after");
+      el.removeAttribute("aria-grabbed");
+    });
+    // браузер вставляет div/p внутрь редактируемых — расплющиваем в <br>
+    clone.querySelectorAll("p div, p p, h1 div, h2 div, h3 div, summary div, blockquote div").forEach(block => {
+      const frag = document.createDocumentFragment();
+      if (block.previousSibling) frag.appendChild(document.createElement("br"));
+      while (block.firstChild) frag.appendChild(block.firstChild);
+      block.replaceWith(frag);
+    });
+    // выкидываем каретные якоря
+    const walker = document.createTreeWalker(clone, NodeFilter.SHOW_TEXT);
+    const drops = [];
+    while (walker.nextNode()) {
+      const n = walker.currentNode;
+      if (n.textContent.includes(ANCHOR)) n.textContent = n.textContent.replaceAll(ANCHOR, "");
+    }
+    // нормализуем хвостовые NBSP по краям текстов (внутри — оставляем)
+    const tw = document.createTreeWalker(clone, NodeFilter.SHOW_TEXT);
+    while (tw.nextNode()) {
+      const n = tw.currentNode;
+      if (/\u00a0$/.test(n.textContent) && n.parentElement && !n.nextSibling) n.textContent = n.textContent.replace(/\u00a0+$/, "");
+    }
+    const body = clone.querySelector("body"); if (body) body.classList.remove("editing");
+    const bar = clone.querySelector("#editBar .status"); if (bar) bar.textContent = "";
+    const tg = clone.querySelector("#editToggle"); if (tg) tg.textContent = "править";
+    const sv = clone.querySelector("#editSave"); if (sv) sv.style.display = "none";
+    return "<!DOCTYPE html>\n" + clone.outerHTML + "\n";
+  }
+
+  // ——— сохранение с проверкой и перепроверкой ———
+  async function verify(expectedRev) {
+    try {
+      const r = await fetch("/__status", { cache: "no-store" });
+      const j = await r.json();
+      return j.ok && j.rev === expectedRev;
+    } catch { return false; }
+  }
+
+  let saving = false;
+  save.addEventListener("click", async () => {
+    if (saving) return;
+    saving = true;
+    save.disabled = true;
+    clearTimeout(recheckTimer);
+    setStatus("сохраняю…");
+    try {
+      const html = serialize();
+      const endpoints = [];
+      if (location.protocol !== "file:") endpoints.push(new URL("/__save", location.origin).href);
+      endpoints.push("http://localhost:4179/__save");
+      let ok = false, info = "", conflict = false, newRev = null;
+      for (const ep of endpoints) {
+        try {
+          const r = await fetch(ep, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ html, rev: myRev() }) });
+          const j = await r.json().catch(() => ({}));
+          if (r.ok && j.ok) { ok = true; newRev = j.rev; info = j.backup || "изменений не было"; break; }
+          if (r.status === 409) { conflict = true; info = j.message || "конфликт версий"; break; }
+          info = j.error || ("http " + r.status);
+        } catch (e) { info = e.message; }
+      }
+      if (conflict) { setStatus("⚠ НЕ ЗАПИСАНО: " + info, true); return; }
+      if (!ok) { setStatus("⚠ НЕ ЗАПИСАНО: " + info + " — правки живут только в этой вкладке, не закрывайте её", true); return; }
+
+      document.documentElement.dataset.rev = String(newRev);
+      setStatus("сервер ответил ок · проверяю файл…");
+      const confirmed = await verify(newRev);
+      if (confirmed) {
+        dirty = false;
+        setEditing(false);
+        setStatus("✓ точно записано в html · rev " + newRev + " · " + t());
+        recheckTimer = setTimeout(async () => {
+          const still = await verify(newRev);
+          setStatus(still
+            ? "✓ точно записано · rev " + newRev + " · перепроверено в " + t()
+            : "⚠ файл изменился после сохранения (rev ≠ " + newRev + ") — возможно, синк отката́л; проверьте backups/changelog.jsonl");
+        }, 5000);
+      } else {
+        setStatus("⚠ не уверен, что записалось: сервер сказал ок, но файл не подтверждён — попробуйте сохранить ещё раз, вкладку не закрывайте");
+      }
+    } catch (e) { setStatus("⚠ НЕ ЗАПИСАНО: " + e.message, true, String(e.stack || e)); }
+    finally { saving = false; save.disabled = !dirty; }
+  });
+
+  toggle.addEventListener("click", () => setEditing(!enabled));
+})();
+</script>
+<script>
+// ————— ПРАВАЯ НАВИГАЦИЯ И ХАРДКОД ПОРЯДКА СЕКЦИЙ —————
+(() => {
+  const main = document.querySelector("main");
+  const rail = document.getElementById("sectionRail");
+  const list = rail?.querySelector(".section-rail-list");
+  const tabsWrap = document.querySelector(".tabs .wrap");
+  if (!main || !rail || !list || !tabsWrap) return;
+
+  const isEditing = () => document.body.classList.contains("editing");
+  const items = () => Array.from(list.querySelectorAll(":scope > .section-rail-item[data-section-id]"));
+  const sectionOf = item => main.querySelector(`:scope > section#${CSS.escape(item.dataset.sectionId || "")}`);
+  let drag = null;
+
+  function idsFromRail() {
+    return items().map(item => item.dataset.sectionId);
+  }
+
+  function isExactSectionOrder(ids) {
+    const actual = Array.from(main.querySelectorAll(":scope > section[id]")).map(section => section.id);
+    return ids.length === actual.length && new Set(ids).size === ids.length && actual.every(id => ids.includes(id));
+  }
+
+  function syncIndexes() {
+    items().forEach((item, index) => {
+      const label = item.querySelector(".section-rail-index");
+      if (label) label.textContent = String(index).padStart(2, "0");
+    });
+  }
+
+  function syncTopNavigation(ids) {
+    const linksById = new Map(Array.from(tabsWrap.querySelectorAll(":scope > a[href^='#']")).map(link => {
+      const id = decodeURIComponent(link.getAttribute("href").slice(1));
+      return [id, link];
+    }));
+    ids.forEach(id => {
+      const link = linksById.get(id);
+      if (link) tabsWrap.append(link);
+    });
+  }
+
+  function applySectionOrder(ids, announce = true) {
+    if (!isExactSectionOrder(ids)) return false;
+    const sections = new Map(Array.from(main.querySelectorAll(":scope > section[id]")).map(section => [section.id, section]));
+    const railItems = new Map(items().map(item => [item.dataset.sectionId, item]));
+    ids.forEach(id => {
+      main.append(sections.get(id));
+      list.append(railItems.get(id));
+    });
+    syncTopNavigation(ids);
+    syncIndexes();
+    if (announce) document.dispatchEvent(new CustomEvent("site:changed", { detail: { message: "● порядок разделов изменён — сохраните его" } }));
+    return true;
+  }
+
+  function clearDragState() {
+    items().forEach(item => {
+      item.classList.remove("is-dragging", "is-drop-before", "is-drop-after");
+      item.removeAttribute("aria-grabbed");
+    });
+  }
+
+  function itemAtPoint(x, y) {
+    const hit = document.elementFromPoint(x, y);
+    if (!(hit instanceof Element)) return null;
+    const item = hit.closest(".section-rail-item[data-section-id]");
+    return item && list.contains(item) ? item : null;
+  }
+
+  function proposedOrder(dragged, target, after) {
+    const ids = idsFromRail().filter(id => id !== dragged.dataset.sectionId);
+    const targetIndex = ids.indexOf(target.dataset.sectionId);
+    if (targetIndex < 0) return null;
+    ids.splice(targetIndex + (after ? 1 : 0), 0, dragged.dataset.sectionId);
+    return ids;
+  }
+
+  list.addEventListener("pointerdown", ev => {
+    if (!isEditing() || ev.button !== 0) return;
+    const handle = ev.target.closest(".section-drag-handle");
+    const item = handle?.closest(".section-rail-item[data-section-id]");
+    if (!handle || !item || !sectionOf(item)) return;
+    drag = { handle, item, pointerId: ev.pointerId, x: ev.clientX, y: ev.clientY, active: false, target: null, after: false };
+    item.setAttribute("aria-grabbed", "true");
+    try { handle.setPointerCapture(ev.pointerId); } catch {}
+    ev.preventDefault();
+    ev.stopPropagation();
+  }, true);
+
+  list.addEventListener("pointermove", ev => {
+    if (!drag || drag.pointerId !== ev.pointerId || !isEditing()) return;
+    if (!drag.active && Math.hypot(ev.clientX - drag.x, ev.clientY - drag.y) < 4) return;
+    drag.active = true;
+    drag.item.classList.add("is-dragging");
+    items().forEach(item => item.classList.remove("is-drop-before", "is-drop-after"));
+    const target = itemAtPoint(ev.clientX, ev.clientY);
+    if (!target || target === drag.item) { drag.target = null; return; }
+    const rect = target.getBoundingClientRect();
+    drag.after = ev.clientY > rect.top + rect.height / 2;
+    drag.target = target;
+    target.classList.toggle("is-drop-before", !drag.after);
+    target.classList.toggle("is-drop-after", drag.after);
+    ev.preventDefault();
+  }, true);
+
+  list.addEventListener("pointerup", ev => {
+    if (!drag || drag.pointerId !== ev.pointerId) return;
+    try { drag.handle.releasePointerCapture(ev.pointerId); } catch {}
+    if (drag.active && drag.target) {
+      const ids = proposedOrder(drag.item, drag.target, drag.after);
+      if (ids) applySectionOrder(ids);
+    }
+    clearDragState();
+    drag = null;
+  }, true);
+
+  list.addEventListener("pointercancel", () => {
+    clearDragState();
+    drag = null;
+  }, true);
+
+  list.addEventListener("keydown", ev => {
+    if (!isEditing() || !ev.target.matches(".section-drag-handle") || !ev.altKey) return;
+    if (ev.key !== "ArrowUp" && ev.key !== "ArrowDown") return;
+    const item = ev.target.closest(".section-rail-item[data-section-id]");
+    const all = items();
+    const from = all.indexOf(item);
+    const to = ev.key === "ArrowUp" ? from - 1 : from + 1;
+    if (from < 0 || to < 0 || to >= all.length) return;
+    const ids = idsFromRail();
+    [ids[from], ids[to]] = [ids[to], ids[from]];
+    if (applySectionOrder(ids)) ev.target.focus();
+    ev.preventDefault();
+  });
+
+  const observer = new IntersectionObserver(entries => {
+    const visible = entries.filter(entry => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+    if (!visible) return;
+    items().forEach(item => item.classList.toggle("is-current", item.dataset.sectionId === visible.target.id));
+  }, { rootMargin: "-18% 0px -62% 0px", threshold: [0, .1, .35, .7] });
+  Array.from(main.querySelectorAll(":scope > section[id]")).forEach(section => observer.observe(section));
+  syncIndexes();
+})();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body></html>
