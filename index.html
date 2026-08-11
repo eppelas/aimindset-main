@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru" data-rev="128"><head>
+<html lang="ru" data-rev="129"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="aim-edit-api" content="https://aim-v5-publisher-1004044787855.us-central1.run.app">
@@ -176,9 +176,11 @@
   /* Product scenes: one visual language, five different physical laws.
      Visible product copy is intentionally kept outside the canvases so the
      inline editor remains the only place where user-owned text can change. */
-  .kinetic-scene{position:absolute;inset:0;z-index:1;overflow:hidden;cursor:crosshair;touch-action:pan-y;isolation:isolate}
-  .kinetic-scene::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,rgba(255,255,255,.045),transparent 34%,transparent 70%,rgba(255,255,255,.025));mix-blend-mode:screen}
-  .kinetic-scene canvas{display:block;width:100%;height:100%}
+  .kinetic-scene{position:absolute;inset:0;z-index:1;overflow:hidden;cursor:crosshair;touch-action:pan-y;isolation:isolate;contain:strict}
+  .kinetic-scene::before{content:"";position:absolute;z-index:2;inset:-20%;pointer-events:none;background:radial-gradient(circle at var(--scene-x,50%) var(--scene-y,50%),rgba(255,255,255,.09),transparent 19%);opacity:var(--scene-active,0);transition:opacity .28s ease}
+  .kinetic-scene::after{content:"";position:absolute;z-index:3;inset:0;pointer-events:none;background:linear-gradient(115deg,rgba(255,255,255,.045),transparent 34%,transparent 70%,rgba(255,255,255,.025));mix-blend-mode:screen}
+  .kinetic-scene canvas{position:absolute;inset:0;display:block;width:100%;height:100%;image-rendering:auto}
+  .kinetic-scene.is-active{--scene-active:1}
   .product-visual--platform{background:#05070a}
   .product-visual--space{background:#09101e}
   #product-teams .product-direction-gfx{background:#151006}
@@ -187,7 +189,7 @@
   .product-visual:hover .kinetic-scene::after,.product-direction-gfx:hover .kinetic-scene::after,.product-support-mark:hover .kinetic-scene::after{background:linear-gradient(115deg,rgba(255,255,255,.07),transparent 38%,transparent 67%,rgba(255,255,255,.035))}
   .direction-side-quote{z-index:3}
   @media(max-width:760px){.kinetic-scene{cursor:default;touch-action:pan-y}}
-  @media(prefers-reduced-motion:reduce){.kinetic-scene::after{display:none}}
+  @media(prefers-reduced-motion:reduce){.kinetic-scene::before,.kinetic-scene::after{display:none}}
 
   .metaphor-grid-dot{opacity:.22}
   .metaphor-grid-cursor{fill:none;stroke:var(--metaphor-accent);stroke-width:2;animation:metaphor-grid-travel 8s infinite cubic-bezier(.65,0,.35,1)}
@@ -2068,7 +2070,7 @@
 // ————— ЖИВЫЕ СЦЕНЫ ПРОДУКТОВ —————
 // ВАЖНО: сцены не содержат продуктовый текст. Текст принадлежит пользователю
 // и меняется только через HTML/встроенный редактор, а не агентом вместе с дизайном.
-(() => {
+false && (() => {
   const roots = Array.from(document.querySelectorAll("[data-kinetic-scene]"));
   if (!roots.length) return;
 
@@ -2492,6 +2494,373 @@
   }
 
   states.forEach(state => { resize(state); draw(state, performance.now(), 0); });
+})();
+
+// ————— PRODUCT FIELDS V2 —————
+// Craft-quality direction: a shared 9px field language, but a separate physical
+// law for every product. These canvases are decoration only: never put product
+// copy in this script and never rewrite user-owned HTML while changing motion.
+(() => {
+  const roots = [...document.querySelectorAll("[data-kinetic-scene]")];
+  if (!roots.length) return;
+
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const finePointer = matchMedia("(hover:hover) and (pointer:fine)").matches;
+  const C = {
+    ink: "#05070a", paper: "#f7f7f2", acid: "#c3ff00",
+    blue: "#4878ff", ice: "#91dcff", violet: "#bd83ff",
+    mint: "#50e8b8", amber: "#ee9f34", gold: "#ffd166",
+    red: "#ff4e5d", pink: "#ff7e95"
+  };
+  const TAU = Math.PI * 2;
+  const clamp = (n, a = 0, b = 1) => Math.max(a, Math.min(b, n));
+  const mix = (a, b, t) => a + (b - a) * t;
+  const smooth = t => { t = clamp(t); return t * t * (3 - 2 * t); };
+  const rand = seed => {
+    let n = seed >>> 0;
+    return () => ((n = Math.imul(n, 1664525) + 1013904223 >>> 0) / 4294967296);
+  };
+  const rgba = (hex, alpha) => {
+    const v = parseInt(hex.slice(1), 16);
+    return `rgba(${v >> 16},${v >> 8 & 255},${v & 255},${alpha})`;
+  };
+  const rr = (ctx, x, y, w, h, r) => {
+    r = Math.min(r, w / 2, h / 2);
+    ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r);
+    ctx.arcTo(x + w, y + h, x, y + h, r); ctx.arcTo(x, y + h, x, y, r);
+    ctx.arcTo(x, y, x + w, y, r); ctx.closePath();
+  };
+  const line = (ctx, points, color, width = 1, dash = []) => {
+    if (points.length < 2) return;
+    ctx.save(); ctx.strokeStyle = color; ctx.lineWidth = width; ctx.setLineDash(dash);
+    ctx.beginPath(); ctx.moveTo(points[0].x, points[0].y);
+    points.slice(1).forEach(p => ctx.lineTo(p.x, p.y));
+    ctx.stroke(); ctx.restore();
+  };
+  const grid = (ctx, w, h, color, step = 36) => {
+    ctx.save(); ctx.strokeStyle = color; ctx.lineWidth = 1; ctx.beginPath();
+    for (let x = .5; x < w; x += step) { ctx.moveTo(x, 0); ctx.lineTo(x, h); }
+    for (let y = .5; y < h; y += step) { ctx.moveTo(0, y); ctx.lineTo(w, y); }
+    ctx.stroke(); ctx.restore();
+  };
+  const glow = (ctx, x, y, radius, color, alpha) => {
+    const g = ctx.createRadialGradient(x, y, 0, x, y, radius);
+    g.addColorStop(0, rgba(color, alpha)); g.addColorStop(1, rgba(color, 0));
+    ctx.fillStyle = g; ctx.fillRect(x - radius, y - radius, radius * 2, radius * 2);
+  };
+  const cursor = (s, color) => {
+    if (!s.active || !finePointer) return;
+    const { ctx, w, h } = s, x = s.pointer.x * w, y = s.pointer.y * h;
+    ctx.save(); ctx.strokeStyle = rgba(color, .9); ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.arc(x, y, 11 + s.hit * 15, 0, TAU); ctx.stroke();
+    ctx.fillStyle = color; ctx.fillRect(x - 2, y - 2, 4, 4); ctx.restore();
+  };
+  const pixelAtmosphere = (s, color, density = .28, cell = 9) => {
+    const { ctx, w, h, time } = s;
+    const px = s.pointer.x * w, py = s.pointer.y * h;
+    ctx.save();
+    for (let y = cell / 2; y < h; y += cell) {
+      for (let x = cell / 2; x < w; x += cell) {
+        const wave = Math.sin(x * .035 + time * .00042 + s.seed) + Math.cos(y * .043 - time * .0003);
+        const near = 1 - clamp(Math.hypot(x - px, y - py) / Math.max(80, Math.min(w, h) * .45));
+        const energy = wave * .5 + near * (s.active ? 1.4 : .15) + s.hit * near * 2;
+        if (energy < 1.15 - density) continue;
+        const size = energy > 1.25 ? 3 : 1.5;
+        ctx.fillStyle = rgba(color, .08 + clamp(energy * .09, 0, .22));
+        ctx.fillRect(Math.round(x - size / 2), Math.round(y - size / 2), size, size);
+      }
+    }
+    ctx.restore();
+  };
+
+  function stateFor(root, i) {
+    const type = root.dataset.kineticScene;
+    const r = rand(7703 + i * 809);
+    const s = {
+      root, canvas: root.querySelector("canvas"), ctx: null, type, r,
+      seed: r() * 20, w: 1, h: 1, dpr: 1, visible: false, active: false,
+      pointer: { x: .5, y: .5, tx: .5, ty: .5 }, time: 0,
+      hit: 0, pulse: 0, mode: 0, scroll: .5, data: {}
+    };
+    s.ctx = s.canvas.getContext("2d", { alpha: false, desynchronized: true });
+    if (type === "platform") {
+      s.data.bits = Array.from({ length: 84 }, (_, n) => ({
+        y: r(), phase: r(), speed: .65 + r() * 1.1, size: n % 11 === 0 ? 6 : n % 4 === 0 ? 4 : 2,
+        lane: n % 6, tone: n % 13 === 0 ? C.acid : n % 7 === 0 ? C.mint : n % 3 === 0 ? C.ice : C.paper
+      }));
+    }
+    if (type === "space") {
+      s.data.cells = Array.from({ length: 46 }, (_, n) => ({
+        angle: r() * TAU, radius: .12 + r() * .34, speed: .45 + r() * .85,
+        size: n % 9 === 0 ? 8 : 3 + r() * 4, phase: r() * TAU, kind: n % 4
+      }));
+      s.data.rings = [];
+    }
+    if (type === "consulting") {
+      s.data.fragments = Array.from({ length: 98 }, (_, n) => ({
+        x: r(), y: r(), a: r() * TAU, len: 5 + r() * 24,
+        phase: r() * TAU, bright: n % 12 === 0
+      }));
+      s.data.pinned = false;
+    }
+    if (type === "nonprofit") {
+      s.data.blocks = Array.from({ length: 36 }, (_, n) => ({ lane: n % 3, phase: r(), size: n % 5 === 0 ? 8 : 5 }));
+    }
+    return s;
+  }
+
+  const states = roots.map(stateFor);
+
+  function resize(s) {
+    const box = s.root.getBoundingClientRect();
+    s.w = Math.max(1, box.width); s.h = Math.max(1, box.height);
+    s.dpr = Math.min(devicePixelRatio || 1, 2);
+    s.canvas.width = Math.round(s.w * s.dpr); s.canvas.height = Math.round(s.h * s.dpr);
+    s.canvas.style.width = `${s.w}px`; s.canvas.style.height = `${s.h}px`;
+    s.ctx.setTransform(s.dpr, 0, 0, s.dpr, 0, 0);
+  }
+  const point = (s, e) => {
+    const b = s.root.getBoundingClientRect();
+    return { x: clamp((e.clientX - b.left) / b.width), y: clamp((e.clientY - b.top) / b.height) };
+  };
+
+  states.forEach(s => {
+    new ResizeObserver(() => { resize(s); draw(s, performance.now(), 0); }).observe(s.root);
+    s.root.addEventListener("pointerenter", e => {
+      if (!finePointer) return;
+      s.active = true; s.root.classList.add("is-active");
+      Object.assign(s.pointer, { tx: point(s, e).x, ty: point(s, e).y });
+    });
+    s.root.addEventListener("pointermove", e => {
+      if (!finePointer) return;
+      const p = point(s, e); s.pointer.tx = p.x; s.pointer.ty = p.y;
+      s.root.style.setProperty("--scene-x", `${p.x * 100}%`);
+      s.root.style.setProperty("--scene-y", `${p.y * 100}%`);
+    }, { passive: true });
+    s.root.addEventListener("pointerleave", () => {
+      if (s.type === "consulting" && s.data.pinned) return;
+      s.active = false; s.root.classList.remove("is-active");
+    });
+    s.root.addEventListener("pointerdown", e => {
+      if (document.body.classList.contains("editing")) return;
+      const p = point(s, e); s.pointer.tx = p.x; s.pointer.ty = p.y;
+      s.active = true; s.root.classList.add("is-active"); s.hit = 1; s.pulse = 1; s.mode++;
+      if (s.type === "space") s.data.rings.push({ x: p.x, y: p.y, age: 0 });
+      if (s.type === "consulting") s.data.pinned = !s.data.pinned;
+    });
+  });
+
+  function drawPlatform(s) {
+    const { ctx, w, h, data, time } = s;
+    ctx.fillStyle = C.ink; ctx.fillRect(0, 0, w, h);
+    grid(ctx, w, h, rgba(C.ice, .07), 36); pixelAtmosphere(s, C.ice, .17);
+    const gateX = w * .48, matrixX = w * .61, top = h * .15;
+    const rows = 6, cols = 4, gap = 7;
+    const cw = Math.max(24, Math.min(55, (w - matrixX - 20 - gap * 3) / 4));
+    const ch = Math.max(15, Math.min(27, (h * .7 - gap * 5) / 6));
+    const px = s.pointer.x * w, py = s.pointer.y * h;
+    glow(ctx, px, py, Math.max(90, w * .25), C.ice, s.active ? .16 : .04);
+
+    ctx.fillStyle = rgba(C.paper, .05); ctx.fillRect(gateX - 7, h * .08, 14, h * .84);
+    ctx.fillStyle = C.acid;
+    for (let y = h * .12; y < h * .88; y += 18) ctx.fillRect(gateX - 1, y, 2, 8);
+
+    data.bits.forEach((b, i) => {
+      const t = (b.phase + time * .000055 * b.speed) % 1;
+      let x, y, alpha;
+      if (t < .58) {
+        const q = smooth(t / .58);
+        x = mix(-20, gateX - 10, q);
+        y = h * (.12 + b.y * .76) + Math.sin(time * .002 + i) * 5;
+        alpha = .18 + q * .7;
+      } else {
+        const q = smooth((t - .58) / .42);
+        const col = b.lane % cols, row = Math.floor(i / cols) % rows;
+        x = mix(gateX + 9, matrixX + col * (cw + gap) + cw / 2, q);
+        y = mix(h / 2, top + row * (ch + gap) + ch / 2, q);
+        alpha = .9 - q * .35;
+      }
+      const dx = x - px, dy = y - py, d = Math.max(1, Math.hypot(dx, dy));
+      if (s.active && d < 85) { const push = (1 - d / 85) * (12 + s.hit * 28); x += dx / d * push; y += dy / d * push; }
+      if (s.hit > .01) { x += Math.cos(i * 2.399) * s.hit * 24; y += Math.sin(i * 2.399) * s.hit * 24; }
+      ctx.fillStyle = rgba(b.tone, alpha); ctx.fillRect(Math.round(x), Math.round(y), b.size * 2.2, b.size);
+    });
+
+    for (let row = 0; row < rows; row++) for (let col = 0; col < cols; col++) {
+      const x = matrixX + col * (cw + gap), y = top + row * (ch + gap);
+      const chosen = ((row + col * 2 + s.mode) % 9 === 0) && s.hit > .08;
+      ctx.fillStyle = chosen ? C.acid : rgba(C.paper, .075 + ((row + col) % 3) * .025);
+      rr(ctx, x, y, cw, ch, 2); ctx.fill();
+      ctx.fillStyle = chosen ? C.ink : rgba(C.paper, .36);
+      ctx.fillRect(x + 6, y + 6, cw * (.28 + ((row + col) % 3) * .13), 2);
+      if (ch > 19) ctx.fillRect(x + 6, y + 12, cw * (.18 + (row % 2) * .16), 1);
+    }
+    ctx.strokeStyle = rgba(C.acid, .7); ctx.lineWidth = 1;
+    ctx.strokeRect(matrixX - 9, top - 9, cols * (cw + gap) - gap + 18, rows * (ch + gap) - gap + 18);
+    cursor(s, C.acid);
+  }
+
+  function drawSpace(s, dt) {
+    const { ctx, w, h, data, time } = s;
+    ctx.fillStyle = "#08101d"; ctx.fillRect(0, 0, w, h);
+    grid(ctx, w, h, rgba(C.blue, .09), 36); pixelAtmosphere(s, C.blue, .25);
+    const cx = w * .5, cy = h * .42, px = s.pointer.x * w, py = s.pointer.y * h;
+    glow(ctx, cx, cy, Math.max(w, h) * .46, C.blue, .08);
+    const pos = data.cells.map((cell, i) => {
+      const breath = 1 + Math.sin(time * .0011 + cell.phase) * (.06 + s.hit * .07);
+      const a = cell.angle + Math.sin(time * .00025 * cell.speed + cell.phase) * .28;
+      let x = cx + Math.cos(a) * cell.radius * w * breath;
+      let y = cy + Math.sin(a * 1.13) * cell.radius * h * 1.18 * breath;
+      const dx = x - px, dy = y - py, d = Math.max(1, Math.hypot(dx, dy));
+      if (s.active && d < 125) { const force = (1 - d / 125) * (s.mode % 2 ? -24 : 18); x += dx / d * force; y += dy / d * force; }
+      return { x, y, cell, i };
+    });
+    pos.forEach((a, i) => {
+      const links = pos.map((b, j) => ({ b, j, d: Math.hypot(a.x - b.x, a.y - b.y) }))
+        .filter(v => v.j !== i).sort((u, v) => u.d - v.d).slice(0, 2);
+      links.forEach(({ b, j, d }) => {
+        if (j < i || d > Math.min(w, h) * .38) return;
+        const hot = s.active && Math.min(Math.hypot(a.x - px, a.y - py), Math.hypot(b.x - px, b.y - py)) < 100;
+        ctx.strokeStyle = hot ? rgba(C.ice, .82) : rgba(i % 4 ? C.blue : C.violet, .25);
+        ctx.lineWidth = hot ? 1.6 : 1; ctx.beginPath(); ctx.moveTo(a.x, a.y);
+        ctx.quadraticCurveTo((a.x + b.x) / 2 + Math.sin(i) * 12, (a.y + b.y) / 2 + Math.cos(j) * 12, b.x, b.y); ctx.stroke();
+      });
+    });
+    pos.forEach(({ x, y, cell, i }) => {
+      const color = i % 7 === 0 ? C.mint : i % 4 === 0 ? C.violet : C.ice;
+      const size = cell.size * (1 + s.hit * .35);
+      ctx.fillStyle = rgba(color, .9);
+      if (cell.kind === 0) ctx.fillRect(x - size, y - size, size * 2, size * 2);
+      else if (cell.kind === 1) { ctx.strokeStyle = color; ctx.strokeRect(x - size, y - size, size * 2, size * 2); }
+      else { ctx.beginPath(); ctx.arc(x, y, size, 0, TAU); cell.kind === 2 ? ctx.fill() : ctx.stroke(); }
+    });
+    data.rings.forEach(r => r.age += dt * .001);
+    data.rings = data.rings.filter(r => r.age < 1.45);
+    data.rings.forEach(r => {
+      const q = r.age / 1.45; ctx.strokeStyle = rgba(C.acid, (1 - q) * .85); ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.arc(r.x * w, r.y * h, q * Math.min(w, h) * .62, 0, TAU); ctx.stroke();
+    });
+    cursor(s, C.ice);
+  }
+
+  function drawTeams(s) {
+    const { ctx, w, h, time } = s;
+    ctx.fillStyle = "#151006"; ctx.fillRect(0, 0, w, h);
+    grid(ctx, w, h, rgba(C.amber, .11), 27); pixelAtmosphere(s, C.amber, .14, 9);
+    const px = s.pointer.x * w, py = s.pointer.y * h;
+    const strands = [C.paper, C.amber, C.acid];
+    strands.forEach((color, strand) => {
+      const pts = [];
+      for (let x = -12; x <= w + 12; x += 7) {
+        const phase = x / Math.max(80, w * .19) + time * .0011 + strand * TAU / 3;
+        let y = h / 2 + Math.sin(phase) * h * .27;
+        const d = Math.hypot(x - px, y - py);
+        if (s.active && d < 95) y += (y - py) / Math.max(1, d) * (1 - d / 95) * 48;
+        y += Math.sin(phase * 2) * s.hit * h * .16;
+        pts.push({ x, y });
+      }
+      line(ctx, pts, rgba(color, .78), strand === 1 ? 2 : 1.4);
+      for (let n = 0; n < 5; n++) {
+        const q = (time * .00011 + n / 5 + strand * .09) % 1;
+        const idx = Math.min(pts.length - 1, Math.floor(q * pts.length));
+        const p = pts[idx]; ctx.fillStyle = color; ctx.fillRect(p.x - 5, p.y - 3, 10 + strand * 2, 6);
+      }
+    });
+    for (let x = 7; x < w; x += 22) {
+      const phase = x / Math.max(80, w * .19) + time * .0011;
+      const y1 = h / 2 + Math.sin(phase) * h * .27;
+      const y2 = h / 2 + Math.sin(phase + TAU / 3) * h * .27;
+      ctx.strokeStyle = rgba(C.gold, .18); ctx.beginPath(); ctx.moveTo(x, y1); ctx.lineTo(x, y2); ctx.stroke();
+    }
+    glow(ctx, px, py, 95, C.amber, s.active ? .13 : .02); cursor(s, C.amber);
+  }
+
+  function drawConsulting(s) {
+    const { ctx, w, h, data, time } = s;
+    ctx.fillStyle = "#16090d"; ctx.fillRect(0, 0, w, h);
+    grid(ctx, w, h, rgba(C.red, .09), 27); pixelAtmosphere(s, C.red, .2, 9);
+    const ax = .5 + Math.sin(time * .00038 + s.seed) * .17;
+    const ay = .49 + Math.cos(time * .00031 + s.seed) * .13;
+    const fx = (s.active || data.pinned ? s.pointer.x : ax) * w;
+    const fy = (s.active || data.pinned ? s.pointer.y : ay) * h;
+    const radius = Math.max(60, Math.min(115, Math.min(w, h) * .48));
+    data.fragments.forEach((f, i) => {
+      let x = f.x * w, y = f.y * h;
+      const dx = fx - x, dy = fy - y, d = Math.hypot(dx, dy);
+      const inside = smooth(1 - d / radius);
+      const raw = f.a + Math.sin(time * .00055 + f.phase) * .2;
+      const target = Math.atan2(dy, dx) + Math.PI / 2;
+      const a = mix(raw, target, inside);
+      const len = f.len * (1 + inside * 1.05);
+      if (s.hit > 0) { x += Math.cos(i * 2.4) * s.hit * 18; y += Math.sin(i * 2.4) * s.hit * 18; }
+      ctx.strokeStyle = inside > .02 ? rgba(f.bright ? C.acid : C.pink, .24 + inside * .76) : rgba(C.paper, .1);
+      ctx.lineWidth = f.bright ? 2 : 1;
+      ctx.beginPath(); ctx.moveTo(x - Math.cos(a) * len / 2, y - Math.sin(a) * len / 2);
+      ctx.lineTo(x + Math.cos(a) * len / 2, y + Math.sin(a) * len / 2); ctx.stroke();
+    });
+    glow(ctx, fx, fy, radius, C.red, .16 + s.hit * .11);
+    ctx.strokeStyle = data.pinned ? C.acid : C.red; ctx.lineWidth = 2;
+    [1, .66].forEach(scale => { ctx.beginPath(); ctx.arc(fx, fy, radius * scale, 0, TAU); ctx.stroke(); });
+    const q = 18 + s.hit * 16;
+    ctx.beginPath(); ctx.moveTo(fx - q, fy); ctx.lineTo(fx + q, fy); ctx.moveTo(fx, fy - q); ctx.lineTo(fx, fy + q); ctx.stroke();
+    cursor(s, data.pinned ? C.acid : C.red);
+  }
+
+  function drawNonprofit(s) {
+    const { ctx, w, h, data, time } = s;
+    ctx.fillStyle = C.acid; ctx.fillRect(0, 0, w, h);
+    grid(ctx, w, h, rgba(C.ink, .12), 27);
+    const gapA = w * .36, gapB = w * .64, px = s.pointer.x * w, py = s.pointer.y * h;
+    ctx.fillStyle = C.ink; ctx.fillRect(0, 0, gapA - 12, h); ctx.fillRect(gapB + 12, 0, w - gapB - 12, h);
+    data.blocks.forEach((b, i) => {
+      const y = h * (.28 + b.lane * .22), q = (b.phase + time * .00009 * (1 + b.lane * .12)) % 1;
+      let x = mix(-10, w + 10, q);
+      let yy = y - Math.sin(clamp((x - gapA) / (gapB - gapA)) * Math.PI) * (18 + b.lane * 5);
+      const d = Math.hypot(x - px, yy - py);
+      if (s.active && d < 75) yy -= (1 - d / 75) * 24;
+      x += Math.cos(i * 2.4) * s.hit * 20; yy += Math.sin(i * 2.4) * s.hit * 20;
+      ctx.fillStyle = b.lane === 1 ? C.blue : C.paper; ctx.fillRect(x - b.size, yy - b.size / 2, b.size * 2, b.size);
+    });
+    for (let lane = 0; lane < 3; lane++) {
+      const y = h * (.28 + lane * .22), arch = 18 + lane * 5;
+      const pts = [];
+      for (let x = 0; x <= w; x += 7) {
+        const q = clamp((x - gapA) / (gapB - gapA));
+        pts.push({ x, y: y - Math.sin(q * Math.PI) * arch });
+      }
+      line(ctx, pts, lane === 1 ? C.blue : C.paper, lane === 1 ? 4 : 2.5, lane === 2 ? [7, 7] : []);
+    }
+    [gapA, gapB].forEach(x => { ctx.fillStyle = C.ink; ctx.fillRect(x - 6, h * .12, 12, h * .76); ctx.fillStyle = C.acid; ctx.fillRect(x - 1, h * .17, 2, h * .66); });
+    cursor(s, C.ink);
+  }
+
+  function draw(s, time, dt) {
+    s.time = reduced ? 3400 : time;
+    s.pointer.x = mix(s.pointer.x, s.pointer.tx, reduced ? 1 : .115);
+    s.pointer.y = mix(s.pointer.y, s.pointer.ty, reduced ? 1 : .115);
+    s.hit = Math.max(0, s.hit - dt * .00062); s.pulse = Math.max(0, s.pulse - dt * .0007);
+    const box = s.root.getBoundingClientRect();
+    s.scroll = clamp(1 - (box.top + box.height / 2) / (innerHeight + box.height));
+    if (s.type === "platform") drawPlatform(s);
+    else if (s.type === "space") drawSpace(s, dt);
+    else if (s.type === "teams") drawTeams(s);
+    else if (s.type === "consulting") drawConsulting(s);
+    else if (s.type === "nonprofit") drawNonprofit(s);
+  }
+
+  let running = false, previous = performance.now();
+  const frame = time => {
+    const dt = Math.min(34, time - previous || 16); previous = time;
+    states.filter(s => s.visible).forEach(s => draw(s, time, reduced ? 0 : dt));
+    if (!reduced && states.some(s => s.visible)) requestAnimationFrame(frame); else running = false;
+  };
+  const visibility = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      const s = states.find(v => v.root === entry.target); if (s) s.visible = entry.isIntersecting;
+    });
+    if (!running && states.some(s => s.visible)) { running = true; previous = performance.now(); requestAnimationFrame(frame); }
+  }, { rootMargin: "160px 0px" });
+  states.forEach(s => { resize(s); draw(s, performance.now(), 0); visibility.observe(s.root); });
 })();
 </script>
 
