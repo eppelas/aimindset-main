@@ -1,0 +1,906 @@
+<!doctype html>
+<html lang="ru" data-rev="19">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#f5f5ef">
+  <title>Экосистема AI Mindset — интерактивная карта</title>
+  <style>
+    :root{
+      color-scheme:light;
+      --bg:#f5f5ef;--ink:#080808;--muted:#6f6f69;--soft:rgba(8,8,8,.18);
+      --hair:rgba(8,8,8,.075);--panel:rgba(8,8,8,.96);--lime:#a8ee00;
+      --green:#138c49;--blue:#315fd6;--orange:#b96812;--red:#d53834;
+      --mono:"JetBrains Mono","IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+      --header-h:70px;
+    }
+    *{box-sizing:border-box}
+    html,body{width:100%;height:100%;margin:0;overflow:hidden;background:var(--bg);color:var(--ink);font-family:var(--mono);font-size:13px;-webkit-font-smoothing:antialiased}
+    button,a{font:inherit;color:inherit}
+    button{border:0}
+    .top{
+      position:fixed;inset:0 0 auto;z-index:100;min-height:var(--header-h);display:grid;
+      grid-template-columns:minmax(250px,1fr) auto minmax(250px,1fr);gap:18px;align-items:center;
+      padding:12px 18px;border-bottom:1px solid var(--soft);background:rgba(245,245,239,.84);backdrop-filter:blur(16px)
+    }
+    .brand{display:flex;align-items:center;gap:11px;min-width:0;text-decoration:none}
+    .brand-mark{width:34px;height:34px;display:grid;place-items:center;flex:0 0 34px;background:var(--ink);color:var(--bg);font-size:11px;font-weight:900}
+    .brand-copy{min-width:0}
+    .brand-copy strong{display:block;font-size:13px;line-height:1.1;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .brand-copy small{display:block;margin-top:4px;color:var(--muted);font-size:9px;letter-spacing:.15em;text-transform:uppercase}
+    .map-hint{color:rgba(8,8,8,.58);font-size:10px;letter-spacing:.08em;text-align:center;text-transform:uppercase;white-space:nowrap}
+    .mobile-hint{display:none}
+    .controls{justify-self:end;display:flex;gap:6px;align-items:center}
+    .control{
+      min-width:36px;height:36px;padding:0 10px;border:1px solid var(--soft);border-radius:10px;
+      background:rgba(255,255,255,.76);cursor:pointer;box-shadow:0 5px 18px rgba(0,0,0,.06);transition:background .18s,border-color .18s,color .18s,transform .18s
+    }
+    .control:hover,.control:focus-visible{border-color:var(--ink);background:var(--ink);color:var(--bg);outline:0}
+    .control:active{transform:scale(.94)}
+    .control.fit{min-width:74px;font-size:9px;letter-spacing:.11em;text-transform:uppercase}
+    .zoom-readout{min-width:48px;color:var(--muted);font-size:10px;text-align:center}
+    .stage{
+      position:fixed;inset:var(--header-h) 0 0;overflow:hidden;cursor:grab;touch-action:none;user-select:none;
+      background:
+        radial-gradient(circle at 18% 22%,rgba(168,238,0,.16),transparent 31rem),
+        radial-gradient(circle at 84% 20%,rgba(47,95,255,.075),transparent 31rem),
+        radial-gradient(circle at 18% 84%,rgba(226,153,60,.075),transparent 32rem),
+        radial-gradient(circle at 84% 82%,rgba(228,73,93,.075),transparent 33rem),var(--bg)
+    }
+    .stage::before{
+      content:"";position:absolute;inset:-80px;pointer-events:none;opacity:.58;
+      background-image:linear-gradient(rgba(8,8,8,.065) 1px,transparent 1px),linear-gradient(90deg,rgba(8,8,8,.065) 1px,transparent 1px);
+      background-size:40px 40px
+    }
+    .stage.is-moving{cursor:grabbing}
+    .world{position:absolute;left:0;top:0;width:2600px;height:1550px;transform-origin:0 0;will-change:transform}
+    .world::before{
+      content:"";position:absolute;left:862px;top:476px;width:720px;height:560px;border-radius:50%;
+      background:radial-gradient(circle,rgba(186,255,0,.065),transparent 68%);filter:blur(12px);pointer-events:none
+    }
+    .edges{position:absolute;inset:0;width:2600px;height:1550px;overflow:visible;pointer-events:none}
+    .edge{fill:none;stroke-linecap:round;vector-effect:non-scaling-stroke;transition:opacity .24s}
+    .edge.branch-education{stroke:#5f9300}
+    .edge.branch-education.edge-base{filter:drop-shadow(0 0 2px rgba(75,118,0,.42))}
+    .edge.branch-education.edge-flow{stroke:#78b800;filter:drop-shadow(0 0 3px rgba(70,110,0,.5))}
+    .edge.branch-platform{stroke:#2f5fff}
+    .edge.branch-consulting{stroke:#e2993c}
+    .edge.branch-research{stroke:#e4495d}
+    .edge-base{opacity:.46;stroke-width:4}
+    .edge-flow{opacity:1;stroke-width:2.5;stroke-dasharray:5 18;filter:drop-shadow(0 0 3px rgba(0,0,0,.2));animation:line-flow 2.8s linear infinite}
+    .edge.root-edge.edge-base{stroke-width:7;opacity:.58}
+    .edge.root-edge.edge-flow{stroke-width:3.5;stroke-dasharray:6 20;animation-duration:2.2s}
+    .edge.child-edge.edge-base{stroke-width:3.5;opacity:.34}
+    .edge.child-edge.edge-flow{stroke-width:2.25;stroke-dasharray:4 15}
+    .edge.branch-education.child-edge.edge-base{stroke-width:5;opacity:.82}
+    .edge.branch-education.child-edge.edge-flow{stroke-width:3;opacity:1;stroke-dasharray:7 13}
+    @keyframes line-flow{to{stroke-dashoffset:-52}}
+    .node{
+      --branch-color:rgba(8,8,8,.38);--surface:linear-gradient(145deg,#151515,#050505);--surface-ink:#fffaf0;
+      --surface-muted:rgba(255,250,240,.68);--action-surface:#050505;--action-ink:#fffaf0;--edit-outline:rgba(255,255,255,.72);--backplate:rgba(8,8,8,.12);
+      position:absolute;display:grid;align-content:space-between;gap:12px;
+      min-width:190px;min-height:110px;padding:16px;border:2px solid color-mix(in srgb,var(--branch-color) 76%,#080808);border-radius:20px;
+      background:var(--surface);color:var(--surface-ink);box-shadow:7px 7px 0 var(--backplate),0 18px 42px rgba(0,0,0,.18);backdrop-filter:blur(13px);
+      cursor:grab;overflow:hidden;will-change:left,top;transition:opacity .2s,box-shadow .2s,border-color .2s,transform .16s
+    }
+    .node::before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(135deg,rgba(255,255,255,.12),transparent 44%,rgba(0,0,0,.08))}
+    .node:hover,.node:focus-within{z-index:20;border-color:var(--branch-color);box-shadow:10px 10px 0 var(--backplate),0 24px 60px rgba(0,0,0,.28),0 0 36px color-mix(in srgb,var(--branch-color) 16%,transparent)}
+    .node.is-dragging{z-index:50;cursor:grabbing;transform:scale(1.018);box-shadow:11px 11px 0 var(--backplate),0 32px 76px rgba(0,0,0,.28)}
+    .node[hidden]{display:none}
+    .node.branch-education{--branch-color:#8fcf00;--backplate:#b6ff00}
+    .node.branch-platform{--branch-color:#2f5fff;--backplate:#2f5fff}
+    .node.branch-consulting{--branch-color:#e2993c;--backplate:#e2993c}
+    .node.branch-research{--branch-color:#e4495d;--backplate:#e4495d}
+    .node.branch-education.depth-1{--surface:linear-gradient(145deg,#171a10 0%,#070807 58%,#111707 100%);--surface-ink:#fffaf0;--surface-muted:rgba(255,250,240,.70)}
+    .node.branch-platform.depth-1{--surface:linear-gradient(145deg,#171c2c 0%,#080a11 56%,#111a33 100%);--surface-ink:#fffaf0;--surface-muted:rgba(255,250,240,.70)}
+    .node.branch-consulting.depth-1{--surface:linear-gradient(145deg,#21180d 0%,#090806 56%,#291707 100%);--surface-ink:#fffaf0;--surface-muted:rgba(255,250,240,.70)}
+    .node.branch-research.depth-1{--surface:linear-gradient(145deg,#241117 0%,#090608 56%,#2c0c16 100%);--surface-ink:#fffaf0;--surface-muted:rgba(255,250,240,.70)}
+    .node.branch-education.depth-2{--surface:linear-gradient(145deg,#1c2112 0%,#090a08 60%,#182208 100%);--surface-ink:#fffaf0;--surface-muted:rgba(255,250,240,.67);--backplate:#9ed633}
+    .node.branch-platform.depth-2{--surface:linear-gradient(145deg,#1a2135 0%,#090b13 58%,#142044 100%);--surface-ink:#fffaf0;--surface-muted:rgba(255,250,240,.67);--backplate:#5578ff}
+    .node.branch-consulting.depth-2{--surface:linear-gradient(145deg,#271a0e 0%,#0a0806 58%,#351c07 100%);--surface-ink:#fffaf0;--surface-muted:rgba(255,250,240,.67);--backplate:#e5a757}
+    .node.branch-research.depth-2{--surface:linear-gradient(145deg,#2b121b 0%,#0a0709 58%,#3a0d1d 100%);--surface-ink:#fffaf0;--surface-muted:rgba(255,250,240,.67);--backplate:#e86777}
+    .node.branch-education.depth-3{--surface:linear-gradient(145deg,#222916 0%,#0a0b09 62%,#1e2c0a 100%);--surface-ink:#fffaf0;--surface-muted:rgba(255,250,240,.64);--backplate:#b9dc69}
+    .node.branch-education::before{background:radial-gradient(circle at 90% 18%,rgba(182,255,0,.16),transparent 43%),linear-gradient(135deg,rgba(255,255,255,.1),transparent 44%)}
+    .node.branch-platform::before{background:radial-gradient(circle at 90% 18%,rgba(47,95,255,.24),transparent 46%),linear-gradient(135deg,rgba(255,255,255,.1),transparent 44%)}
+    .node.branch-consulting::before{background:radial-gradient(circle at 90% 18%,rgba(226,153,60,.22),transparent 46%),linear-gradient(135deg,rgba(255,255,255,.1),transparent 44%)}
+    .node.branch-research::before{background:radial-gradient(circle at 90% 18%,rgba(228,73,93,.23),transparent 46%),linear-gradient(135deg,rgba(255,255,255,.1),transparent 44%)}
+    .node.root{
+      --backplate:var(--lime);
+      padding:25px 27px;border-color:#050505;border-radius:28px;background:#050505;color:#fffaf0;
+      box-shadow:12px 12px 0 var(--lime),0 32px 76px rgba(0,0,0,.25)
+    }
+    .node.root::before{background:linear-gradient(135deg,rgba(255,255,255,.08),transparent 48%)}
+    .node.root .eyebrow{color:rgba(255,250,240,.62)}
+    .node.branch{padding:20px}
+    .node.feature{padding:19px}
+    .node.project{min-width:220px;min-height:118px;padding:13px 14px;border-radius:14px;overflow:visible}
+    .node.project h3{font-size:30px;line-height:1.02}
+    .node.project .eyebrow{font-size:16px}
+    .node.note{align-content:center;min-height:78px;padding:10px 34px 10px 16px;border:0;border-radius:0;background:rgba(182,255,0,.2);color:#172000;box-shadow:none;backdrop-filter:none;clip-path:polygon(0 0,calc(100% - 22px) 0,100% 50%,calc(100% - 22px) 100%,0 100%)}
+    .node.note::before{background:linear-gradient(90deg,rgba(182,255,0,.34),transparent 74%)}
+    .node.note:hover,.node.note:focus-within{border-color:transparent;background:rgba(182,255,0,.3);box-shadow:none}
+    .node.note .eyebrow{color:#4d6200;font-size:13px}
+    .node.note .dot{display:none}
+    .node.note h3{color:#111;font-size:23px;line-height:1.08}
+    .node-preview{position:absolute;left:calc(100% + 12px);top:0;z-index:60;width:290px;margin:0;overflow:hidden;border:1px solid var(--branch-color);border-radius:13px;background:#fff;box-shadow:0 28px 70px rgba(0,0,0,.72);opacity:0;pointer-events:none;transform:translateX(-8px) scale(.98);transition:opacity .2s,transform .2s}
+    .node.preview-left .node-preview{left:auto;right:calc(100% + 12px);transform:translateX(8px) scale(.98)}
+    .node.project:hover .node-preview,.node.project:focus-within .node-preview{opacity:1;transform:translateX(0) scale(1)}
+    .preview-bar{height:24px;display:flex;align-items:center;gap:5px;padding:0 10px;border-bottom:1px solid #d8d8d8;background:#f1f1f3}
+    .preview-bar i{width:7px;height:7px;border-radius:50%;background:#d1d2d5}
+    .preview-view{display:block;height:180px;overflow:hidden;background:#fff}
+    .preview-view img{display:block;width:100%;height:auto;transform:translateY(0);transition:transform 7s linear}
+    .node.project:hover .preview-view img,.node.project:focus-within .preview-view img{transform:translateY(calc(-100% + 180px))}
+    .eyebrow{position:relative;display:flex;align-items:center;justify-content:space-between;gap:10px;color:var(--surface-muted);font-size:16px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+    .eyebrow-label{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .dot{width:8px;height:8px;flex:0 0 8px;border:1px solid var(--branch-color);background:color-mix(in srgb,var(--branch-color) 42%,transparent);box-shadow:0 0 18px var(--branch-color)}
+    .node h2,.node h3{position:relative;margin:0;text-transform:uppercase;overflow-wrap:anywhere}
+    .node h2{font-size:64px;line-height:.96;letter-spacing:-.045em}
+    .node h3{font-size:32px;line-height:1.02;letter-spacing:-.015em}
+    .node.branch h3{font-size:46px}
+    .node.feature h3{font-size:36px}
+    .node[data-id="education"] h3,.node[data-id="consulting"] h3,.node[data-id="space"] h3{font-size:58px}
+    .node[data-id="space"] h3{text-transform:none}
+    body.editing .stage{user-select:text}
+    body.editing .node{cursor:grab}
+    body.editing [data-map-editable]{
+      position:relative;z-index:35;min-width:.5em;min-height:1em;pointer-events:auto!important;
+      cursor:text;outline:2px dashed var(--edit-outline);outline-offset:4px
+    }
+    body.editing .node.root [data-map-editable]{outline-color:rgba(255,255,255,.68)}
+    body.editing [data-map-editable]:hover,body.editing [data-map-editable]:focus{
+      outline-style:solid;background:rgba(255,255,255,.11)
+    }
+    body.editing .node.root [data-map-editable]:hover,body.editing .node.root [data-map-editable]:focus{
+      background:rgba(255,255,255,.12)
+    }
+    body.editing .node-action{pointer-events:none!important;opacity:.18}
+    body.editing .node-preview{display:none}
+    .node p{position:relative;margin:0;color:var(--surface-muted);font-size:11px;line-height:1.42}
+    .node.root p{color:rgba(255,250,240,.70)}
+    .node.root p{max-width:330px;font-size:13px}
+    .facts{position:relative;display:flex;flex-wrap:wrap;gap:5px;margin:0;padding:0;list-style:none}
+    .facts li{padding:5px 7px;border:1px solid rgba(255,255,255,.17);border-radius:6px;background:rgba(255,255,255,.06);color:rgba(255,250,240,.76);font-size:8.5px;font-weight:800;letter-spacing:.07em;text-transform:uppercase}
+    .node.root .facts li{border-color:rgba(255,255,255,.16);background:rgba(255,255,255,.06);color:rgba(255,250,240,.74)}
+    .node-actions{position:absolute;right:11px;bottom:11px;display:flex;gap:5px;z-index:4}
+    .node-action{width:30px;height:30px;display:grid;place-items:center;border:1px solid color-mix(in srgb,var(--surface-ink) 30%,transparent);border-radius:9px;background:var(--action-surface);color:var(--action-ink);text-decoration:none;cursor:pointer}
+    .node-action:hover,.node-action:focus-visible{border-color:var(--branch-color);background:var(--branch-color);color:#050505;outline:0}
+    .node.has-link .eyebrow{padding-right:calc(50% + 8px)}
+    .node.has-link .node-title{position:relative;z-index:2;align-self:end;width:100%}
+    .node.has-link .node-actions{inset:0 0 auto auto;width:50%;height:52%;display:block;pointer-events:none}
+    .node.has-link .node-link{position:absolute;inset:0;z-index:1;isolation:isolate;width:100%;height:100%;display:flex;align-items:flex-start;justify-content:flex-end;padding:13px 15px;border:0;border-left:1px solid color-mix(in srgb,var(--branch-color) 55%,transparent);border-bottom:1px solid color-mix(in srgb,var(--branch-color) 42%,transparent);border-radius:0 18px 0 12px;background:linear-gradient(180deg,color-mix(in srgb,var(--branch-color) 25%,transparent),transparent);color:var(--action-ink);font-size:27px;font-weight:900;line-height:1;pointer-events:auto;transition:background .2s,border-color .2s,color .2s}
+    .node.has-link .node-link::after{content:"";position:absolute;right:8px;top:7px;width:45px;height:45px;border:2px solid var(--branch-color);border-radius:9px;background:var(--action-surface);z-index:-1;box-shadow:0 4px 12px rgba(0,0,0,.18)}
+    .node.has-link .node-link:hover,.node.has-link .node-link:focus-visible{border-left-color:var(--branch-color);border-bottom-color:var(--branch-color);background:linear-gradient(180deg,color-mix(in srgb,var(--branch-color) 48%,transparent),transparent);color:var(--action-ink)}
+    .node-toggle{font-size:17px;line-height:1}
+    .node.is-collapsed .node-toggle{transform:rotate(-90deg)}
+    .corner-id{display:none}
+    .legend{display:none}
+    .legend span{padding:6px 8px;border:1px solid var(--soft);border-radius:999px;background:rgba(255,255,252,.86);backdrop-filter:blur(9px);color:var(--muted);font-size:8px;letter-spacing:.11em;text-transform:uppercase}
+    .legend i{display:inline-block;width:6px;height:6px;margin-right:5px;background:var(--c)}
+    body.embed .top{min-height:0;display:flex;justify-content:flex-end;padding:10px;border:0;background:transparent;backdrop-filter:none;pointer-events:none}
+    body.embed .top .brand,body.embed .top .map-hint{display:none}
+    body.embed .top .controls{display:flex;pointer-events:auto}
+    body.embed .stage{inset:0}
+    @media (max-width:760px){
+      :root{--header-h:112px}
+      .top{grid-template-columns:minmax(0,1fr) auto;grid-template-rows:auto auto;gap:8px 10px;padding:10px 11px}
+      .brand-mark{width:30px;height:30px;flex-basis:30px}
+      .brand-copy strong{font-size:11px}.brand-copy small{font-size:8px}
+      .controls{grid-column:2;grid-row:1 / span 2}.control{min-width:34px;height:34px;padding:0 8px}.control.fit{min-width:58px}.zoom-readout{display:none}
+      .map-hint{grid-column:1;grid-row:2;text-align:left;font-size:8px;overflow:hidden;text-overflow:ellipsis}
+      .desktop-hint{display:none}.mobile-hint{display:inline}
+      .legend{bottom:9px;left:9px;right:9px;max-width:none}.legend span{font-size:7px;padding:5px 7px}
+    }
+    @media (prefers-reduced-motion:reduce){.edge-flow{animation:none}.node,.control,.node-preview,.preview-view img{transition:none}.node.project:hover .preview-view img,.node.project:focus-within .preview-view img{transform:none}}
+  </style>
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="index.html#products" target="_top" aria-label="Вернуться к главной странице, к разделу экосистемы">
+      <span class="brand-mark">AIM</span>
+      <span class="brand-copy"><strong>Экосистема AI Mindset</strong><small>интерактивная карта</small></span>
+    </a>
+    <div class="map-hint"><span class="desktop-hint">тащите фон · колесо — масштаб</span><span class="mobile-hint">тащите фон · два пальца — масштаб</span></div>
+    <div class="controls" aria-label="Управление масштабом">
+      <button class="control" id="zoomOut" type="button" aria-label="Уменьшить масштаб">−</button>
+      <button class="control fit" id="fitMap" type="button">вся карта</button>
+      <button class="control" id="zoomIn" type="button" aria-label="Увеличить масштаб">+</button>
+      <span class="zoom-readout" id="zoomReadout">100%</span>
+    </div>
+  </header>
+
+  <main class="stage" id="stage" aria-label="Подвижная карта экосистемы AI Mindset">
+    <div class="world" id="world">
+      <svg class="edges" id="edges" viewBox="0 0 2600 1550" aria-hidden="true"></svg>
+      <div id="nodes"></div>
+    </div>
+  </main>
+
+  <script id="mapData" type="application/json">
+    [
+      {
+        "id": "aim",
+        "kind": "root",
+        "x": 1250,
+        "y": 260,
+        "w": 440,
+        "h": 190,
+        "eyebrow": "среда · практика · собственная система",
+        "title": "AI Mindset",
+        "text": "Экосистема для работы, мышления и жизни вместе с ИИ.",
+        "facts": [
+          "2500+ участников",
+          "30+ стран",
+          "10+ направлений и спецпроектов"
+        ]
+      },
+      {
+        "id": "education",
+        "parent": "aim",
+        "kind": "branch",
+        "branch": "education",
+        "x": 780,
+        "y": 320,
+        "w": 440,
+        "h": 170,
+        "eyebrow": "главный контур",
+        "title": "Обучение",
+        "text": "Лаборатория, спринты и точечные форматы практики.",
+        "facts": [
+          "от одного вечера до 4 недель"
+        ]
+      },
+      {
+        "id": "main-lab",
+        "parent": "education",
+        "kind": "feature",
+        "branch": "education",
+        "x": 100,
+        "y": 560,
+        "w": 330,
+        "h": 190,
+        "eyebrow": "флагман · 4 недели",
+        "title": "Главная {лаборатория}",
+        "text": "Четыре сезона — от базового до премиального маршрута.",
+        "facts": [
+          "основная программа"
+        ],
+        "href": "https://staging.aimindset.org/labs-custom/s26"
+      },
+      {
+        "id": "sprints",
+        "parent": "education",
+        "kind": "feature",
+        "branch": "education",
+        "x": 430,
+        "y": 290,
+        "w": 330,
+        "h": 175,
+        "eyebrow": "2–3 недели",
+        "title": "{Спринты}",
+        "text": "Одна тема — глубоко и с практикой."
+      },
+      {
+        "id": "ai-native",
+        "parent": "sprints",
+        "branch": "education",
+        "x": 170,
+        "y": 400,
+        "w": 230,
+        "h": 125,
+        "eyebrow": "спринт",
+        "title": "AI Native",
+        "text": "ИИ-нативная работа и собственная система.",
+        "href": "https://ai-native.aimindset.org"
+      },
+      {
+        "id": "health-sprint",
+        "parent": "sprints",
+        "branch": "education",
+        "x": 170,
+        "y": 120,
+        "w": 230,
+        "h": 125,
+        "eyebrow": "спринт",
+        "title": "Health Sprint",
+        "text": "ИИ в работе со здоровьем и телом.",
+        "href": "https://health.aimindset.org"
+      },
+      {
+        "id": "marketing-sprint",
+        "parent": "sprints",
+        "branch": "education",
+        "x": 170,
+        "y": 260,
+        "w": 240,
+        "h": 125,
+        "eyebrow": "спринт",
+        "title": "Marketing Sprint",
+        "text": "Практика ИИ внутри маркетинговых задач."
+      },
+      {
+        "id": "workshops",
+        "parent": "education",
+        "branch": "education",
+        "x": 520,
+        "y": 100,
+        "w": 280,
+        "h": 145,
+        "eyebrow": "один вечер",
+        "title": "Практикумы",
+        "text": "Точечная практика и быстрый вход.",
+        "href": "https://t.me/ai_mind_set"
+      },
+      {
+        "id": "non-profit-note",
+        "parent": "education",
+        "kind": "note",
+        "branch": "education",
+        "noEdge": true,
+        "noCount": true,
+        "x": 0,
+        "y": 0,
+        "w": 330,
+        "h": 78,
+        "eyebrow": "доступ — часть всего обучения",
+        "title": "3 бесплатных места в каждом наборе",
+        "text": "Для некоммерческих и творческих организаций."
+      },
+      {
+        "id": "platform",
+        "parent": "aim",
+        "kind": "branch",
+        "branch": "platform",
+        "x": 1750,
+        "y": 150,
+        "w": 380,
+        "h": 170,
+        "eyebrow": "инфраструктура",
+        "title": "Платформа и сообщество",
+        "text": "Место, где остаются материалы, прогресс и люди.",
+        "facts": [
+          "учебная платформа · {space}"
+        ]
+      },
+      {
+        "id": "space",
+        "parent": "platform",
+        "kind": "feature",
+        "branch": "platform",
+        "x": 2060,
+        "y": 360,
+        "w": 470,
+        "h": 160,
+        "eyebrow": "сообщество · бесплатно",
+        "title": "{space}",
+        "text": "Еженедельная совместная практика, показы работ и взаимный вклад.",
+        "facts": [
+          "237 участников"
+        ],
+        "href": "https://staging.aimindset.org/space/"
+      },
+      {
+        "id": "lms",
+        "parent": "platform",
+        "branch": "platform",
+        "x": 2160,
+        "y": 570,
+        "w": 300,
+        "h": 145,
+        "eyebrow": "учебная платформа",
+        "title": "LMS / Learn",
+        "text": "Материалы, записи и прогресс. Доступ остаётся.",
+        "href": "https://learn.aimindset.org"
+      },
+      {
+        "id": "consulting",
+        "parent": "aim",
+        "kind": "branch",
+        "branch": "consulting",
+        "x": 760,
+        "y": 980,
+        "w": 440,
+        "h": 170,
+        "eyebrow": "для компаний и лично",
+        "title": "Консалтинг",
+        "text": "Внедрение ИИ в работу команд и индивидуальная глубокая работа."
+      },
+      {
+        "id": "teams",
+        "parent": "consulting",
+        "branch": "consulting",
+        "x": 240,
+        "y": 980,
+        "w": 325,
+        "h": 160,
+        "eyebrow": "для организаций",
+        "title": "{Для команд}",
+        "text": "Пилоты для команд от 3–5+ человек.",
+        "href": "https://staging.aimindset.org/for-teams/"
+      },
+      {
+        "id": "personal",
+        "parent": "consulting",
+        "branch": "consulting",
+        "x": 480,
+        "y": 1210,
+        "w": 325,
+        "h": 165,
+        "eyebrow": "личный консалтинг",
+        "title": "1:1 · глубокая работа",
+        "text": "Персональная работа с задачей и собственной системой.",
+        "facts": [
+          "€200 / час"
+        ],
+        "href": "https://staging.aimindset.org/for-teams/"
+      },
+      {
+        "id": "research-branch",
+        "parent": "aim",
+        "kind": "branch",
+        "branch": "research",
+        "x": 1640,
+        "y": 820,
+        "w": 390,
+        "h": 170,
+        "eyebrow": "новые территории",
+        "title": "Исследования и спецпроекты",
+        "text": "Каждый большой вопрос становится самостоятельным артефактом.",
+        "facts": [
+          "8 проектов"
+        ]
+      },
+      {
+        "id": "manifest",
+        "parent": "research-branch",
+        "kind": "project",
+        "branch": "research",
+        "x": 2050,
+        "y": 760,
+        "w": 250,
+        "h": 125,
+        "eyebrow": "манифест",
+        "title": "{Манифест}",
+        "text": "Собственная система работы и жизни вместе с ИИ.",
+        "href": "https://manifest.aimindset.org",
+        "preview": "assets/ecosystem-previews/manifest.jpg"
+      },
+      {
+        "id": "gap",
+        "parent": "research-branch",
+        "kind": "project",
+        "branch": "research",
+        "x": 2320,
+        "y": 760,
+        "w": 250,
+        "h": 125,
+        "eyebrow": "выводы 2025",
+        "title": "{Разрыв контекста}",
+        "text": "Что произошло в ИИ за год — 72 первоисточника.",
+        "href": "https://gap.aimindset.org",
+        "preview": "assets/ecosystem-previews/gap.jpg"
+      },
+      {
+        "id": "selfdev",
+        "parent": "research-branch",
+        "kind": "project",
+        "branch": "research",
+        "x": 2050,
+        "y": 920,
+        "w": 250,
+        "h": 125,
+        "eyebrow": "психика × ИИ",
+        "title": "Глубокое саморазвитие",
+        "text": "Защита психики в эпоху машинной близости.",
+        "href": "https://selfdev.aimindset.org",
+        "preview": "assets/ecosystem-previews/selfdev.jpg"
+      },
+      {
+        "id": "romanticism",
+        "parent": "research-branch",
+        "kind": "project",
+        "branch": "research",
+        "x": 2320,
+        "y": 920,
+        "w": 250,
+        "h": 125,
+        "eyebrow": "философия",
+        "title": "Прагматичный романтизм",
+        "text": "Защита от холодной машинной логики.",
+        "href": "https://spiridonov.aimindset.org",
+        "preview": "assets/ecosystem-previews/spiridonov.jpg"
+      },
+      {
+        "id": "effort",
+        "parent": "research-branch",
+        "kind": "project",
+        "branch": "research",
+        "x": 2050,
+        "y": 1080,
+        "w": 250,
+        "h": 125,
+        "eyebrow": "усилие",
+        "title": "Философия усилия",
+        "text": "ИИ как усилитель человека, дисциплина и трансформация.",
+        "href": "https://osokin.aimindset.org"
+      },
+      {
+        "id": "intention",
+        "parent": "research-branch",
+        "kind": "project",
+        "branch": "research",
+        "x": 2320,
+        "y": 1080,
+        "w": 250,
+        "h": 125,
+        "eyebrow": "внимание",
+        "title": "Система намерения",
+        "text": "Управление вниманием, когда контекст взрывается.",
+        "href": "https://intention.aimindset.org",
+        "preview": "assets/ecosystem-previews/intention.jpg",
+        "previewSide": "left"
+      },
+      {
+        "id": "founder-os",
+        "parent": "research-branch",
+        "kind": "project",
+        "branch": "research",
+        "x": 2050,
+        "y": 1240,
+        "w": 250,
+        "h": 125,
+        "eyebrow": "основатели",
+        "title": "Founder OS",
+        "text": "Разговоры с основателями об их ИИ-системах.",
+        "href": "https://www.youtube.com/@A-I-Mindset"
+      },
+      {
+        "id": "realities",
+        "parent": "research-branch",
+        "kind": "project",
+        "branch": "research",
+        "x": 2320,
+        "y": 1240,
+        "w": 250,
+        "h": 125,
+        "eyebrow": "карта",
+        "title": "Карта Реальностей × ИИ",
+        "text": "Четыре логики одного вопроса.",
+        "href": "https://future.aimindset.org",
+        "preview": "assets/ecosystem-previews/future.jpg",
+        "previewSide": "left"
+      }
+    ]
+  </script>
+
+  <script id="mapRuntime">
+    (() => {
+      if(new URLSearchParams(location.search).has('embed')) document.body.classList.add('embed');
+      const WORLD = { width: 2600, height: 1550 };
+      const MIN_SCALE = document.body.classList.contains('embed') ? .12 : .34;
+      const mapDataScript = document.querySelector("#mapData");
+      const sourceNodes = JSON.parse(mapDataScript.textContent);
+      const nodesData = sourceNodes.map(node => ({...node,facts:node.facts?[...node.facts]:undefined}));
+      const sourceById = new Map(sourceNodes.map(node => [node.id,node]));
+      const MAP_OBJECT = 'wild/ecosystem-mindmap.html';
+      const EDIT_API = location.origin;
+      let editEnabled = false;
+      let copyDirty = false;
+      let savingCopy = false;
+
+      const stage = document.querySelector('#stage');
+      const world = document.querySelector('#world');
+      const nodesHost = document.querySelector('#nodes');
+      const edges = document.querySelector('#edges');
+      const zoomReadout = document.querySelector('#zoomReadout');
+      const byId = new Map(nodesData.map(node => [node.id,node]));
+      const nodeEls = new Map();
+      const collapsed = new Set();
+      const view = {x:0,y:0,scale:1};
+      const pointers = new Map();
+      let interaction = null;
+      let suppressClick = false;
+
+      function htmlText(value){
+        return String(value??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replace(/\r?\n/g,'<br>');
+      }
+      function readEditableText(el){
+        const clone=el.cloneNode(true);
+        clone.querySelectorAll('br').forEach(br=>br.replaceWith(document.createTextNode('\n')));
+        return clone.textContent.replaceAll('\u200B','').replaceAll('\u00A0',' ').replace(/\n{3,}/g,'\n\n');
+      }
+      function insertPlainText(text){
+        const selection=getSelection();if(!selection)return;
+        let range=selection.rangeCount?selection.getRangeAt(0):null;
+        const active=document.activeElement?.closest?.('[data-map-editable]');
+        if(!range||!active?.contains(range.commonAncestorContainer)){
+          if(!active)return;
+          range=document.createRange();range.selectNodeContents(active);range.collapse(false);
+        }
+        range.deleteContents();
+        const fragment=document.createDocumentFragment();let last=null;
+        String(text).split('\n').forEach((line,index)=>{
+          if(index){last=document.createElement('br');fragment.append(last)}
+          const node=document.createTextNode(line);fragment.append(node);last=node;
+        });
+        range.insertNode(fragment);
+        if(last){range.setStartAfter(last);range.collapse(true);selection.removeAllRanges();selection.addRange(range)}
+        active.dispatchEvent(new InputEvent('input',{bubbles:true,inputType:'insertText',data:text}));
+      }
+      function setMapEditing(on){
+        editEnabled=!!on;
+        document.body.classList.toggle('editing',editEnabled);
+        nodesHost.querySelectorAll('[data-map-editable]').forEach(el=>{
+          if(editEnabled){el.setAttribute('contenteditable','true');el.setAttribute('spellcheck','true')}
+          else{el.removeAttribute('contenteditable');el.removeAttribute('spellcheck')}
+        });
+      }
+      function applyCopy(nodes){
+        if(!nodes||typeof nodes!=='object')return;
+        for(const [id,fields] of Object.entries(nodes)){
+          const source=sourceById.get(id),node=byId.get(id),el=nodeEls.get(id);
+          if(!source||!node||!el||!fields||typeof fields!=='object')continue;
+          for(const field of ['eyebrow','title']){
+            if(typeof fields[field]!=='string')continue;
+            source[field]=fields[field];node[field]=fields[field];
+            const target=el.querySelector(`[data-map-field="${field}"]`);
+            if(target)target.innerHTML=htmlText(fields[field]);
+          }
+          const link=el.querySelector('.node-link');
+          if(link)link.setAttribute('aria-label',`Открыть ${node.title}`);
+        }
+      }
+      function serializedMap(){
+        const clone=document.documentElement.cloneNode(true);
+        clone.dataset.rev=String(Number(document.documentElement.dataset.rev||1));
+        const data=clone.querySelector('#mapData');
+        if(data)data.textContent='\n'+JSON.stringify(sourceNodes,null,2).replaceAll('<','\\u003c').split('\n').map(line=>'    '+line).join('\n')+'\n  ';
+        clone.querySelector('#nodes')?.replaceChildren();
+        clone.querySelector('#edges')?.replaceChildren();
+        clone.querySelector('#world')?.removeAttribute('style');
+        clone.querySelector('#stage')?.classList.remove('is-moving');
+        const body=clone.querySelector('body');if(body)body.classList.remove('embed','editing');
+        clone.querySelectorAll('[contenteditable]').forEach(el=>el.removeAttribute('contenteditable'));
+        clone.querySelectorAll('[spellcheck]').forEach(el=>el.removeAttribute('spellcheck'));
+        const readout=clone.querySelector('#zoomReadout');if(readout)readout.textContent='100%';
+        return '<!doctype html>\n'+clone.outerHTML+'\n';
+      }
+      async function mapStatus(){
+        const response=await fetch(EDIT_API+'/__status?object='+encodeURIComponent(MAP_OBJECT),{cache:'no-store'});
+        const data=await response.json().catch(()=>({}));
+        if(!response.ok||!data.ok)throw new Error(data.error||('http '+response.status));
+        return data;
+      }
+      async function saveMapCopy(requestId){
+        if(savingCopy){
+          parent.postMessage({type:'aim-map:save-result',requestId,ok:false,error:'карта уже сохраняется — дождитесь завершения'},'*');
+          return;
+        }
+        savingCopy=true;
+        try{
+          if(!copyDirty){
+            parent.postMessage({type:'aim-map:save-result',requestId,ok:true,rev:Number(document.documentElement.dataset.rev||1)},'*');
+            return;
+          }
+          const status=await mapStatus();
+          const myRev=Number(document.documentElement.dataset.rev||1);
+          if(status.rev!==myRev)throw new Error(`карта уже rev ${status.rev}; обновите страницу, чтобы не затереть изменения`);
+          const response=await fetch(EDIT_API+'/__save',{
+            method:'POST',headers:{'content-type':'application/json'},
+            body:JSON.stringify({html:serializedMap(),rev:myRev,object:MAP_OBJECT})
+          });
+          const result=await response.json().catch(()=>({}));
+          if(!response.ok||!result.ok)throw new Error(result.message||result.error||('http '+response.status));
+          const confirmed=await mapStatus();
+          if(confirmed.rev!==result.rev)throw new Error('сервер сохранил карту, но новая ревизия не подтвердилась');
+          document.documentElement.dataset.rev=String(result.rev);
+          copyDirty=false;
+          parent.postMessage({type:'aim-map:save-result',requestId,ok:true,rev:result.rev},'*');
+        }catch(error){
+          parent.postMessage({type:'aim-map:save-result',requestId,ok:false,error:String(error.message||error)},'*');
+        }finally{savingCopy=false}
+      }
+
+      function branchClass(node){return node.branch ? `branch-${node.branch}` : ''}
+      function nodeDepth(node){
+        let depth=0,current=node;
+        while(current?.parent){depth+=1;current=byId.get(current.parent)}
+        return depth;
+      }
+      function renderNodes(){
+        for(const node of nodesData){
+          const el = document.createElement('article');
+          el.className = ['node',node.kind||'',`depth-${nodeDepth(node)}`,node.href?'has-link':'',node.previewSide==='left'?'preview-left':'',branchClass(node)].filter(Boolean).join(' ');
+          el.dataset.id = node.id;
+          el.tabIndex = 0;
+          Object.assign(el.style,{left:`${node.x}px`,top:`${node.y}px`,width:`${node.w}px`,minHeight:`${node.h}px`});
+          const childCount = nodesData.filter(n=>n.parent===node.id&&!n.noCount).length;
+          const eyebrow = node.kind==='root' ? '' : `<div class="eyebrow"><span class="eyebrow-label" data-map-editable data-map-field="eyebrow">${htmlText(node.eyebrow)}</span><i class="dot"></i></div>`;
+          const preview = node.preview ? `<figure class="node-preview" aria-hidden="true"><span class="preview-bar"><i></i><i></i><i></i></span><span class="preview-view"><img src="${node.preview}" alt="" loading="lazy"></span></figure>` : '';
+          const toggle = childCount ? `<button class="node-action node-toggle" type="button" aria-label="Свернуть ветку" title="Свернуть ветку">⌄</button>` : '';
+          const link = node.href ? `<a class="node-action node-link" href="${node.href}" target="_blank" rel="noopener noreferrer" title="Открыть">↗</a>` : '';
+          el.innerHTML = `${eyebrow}<div class="node-title"><${node.kind==='root'?'h2':'h3'} data-map-editable data-map-field="title">${htmlText(node.title)}</${node.kind==='root'?'h2':'h3'}></div><div class="node-actions">${toggle}${link}</div>${preview}`;
+          el.querySelector('.node-link')?.setAttribute('aria-label',`Открыть ${node.title}`);
+          nodesHost.append(el);nodeEls.set(node.id,el);
+        }
+      }
+
+      function isDescendant(nodeId,ancestorId){
+        let current=byId.get(nodeId);
+        while(current?.parent){if(current.parent===ancestorId)return true;current=byId.get(current.parent)}
+        return false;
+      }
+      function isVisible(node){
+        for(const id of collapsed){if(isDescendant(node.id,id))return false}
+        return true;
+      }
+      function syncVisibility(){
+        for(const node of nodesData) nodeEls.get(node.id).hidden=!isVisible(node);
+        drawEdges();
+      }
+      function center(node){return{x:node.x+node.w/2,y:node.y+node.h/2}}
+      function edgePath(a,b){
+        const from=center(a),to=center(b),dx=to.x-from.x,dy=to.y-from.y;
+        if(Math.abs(dx)>=Math.abs(dy)){
+          const direction=Math.sign(dx)||1,startX=from.x+direction*a.w*.48,endX=to.x-direction*b.w*.48,curve=Math.max(70,Math.abs(endX-startX)*.46);
+          return `M ${startX} ${from.y} C ${startX+direction*curve} ${from.y}, ${endX-direction*curve} ${to.y}, ${endX} ${to.y}`;
+        }
+        const direction=Math.sign(dy)||1,startY=from.y+direction*a.h*.48,endY=to.y-direction*b.h*.48,curve=Math.max(70,Math.abs(endY-startY)*.46);
+        return `M ${from.x} ${startY} C ${from.x} ${startY+direction*curve}, ${to.x} ${endY-direction*curve}, ${to.x} ${endY}`;
+      }
+      function drawEdges(){
+        edges.innerHTML='';
+        for(const node of nodesData){
+          if(!node.parent||node.noEdge||!isVisible(node))continue;
+          const parent=byId.get(node.parent);if(!parent||!isVisible(parent))continue;
+          const rootEdge=parent.id==='aim';
+          const d=edgePath(parent,node),edgeType=rootEdge?'root-edge':'child-edge',branch=branchClass(node);
+          for(const layer of ['edge-base','edge-flow']){
+            const path=document.createElementNS('http://www.w3.org/2000/svg','path');
+            path.setAttribute('class',`edge ${edgeType} ${layer} ${branch}`);
+            path.setAttribute('d',d);edges.append(path);
+          }
+        }
+      }
+      function applyView(){
+        world.style.transform=`translate3d(${view.x}px,${view.y}px,0) scale(${view.scale})`;
+        zoomReadout.textContent=`${Math.round(view.scale*100)}%`;
+      }
+      function visibleBounds(){
+        const visible=nodesData.filter(isVisible);const pad=90;
+        return {minX:Math.min(...visible.map(n=>n.x))-pad,minY:Math.min(...visible.map(n=>n.y))-pad,maxX:Math.max(...visible.map(n=>n.x+n.w))+pad,maxY:Math.max(...visible.map(n=>n.y+n.h))+pad};
+      }
+      function fitMap(animate=true){
+        const r=stage.getBoundingClientRect(),b=visibleBounds(),w=b.maxX-b.minX,h=b.maxY-b.minY;
+        const topInset=document.body.classList.contains('embed')?72:0;
+        const usableHeight=Math.max(1,r.height-topInset);
+        view.scale=Math.min(1.03,Math.max(MIN_SCALE,Math.min(r.width/w,usableHeight/h)));
+        view.x=(r.width-w*view.scale)/2-b.minX*view.scale;
+        view.y=topInset+(usableHeight-h*view.scale)/2-b.minY*view.scale;
+        if(animate){world.style.transition='transform .48s cubic-bezier(.2,.8,.2,1)';setTimeout(()=>world.style.transition='',500)}
+        applyView();
+      }
+      function openReadableView(){
+        fitMap(false);
+      }
+      function zoomAt(factor,clientX,clientY){
+        const rect=stage.getBoundingClientRect();const sx=clientX-rect.left,sy=clientY-rect.top;
+        const wx=(sx-view.x)/view.scale,wy=(sy-view.y)/view.scale;
+        view.scale=Math.max(MIN_SCALE,Math.min(1.7,view.scale*factor));
+        view.x=sx-wx*view.scale;view.y=sy-wy*view.scale;applyView();
+      }
+      stage.addEventListener('pointerdown',event=>{
+        if(event.button!==0)return;
+        if(editEnabled&&event.target.closest('[data-map-editable]')){event.stopPropagation();return}
+        const action=event.target.closest('.node-action');if(action)return;
+        const nodeEl=event.target.closest('.node');
+        event.preventDefault();stage.setPointerCapture(event.pointerId);
+        pointers.set(event.pointerId,{x:event.clientX,y:event.clientY});
+        if(pointers.size===2){
+          const [a,b]=[...pointers.values()],mid={x:(a.x+b.x)/2,y:(a.y+b.y)/2},rect=stage.getBoundingClientRect();
+          interaction={type:'pinch',distance:Math.hypot(a.x-b.x,a.y-b.y),scale:view.scale,worldX:(mid.x-rect.left-view.x)/view.scale,worldY:(mid.y-rect.top-view.y)/view.scale};
+          nodeEls.forEach(el=>el.classList.remove('is-dragging'));return;
+        }
+        if(nodeEl){
+          const node=byId.get(nodeEl.dataset.id);interaction={type:'node',pointerId:event.pointerId,node,startX:event.clientX,startY:event.clientY,nodeX:node.x,nodeY:node.y,moved:false,persist:editEnabled};nodeEl.classList.add('is-dragging');
+        }else interaction={type:'pan',pointerId:event.pointerId,startX:event.clientX,startY:event.clientY,x:view.x,y:view.y,moved:false};
+        stage.classList.add('is-moving');
+      });
+      stage.addEventListener('pointermove',event=>{
+        if(!pointers.has(event.pointerId))return;pointers.set(event.pointerId,{x:event.clientX,y:event.clientY});
+        if(interaction?.type==='pinch'&&pointers.size>=2){
+          const [a,b]=[...pointers.values()],distance=Math.hypot(a.x-b.x,a.y-b.y),mid={x:(a.x+b.x)/2,y:(a.y+b.y)/2},rect=stage.getBoundingClientRect();
+          view.scale=Math.max(MIN_SCALE,Math.min(1.7,interaction.scale*distance/interaction.distance));view.x=mid.x-rect.left-interaction.worldX*view.scale;view.y=mid.y-rect.top-interaction.worldY*view.scale;applyView();return;
+        }
+        if(!interaction||interaction.pointerId!==event.pointerId)return;
+        const dx=event.clientX-interaction.startX,dy=event.clientY-interaction.startY;if(Math.hypot(dx,dy)>5)interaction.moved=true;
+        if(interaction.type==='pan'){view.x=interaction.x+dx;view.y=interaction.y+dy;applyView()}
+        if(interaction.type==='node'){
+          const n=interaction.node;n.x=Math.max(0,Math.min(WORLD.width-n.w,interaction.nodeX+dx/view.scale));n.y=Math.max(0,Math.min(WORLD.height-n.h,interaction.nodeY+dy/view.scale));
+          const el=nodeEls.get(n.id);el.style.left=`${n.x}px`;el.style.top=`${n.y}px`;drawEdges();
+        }
+      });
+      function endPointer(event){
+        pointers.delete(event.pointerId);
+        if(interaction?.pointerId===event.pointerId){
+          suppressClick=interaction.moved;setTimeout(()=>suppressClick=false,0);
+          if(interaction.type==='node'&&interaction.moved){
+            const node=interaction.node,source=sourceById.get(node.id);
+            node.x=Math.round(node.x);node.y=Math.round(node.y);
+            if(interaction.persist&&source){source.x=node.x;source.y=node.y}
+            const el=nodeEls.get(node.id);el.style.left=`${node.x}px`;el.style.top=`${node.y}px`;
+            if(interaction.persist){copyDirty=true;parent.postMessage({type:'aim-map:dirty'},'*')}
+          }
+        }
+        nodeEls.forEach(el=>el.classList.remove('is-dragging'));if(pointers.size<2)interaction=null;stage.classList.remove('is-moving');
+      }
+      stage.addEventListener('pointerup',endPointer);stage.addEventListener('pointercancel',endPointer);
+      stage.addEventListener('wheel',event=>{event.preventDefault();zoomAt(Math.exp(-event.deltaY*.0012),event.clientX,event.clientY)},{passive:false});
+      stage.addEventListener('click',event=>{
+        if(editEnabled&&event.target.closest('.node-action')){event.preventDefault();event.stopPropagation();return}
+        if(suppressClick){event.preventDefault();event.stopPropagation();return}
+        const toggle=event.target.closest('.node-toggle');if(!toggle)return;
+        const el=toggle.closest('.node'),id=el.dataset.id;
+        if(collapsed.has(id)){collapsed.delete(id);el.classList.remove('is-collapsed');toggle.setAttribute('aria-label','Свернуть ветку');toggle.title='Свернуть ветку'}
+        else{collapsed.add(id);el.classList.add('is-collapsed');toggle.setAttribute('aria-label','Развернуть ветку');toggle.title='Развернуть ветку'}
+        syncVisibility();
+      });
+      document.querySelector('#zoomIn').addEventListener('click',()=>{const r=stage.getBoundingClientRect();zoomAt(1.18,r.left+r.width/2,r.top+r.height/2)});
+      document.querySelector('#zoomOut').addEventListener('click',()=>{const r=stage.getBoundingClientRect();zoomAt(1/1.18,r.left+r.width/2,r.top+r.height/2)});
+      document.querySelector('#fitMap').addEventListener('click',()=>fitMap());
+      window.addEventListener('keydown',event=>{
+        if(editEnabled&&event.target.closest?.('[data-map-editable]'))return;
+        if(event.key==='0')fitMap();
+        if(event.key==='+'||event.key==='=')document.querySelector('#zoomIn').click();
+        if(event.key==='-')document.querySelector('#zoomOut').click();
+      });
+      let fittedStageSize='';
+      function refitForStageSize(){
+        const r=stage.getBoundingClientRect();if(r.width<200||r.height<200)return;
+        const size=`${Math.round(r.width)}x${Math.round(r.height)}`;if(size===fittedStageSize)return;
+        fittedStageSize=size;openReadableView();
+      }
+      let resizeTimer;window.addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(refitForStageSize,120)});
+      if('ResizeObserver' in window)new ResizeObserver(refitForStageSize).observe(stage);
+      nodesHost.addEventListener('input',event=>{
+        if(!editEnabled)return;
+        const target=event.target.closest('[data-map-editable]');if(!target)return;
+        const el=target.closest('.node'),field=target.dataset.mapField;
+        const node=byId.get(el?.dataset.id),source=sourceById.get(el?.dataset.id);
+        if(!node||!source||!['eyebrow','title'].includes(field))return;
+        const value=readEditableText(target);node[field]=value;source[field]=value;
+        if(field==='title'){
+          const link=el.querySelector('.node-link');if(link)link.setAttribute('aria-label',`Открыть ${value}`);
+        }
+        copyDirty=true;
+        parent.postMessage({type:'aim-map:dirty'},'*');
+      });
+      nodesHost.addEventListener('keydown',event=>{
+        if(!editEnabled)return;
+        if(!event.target.closest('[data-map-editable]'))return;
+        event.stopPropagation();
+        const plain=!event.altKey&&!event.ctrlKey&&!event.metaKey;
+        if((event.key===' '||event.code==='Space')&&plain){event.preventDefault();insertPlainText('\u00A0')}
+        if(event.key==='Enter'&&plain){event.preventDefault();insertPlainText('\n')}
+      },true);
+      nodesHost.addEventListener('paste',event=>{
+        if(!editEnabled||!event.target.closest('[data-map-editable]'))return;
+        event.preventDefault();event.stopPropagation();
+        insertPlainText((event.clipboardData?.getData('text/plain')||'').replace(/\r\n?/g,'\n').replaceAll('\u00A0',' '));
+      },true);
+      window.addEventListener('message',event=>{
+        if(event.source!==parent||event.origin!==location.origin||!event.data||typeof event.data!=='object'||event.data.context!=='wild/index.html')return;
+        if(event.data.type==='aim-map:state'){
+          applyCopy(event.data.nodes);
+          setMapEditing(!!event.data.editing);
+        }
+        if(event.data.type==='aim-map:save')saveMapCopy(event.data.requestId);
+      });
+      window.addEventListener('beforeunload',event=>{
+        if(copyDirty){event.preventDefault();event.returnValue='есть несохранённые правки карты'}
+      });
+      renderNodes();drawEdges();requestAnimationFrame(refitForStageSize);
+      parent.postMessage({type:'aim-map:ready',rev:Number(document.documentElement.dataset.rev||1)},'*');
+    })();
+  </script>
+</body>
+</html>
