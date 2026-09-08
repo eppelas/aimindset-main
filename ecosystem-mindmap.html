@@ -264,7 +264,7 @@
         "facts": [
           "основная программа"
         ],
-        "href": "https://aimindset.org/ai-mindset-lab-x26"
+        "href": "https://staging.aimindset.org/labs-custom/s26"
       },
       {
         "id": "sprints",
@@ -376,7 +376,7 @@
         "facts": [
           "237 участников"
         ],
-        "href": "https://aimindset.org/ai-mindset-community"
+        "href": "https://staging.aimindset.org/space/"
       },
       {
         "id": "lms",
@@ -415,7 +415,7 @@
         "eyebrow": "для организаций",
         "title": "{Для команд}",
         "text": "Пилоты для команд от 3–5+ человек.",
-        "href": "https://aimindset.org/ai-mindset-consulting"
+        "href": "https://staging.aimindset.org/for-teams/"
       },
       {
         "id": "personal",
@@ -431,7 +431,7 @@
         "facts": [
           "€200 / час"
         ],
-        "href": "https://aimindset.org/ai-mindset-consulting"
+        "href": "https://staging.aimindset.org/for-teams/"
       },
       {
         "id": "research-branch",
@@ -581,8 +581,8 @@
       const sourceNodes = JSON.parse(mapDataScript.textContent);
       const nodesData = sourceNodes.map(node => ({...node,facts:node.facts?[...node.facts]:undefined}));
       const sourceById = new Map(sourceNodes.map(node => [node.id,node]));
-      const MAP_OBJECT = 'ecosystem-mindmap.html';
-      const EDIT_API = 'https://aimindset-main.web.app';
+      const MAP_OBJECT = 'wild/ecosystem-mindmap.html';
+      const EDIT_API = location.origin;
       let editEnabled = false;
       let copyDirty = false;
       let savingCopy = false;
@@ -888,8 +888,7 @@
         insertPlainText((event.clipboardData?.getData('text/plain')||'').replace(/\r\n?/g,'\n').replaceAll('\u00A0',' '));
       },true);
       window.addEventListener('message',event=>{
-        const allowedParentOrigins=new Set(['https://aimindset-main.web.app','http://localhost:4179','http://localhost:4180','http://localhost:4181','http://localhost:4182','http://127.0.0.1:4179','http://127.0.0.1:4180','http://127.0.0.1:4181','http://127.0.0.1:4182']);
-        if(event.source!==parent||!allowedParentOrigins.has(event.origin)||!event.data||typeof event.data!=='object'||event.data.context!=='index.html')return;
+        if(event.source!==parent||event.origin!==location.origin||!event.data||typeof event.data!=='object'||event.data.context!=='wild/index.html')return;
         if(event.data.type==='aim-map:state'){
           applyCopy(event.data.nodes);
           setMapEditing(!!event.data.editing);
