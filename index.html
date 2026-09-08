@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru" data-rev="147"><head>
+<html lang="ru" data-rev="161"><head><script async="" src="https://mc.yandex.ru/metrika/tag.js"></script><script async="" src="https://mc.yandex.ru/metrika/tag.js"></script>
 <meta http-equiv="Cache-Control" content="no-store, must-revalidate">
 <!-- Yandex Metrika: shared lab counter read by Surikat Tikhon daily. -->
 <script>
@@ -24,7 +24,7 @@
   @font-face{font-family:"AIM Brand";src:url("assets/brand/aim-brand-mono-700.ttf") format("truetype");font-weight:700;font-style:normal;font-display:swap}
   :root{
     --bg:#ffffff; --ink:#000000; --soft:#d9d9d9; --hair:#ececec; --pale:#f7f7f7;
-    --muted:#8a8a8a; --acid:#c3ff00; --frame:1px;
+    --muted:#8a8a8a; --acid:#c50d17; --frame:1px;
     --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
     --top-height:58px;
     --page-shell-max:1320px;
@@ -124,7 +124,6 @@
   .hero-lab-card__title a{border-bottom:0}
   .hero-lab-card__title .go-arrow{display:inline-block;margin-left:.24em;font-size:.62em;font-weight:600;vertical-align:.18em;color:var(--muted);transition:transform .15s,color .15s}
   .hero-lab-card__title a:hover .go-arrow,.hero-lab-card__title a:focus-visible .go-arrow{color:var(--ink);transform:translate(2px,-2px)}
-  @media(prefers-reduced-motion:reduce){.hero-lab-card__title .go-arrow{transition:none}.hero-lab-card__title a:hover .go-arrow{transform:none}}
   @media(max-width:640px){
     .hero-lab-cards{grid-template-columns:1fr;max-width:330px}
     .hero-lab-card{min-height:0}
@@ -169,7 +168,6 @@
     #research .row{grid-template-columns:92px minmax(0,1fr);gap:7px 10px}
     #research .research-thumb{width:92px;height:72px}
   }
-  @media(prefers-reduced-motion:reduce){.research-thumb,.research-thumb img{animation:none!important;transition:none!important}.research-thumb img{object-position:50% 0%!important}}
 
   /* product landscape — independent editorial blocks */
   .product-blocks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;border:0;background:transparent}
@@ -264,7 +262,6 @@
   #product-teams .kinetic-scene::after,#product-teams .product-direction-gfx:hover .kinetic-scene::after{background:linear-gradient(112deg,rgba(255,255,255,.024),transparent 31%,transparent 72%,rgba(255,255,255,.012));mix-blend-mode:screen}
   .direction-side-quote{z-index:3}
   @media(max-width:760px){.kinetic-scene{cursor:default;touch-action:pan-y}}
-  @media(prefers-reduced-motion:reduce){.kinetic-scene::before,.kinetic-scene::after{display:none}}
 
   .metaphor-grid-dot{opacity:.22}
   .metaphor-grid-cursor{fill:none;stroke:var(--metaphor-accent);stroke-width:2;animation:metaphor-grid-travel 8s infinite cubic-bezier(.65,0,.35,1)}
@@ -334,7 +331,6 @@
     .product-block--support p{font-size:var(--type-12);line-height:var(--leading-card)}
     .product-block--support .product-cta{grid-column:2;grid-row:2;align-self:end;justify-self:end;margin:0}
   }
-  @media(prefers-reduced-motion:reduce){.metaphor-stage,.metaphor-stage *,.product-cta{animation:none!important;transition:none!important}}
 
   /* {space}: one editorial field, centred in columns 2–7 */
 #product-space{padding-bottom:0}
@@ -393,7 +389,6 @@
     .section-page-cta{margin-left:0}
     .waitlist-dialog__head,.waitlist-form{padding:18px}
   }
-  @media(prefers-reduced-motion:reduce){.section-page-cta{transition:none}}
 
   /* small projects — compact cards with source project images */
   .project-cards{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px;border:1px solid var(--hair);background:var(--hair)}
@@ -412,7 +407,7 @@
   .project-gfx-line{fill:none;stroke:currentColor;stroke-width:1.4;vector-effect:non-scaling-stroke}
   .project-gfx-hair{fill:none;stroke:currentColor;stroke-width:.8;opacity:.42;vector-effect:non-scaling-stroke}
   .project-gfx-fill{fill:currentColor}
-  .project-gfx-lime{fill:#c3ff00;stroke:#000;stroke-width:1}
+  .project-gfx-lime{fill:#c50d17;stroke:#000;stroke-width:1}
   .project-gfx-red{fill:#e6372f;stroke:#000;stroke-width:1}
   .project-gfx-paper{fill:#f4f4ef;stroke:#000;stroke-width:1}
   .project-gfx-ink{fill:#000}
@@ -436,7 +431,6 @@
     .project-cards{grid-template-columns:1fr}
     .project-card,.project-card--wide{grid-column:span 1;grid-template-rows:180px 30px auto auto 44px}
   }
-  @media(prefers-reduced-motion:reduce){.project-card,.project-art img{transition:none}.project-card:hover{transform:none}.project-card:hover .project-art img{transform:none}}
 
   .company-proof{display:grid;grid-template-columns:150px minmax(0,1fr);gap:20px;margin-top:18px;padding:14px 2px;border-top:var(--frame) solid var(--hair)}
   .company-proof .label{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
@@ -605,7 +599,7 @@
   .eco-tree{padding:24px;background-image:linear-gradient(#ddddda 1px,transparent 1px),linear-gradient(90deg,#ddddda 1px,transparent 1px);background-size:40px 40px}
   .eco-root-wrap{position:relative;display:flex;justify-content:center;padding:12px 0 58px}
   .eco-root-wrap::after{content:"";position:absolute;left:50%;bottom:0;width:1px;height:58px;background:#111}
-  .eco-root{position:relative;z-index:2;width:min(520px,62%);min-height:164px;display:flex;flex-direction:column;justify-content:space-between;padding:22px 24px;border:1px solid #000;border-bottom-color:#000;background:#050505;color:#fff;box-shadow:9px 9px 0 #c3ff00}
+  .eco-root{position:relative;z-index:2;width:min(520px,62%);min-height:164px;display:flex;flex-direction:column;justify-content:space-between;padding:22px 24px;border:1px solid #000;border-bottom-color:#000;background:#050505;color:#fff;box-shadow:9px 9px 0 #c50d17}
   .eco-root:hover{border-bottom-color:#000}
   .eco-root:focus-visible,.eco-card:focus-visible{outline:3px solid #e6372f;outline-offset:3px}
   .eco-root .eco-kicker{font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:#aaa}
@@ -620,7 +614,7 @@
   .eco-branch-head .eco-index{display:block;margin-bottom:10px;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:#777}
   .eco-branch-head h3{margin:0 0 5px;font-size:16px;line-height:1.15;text-transform:uppercase;overflow-wrap:anywhere}
   .eco-branch-head p{font-size:9.5px;line-height:1.4;color:#666}
-  .eco-branch--learning .eco-branch-head{background:#c3ff00}
+  .eco-branch--learning .eco-branch-head{background:#c50d17}
   .eco-items{display:grid;gap:1px;background:#c7c7c3}
   .eco-branch--learning .eco-items{grid-template-columns:repeat(2,minmax(0,1fr))}
   .eco-card{position:relative;min-width:0;min-height:116px;display:flex;flex-direction:column;justify-content:space-between;padding:13px 14px;border:0;border-bottom:0;background:#fff;transition:background .18s ease,color .18s ease}
@@ -632,7 +626,7 @@
   .eco-card--active{background:#111;color:#fff}
   .eco-card--active:hover{background:#1d1d1d}
   .eco-card--active .eco-type,.eco-card--active .eco-note,.eco-card--active .eco-arrow{color:#bdbdbd}
-  .eco-card--active::before{content:"";position:absolute;left:9px;top:9px;width:7px;height:7px;background:#c3ff00;border:1px solid #000;animation:pulse 2.4s infinite}
+  .eco-card--active::before{content:"";position:absolute;left:9px;top:9px;width:7px;height:7px;background:#c50d17;border:1px solid #000;animation:pulse 2.4s infinite}
   .eco-card--active .eco-type{padding-left:13px}
   .eco-card--wide{grid-column:1/-1;min-height:86px}
   .eco-branch--research .eco-card{min-height:166px}
@@ -641,7 +635,7 @@
     .eco-tree{padding:14px 12px;background-size:28px 28px}
     .eco-root-wrap{justify-content:flex-start;padding:4px 0 28px}
     .eco-root-wrap::after{left:18px;height:28px}
-    .eco-root{width:100%;min-height:150px;padding:18px;box-shadow:6px 6px 0 #c3ff00}
+    .eco-root{width:100%;min-height:150px;padding:18px;box-shadow:6px 6px 0 #c50d17}
     .eco-root strong{font-size:23px}
     .eco-branches{display:grid;grid-template-columns:1fr;gap:16px;padding:16px 0 0 38px}
     .eco-branches::before{left:18px;right:auto;top:0;bottom:24px;width:1px;height:auto}
@@ -655,7 +649,6 @@
     .eco-branch--research .eco-card{min-height:120px}
   }
   @media(max-width:440px){.eco-branch--learning .eco-items{grid-template-columns:1fr}.eco-card--wide{grid-column:auto}}
-  @media(prefers-reduced-motion:reduce){.eco-card--active::before{animation:none}.eco-card{transition:none}}
 
   /* compact ecosystem entry points; the full movable map opens on demand */
   .ecosystem-map-open{flex:none;padding:8px 11px;border:0;background:var(--ink);color:var(--bg);font:600 10px/1.25 var(--mono);letter-spacing:.07em;cursor:pointer;box-shadow:3px 3px 0 var(--acid);transition:transform .16s ease,box-shadow .16s ease}
@@ -699,7 +692,6 @@
     .ecosystem-map-dialog__title{font-size:10px}
     .ecosystem-embed{height:calc(100% - 50px)}
   }
-  @media(prefers-reduced-motion:reduce){.ecosystem-map-open,.ecosystem-direction-card,.ecosystem-direction-card::before,.ecosystem-direction-card::after,.ecosystem-direction-arrow,.ecosystem-direction-media img{animation:none;transition:none}}
 
   /* contextual return control after the hero CTA leads into learning */
   .back-to-top{position:fixed;left:18px;bottom:18px;z-index:99;display:inline-flex;align-items:center;gap:10px;
@@ -714,7 +706,6 @@
   @media(max-width:859px){
     .back-to-top{left:10px;bottom:calc(92px + env(safe-area-inset-bottom));min-height:40px;padding:8px 11px 7px 9px}
   }
-  @media(prefers-reduced-motion:reduce){.back-to-top{transition:none}}
 
   /* ————— edit harness ————— */
   .edit-bar{position:fixed;right:16px;bottom:16px;z-index:100;display:flex;gap:8px;align-items:center;
@@ -731,7 +722,7 @@
   .edit-bar .variant-link[hidden]{display:none}
   @media(max-width:640px){body{padding-bottom:72px}}
   body.editing [data-editable]{outline:1px dashed #b5b5b5;outline-offset:3px;cursor:text;pointer-events:auto!important;white-space:pre-wrap;min-width:.5em;min-height:1em}
-  body.editing [data-editable]:hover,body.editing [data-editable]:focus{outline-color:var(--ink);background:#fffdf0}
+  body.editing [data-editable]:hover,body.editing [data-editable]:focus{outline-color:var(--ink)}
   body.editing summary[data-editable]{display:block;position:relative;padding-right:24px}
   body.editing summary[data-editable]::after{position:absolute;right:2px;top:0}
 
@@ -775,20 +766,20 @@
   /* TEMPORARY — FAQ remains in source; hide the block and its navigation links until the user asks to restore it. */
   #faq,.tabs a[href="#faq"],.section-rail-item[data-section-id="faq"]{display:none!important}
 </style>
-</head>
-<body class="">
+<meta name="Reverso extension" content="3.14.417" id="Reverso_extension___elForCheckedInstallExtension"><style></style></head>
+<body class="" data-new-gr-c-s-check-loaded="14.1326.0" data-gr-ext-installed="" data-gr-agent-presence-bridge-connection-id="1788817215920-0.3285527956084363" data-new-gr-c-s-loaded="14.1326.0">
 
 <header class="top">
   <div class="wrap">
-    <a class="brand plain" href="https://aimindset.org/" aria-label="AI Mindset — главная сайта">
+    <a class="brand plain" href="https://staging.aimindset.org/" aria-label="AI Mindset — главная сайта">
       <img class="brand-mark" src="assets/brand/ai-mindset-logo-transparent.png" alt="" width="36" height="36">
       <span class="brand-label">AI Mindset</span>
     </a>
     <nav class="primary-nav" aria-label="Основное меню">
-      <a href="https://aimindset.org/" aria-current="page">главная</a>
-      <a href="https://aimindset.org/ai-mindset-lab">labs</a>
-      <a href="https://aimindset.org/team-track">для команд</a>
-      <a href="https://aimindset.org/space">space</a>
+      <a href="https://staging.aimindset.org/" aria-current="page">главная</a>
+      <a href="https://staging.aimindset.org/labs-custom/s26">labs</a>
+      <a href="https://staging.aimindset.org/for-teams/">для команд</a>
+      <a href="https://staging.aimindset.org/space/">space</a>
     </nav>
   </div>
 </header>
@@ -880,28 +871,86 @@
 <!-- 09 FAQ -->
 
 
-<section id="hero" style="border-bottom:var(--frame) solid var(--ink)">
+<section id="hero" style="border-bottom:var(--frame) solid var(--ink)"><grammarly-extension data-grammarly-shadow-root="true" class="dnXmp" style="visibility: visible !important; position: absolute; top: 0px; left: 0px; pointer-events: none; margin: 0px; border: 0px; --rem: 16;"></grammarly-extension><grammarly-extension data-grammarly-shadow-root="true" class="dnXmp" style="visibility: visible !important; position: absolute; top: 0px; left: 0px; pointer-events: none; margin: 0px; border: 0px; --rem: 16;"></grammarly-extension><grammarly-extension data-grammarly-shadow-root="true" class="dnXmp" style="visibility: visible !important; position: absolute; top: 0px; left: 0px; pointer-events: none; margin: 0px; border: 0px; --rem: 16;"></grammarly-extension><grammarly-extension data-grammarly-shadow-root="true" class="dnXmp" style="visibility: visible !important; position: absolute; top: 0px; left: 0px; pointer-events: none; margin: 0px; border: 0px; --rem: 16;"></grammarly-extension>
   <p class="small" style="margin-bottom:18px"><br></p>
   <h1>AI&nbsp;Mindset. Среда, в&nbsp;которой технологический сдвиг проходят, не&nbsp;теряя&nbsp;себя.</h1>
-  <figure class="hero-face" aria-hidden="true"><div class="aim-voxel-face" data-aim-voxel-face></div></figure>
+  <figure class="hero-face" aria-hidden="true"><div class="aim-voxel-face" data-aim-voxel-face="" style="aspect-ratio: 1 / 1; display: block; opacity: 1; transform: scale(1.4);"><canvas width="680" height="680"></canvas></div></figure>
   <script src="./assets/aim-voxel-face.js"></script>
-  <script>window.AIMVoxelFace?.mount(document.querySelector('[data-aim-voxel-face]'),{imageSrc:'./assets/ai-mindset-logo.png',scale:1.4});</script>
-  <p class="lead">Мы – это лаборатории, спринты, образовательная платформа, сообщество и спец проекты для тех, кто создаёт вместе с AI. Это среда для тех, кто проходит технологический сдвиг и хочет сохранить авторство, внимание и собственный ритм.<br></p>
+  <script>
+  /* Лицо держалось на двух сетевых запросах и молчало при сбое любого из них:
+     если движок не догрузился, `?.` просто пропускал вызов, а если не пришёл
+     логотип — image.onload не наступал никогда. Оба случая давали пустое место
+     без единой ошибки в консоли. Здесь: немедленный монтаж как раньше, затем
+     сторож — доучитать движок, перезапросить логотип, перемонтировать, а в
+     самом крайнем случае показать тот же знак статичной картинкой. */
+  (function(){
+    var host=document.querySelector('[data-aim-voxel-face]');
+    if(!host)return;
+    var LOGO='./assets/ai-mindset-logo.png',ENGINE='./assets/aim-voxel-face.js',mounted=false,attempt=0;
+    function mount(src){
+      if(mounted||!window.AIMVoxelFace)return false;
+      try{window.AIMVoxelFace.mount(host,{imageSrc:src||LOGO,scale:1.4});mounted=true;return true}catch(e){return false}
+    }
+    function painted(){
+      var c=host.querySelector('canvas');
+      if(!c||!c.width)return false;
+      try{
+        var d=c.getContext('2d').getImageData(0,0,c.width,c.height).data;
+        for(var i=3;i<d.length;i+=4*211)if(d[i])return true;
+        return false;
+      }catch(e){return true}
+    }
+    function loadEngine(done){
+      if(window.AIMVoxelFace)return done();
+      var s=document.createElement('script');
+      s.src=ENGINE+'?r='+attempt;s.onload=done;s.onerror=done;
+      document.head.appendChild(s);
+    }
+    function warmLogo(src,done){
+      var im=new Image();im.onload=done;im.onerror=done;im.src=src;
+    }
+    function fallback(){
+      /* Картинку вставляем только если она действительно загрузилась: иначе
+         на месте знака появился бы значок битого изображения. */
+      if(host.querySelector('img'))return;
+      var probe=new Image();
+      probe.onload=function(){
+        if(host.querySelector('img'))return;
+        var c=host.querySelector('canvas');if(c)c.style.display='none';
+        probe.alt='';probe.setAttribute('aria-hidden','true');
+        probe.style.cssText='display:block;width:100%;height:auto';
+        host.appendChild(probe);
+      };
+      probe.src=LOGO;
+    }
+    function watch(){
+      if(painted())return;
+      if(++attempt>3)return fallback();
+      /* Тот же URL на повторе может лежать в кэше как неудача, поэтому
+         пересобираем и прогреваем именно тот адрес, который получит движок. */
+      var src=LOGO+'?r='+attempt;
+      warmLogo(src,function(){loadEngine(function(){mounted=false;mount(src);setTimeout(watch,2600)})});
+    }
+    mount();
+    setTimeout(watch,2600);
+  })();
+  </script>
+  <p class="lead">мы&nbsp;проводим образовательные&nbsp;лаборатории,&nbsp;создаем&nbsp;платформу,&nbsp;продукты, сообщество и спец проекты.&nbsp;это среда для тех,&nbsp;кто исследует возможности АI&nbsp;и хочет сохранить авторство, внимание и собственный ритм<br></p>
   <div class="stats">
-    <div><b>&gt;25</b><span>ЛАБОРАТОРИЙ</span></div>
-    <div><b>4 года</b><span>создания<br>лабораторий</span></div>
-    <div><b>10+</b><span>направлений<br>и спецпроектов</span></div>
-    <div><b>1600+</b><span>участников</span></div>
-    <div><b>30+</b><span>стран</span></div>
-    <div><b>&gt;40</b><span>спикеров<br>на всех потоках</span></div>
+    <div><b aria-label="&gt;25" style="">&gt;25</b><span>ЛАБОРАТОРИЙ</span></div>
+    <div><b aria-label="4 года" style="">4 года</b><span>создания<br>лабораторий</span></div>
+    <div><b aria-label="10+" style="">10+</b><span>направлений<br>и спецпроектов</span></div>
+    <div><b aria-label="1600+" style="">1600+</b><span>участников</span></div>
+    <div><b aria-label="30+" style="">30+</b><span>стран</span></div>
+    <div><b aria-label="&gt;40" style="">&gt;40</b><span>спикеров<br>на всех потоках</span></div>
   </div>
   <p><a class="btn plain" href="#learning">присоединиться</a></p>
   <div class="hero-lab-cards" id="hero-labs" aria-label="Текущие и ближайшие лаборатории">
-    <article class="hero-lab-card">
+        <article class="hero-lab-card">
       <div class="hero-lab-card__status">сейчас идёт набор</div>
       <div class="hero-lab-card__body">
         <p class="hero-lab-card__title"><a href="https://marketing.aimindset.org/" target="_blank" rel="noopener noreferrer">marketing&nbsp;{sprint}<span class="go-arrow" aria-hidden="true">↗</span></a></p>
-        <p class="hero-lab-card__meta">14 сен — 2 окт · 3 недели</p>
+        <p class="hero-lab-card__meta">21 сен — 10 окт · 3 недели</p>
       </div>
     </article>
     <article class="hero-lab-card">
@@ -912,7 +961,7 @@
       </div>
     </article>
   </div>
-</section><section id="about">
+<grammarly-extension-vbars data-grammarly-shadow-root="true" class="dnXmp" style="visibility: visible !important; display: contents; --rem: 16;"></grammarly-extension-vbars></section><section id="about">
   <div class="sec-head"><span class="num">01 · {кто мы}</span><span class="num">делается для себя</span></div>
   <div class="about-intro">
     <div class="about-copy">
@@ -938,7 +987,7 @@
 <div class="team-note-cell"><p class="team-note">В каждом сезоне маршрут дополняют спикеры из сообщества — сильные практики из разных областей, исследующие AI изнутри своей профессии.</p></div>
   </div>
 </section><section id="approach">
-  <div class="sec-head"><span class="num">03 · {подход}</span><span class="num">лаборатория &gt; курс</span></div>
+  <div class="sec-head"><span class="num">02 · {подход}</span><span class="num">лаборатория &gt; курс</span></div>
   <blockquote class="about-quote about-quote--origin" style="margin:0 0 26px"><p class="quote-line"><span class="quote-highlight">Начиная наши лабы, мы никогда не знаем, какие технологии станут доступны. Поэтому обучать только технологиям точно нет смысла</span></p></blockquote>
   <div class="approach-context">
     <p>Мы не учим и считаем, что глупо научить кого-то в эпоху AI лучше, чем <span lang="en">claude code</span>. Мы собираем&nbsp;пространство, где технологический переход проживают, а не изучают. Каждый работает на своём материале: свои задачи, свои данные, свой стек — и собирает систему, которая остаётся с ним после лабы.</p>
@@ -953,7 +1002,7 @@
     <div class="row"><span class="key">замедление</span><div><h3>Две ноты вместо аккорда</h3><p>При безумной скорости технологий осмысленное замедление — стратегический выбор.<br></p></div><span></span></div>
   </div>
 </section><section id="cases">
-  <div class="sec-head"><span class="num">04 · {сделано внутри}</span><span class="num">делается для себя — руками команды</span></div>
+  <div class="sec-head"><span class="num">03 · {сделано внутри}</span><span class="num">делается для себя — руками команды</span></div>
   <h2 class="sec-headline">Сделано внутри</h2>
   <p class="lead" style="margin-bottom:26px">Маленькие проекты, из которых складывается наша собственная практика.<br>Мы считаем, что один из лучших способов изучать технологии – идти в любопытство, игру и эксперименты. Наш подход: всё, чему мы обучаем, мы используем сами. Как пример этого, сделали галерею наших личных маленьких проектов. <br>То, что мы строим для работы, вы можете увидеть на наших лабораториях. То, какие потрясающие вещи делают люди на наших лабах – можно посмотреть на других страницах сайта. Здесь только про игру не продуктивность. </p>
   <blockquote class="rhythm-quote rhythm-quote--right rhythm-quote--cases"><p><span class="rhythm-highlight">«полюбить AI не как инструмент, а как среду. Через руки, нос и ошибки»</span></p></blockquote>
@@ -990,16 +1039,16 @@
     </article>
   </div>
 </section><section id="products" data-num-group="products">
-  <div class="sec-head"><span class="num">05A · {направления}</span><button class="ecosystem-map-open" id="ecosystemMapOpen" type="button" data-editor-ui="">Карта проектов AI Mindset ↗</button></div>
+  <div class="sec-head"><span class="num">04A · {направления}</span><button class="ecosystem-map-open" id="ecosystemMapOpen" type="button" data-editor-ui="">Карта проектов AI Mindset ↗</button></div>
   <h2 class="sec-headline">Направления</h2>
-  <div class="ecosystem-graph" data-ecosystem-graph>
+  <div class="ecosystem-graph" data-ecosystem-graph="">
     <div class="ecosystem-root-wrap">
       <div class="ecosystem-root"><span>AI Mindset</span></div>
     </div>
     <div class="ecosystem-directions">
       <div class="ecosystem-direction-branch ecosystem-direction-branch--learning" data-ecosystem-branch="learning">
         <article class="ecosystem-direction-card ecosystem-direction-card--learning">
-          <div class="direction-scene" data-direction-scene="learning" aria-hidden="true"><canvas></canvas></div>
+          <div class="direction-scene" data-direction-scene="learning" aria-hidden="true"><canvas width="575" height="348"></canvas></div>
           <div class="ecosystem-direction-copy"><span class="ecosystem-direction-meta"><span>01</span><span>практика</span></span><a class="ecosystem-direction-jump" href="#learning" aria-label="Перейти к обучению"><h2>Обучение</h2><span class="ecosystem-direction-arrow" aria-hidden="true"></span></a></div>
           <button class="ecosystem-direction-effect" type="button" tabindex="-1" aria-hidden="true"></button>
         </article>
@@ -1009,7 +1058,7 @@
       </div>
       <div class="ecosystem-direction-branch ecosystem-direction-branch--platform" data-ecosystem-branch="platform">
         <article class="ecosystem-direction-card ecosystem-direction-card--platform">
-          <div class="direction-scene" data-direction-scene="platform" aria-hidden="true"><canvas></canvas></div>
+          <div class="direction-scene" data-direction-scene="platform" aria-hidden="true"><canvas width="575" height="348"></canvas></div>
           <div class="ecosystem-direction-copy"><span class="ecosystem-direction-meta"><span>02</span><span>инфраструктура</span></span><a class="ecosystem-direction-jump" href="#product-platform" aria-label="Перейти к платформе и сообществу"><h2><span class="direction-title-line">Платформа</span><span class="direction-title-line">и&nbsp;сообщество</span></h2><span class="ecosystem-direction-arrow" aria-hidden="true"></span></a></div>
           <button class="ecosystem-direction-effect" type="button" tabindex="-1" aria-hidden="true"></button>
         </article>
@@ -1019,7 +1068,7 @@
       </div>
       <div class="ecosystem-direction-branch ecosystem-direction-branch--research" data-ecosystem-branch="research">
         <article class="ecosystem-direction-card ecosystem-direction-card--research">
-          <div class="direction-scene" data-direction-scene="research" aria-hidden="true"><canvas></canvas></div>
+          <div class="direction-scene" data-direction-scene="research" aria-hidden="true"><canvas width="575" height="348"></canvas></div>
           <div class="ecosystem-direction-copy"><span class="ecosystem-direction-meta"><span>03</span><span>новые территории</span></span><a class="ecosystem-direction-jump" href="#research" aria-label="Перейти к исследованиям и спецпроектам"><h2><span class="direction-title-line">Исследования</span><span class="direction-title-line">и&nbsp;спецпроекты</span></h2><span class="ecosystem-direction-arrow" aria-hidden="true"></span></a></div>
           <button class="ecosystem-direction-effect" type="button" tabindex="-1" aria-hidden="true"></button>
         </article>
@@ -1029,7 +1078,7 @@
       </div>
       <div class="ecosystem-direction-branch ecosystem-direction-branch--consulting" data-ecosystem-branch="consulting">
         <article class="ecosystem-direction-card ecosystem-direction-card--consulting">
-          <div class="direction-scene" data-direction-scene="consulting" aria-hidden="true"><canvas></canvas></div>
+          <div class="direction-scene" data-direction-scene="consulting" aria-hidden="true"><canvas width="575" height="348"></canvas></div>
           <div class="ecosystem-direction-copy"><span class="ecosystem-direction-meta"><span>04</span><span>для команд и лично</span></span><a class="ecosystem-direction-jump" href="#product-consultations" aria-label="Перейти к консалтингу"><h2>Консалтинг</h2><span class="ecosystem-direction-arrow" aria-hidden="true"></span></a></div>
           <button class="ecosystem-direction-effect" type="button" tabindex="-1" aria-hidden="true"></button>
         </article>
@@ -1046,7 +1095,7 @@
 false && (() => {
   const roots = [...document.querySelectorAll('[data-direction-scene]')];
   if (!roots.length) return;
-  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const reduced = false;  /* Обработка prefers-reduced-motion снята намеренно: страница показывает одно и то же на любой машине. */
   const fine = matchMedia('(hover:hover) and (pointer:fine)').matches;
   const TAU = Math.PI * 2;
   const clamp = (n, a = 0, b = 1) => Math.max(a, Math.min(b, n));
@@ -1100,7 +1149,7 @@ false && (() => {
     ctx.setLineDash([6,7]); ctx.strokeStyle = rgba('#526e00', .42); ctx.lineWidth = 1;
     ctx.beginPath(); route.forEach((p,i) => { const y = p.y + Math.sin(i * 4.7 + time * .0014) * h * .11 * (1 - straighten); i ? ctx.lineTo(p.x,y) : ctx.moveTo(p.x,y); }); ctx.stroke(); ctx.setLineDash([]);
     ctx.strokeStyle = '#526e00'; ctx.lineWidth = 2; ctx.beginPath(); route.forEach((p,i) => i ? ctx.lineTo(p.x,p.y) : ctx.moveTo(p.x,p.y)); ctx.stroke();
-    route.forEach((p,i) => { ctx.fillStyle = i < route.length - 1 ? '#c3ff00' : '#526e00'; ctx.fillRect(p.x - 4, p.y - 4, 8, 8); });
+    route.forEach((p,i) => { ctx.fillStyle = i < route.length - 1 ? '#c50d17' : '#526e00'; ctx.fillRect(p.x - 4, p.y - 4, 8, 8); });
     const q = (time * .00012 + s.hit * .2) % 1, raw = q * (route.length - 1), index = Math.floor(raw), p = route[index], next = route[Math.min(route.length - 1,index + 1)], marker = {x:mix(p.x,next.x,raw-index),y:mix(p.y,next.y,raw-index)};
     ctx.fillStyle = '#050505'; ctx.fillRect(marker.x - 3, marker.y - 3, 6, 6);
   }
@@ -1140,7 +1189,6 @@ false && (() => {
    a persistent target, so leaving a card releases it into an idle current instead
    of snapping it back to an initial frame. */
 false && (() => {
-  if (matchMedia('(prefers-reduced-motion:reduce)').matches) return;
   const cards = [...document.querySelectorAll('[data-direction-scene]')];
   const fine = matchMedia('(hover:hover) and (pointer:fine)').matches;
   const tau = Math.PI * 2;
@@ -1209,7 +1257,7 @@ false && (() => {
 /* Approved direction-card scenes transferred from direction-lab.html.
    Main-page wording and links stay in the markup above. */
 (() => {
-  const cards=[...document.querySelectorAll('.ecosystem-direction-card')], reduced=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  const cards=[...document.querySelectorAll('.ecosystem-direction-card')], reduced=false;
   const clamp=(n,a=0,b=1)=>Math.max(a,Math.min(b,n)),mix=(a,b,t)=>a+(b-a)*t,ease=t=>t*t*(3-2*t),TAU=Math.PI*2;
   /* Exact paths selected in the open Pencil file: Vector 5 is the head contour;
      Vector 6 is the single eye.  They are used verbatim, only scaled to canvas. */
@@ -1235,7 +1283,7 @@ false && (() => {
     card.addEventListener('pointermove',e=>{const q=p(e);tx=q.x;ty=q.y;record(q)},{passive:true});
     card.addEventListener('pointerleave',()=>{inside=false;if(i===3){state.mode=0;state.retreating=true;state.walkers.forEach(d=>d.direction=-1)}});
     card.addEventListener('pointerdown',e=>{const q=p(e);tx=q.x;ty=q.y;record(q);if(i===1){state.mode++;state.rings.push({x:q.x,y:q.y,age:0});if(state.rings.length>3)state.rings.shift()}if(i===2){state.mode++;state.discoveries.push({x:q.x,y:q.y,age:0});if(state.discoveries.length>3)state.discoveries.shift()}if(i===3){state.mode=(state.mode+1)%2;if(state.mode===1)state.walkers.forEach(d=>d.selected=d.travel>=0&&!d.exited);state.pulse=1}if(i===0){state.imprints.push({x:q.x,y:q.y,age:0});if(state.imprints.length>4)state.imprints.shift();state.pulse=1}},{passive:true});
-    new IntersectionObserver(es=>visible=es.some(e=>e.isIntersecting),{threshold:.02}).observe(card);
+    new IntersectionObserver(es=>{visible=es.some(e=>e.isIntersecting);if(visible)requestAnimationFrame(()=>safeDraw(state,0,0))},{threshold:.02}).observe(card);
     state.step=()=>{if(!inside){tx=.62;ty=.45}px=mix(px,tx,.07);py=mix(py,ty,.07);state.engage=mix(state.engage,inside?1:0,.055);if(i===3){const moving=inside||state.retreating;state.crew=mix(state.crew,moving?1:0,.065);state.formation=mix(state.formation,inside&&state.mode?1:0,.042);if(!state.mode&&state.formation<.012)state.walkers.forEach(d=>d.selected=false);if(moving)state.walkers.forEach(d=>{if(d.exited)return;const velocity=.018*d.speed*(1+state.pulse*.22);if(state.retreating){d.travel-=velocity;if(d.travel<-d.delay){d.travel=-d.delay;d.exited=true}}else d.travel=Math.min(.98,d.travel+velocity)});if(state.retreating&&state.walkers.every(d=>d.exited)){state.retreating=false;state.crew=0}}};
     return state;
   });
@@ -1356,11 +1404,18 @@ false && (() => {
     c.fillStyle='rgba(184,117,30,.18)';c.fillRect(carriedX-w*.085,carriedY+h*.056,w*.17,h*.045);c.fillStyle='#b8751e';c.fillRect(carriedX-w*.025,carriedY-w*.025,w*.05,w*.05);c.fillStyle='#f4f4ef';c.fillRect(carriedX-w*.008,carriedY-w*.008,w*.016,w*.016);
     if(s.pulse>0){s.pulse=Math.max(0,s.pulse-.006);const q=1-s.pulse;c.strokeStyle=`rgba(184,117,30,${s.pulse*.7})`;c.lineWidth=1.5;c.beginPath();c.arc(mx,my,w*(.045+q*.20),0,TAU);c.stroke()}c.lineCap='butt';c.lineJoin='miter';
   }
-  let previous=performance.now();const draw=(s,t,dt)=>{s.step();if(s.kind===0)learningHead(s,t);else if(s.kind===1)platform(s,t,dt);else if(s.kind===2)research(s,t,dt);else consulting(s,t)};let running=false;function frame(t){const dt=Math.min(34,t-previous||16);previous=t;states.forEach(s=>{if(s.visible())draw(s,t,dt)});if(!reduced)requestAnimationFrame(frame)}if(reduced)states.forEach(s=>draw(s,0,0));else requestAnimationFrame(frame);
+  let previous=performance.now();const draw=(s,t,dt)=>{s.step();if(s.kind===0)learningHead(s,t);else if(s.kind===1)platform(s,t,dt);else if(s.kind===2)research(s,t,dt);else consulting(s,t)};
+  /* Одно исключение внутри draw раньше останавливало общий rAF-цикл, и все
+     четыре сцены застывали пустыми. Кадр каждой сцены теперь изолирован, а
+     вырожденный размер канваса (карточка ещё не разложена) просто пропускаем:
+     именно он давал arc() с отрицательным радиусом. */
+  function safeDraw(s,t,dt){if(!s.visible())return;if(s.w()<24||s.h()<24)return;try{draw(s,t,dt)}catch(err){if(!safeDraw.warned){safeDraw.warned=true;console.warn('direction scene frame skipped',err)}}}
+  let running=false;function frame(t){const dt=Math.min(34,t-previous||16);previous=t;states.forEach(s=>safeDraw(s,t,dt));if(!reduced)requestAnimationFrame(frame)}
+  requestAnimationFrame(frame);
 })();
 </script>
-</section><section id="learning">
-  <div class="sec-head"><span class="num">06 · {обучение}</span><span class="num">лаборатории и тематические спринты</span></div>
+<section id="learning">
+  <div class="sec-head"><span class="num">05 · {обучение}</span><span class="num">лаборатории и тематические спринты</span></div>
   <h2 class="sec-headline">Обучение</h2>
   <div class="learning-topics">
     <article class="learning-topic">
@@ -1379,23 +1434,27 @@ false && (() => {
       <button class="learning-action waitlist-open" type="button" data-waitlist-topic="AI-native sprint" data-waitlist-code="ai-native-sprint">waitlist ↗</button>
     </article>
     <article class="learning-topic learning-topic--active">
-      <div class="learning-topic__meta"><span>тематический спринт</span><time datetime="2026-09-14">14 сен — 2 окт · 3 недели</time></div>
-      <div><h3>Маркетинг-спринт</h3><p>Три недели практики: оффер и аудитория, каналы и дистрибуция, метрики и первый измеримый эксперимент. Участник собирает маркетинг-машину на своём продукте.</p></div>
+      <div class="learning-topic__meta"><span>тематический спринт</span><time datetime="2026-09-21">21 сен — 10 окт · 3 недели</time></div>
+      <div><h3>Маркетинг-спринт – маркетинг-машина за 3 недели</h3><p>Три недели практики: оффер и аудитория, каналы и дистрибуция, метрики и первый измеримый эксперимент. Участник собирает маркетинг-машину на своём продукте.</p></div>
       <a class="learning-action" href="https://marketing.aimindset.org/" target="_blank" rel="noopener noreferrer">подать заявку ↗</a>
     </article>
+    
+    
+    
+    
     <article class="learning-topic">
       <div class="learning-topic__meta"><span>тематический спринт</span></div>
       <div><h3>Product and Design sprint</h3><p>AI в продуктовой и дизайн-практике: от исследования и концепции до прототипа.</p></div>
       <button class="learning-action waitlist-open" type="button" data-waitlist-topic="Product and Design sprint" data-waitlist-code="product-design-sprint">waitlist ↗</button>
     </article>
   </div>
-  <a class="section-page-cta" href="https://aimindset.org/ai-mindset-lab-x26" target="_blank" rel="noopener noreferrer"><span>перейти на страницу лабораторий</span><span aria-hidden="true">↗</span></a>
+  <a class="section-page-cta" href="https://staging.aimindset.org/labs-custom/s26" target="_blank" rel="noopener noreferrer"><span>перейти на страницу лабораторий</span><span aria-hidden="true">↗</span></a>
 </section><section id="product-platform" class="product-section product-section--intro" data-num-group="products">
-  <div class="sec-head"><span class="num">05B · {платформа и сообщество}</span><span class="num">учебная платформа · {space}</span></div>
+  <div class="sec-head"><span class="num">04B · {платформа и сообщество}</span><span class="num">учебная платформа · {space}</span></div>
   <h2 class="sec-headline">Платформа и сообщество</h2>
   <article class="product-block product-block--major">
     <div class="product-visual product-visual--platform" aria-hidden="true" data-editor-ui="">
-      <div class="kinetic-scene" data-kinetic-scene="platform"><canvas></canvas></div>
+      <div class="kinetic-scene" data-kinetic-scene="platform"><canvas width="1097" height="972" style="width: 548.312px; height: 486.227px;"></canvas></div>
     </div>
     <div class="product-copy">
       <span class="product-meta">продукт · learn.aimindset.org</span>
@@ -1410,7 +1469,7 @@ false && (() => {
 </section><section id="product-space" class="product-section">
   <article class="product-block product-block--major product-block--reverse">
     <div class="product-visual product-visual--space" aria-hidden="true" data-editor-ui="">
-      <div class="kinetic-scene" data-kinetic-scene="space"><canvas></canvas></div>
+      <div class="kinetic-scene" data-kinetic-scene="space"><canvas width="1097" height="936" style="width: 548.32px; height: 467.828px;"></canvas></div>
       <blockquote class="product-visual-quote"><span class="rhythm-highlight">{space} стал живым организмом</span></blockquote>
     </div>
     <div class="product-copy">
@@ -1419,7 +1478,7 @@ false && (() => {
       <p class="product-voice"><span class="rhythm-highlight">сообщество поддерживающих смыслов</span></p>
       <p>Практическое AI-сообщество для фаундеров и специалистов. Еженедельные показы работ, коворкинги, разборы кейсов и взаимный вклад.</p>
       <p>{space} работает между интенсивами и после них: сюда приносят текущую работу, пробуют новые стеки и делятся не только успехами, но и ошибками.</p>
-      <a class="product-cta" href="https://aimindset.org/ai-mindset-community" target="_blank" rel="noopener noreferrer"><span>прочитать подробнее</span><span aria-hidden="true">↗</span></a>
+      <a class="product-cta" href="https://staging.aimindset.org/space/" target="_blank" rel="noopener noreferrer"><span>прочитать подробнее</span><span aria-hidden="true">↗</span></a>
     </div>
   </article>
   <div class="space-rhythm">
@@ -1431,30 +1490,51 @@ false && (() => {
   <script>
   (() => {
     const schedule=document.getElementById("spaceSchedule"),board=document.getElementById("spaceScheduleBoard");if(!schedule||!board)return;
+    // Расписание живёт в календаре Luma. Напрямую из браузера api.lu.ma не отвечает
+    // (CORS открыт только для доменов самой Luma), поэтому события приходят через
+    // /__events — прокси на этом же домене, с пятиминутным кешем на стороне сервиса.
+    const CALENDAR="https://lu.ma/ai_mind_set";
+    const ENDPOINTS=[schedule.dataset.eventsApi||"/__events","https://aim-v5-publisher-1004044787855.us-central1.run.app/__events"];
     const demo=new URLSearchParams(location.search).has("schedule-demo");
-    const events=demo?[{date:"23 января",time:"20:00 МСК",title:"Session for Newbies",note:"Четыре блока: интерфейсы ChatGPT, Obsidian, n8n и Cursor.",url:"https://lu.ma/ai_mind_set"},{date:"24 января",time:"12:00 МСК",title:"office-hours",note:"Разбор вопросов, домашних заданий, кейсов и воркфлоу.",url:"https://lu.ma/ai_mind_set"},{date:"26 января",time:"20:00 МСК",title:"WS02 — Контекст",note:"Практика работы с личным контекстом и задачами в breakout rooms.",url:"https://lu.ma/ai_mind_set"},{date:"27 января",time:"14:00 МСК",title:"FS by @t4s_space",note:"Фокус-сессия: настройка, два блока совместной работы и общий шеринг.",url:"https://lu.ma/ai_mind_set"}]:JSON.parse(schedule.dataset.events||"[]");
+    const demoEvents=[{date:"23 января",time:"20:00 МСК",title:"Session for Newbies",note:"Четыре блока: интерфейсы ChatGPT, Obsidian, n8n и Cursor.",url:CALENDAR},{date:"24 января",time:"12:00 МСК",title:"office-hours",note:"Разбор вопросов, домашних заданий, кейсов и воркфлоу.",url:CALENDAR},{date:"26 января",time:"20:00 МСК",title:"WS02 — Контекст",note:"Практика работы с личным контекстом и задачами в breakout rooms.",url:CALENDAR},{date:"27 января",time:"14:00 МСК",title:"FS by @t4s_space",note:"Фокус-сессия: настройка, два блока совместной работы и общий шеринг.",url:CALENDAR}];
     const make=(tag,cls,text)=>{const el=document.createElement(tag);if(cls)el.className=cls;if(text)el.textContent=text;return el};
-    const row=event=>{const el=make("article","space-schedule__event"),date=make("div","space-schedule__date",event.date||"дата уточняется"),copy=make("div");if(event.time)date.append(make("span","space-schedule__time",event.time));copy.append(make("h4","space-schedule__event-title",event.title||"Встреча {space}"));if(event.note)copy.append(make("p","space-schedule__event-note",event.note));const link=make("a","space-schedule__action","зарегистрироваться ↗");link.href=event.url||"https://lu.ma/ai_mind_set";link.target="_blank";link.rel="noopener noreferrer";el.append(date,copy,link);return el};
-    if(!events.length){const empty=make("div","space-schedule__empty"),copy=make("div");empty.append(make("span","space-schedule__date","ближайшая встреча"));copy.append(make("p","space-schedule__empty-title","Новых событий пока нет"),make("p","space-schedule__empty-copy","Анонсы появляются по мере готовности встреч."));empty.append(copy);board.append(empty);return}
-    const visible=events.slice(0,2),hidden=events.slice(2);visible.forEach(event=>board.append(row(event)));
-    if(hidden.length){const tail=make("div");tail.hidden=true;hidden.forEach(event=>tail.append(row(event)));const toggle=make("button","space-schedule__toggle","показать все события ("+events.length+")");toggle.type="button";toggle.onclick=()=>{tail.hidden=!tail.hidden;toggle.textContent=tail.hidden?"показать все события ("+events.length+")":"скрыть дополнительные события"};board.append(tail,toggle)}
+    const dateFmt=new Intl.DateTimeFormat("ru-RU",{day:"numeric",month:"long",timeZone:"Europe/Moscow"});
+    const timeFmt=new Intl.DateTimeFormat("ru-RU",{hour:"2-digit",minute:"2-digit",timeZone:"Europe/Moscow"});
+    const withDate=event=>{if(event.date)return event;const at=event.start?new Date(event.start):null;if(!at||Number.isNaN(at.getTime()))return event;return{...event,date:dateFmt.format(at),time:timeFmt.format(at)+" МСК"}};
+    const link=(text,href)=>{const el=make("a","space-schedule__action",text);el.href=href;el.target="_blank";el.rel="noopener noreferrer";return el};
+    const row=event=>{const el=make("article","space-schedule__event"),date=make("div","space-schedule__date",event.date||"дата уточняется"),copy=make("div");if(event.time)date.append(make("span","space-schedule__time",event.time));copy.append(make("h4","space-schedule__event-title",event.title||"Встреча {space}"));if(event.note)copy.append(make("p","space-schedule__event-note",event.note));el.append(date,copy,link("зарегистрироваться ↗",event.url||CALENDAR));return el};
+    const notice=(title,note,withLink)=>{const el=make("div","space-schedule__empty"),copy=make("div");el.append(make("span","space-schedule__date","ближайшая встреча"));copy.append(make("p","space-schedule__empty-title",title),make("p","space-schedule__empty-copy",note));el.append(copy);if(withLink)el.append(link("открыть календарь ↗",CALENDAR));return el};
+    const render=list=>{board.textContent="";const events=list.map(withDate);
+      if(!events.length){board.append(notice("Новых событий пока нет","Анонсы появляются по мере готовности встреч.",true));return}
+      const visible=events.slice(0,2),hidden=events.slice(2);visible.forEach(event=>board.append(row(event)));
+      if(!hidden.length)return;
+      const tail=make("div");tail.hidden=true;hidden.forEach(event=>tail.append(row(event)));
+      const toggle=make("button","space-schedule__toggle","показать все события ("+events.length+")");toggle.type="button";toggle.setAttribute("data-editor-ui","");
+      toggle.onclick=()=>{tail.hidden=!tail.hidden;toggle.textContent=tail.hidden?"показать все события ("+events.length+")":"скрыть дополнительные события"};
+      board.append(tail,toggle)};
+    // data-events остаётся ручным запасом на случай, если календарь недоступен.
+    const saved=(()=>{try{const parsed=JSON.parse(schedule.dataset.events||"[]");return Array.isArray(parsed)?parsed:[]}catch(error){return[]}})();
+    if(demo)return render(demoEvents);
+    board.append(notice("Смотрим календарь","Ближайшие встречи {space} загружаются.",false));
+    (async()=>{for(const endpoint of ENDPOINTS){try{const response=await fetch(endpoint,{cache:"no-store"});if(!response.ok)continue;const data=await response.json();if(Array.isArray(data.events))return data.events}catch(error){}}return null})()
+      .then(events=>render(events||saved));
   })();
   </script>
 </section>
 <div class="space-schedule-quote"><blockquote class="rhythm-quote rhythm-quote--left rhythm-quote--space"><p><span class="rhythm-highlight">"маленький Burning Man в Zoom, где перфоманс работает лучше, чем лекции"</span></p></blockquote></div>
 <section id="product-consultations" class="product-section" data-num-group="products">
-  <div class="sec-head"><span class="num">05C · {консультации}</span></div>
+  <div class="sec-head"><span class="num">04C · {консультации}</span></div>
   <h2 class="sec-headline">Консультации</h2>
   <div class="consultation-pair">
     <div id="product-teams">
       <article class="product-block product-block--direction">
-        <div class="product-direction-gfx" aria-hidden="true" data-editor-ui=""><div class="kinetic-scene" data-kinetic-scene="teams"><canvas></canvas></div></div>
-        <div class="product-direction-copy"><h3>Для команд</h3><p>Команды от 3–5 человек проходят лабораторию вместе, собирают общую контекстную систему и рабочие прототипы.</p><a class="product-cta" href="https://aimindset.org/ai-mindset-consulting" target="_blank" rel="noopener noreferrer"><span>открыть страницу</span><span aria-hidden="true">↗</span></a></div>
+        <div class="product-direction-gfx" aria-hidden="true" data-editor-ui=""><div class="kinetic-scene" data-kinetic-scene="teams"><canvas width="1160" height="640" style="width: 580px; height: 320px;"></canvas></div></div>
+        <div class="product-direction-copy"><h3>Для команд</h3><p>Команды от 3–5 человек проходят лабораторию вместе, собирают общую контекстную систему и рабочие прототипы.</p><a class="product-cta" href="https://staging.aimindset.org/for-teams/" target="_blank" rel="noopener noreferrer"><span>открыть страницу</span><span aria-hidden="true">↗</span></a></div>
       </article>
     </div>
     <div id="product-consulting">
       <article class="product-block product-block--direction">
-        <div class="product-direction-gfx" data-editor-ui=""><div class="kinetic-scene" data-kinetic-scene="consulting"><canvas></canvas></div></div>
+        <div class="product-direction-gfx" data-editor-ui=""><div class="kinetic-scene" data-kinetic-scene="consulting"><canvas width="1160" height="640" style="width: 580px; height: 320px;"></canvas></div></div>
         <div class="product-direction-copy"><h3>Личная консультация</h3><p>Разбор задачи один на один и сборка системы под неё: рабочий процесс, контекст и инструменты.</p><a class="product-cta" href="https://t.me/alex_named" target="_blank" rel="noopener noreferrer"><span>написать нам</span><span aria-hidden="true">↗</span></a></div>
       </article>
     </div>
@@ -1463,12 +1543,12 @@ false && (() => {
 </section><section id="product-nonprofit" class="product-section">
   <article class="product-block product-block--support">
     <div class="product-support-mark" aria-hidden="true" data-editor-ui="">
-      <div class="kinetic-scene" data-kinetic-scene="nonprofit"><canvas></canvas></div>
+      <div class="kinetic-scene" data-kinetic-scene="nonprofit"><canvas width="558" height="238" style="width: 279px; height: 119.188px;"></canvas></div>
     </div>
-    <div class="product-support-copy"><h3>Места для non-profit</h3><p>На каждом наборе AI Mindset покрывает три места для некоммерческих и творческих организаций. Отбор — по мотивационным письмам.</p><a class="product-cta" href="https://aimindset.org/non-profit" target="_blank" rel="noopener noreferrer"><span>условия</span><span aria-hidden="true">↗</span></a></div>
+    <div class="product-support-copy"><h3>Места для non-profit</h3><p>На каждом наборе AI Mindset покрывает три места для некоммерческих и творческих организаций. Отбор — по мотивационным письмам.</p><a class="product-cta" href="https://staging.aimindset.org/non-profit/" target="_blank" rel="noopener noreferrer"><span>условия</span><span aria-hidden="true">↗</span></a></div>
   </article>
 </section><section id="research">
-  <div class="sec-head"><span class="num">07 · {исследования}</span><span class="num">каждый вопрос — артефакт</span></div>
+  <div class="sec-head"><span class="num">06 · {исследования}</span><span class="num">каждый вопрос — артефакт</span></div>
   <h2 class="sec-headline">Исследования</h2>
   <div class="rows">
     <div class="row"><span class="key">манифест</span><figure class="research-thumb" data-editor-ui=""><img src="assets/ecosystem-previews/manifest.jpg" alt="Скриншот AI MINDSET {manifest}" loading="lazy" decoding="async"></figure><div><h3>AI MINDSET {manifest}</h3><p>Соберите собственную систему работы с ИИ: запрос → внимание → мышление → жизнь. Контекстные системы и карта экосистемы.</p></div><a class="go" href="https://manifest.aimindset.org">открыть ↗</a></div>
@@ -1481,7 +1561,7 @@ false && (() => {
     <div class="row"><span class="key">карта</span><figure class="research-thumb" data-editor-ui=""><img src="assets/ecosystem-previews/future.jpg" alt="Скриншот проекта «Карта Реальностей × AI»" loading="lazy" decoding="async"></figure><div><h3>Карта Реальностей × AI</h3><p>С Олей Ерёминой: навыки, ценности, система, сообщество — четыре логики одного вопроса.</p></div><a class="go" href="https://future.aimindset.org">открыть ↗</a></div>
   </div>
 </section><section id="reviews">
-  <div class="sec-head"><span class="num">08 · {слова вокруг проекта}</span><span class="num"><a href="https://ai-native.aimindset.org">все отзывы ↗</a></span></div>
+  <div class="sec-head"><span class="num">07 · {слова вокруг проекта}</span><span class="num"><a href="https://ai-native.aimindset.org">все отзывы ↗</a></span></div>
   <h2 class="sec-headline">Слова вокруг проекта</h2>
   <div class="reviews-grid">
   <blockquote><p class="review-copy">они <span class="review-emphasis">сигнал из будущего</span> в настоящем о том, что использовать ИИ - это не писать промт. Использовать ИИ - это самому создавать контекст</p><span class="src">Оля Еремина · <a href="https://t.me/olya_v_trende/1038">первоисточник ↗</a></span></blockquote>
@@ -1493,7 +1573,7 @@ false && (() => {
   </div>
   <div class="company-proof"><span class="label">люди из этих компаний нам доверяют</span><p>Профи.ру · Сеттерс · Альфа-Банк · Блумберг · Сколково · Авито · Сбер · МТС · Яндекс · VK · Nebius · MOEX · Альфа-Капитал · Semrush · tutu</p></div>
 </section><section id="manifesto">
-  <div class="sec-head"><div class="sec-title-group"><span class="num">02 · {манифест}</span><span class="num sec-title-note">– не обязательная часть, которая сильно похожа на подход</span></div><span class="num"><a href="https://manifest.aimindset.org">сайт манифеста ↗</a></span></div>
+  <div class="sec-head"><div class="sec-title-group"><span class="num">08 · {манифест}</span><span class="num sec-title-note">– не обязательная часть, которая сильно похожа на подход</span></div><span class="num"><a href="https://manifest.aimindset.org">сайт манифеста ↗</a></span></div>
   <div class="manifesto-layout">
     <div class="manifesto-intro">
       <h2>Данных становится больше. Выбирать становится труднее.</h2>
@@ -1530,7 +1610,7 @@ false && (() => {
   </div>
   <div class="follow-more"><span>ещё</span><a href="https://www.linkedin.com/company/aimindset" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="https://luma.com/ai_mind_set" target="_blank" rel="noopener noreferrer">календарь встреч ↗</a></div>
 </section><section id="faq" style="border-bottom:none">
-  <div class="sec-head"><span class="num">09 · {вопросы}</span><span class="num">вопросы и ответы</span></div>
+  <div class="sec-head"><span class="num">10 · {вопросы}</span><span class="num">вопросы и ответы</span></div>
   <h2 class="sec-headline">Вопросы</h2>
   <details>
     <summary>&nbsp;Кому лаборатория подходит, а кому нет?</summary>
@@ -1599,8 +1679,8 @@ false && (() => {
         <li><a href="https://www.youtube.com/@A-I-Mindset">YouTube</a></li>
       </ul></div>
       <div><div class="h">инфо</div><ul>
-        <li><a href="/oferta">публичный договор-оферта</a></li>
-        <li><a href="/confpolicy">политика конфиденциальности</a></li>
+        <li><a href="https://staging.aimindset.org/oferta">публичный договор-оферта</a></li>
+        <li><a href="https://staging.aimindset.org/confpolicy">политика конфиденциальности</a></li>
       </ul></div>
       <div><div class="h">суть</div><ul>
         <li>давать людям опору в быстро меняющемся мире</li>
@@ -2142,17 +2222,20 @@ false && (() => {
     return fromActive || editableFromSelection();
   }
   function lock(ev) { ev.preventDefault(); ev.stopImmediatePropagation(); }
-  function insertText(editable, text) {
-    ensureAnchor(editable);
-    editable.focus({ preventScroll: true });
+  function ensureCaretInside(editable) {
     const sel = getSelection();
-    if (!sel) return;
+    if (!sel) return null;
     let range = sel.rangeCount ? sel.getRangeAt(0) : null;
     if (!range || !editable.contains(range.commonAncestorContainer)) {
       range = document.createRange();
       range.selectNodeContents(editable); range.collapse(false);
       sel.removeAllRanges(); sel.addRange(range);
     }
+    return sel;
+  }
+  function insertTextManual(editable, text) {
+    const sel = getSelection(); if (!sel || !sel.rangeCount) return;
+    const range = sel.getRangeAt(0);
     range.deleteContents();
     const frag = document.createDocumentFragment();
     let lastNode = null;
@@ -2165,26 +2248,38 @@ false && (() => {
     if (lastNode) range.setStartAfter(lastNode);
     range.collapse(true);
     sel.removeAllRanges(); sel.addRange(range);
+  }
+  function insertText(editable, text) {
+    ensureAnchor(editable);
+    editable.focus({ preventScroll: true });
+    if (!ensureCaretInside(editable)) return;
+    // execCommand пишет правку в нативный undo-стек — тогда Cmd/Ctrl+Z откатывает и вставку, и пробелы
+    const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    const lines = String(text).split("\n");
+    let html = lines.map(esc).join("<br>");
+    if (lines.length > 1 && !lines[lines.length - 1]) html += ANCHOR;   // хвостовой перенос: каретка должна уйти за <br>
+    const ok = lines.length === 1 ? document.execCommand("insertText", false, text) : document.execCommand("insertHTML", false, html);
+    if (!ok) insertTextManual(editable, text);
     editable.dispatchEvent(new InputEvent("input", { bubbles: true, inputType: "insertText", data: text }));
   }
   function insertBreak(editable) {
     ensureAnchor(editable);
     editable.focus({ preventScroll: true });
-    const sel = getSelection();
-    if (!sel) return;
-    let range = sel.rangeCount ? sel.getRangeAt(0) : null;
-    if (!range || !editable.contains(range.commonAncestorContainer)) {
-      range = document.createRange();
-      range.selectNodeContents(editable); range.collapse(false);
-      sel.removeAllRanges(); sel.addRange(range);
+    if (!ensureCaretInside(editable)) return;
+    // нативный перенос — тоже в undo-стек
+    if (!document.execCommand("insertHTML", false, "<br>" + ANCHOR)) {
+      const sel = getSelection();
+      const range = sel && sel.rangeCount ? sel.getRangeAt(0) : null;
+      if (range) {
+        range.deleteContents();
+        const br = document.createElement("br");
+        range.insertNode(br);
+        const anchor = document.createTextNode(ANCHOR);
+        br.after(anchor);
+        range.setStart(anchor, ANCHOR.length); range.collapse(true);
+        sel.removeAllRanges(); sel.addRange(range);
+      }
     }
-    range.deleteContents();
-    const br = document.createElement("br");
-    range.insertNode(br);
-    const anchor = document.createTextNode(ANCHOR);
-    br.after(anchor);
-    range.setStart(anchor, ANCHOR.length); range.collapse(true);
-    sel.removeAllRanges(); sel.addRange(range);
     editable.dispatchEvent(new InputEvent("input", { bubbles: true, inputType: "insertLineBreak", data: null }));
   }
   function caretFromPoint(x, y) {
@@ -2349,6 +2444,7 @@ false && (() => {
     const ws = clone.querySelector("#waitlistStatus"); if (ws) { ws.textContent = ""; ws.classList.remove("is-error"); }
     const wb = clone.querySelector("#waitlistSubmit"); if (wb) wb.removeAttribute("disabled");
     const sc = clone.querySelector("#spaceSchedule"); if (sc) sc.classList.remove("is-expanded");
+    const sb = clone.querySelector("#spaceScheduleBoard"); if (sb) sb.textContent = "";
     const st = clone.querySelector("#spaceScheduleToggle"); if (st) {
       st.setAttribute("aria-expanded", "false");
       const label = st.querySelector("span:first-child");
@@ -2753,10 +2849,10 @@ false && (() => {
   const roots = [...document.querySelectorAll("[data-kinetic-scene]")];
   if (!roots.length) return;
 
-  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const reduced = false;  /* Обработка prefers-reduced-motion снята намеренно: страница показывает одно и то же на любой машине. */
   const finePointer = matchMedia("(hover:hover) and (pointer:fine)").matches;
   const C = {
-    ink: "#05070a", paper: "#f4f4ef", acid: "#526e00", platformAcid: "#c3ff00",
+    ink: "#05070a", paper: "#f4f4ef", acid: "#526e00", platformAcid: "#c50d17",
     blue: "#1f4fd6", ice: "#146e9a", violet: "#6332b6",
     mint: "#087a5b", amber: "#925100", gold: "#8c6200",
     red: "#b82032", pink: "#a92755", bank: "#e2e2dc"
@@ -4275,7 +4371,7 @@ false && (() => {
   const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
   const lerp = (a, b, t) => a + (b - a) * t;
   const easeOut = t => 1 - Math.pow(1 - t, 3);
-  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const reduced = false;  /* Обработка prefers-reduced-motion снята намеренно: страница показывает одно и то же на любой машине. */
 
   /* Прогресс «вход→выход» элемента: 0 — верх элемента у нижней кромки
      вьюпорта, 1 — центр элемента дошёл до центра экрана. Для блоков,
@@ -4586,7 +4682,6 @@ false && (() => {
 body.editing #stretch-gauge{display:none}
 @media(max-width:1180px){#stretch-gauge{display:none}}
 @media(max-width:760px){#stretch-badge{display:none}}
-@media(prefers-reduced-motion:reduce){#stretch-gauge{display:none}}
 </style>
 <script>
 /* ═══════════════════════════════════════════════════════════
@@ -4607,8 +4702,6 @@ body.editing #stretch-gauge{display:none}
   badge.textContent = "главная · растяжка";
   document.body.appendChild(badge);
 
-  const rm = matchMedia("(prefers-reduced-motion: reduce)");
-  if (rm.matches) return;
 
   /* пары состояний: вход → выход (фонд фраз AIM, тон-карта) */
   const PAIRS = {
@@ -4738,9 +4831,7 @@ body.editing #stretch-gauge{display:none}
   document.addEventListener("click", event => {
     if (event.target instanceof Element && event.target.closest("#editToggle, #editSave, #editDuplicate")) finishStats();
   }, true);
-  rm.addEventListener?.("change", event => { if (event.matches) finishStats(); });
 
-  rm.addEventListener?.("change", e => { if (e.matches) gauge.remove(); });
 })();
 </script>
 
@@ -4844,7 +4935,6 @@ body.editing #stretch-gauge{display:none}
 .ecosystem-direction-card{position:relative;overflow:hidden}
 .ecosystem-direction-card .dir-anim{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .ecosystem-direction-copy{position:relative;z-index:1}
-@media(prefers-reduced-motion:reduce){.ecosystem-direction-card .dir-anim{display:none}}
 </style>
 <script>
 /* ═══ направления: живые мини-сцены в среднем стиле страницы ═══
@@ -4853,7 +4943,6 @@ body.editing #stretch-gauge{display:none}
    карточек не тронуты — канвас прозрачный. */
 false && (() => {
   "use strict";
-  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
   const PAL = {
     learning:   ["#6aa50f", "#a3d34a", "#4c7a08"],
@@ -5343,11 +5432,6 @@ a.btn.plain{border-bottom:0}  /* подчёркивание ссылки зам�
 .section-page-cta:hover,.section-page-cta:focus-visible{filter:drop-shadow(5px 5px 0 var(--acid))}
 .waitlist-submit{transition:transform .18s steps(3,end),filter .18s steps(3,end)}
 .waitlist-submit:hover,.waitlist-submit:focus-visible{transform:translate(-2px,-2px);filter:drop-shadow(3px 3px 0 var(--acid))}
-@media(prefers-reduced-motion:reduce){
-  .btn,.product-cta,.section-page-cta,.waitlist-submit,
-  .btn::before,.product-cta::before,.product-cta::after,
-  .section-page-cta::before,.waitlist-submit::before{transition:none!important}
-}
 </style>
 <style id="type-scale-wild">
 /* ═══ Проход по размерам 18.08 (влит в основу; рабочая копия удалена) ══════
@@ -5577,7 +5661,6 @@ details summary{font-size:var(--type-14);font-weight:var(--weight-medium)}
   .ecosystem-children--dense{grid-template-columns:1fr 1fr;column-gap:18px;padding-bottom:17px}
 }
 @media(hover:none){.ecosystem-children{opacity:.36}.ecosystem-direction-branch.is-open .ecosystem-children{opacity:.82}}
-@media(prefers-reduced-motion:reduce){.ecosystem-flow-canvas{display:none}.ecosystem-tree-line,.ecosystem-children{transition:none}}
 </style>
 <script id="ecosystem-graph-runtime">
 (() => {
@@ -5626,7 +5709,7 @@ details summary{font-size:var(--type-14);font-weight:var(--weight-medium)}
     const effect=branch.querySelector('.ecosystem-direction-effect');
     effect?.addEventListener('click',()=>{if(matchMedia('(hover:none)').matches){const open=!branch.classList.contains('is-open');branches.forEach(item=>{item.classList.remove('is-open');item.querySelector('.ecosystem-direction-effect')?.setAttribute('aria-pressed','false')});branch.classList.toggle('is-open',open);effect.setAttribute('aria-pressed',String(open));activate(branch,open)}});
   });
-  const ctx=canvas.getContext('2d'),rm=matchMedia('(prefers-reduced-motion:reduce)');
+  const ctx=canvas.getContext('2d');
   let W=1,H=1,DPR=1,COLS=1,ROWS=1,moist=new Float32Array(1),obst=new Uint8Array(1),parts=[],visible=false,dirty=true,lastObst=0,prev=performance.now(),mx=-1e4,my=-1e4,boost=1,lastScroll=scrollY,pendingShift=0;
   const CELL_W=7,CELL_H=13,FONT='11px "JetBrains Mono",ui-monospace,monospace',DECAY=.94,DEPOSIT=.13,BANDS=[[.06,'·'],[.22,'~'],[.5,'≈']],POOL_LOW='.:;·',POOL_MID='=+<>{}',POOL_HIGH='01$#',INK='#777d83';
   const hash=(x,y)=>{const s=Math.sin(x*12.9898+y*78.233)*43758.5453;return s-Math.floor(s)};
@@ -5648,11 +5731,11 @@ details summary{font-size:var(--type-14);font-weight:var(--weight-medium)}
     for(const p of parts){const near=Math.hypot(p.x-mx,p.y-my),a=flowAngle(p.x,p.y,time),sp=(44+28*hash(p.x|0,13))*(.72+.28*boost);let ax=Math.cos(a)*sp,ay=Math.sin(a)*sp;if(near<92&&near>1){const f=(1-near/92)*220;ax+=(p.x-mx)/near*f;ay+=(p.y-my)/near*f*.62}p.vx+=(ax-p.vx)*Math.min(dt*4,1);p.vy+=(ay-p.vy)*Math.min(dt*4,1);let nx=p.x+p.vx*dt,ny=p.y+p.vy*dt;if(isRock(nx,ny)){const left=!isRock(nx-CELL_W,p.y),right=!isRock(nx+CELL_W,p.y);nx=p.x+(left===right?(hash(p.x,p.y)<.5?-1:1):right?1:-1)*CELL_W*2*dt*8;ny=p.y;if(isRock(nx,ny)){nx=p.x;ny=p.y-CELL_H*dt*4}}p.x=nx;p.y=ny;if(p.y>H+20||p.x<-30||p.x>W+30){spawn(p,true);continue}const ci=((p.y/CELL_H)|0)*COLS+((p.x/CELL_W)|0);if(ci>=0&&ci<moist.length&&!obst[ci])moist[ci]=Math.min(1,moist[ci]+DEPOSIT*boost*rhythmAt(p.y+graphDocTop))}
   };
   const render=()=>{ctx.clearRect(0,0,W,H);for(let cy=0;cy<ROWS;cy++){const y=cy*CELL_H;for(let cx=0;cx<COLS;cx++){const i=cy*COLS+cx,m=moist[i];if(m<BANDS[0][0]){moist[i]*=DECAY;continue}const pool=m>=BANDS[2][0]?POOL_HIGH:m>=BANDS[1][0]?POOL_MID:POOL_LOW,glyph=pool[(hash(cx*7+1,cy*3+5)*pool.length)|0];ctx.globalAlpha=Math.min(.24,.035+m*.22);ctx.fillStyle=INK;ctx.fillText(glyph,cx*CELL_W,y);moist[i]*=DECAY}}ctx.globalAlpha=1};
-  const frame=now=>{requestAnimationFrame(frame);if(rm.matches||document.hidden||!visible){prev=now;return}const dt=Math.min((now-prev)/1000,.05);prev=now;boost+=(1-boost)*Math.min(dt*1.6,1);if(dirty&&now-lastObst>160){buildObstacles();lastObst=now}step(dt,now);render()};
+  const frame=now=>{requestAnimationFrame(frame);if(document.hidden||!visible){prev=now;return}const dt=Math.min((now-prev)/1000,.05);prev=now;boost+=(1-boost)*Math.min(dt*1.6,1);if(dirty&&now-lastObst>160){buildObstacles();lastObst=now}step(dt,now);render()};
   graph.addEventListener('pointermove',e=>{if(!matchMedia('(hover:hover) and (pointer:fine)').matches)return;const r=graph.getBoundingClientRect();mx=e.clientX-r.left;my=e.clientY-r.top},{passive:true});graph.addEventListener('pointerleave',()=>{mx=-1e4;my=-1e4},{passive:true});
   addEventListener('scroll',()=>{if(!visible)return;const dy=scrollY-lastScroll;lastScroll=scrollY;boost=Math.min(3.2,boost+Math.abs(dy)/90);pendingShift+=dy;const rows=Math.trunc(pendingShift/CELL_H);if(rows){pendingShift-=rows*CELL_H;shiftRows(moist,rows)}},{passive:true});
   new ResizeObserver(()=>{resize();dirty=true}).observe(graph);new IntersectionObserver(entries=>{visible=entries.some(e=>e.isIntersecting);if(visible)dirty=true},{threshold:.02}).observe(graph);addEventListener('resize',()=>{resize();dirty=true},{passive:true});
-  resize();requestAnimationFrame(frame);rm.addEventListener?.('change',()=>{if(!rm.matches){resize();dirty=true}});
+  resize();requestAnimationFrame(frame);
 })();
 </script>
 <style id="direction-continuity-layer">
@@ -5662,7 +5745,6 @@ details summary{font-size:var(--type-14);font-weight:var(--weight-medium)}
 .direction-continuity-guide__main{stroke:rgba(17,18,16,.34);stroke-width:1.2}
 .direction-continuity-guide__echo{stroke:rgba(17,18,16,.18);stroke-width:.8;stroke-dasharray:1 8}
 @media(hover:none),(max-width:700px){.direction-continuity-guide{display:none}}
-@media(prefers-reduced-motion:reduce){.direction-continuity-guide,.direction-continuity-guide__main{transition:none}}
 </style>
 <script id="direction-continuity-runtime">
 (() => {
@@ -5701,4 +5783,22 @@ details summary{font-size:var(--type-14);font-weight:var(--weight-medium)}
   addEventListener('scroll',schedule,{passive:true});addEventListener('resize',schedule,{passive:true});
 })();
 </script>
+
+<style id="red-chip-rule">
+/* Решение (Аня, 08.09, уточнено): заголовки секций — яркий красный (--acid) с белым текстом; тёмно-красный (--red-wine) — только плашки карточек хиро. */
+.sec-head .num:first-child{background:var(--acid);color:#fff}
+.hero-lab-card__status{background:var(--red-wine)}
+</style>
+<style id="red-text-rule">
+/* Правило (Аня, 07.09): на красном акцентном фоне текст ВСЕГДА белый — включая зачёркивания и вложенные слова. */
+.sec-head .num:first-child,.sec-head .num:first-child *{color:#fff !important}
+.hero-lab-card__status,.hero-lab-card__status *{color:#f4f4ef !important}
+.eco-branch--learning .eco-branch-head,.eco-branch--learning .eco-branch-head *{color:#f4f4ef !important}
+.product-block-drag-handle,.follow-link:hover,.follow-link:focus-visible,.space-schedule__toggle:hover,.space-schedule__toggle:focus-visible{color:#fff !important}
+</style>
+<style id="red-palette-use">
+:root{--red-wine:#9e1727;--red-carmine:#b4212f;--red-signal:#c02020}
+/* Аня 08.09: обе карточки хиро — один акцент (--acid); --red-wine — только плашки секций */
+</style>
+<grammarly-desktop-integration data-grammarly-shadow-root="true" style="visibility: visible !important;"></grammarly-desktop-integration><aside-selection-handle data-placement="bottom-right" style="position: fixed; z-index: 2147483647; pointer-events: none; background: transparent; display: block; left: 0px; top: 0px; transition: transform 120ms, width 120ms, height 120ms; will-change: transform, width, height; transform: translate3d(181.109px, 402.727px, 0px); height: 40px; width: 40px; visibility: hidden; opacity: 0;"></aside-selection-handle><grammarly-popups data-grammarly-shadow-root="true" class="dnXmp" style="visibility: visible !important; --rem: 16;"></grammarly-popups><grammarly-popups data-grammarly-shadow-root="true" class="dnXmp" style="visibility: visible !important; --rem: 16;"></grammarly-popups><grammarly-extension-vbar-card data-grammarly-shadow-root="true" class="dnXmp" style="visibility: visible !important; --rem: 16;"></grammarly-extension-vbar-card><grammarly-extension-vbars-feedback-form data-grammarly-shadow-root="true" class="dnXmp" style="visibility: visible !important; --rem: 16;"></grammarly-extension-vbars-feedback-form><grammarly-extension-vbars data-grammarly-shadow-root="true" class="dnXmp" style="visibility: visible !important; display: contents; --rem: 16;"></grammarly-extension-vbars><grammarly-extension-vbar-card data-grammarly-shadow-root="true" class="dnXmp" style="visibility: visible !important; --rem: 16;"></grammarly-extension-vbar-card><grammarly-extension-vbars-feedback-form data-grammarly-shadow-root="true" class="dnXmp" style="visibility: visible !important; --rem: 16;"></grammarly-extension-vbars-feedback-form>
 </body></html>
