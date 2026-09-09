@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru" data-rev="161"><head><script async="" src="https://mc.yandex.ru/metrika/tag.js"></script><script async="" src="https://mc.yandex.ru/metrika/tag.js"></script>
+<html lang="ru" data-rev="163"><head><script async="" src="https://mc.yandex.ru/metrika/tag.js"></script><script async="" src="https://mc.yandex.ru/metrika/tag.js"></script><script async="" src="https://mc.yandex.ru/metrika/tag.js"></script>
 <meta http-equiv="Cache-Control" content="no-store, must-revalidate">
 <!-- Yandex Metrika: shared lab counter read by Surikat Tikhon daily. -->
 <script>
@@ -796,7 +796,7 @@
     
     
     
-  <a href="#about">кто мы</a><a href="#team">команда</a><a href="#approach">подход</a><a href="#cases">сделано внутри</a><a href="#products">направления</a><a href="#learning">обучение</a><a href="#product-platform" data-sections="product-platform product-space">платформа и сообщество</a><a href="#research">исследования</a><a href="#reviews">слова</a><a href="#manifesto">манифест</a><a href="#follow">где следить</a><a href="#faq">вопросы</a></div>
+  <a href="#about" class="">кто мы</a><a href="#team" class="">команда</a><a href="#approach" class="">подход</a><a href="#cases" class="">сделано внутри</a><a href="#products" class="">направления</a><a href="#learning">обучение</a><a href="#product-platform" data-sections="product-platform product-space">платформа и сообщество</a><a href="#research">исследования</a><a href="#reviews">слова</a><a href="#manifesto">манифест</a><a href="#follow">где следить</a><a href="#faq">вопросы</a></div>
 </div>
 
 <aside class="section-rail" id="sectionRail" aria-label="Навигация по разделам" data-editor-ui="">
@@ -1346,7 +1346,7 @@ false && (() => {
   }
   function platform(s,t,dt){
     const{c}=s,w=s.w(),h=s.h(),mx=s.px()*w,my=s.py()*h,cx=w*.51,cy=mix(h*.34,h*.44,s.engage);
-    c.fillStyle='#e3e4f0';c.fillRect(0,0,w,h);
+    c.fillStyle='#eaf1f3';c.fillRect(0,0,w,h);
     /* Directly transferred from the established {space} field: every item has
        its own orbit, two local relations and a local response to the visitor. */
     const positions=s.cells.map((cell,i)=>{const breath=1+Math.sin(t*.0011+cell.phase)*(.06+s.rings.length*.025),a=cell.angle+Math.sin(t*.00025*cell.speed+cell.phase)*.28;let x=cx+Math.cos(a)*cell.radius*w*breath,y=cy+Math.sin(a*1.13)*cell.radius*h*mix(.86,1.18,s.engage)*breath;const dx=x-mx,dy=y-my,d=Math.max(1,Math.hypot(dx,dy));if(s.inside()&&d<125){const force=(1-d/125)*(s.mode%2?-24:18);x+=dx/d*force;y+=dy/d*force}const freeX=x,freeY=y;let safeX=x,safeY=y;if(safeX<w*.80&&safeY>h*.61)safeY=h*.61-(safeY-h*.61)*.12;if(safeX>w*.48&&safeY<h*.24){safeX=w*.47-(safeX-w*.48)*.16;safeY=Math.max(safeY,h*.24)}return{x:mix(safeX,freeX,s.engage),y:mix(safeY,freeY,s.engage),cell,i}});
@@ -1386,7 +1386,7 @@ false && (() => {
   }
   function consulting(s,t){
     const c=s.c,w=s.w(),h=s.h(),mx=s.px()*w,my=s.py()*h;
-    c.fillStyle='#edf1e9';c.fillRect(0,0,w,h);c.lineCap='round';c.lineJoin='round';
+    c.fillStyle='#eaf1f3';c.fillRect(0,0,w,h);c.lineCap='round';c.lineJoin='round';
     const near=s.inside()?s.crew:0,guideX=w*.78,guideY=h*.43,visibleCrew=s.crew,formation=s.formation;
     /* A small recurring crew comes in from the left. The cursor bends their
        route; a click sends a concentrated burst toward the receiving hand. */
@@ -5153,9 +5153,9 @@ h3{font-size:var(--type-14);font-weight:var(--weight-medium);line-height:var(--l
 .ecosystem-direction-arrow::after{content:'↘';display:inline-block;font-size:var(--type-18);line-height:1;letter-spacing:0;transform:translateY(-1px);transition:transform .22s ease}
 .ecosystem-direction-card:hover .ecosystem-direction-arrow::after,.ecosystem-direction-arrow:focus-visible::after{transform:translate(3px,2px)}
 .ecosystem-direction-effect{position:absolute;inset:0;z-index:1;display:block;margin:0;padding:0;border:0;background:transparent;cursor:crosshair}.ecosystem-direction-effect:focus-visible{outline:2px solid #c4ff26;outline-offset:-4px}
-.ecosystem-direction-card--platform{background:#e3e4f0;border-color:#b9bfd6;color:#163c72}.ecosystem-direction-card--platform h2{color:#163c72}.ecosystem-direction-card--platform .ecosystem-direction-meta{right:16px;left:auto;color:#536184;text-align:right}.ecosystem-direction-card--platform .ecosystem-direction-arrow{color:#34466f}.ecosystem-direction-card--platform .ecosystem-direction-effect:focus-visible{outline-color:#163c72}
+.ecosystem-direction-card--platform{background:#eaf1f3;border-color:#c2ccce;color:#163c72}.ecosystem-direction-card--platform h2{color:#163c72}.ecosystem-direction-card--platform .ecosystem-direction-meta{right:16px;left:auto;color:#536184;text-align:right}.ecosystem-direction-card--platform .ecosystem-direction-arrow{color:#34466f}.ecosystem-direction-card--platform .ecosystem-direction-effect:focus-visible{outline-color:#163c72}
 .ecosystem-direction-card--research{background:#f4f4ef;border-color:#c9c5bd;color:#111210}.ecosystem-direction-card--research h2{color:#111210;font-size:var(--type-24);line-height:var(--leading-solid);letter-spacing:var(--tracking-tight);white-space:normal}.ecosystem-direction-card--research .ecosystem-direction-meta{color:#6b6862}.ecosystem-direction-card--research .ecosystem-direction-arrow{color:#5d1b28}.ecosystem-direction-card--research .ecosystem-direction-effect:focus-visible{outline-color:#b4212f}
-.ecosystem-direction-card--consulting{background:#edf1e9;border-color:#c4d0c5;color:#17382e}.ecosystem-direction-card--consulting h2{color:#17382e}.ecosystem-direction-card--consulting .ecosystem-direction-meta{color:#49665b}.ecosystem-direction-card--consulting .ecosystem-direction-arrow{color:#34574a}.ecosystem-direction-card--consulting .ecosystem-direction-effect:focus-visible{outline-color:#b8751e}
+.ecosystem-direction-card--consulting{background:#eaf1f3;border-color:#c2ccce;color:#17382e}.ecosystem-direction-card--consulting h2{color:#17382e}.ecosystem-direction-card--consulting .ecosystem-direction-meta{color:#49665b}.ecosystem-direction-card--consulting .ecosystem-direction-arrow{color:#34574a}.ecosystem-direction-card--consulting .ecosystem-direction-effect:focus-visible{outline-color:#b8751e}
 .ecosystem-direction-card--learning{background:#101110;border-color:#343632;color:#f4f2ea}.ecosystem-direction-card--learning .ecosystem-direction-meta{right:16px;left:auto;color:#c7c8bf;text-align:right}.ecosystem-direction-card--learning h2{right:16px;left:auto;text-align:right}.ecosystem-direction-card--learning .ecosystem-direction-arrow{right:auto;left:14px;color:#c4ff26}
 .ecosystem-direction-card:hover{border-color:#d8d8d1;box-shadow:none}.ecosystem-direction-card:focus-visible{outline:2px solid #c4ff26;outline-offset:3px;box-shadow:none}
 @media(max-width:1200px){.ecosystem-directions{grid-template-columns:repeat(2,minmax(0,1fr))}.ecosystem-direction-card{aspect-ratio:1.6/1}}
@@ -5624,9 +5624,10 @@ details summary{font-size:var(--type-14);font-weight:var(--weight-medium)}
 .ecosystem-tree-lines,.ecosystem-flow-canvas{position:absolute;inset:0;display:block;width:100%;height:100%;pointer-events:none}
 .ecosystem-flow-canvas{z-index:0;opacity:.46}
 .ecosystem-tree-lines{z-index:1;overflow:visible}
-.ecosystem-tree-line{fill:none;stroke:var(--ecosystem-line);stroke-width:1;vector-effect:non-scaling-stroke;stroke-linecap:round;stroke-linejoin:round;transition:stroke .22s ease,stroke-width .22s ease,opacity .22s ease}
-.ecosystem-tree-line--echo{stroke-dasharray:1 7;opacity:.36}
-.ecosystem-tree-line.is-active{stroke:rgba(17,18,16,.58);stroke-width:1.25;opacity:1}
+.ecosystem-tree-line{fill:none;stroke:var(--ecosystem-line);stroke-width:1;vector-effect:non-scaling-stroke;stroke-linecap:butt;stroke-linejoin:miter;shape-rendering:crispEdges;transition:stroke .22s ease,opacity .22s ease}
+.ecosystem-tree-line.is-active{stroke:rgba(17,18,16,.62);opacity:1}
+.ecosystem-tree-px{fill:var(--ecosystem-line);stroke:none;shape-rendering:crispEdges;transition:fill .22s ease}
+.ecosystem-tree-px.is-active{fill:rgba(17,18,16,.62)}
 .ecosystem-directions{position:relative;z-index:2;align-items:start;padding:0}
 .ecosystem-directions::before{content:none}
 .ecosystem-direction-branch{position:relative;display:grid;grid-template-rows:auto auto;min-width:0}
@@ -5636,16 +5637,13 @@ details summary{font-size:var(--type-14);font-weight:var(--weight-medium)}
 .ecosystem-direction-jump:hover{border:0}
 .ecosystem-direction-jump:focus-visible{border:0;outline:2px solid currentColor;outline-offset:-4px}
 .ecosystem-direction-branch .ecosystem-direction-card:hover{transform:none}
-.ecosystem-children{position:relative;display:grid;gap:7px;min-height:104px;margin:0 8px;padding:29px 4px 8px 16px;list-style:none;color:rgba(17,18,16,.38);font-size:10px;line-height:1.35;letter-spacing:.035em;opacity:.27;transform:translateY(-2px);transition:opacity .25s ease,transform .25s ease,color .25s ease}
-.ecosystem-children::before{content:"";position:absolute;top:0;bottom:8px;left:8px;width:1px;background:rgba(17,18,16,.24);transform:rotate(.35deg);transform-origin:top}
+.ecosystem-children{position:relative;display:grid;gap:9px;min-height:118px;margin:0 8px;padding:30px 4px 8px 18px;list-style:none;color:rgba(17,18,16,.8);font-size:13px;line-height:1.35;letter-spacing:.02em;opacity:0;transition:opacity .25s ease}
 .ecosystem-child-label{position:relative;display:block;max-width:100%;overflow-wrap:anywhere}
-.ecosystem-child-label::before{content:"";position:absolute;top:.66em;right:calc(100% + 5px);width:8px;height:1px;background:rgba(17,18,16,.24);transform:rotate(-1deg)}
-.ecosystem-direction-branch:is(:hover,:focus-within,.is-open) .ecosystem-children{color:rgba(17,18,16,.74);opacity:.82;transform:translateY(0)}
-.ecosystem-direction-branch:is(:hover,:focus-within,.is-open) .ecosystem-children::before,.ecosystem-direction-branch:is(:hover,:focus-within,.is-open) .ecosystem-child-label::before{background:rgba(17,18,16,.48)}
-.ecosystem-children--dense{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:17px;min-height:126px;padding-right:0}
-.ecosystem-children--dense::after{content:"";position:absolute;top:21px;bottom:8px;left:calc(50% + 1px);width:1px;background:rgba(17,18,16,.20);transform:rotate(-.25deg);transform-origin:top}
-.ecosystem-children--dense .ecosystem-child-label:nth-child(even)::before{right:calc(100% + 5px)}
-.ecosystem-direction-branch:is(:hover,:focus-within,.is-open) .ecosystem-children--dense::after{background:rgba(17,18,16,.44)}
+.ecosystem-direction-branch:is(:hover,:focus-within,.is-open) .ecosystem-children{opacity:1}
+.ecosystem-children--few{font-size:16px;gap:14px;padding-top:34px}
+.ecosystem-children--dense{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:20px;min-height:126px;padding-right:0;font-size:12px}
+.ecosystem-tree-kids{opacity:0;transition:opacity .25s ease}
+.ecosystem-tree-kids.is-active{opacity:1}
 @media(max-width:1200px){
   .ecosystem-root-wrap{justify-content:flex-start;padding:0 0 38px 18px}
   .ecosystem-direction-card{height:clamp(190px,22vw,236px);aspect-ratio:auto}
@@ -5657,10 +5655,10 @@ details summary{font-size:var(--type-14);font-weight:var(--weight-medium)}
   .ecosystem-directions{gap:12px;padding-left:22px}
   .ecosystem-direction-branch{padding-left:16px}
   .ecosystem-direction-card{height:clamp(185px,51vw,205px);aspect-ratio:auto}
-  .ecosystem-children{min-height:0;margin-left:3px;padding:24px 2px 13px 15px;opacity:.36}
+  .ecosystem-children{min-height:0;margin-left:3px;padding:24px 2px 13px 15px}
   .ecosystem-children--dense{grid-template-columns:1fr 1fr;column-gap:18px;padding-bottom:17px}
 }
-@media(hover:none){.ecosystem-children{opacity:.36}.ecosystem-direction-branch.is-open .ecosystem-children{opacity:.82}}
+@media(hover:none){.ecosystem-direction-branch.is-open .ecosystem-children{opacity:1}.ecosystem-direction-branch.is-open .ecosystem-tree-kids{opacity:1}}
 </style>
 <script id="ecosystem-graph-runtime">
 (() => {
@@ -5672,33 +5670,55 @@ details summary{font-size:var(--type-14);font-weight:var(--weight-medium)}
   if(!root||branches.length!==4)return;
   const SVG_NS='http://www.w3.org/2000/svg',svg=document.createElementNS(SVG_NS,'svg');
   svg.classList.add('ecosystem-tree-lines');svg.setAttribute('aria-hidden','true');svg.dataset.editorRuntime='';
-  const lineSets=new Map();
+  const lineSets=new Map(),railPath=document.createElementNS(SVG_NS,'path');
+  railPath.classList.add('ecosystem-tree-line');svg.append(railPath);
   branches.forEach(branch=>{
-    const key=branch.dataset.ecosystemBranch,main=document.createElementNS(SVG_NS,'path'),echo=document.createElementNS(SVG_NS,'path');
-    main.classList.add('ecosystem-tree-line');echo.classList.add('ecosystem-tree-line','ecosystem-tree-line--echo');
-    main.dataset.branch=key;echo.dataset.branch=key;svg.append(main,echo);lineSets.set(key,[main,echo]);
+    const key=branch.dataset.ecosystemBranch,main=document.createElementNS(SVG_NS,'path'),land=document.createElementNS(SVG_NS,'path'),kids=document.createElementNS(SVG_NS,'path'),px=document.createElementNS(SVG_NS,'path');
+    main.classList.add('ecosystem-tree-line');land.classList.add('ecosystem-tree-px');kids.classList.add('ecosystem-tree-line','ecosystem-tree-kids');px.classList.add('ecosystem-tree-px','ecosystem-tree-kids');
+    [main,land,kids,px].forEach(p=>{p.dataset.branch=key});svg.append(main,land,kids,px);lineSets.set(key,[main,land,kids,px]);
   });
   const canvas=document.createElement('canvas');canvas.className='ecosystem-flow-canvas';canvas.setAttribute('aria-hidden','true');canvas.dataset.editorRuntime='';canvas.id='codex-browser-ecosystem-flow';
   graph.prepend(canvas,svg);
   const clamp=(n,a=0,b=1)=>Math.max(a,Math.min(b,n)),mix=(a,b,t)=>a+(b-a)*t;
+  /* pixel traces, one flat level: trunk from the root, a single shared rail,
+     four vertical drops — one into each card's top center; child spines/ticks
+     use the same 8px orthogonal grammar. */
+  const G=8,Q=v=>Math.round(v/G)*G;
   const setLines=()=>{
-    const gr=graph.getBoundingClientRect(),rr=root.getBoundingClientRect(),mobile=gr.width<=700;
+    const gr=graph.getBoundingClientRect(),rr=root.getBoundingClientRect();
     svg.setAttribute('viewBox',`0 0 ${Math.max(1,gr.width)} ${Math.max(1,gr.height)}`);
-    const sx=rr.left-gr.left+rr.width/2,sy=rr.bottom-gr.top;
-    branches.forEach((branch,index)=>{
-      const card=branch.querySelector('.ecosystem-direction-card'),cr=card.getBoundingClientRect(),ex=mobile?cr.left-gr.left:cr.left-gr.left+cr.width/2,ey=mobile?cr.top-gr.top+24:cr.top-gr.top;
-      let d,echoD;
-      if(mobile){
-        const spineX=Math.max(6,sx-2),turnY=ey-13;
-        d=`M ${sx} ${sy} C ${spineX} ${sy+18},${spineX} ${turnY-15},${spineX} ${turnY} Q ${spineX} ${ey},${ex} ${ey}`;
-        echoD=`M ${sx+1.4} ${sy} C ${spineX-1} ${sy+19},${spineX+1.2} ${turnY-14},${spineX+.4} ${turnY+1} Q ${spineX+1} ${ey+1},${ex} ${ey+1}`;
-      }else{
-        const depth=Math.max(26,(ey-sy)*(.46+index*.018)),bend=(ex-sx)*.16;
-        d=`M ${sx} ${sy} C ${sx+bend*.12} ${sy+depth*.42},${ex-bend} ${ey-depth*.48},${ex} ${ey}`;
-        echoD=`M ${sx+1.2} ${sy} C ${sx+bend*.12-1} ${sy+depth*.42+1.5},${ex-bend+1.5} ${ey-depth*.48-1},${ex+.6} ${ey}`;
+    const sx=Q(rr.left-gr.left+rr.width/2),sy=Q(rr.bottom-gr.top+4),busY=Q(sy+18),exs=[];
+    branches.forEach(branch=>{
+      const card=branch.querySelector('.ecosystem-direction-card'),cr=card.getBoundingClientRect(),ex=Q(cr.left-gr.left+cr.width/2),ey=Q(cr.top-gr.top);
+      exs.push(ex);
+      const [main,land,kids,px]=lineSets.get(branch.dataset.ecosystemBranch);
+      main.setAttribute('d',`M ${ex+.5} ${busY+.5} V ${ey+.5}`);
+      land.setAttribute('d',`M ${ex-1.5} ${ey-4.5} h 4 v 4 h -4 Z`);
+      let dKids='',dPx='';
+      const labels=[...branch.querySelectorAll('.ecosystem-child-label')];
+      branch.querySelector('.ecosystem-children')?.classList.toggle('ecosystem-children--few',labels.length>0&&labels.length<=2);
+      if(labels.length){
+        const cols=[];
+        labels.forEach(l=>{
+          const r=l.getBoundingClientRect(),lh=parseFloat(getComputedStyle(l).lineHeight)||18,x=r.left-gr.left,y=r.top-gr.top+lh/2;
+          const col=cols.find(c=>Math.abs(c.x-x)<14);
+          if(col){col.x=Math.min(col.x,x);col.ys.push(y)}else cols.push({x,ys:[y]});
+        });
+        cols.sort((a,b)=>a.x-b.x);
+        cols.forEach((col,ci)=>{
+          const tickEnd=Q(col.x-8),colX=tickEnd-G;
+          const ys=col.ys.map(Q),bot=Math.max(...ys);
+          const top=ci===0?Q(cr.bottom-gr.top):Math.min(...ys)-G;
+          dKids+=` M ${colX+.5} ${top+.5} V ${bot+.5}`;
+          ys.forEach(y=>{dKids+=` M ${colX+.5} ${y+.5} H ${tickEnd+.5}`;dPx+=` M ${tickEnd-.5} ${y-1.5} h 3 v 3 h -3 Z`});
+          if(ci===0){branch.dataset.spineX=colX;branch.dataset.spineY=bot}
+        });
       }
-      const [main,echo]=lineSets.get(branch.dataset.ecosystemBranch);main.setAttribute('d',d);echo.setAttribute('d',echoD);
+      kids.setAttribute('d',dKids);
+      px.setAttribute('d',dPx);
     });
+    const railA=Math.min(...exs),railB=Math.max(...exs);
+    railPath.setAttribute('d',`M ${sx+.5} ${sy+.5} V ${busY+.5}${railB>railA?` M ${railA+.5} ${busY+.5} H ${railB+.5}`:''}`);
   };
   const activate=(branch,on)=>{
     const paths=lineSets.get(branch.dataset.ecosystemBranch)||[];paths.forEach(path=>path.classList.toggle('is-active',on));
@@ -5738,12 +5758,56 @@ details summary{font-size:var(--type-14);font-weight:var(--weight-medium)}
   resize();requestAnimationFrame(frame);
 })();
 </script>
+<style id="direction-minimap-layer">
+/* Боковой навигатор направлений (Аня 08.09): без квадратиков — вертикальная
+   волосяная линия и тики, как у списков проектов; прячется на узких экранах
+   и под открытой картой, чтобы не налезать на контент. */
+.direction-minimap{position:fixed;top:50%;left:22px;z-index:60;display:flex;flex-direction:column;gap:14px;transform:translateY(-50%);opacity:0;pointer-events:none;transition:opacity .3s ease}
+.direction-minimap.is-visible{opacity:1;pointer-events:auto}
+.direction-minimap::before{content:"";position:absolute;top:5px;bottom:5px;left:0;width:1px;background:rgba(17,18,16,.18)}
+.direction-minimap a{position:relative;display:block;padding-left:14px;border:0;color:rgba(17,18,16,.38);font:500 10px/1 var(--mono);letter-spacing:.1em;text-decoration:none}
+.direction-minimap a::before{content:"";position:absolute;top:50%;left:0;width:9px;height:1px;background:rgba(17,18,16,.18)}
+.direction-minimap a:hover,.direction-minimap a:focus-visible{color:rgba(17,18,16,.8);outline:none}
+.direction-minimap a.is-current{color:var(--ink);font-weight:700}
+.direction-minimap a.is-current::before{background:var(--ink)}
+.direction-minimap .direction-minimap-root{color:rgba(17,18,16,.62);text-transform:uppercase;letter-spacing:.13em}
+@media(max-width:1360px){.direction-minimap{display:none}}
+body:has(.ecosystem-map-dialog[open]) .direction-minimap{display:none}
+body.editing .direction-minimap{display:none}
+</style>
+<script id="direction-minimap-runtime">
+(() => {
+  'use strict';
+  if(document.getElementById('codex-browser-direction-minimap'))return;
+  /* page order: learning → platform/space → consulting → research */
+  const groups=[['learning','обучение',['#learning']],['platform','платформа',['#product-platform','#product-space']],['consulting','консалтинг',['#product-consultations']],['research','исследования',['#research']]];
+  const nav=document.createElement('nav');
+  nav.id='codex-browser-direction-minimap';nav.className='direction-minimap';nav.dataset.editorRuntime='';nav.setAttribute('aria-label','направления');
+  const rootLink=document.createElement('a');rootLink.href='#products';rootLink.textContent='направления';rootLink.className='direction-minimap-root';nav.append(rootLink);
+  const items=groups.map(([key,label,sels])=>{const a=document.createElement('a');a.href=sels[0];a.textContent=label;a.dataset.dir=key;nav.append(a);return{a,sels}});
+  document.body.append(nav);
+  let ticking=false;
+  const update=()=>{
+    ticking=false;
+    const mid=innerHeight*.5;let current=null;
+    items.forEach(it=>{
+      let range=null;
+      it.sels.forEach(sel=>{const el=document.querySelector(sel);if(!el)return;const r=el.getBoundingClientRect();range=range?[Math.min(range[0],r.top),Math.max(range[1],r.bottom)]:[r.top,r.bottom]});
+      if(range&&range[0]<=mid&&range[1]>=mid)current=it;
+    });
+    items.forEach(it=>it.a.classList.toggle('is-current',it===current));
+    nav.classList.toggle('is-visible',!!current);
+  };
+  const onScroll=()=>{if(!ticking){ticking=true;requestAnimationFrame(update)}};
+  addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',onScroll,{passive:true});update();
+})();
+</script>
 <style id="direction-continuity-layer">
-.direction-continuity-guide{position:absolute;top:0;left:0;z-index:5;display:block;width:100%;height:1px;overflow:visible;opacity:0;pointer-events:none}
-.direction-continuity-guide.is-active{opacity:1}
+.direction-continuity-guide{position:absolute;top:0;left:0;z-index:5;display:block;width:100%;height:1px;overflow:visible;opacity:1;pointer-events:none}
 .direction-continuity-guide path{fill:none;vector-effect:non-scaling-stroke;stroke-linecap:round;stroke-linejoin:round}
-.direction-continuity-guide__main{stroke:rgba(17,18,16,.34);stroke-width:1.2}
-.direction-continuity-guide__echo{stroke:rgba(17,18,16,.18);stroke-width:.8;stroke-dasharray:1 8}
+.direction-continuity-guide__main{stroke:rgba(17,18,16,.30);stroke-width:1.1}
+.direction-continuity-guide__echo{stroke:rgba(17,18,16,.14);stroke-width:.8;stroke-dasharray:1 8}
+.direction-continuity-guide g.is-hot .direction-continuity-guide__main{stroke:rgba(17,18,16,.62)}
 @media(hover:none),(max-width:700px){.direction-continuity-guide{display:none}}
 </style>
 <script id="direction-continuity-runtime">
@@ -5752,35 +5816,69 @@ details summary{font-size:var(--type-14);font-weight:var(--weight-medium)}
   const links=[...document.querySelectorAll('.ecosystem-direction-jump')];
   if(!links.length||document.getElementById('codex-browser-direction-continuity'))return;
   const destinations={learning:'#learning',platform:'#product-platform',research:'#research',consulting:'#product-consultations'};
-  const SVG_NS='http://www.w3.org/2000/svg',svg=document.createElementNS(SVG_NS,'svg'),main=document.createElementNS(SVG_NS,'path'),echo=document.createElementNS(SVG_NS,'path');
+  /* Аня 08.09: (1) линии не исчезают — все четыре видны постоянно: карточка всегда
+     остаётся частью схемы; (2) у левых карточек линия начинается слева (у платформы
+     начиналась справа и пересекала свой же коридор); (3) спуск строго вертикальный,
+     углы скруглены на 18px — без длинных безье, дававших кривизну у консалтинга. */
+  const SVG_NS='http://www.w3.org/2000/svg';
+  const svg=document.createElementNS(SVG_NS,'svg');
   svg.id='codex-browser-direction-continuity';svg.dataset.editorRuntime='';svg.classList.add('direction-continuity-guide');svg.setAttribute('aria-hidden','true');
-  main.classList.add('direction-continuity-guide__main');echo.classList.add('direction-continuity-guide__echo');svg.append(main,echo);document.body.append(svg);
-  const fine=matchMedia('(hover:hover) and (pointer:fine)');
-  let activeLink=null,lockedUntil=0,clearTimer=0,frame=0;
-  const branchFor=link=>link.closest('[data-ecosystem-branch]');
-  const build=link=>{
-    const branch=branchFor(link),card=link.closest('.ecosystem-direction-card');if(!branch||!card)return;
-    const target=document.querySelector(destinations[branch.dataset.ecosystemBranch]);if(!target)return;
-    const anchor=target.querySelector(':scope > .sec-head .num:first-child')||target.querySelector(':scope > .sec-head')||target.querySelector(':scope > .sec-headline')||target;
-    const cr=card.getBoundingClientRect(),tr=anchor.getBoundingClientRect(),doc=document.documentElement,docW=Math.max(doc.scrollWidth,doc.clientWidth),docH=Math.max(doc.scrollHeight,doc.clientHeight),graph=document.querySelector('[data-ecosystem-graph]')?.getBoundingClientRect(),key=branch.dataset.ecosystemBranch;
-    const isLeft=['learning','platform'].includes(key),sx=(key==='learning'?cr.left+25:cr.right-25)+scrollX,sy=cr.bottom+scrollY+2,outerLeft=(graph?.left??cr.left)+scrollX-16,outerRight=(graph?.right??cr.right)+scrollX+16,sideX=isLeft?Math.max(18,outerLeft):Math.min(docW-18,outerRight),corridorX=(key==='learning'?cr.left-8:cr.right+7)+scrollX,graphExit=(graph?.bottom??cr.bottom)+scrollY+18,ex=(isLeft?tr.left-6:tr.right+6)+scrollX,ey=tr.top+scrollY+tr.height/2,turnY=sy+Math.min(56,Math.max(30,(graphExit-sy)*.22)),sideTurn=Math.min(92,Math.max(42,(ey-graphExit)*.16)),approach=Math.min(150,Math.max(64,(ey-graphExit)*.18));
-    const d=`M ${sx.toFixed(1)} ${sy.toFixed(1)} C ${sx.toFixed(1)} ${(sy+18).toFixed(1)},${corridorX.toFixed(1)} ${(turnY-12).toFixed(1)},${corridorX.toFixed(1)} ${turnY.toFixed(1)} C ${corridorX.toFixed(1)} ${(turnY+40).toFixed(1)},${corridorX.toFixed(1)} ${(graphExit-34).toFixed(1)},${corridorX.toFixed(1)} ${graphExit.toFixed(1)} C ${corridorX.toFixed(1)} ${(graphExit+sideTurn*.36).toFixed(1)},${sideX.toFixed(1)} ${(graphExit+sideTurn*.58).toFixed(1)},${sideX.toFixed(1)} ${(graphExit+sideTurn).toFixed(1)} C ${sideX.toFixed(1)} ${(graphExit+sideTurn+60).toFixed(1)},${sideX.toFixed(1)} ${(ey-approach).toFixed(1)},${sideX.toFixed(1)} ${(ey-approach).toFixed(1)} C ${sideX.toFixed(1)} ${(ey-approach*.46).toFixed(1)},${(ex+(sideX-ex)*.18).toFixed(1)} ${(ey-8).toFixed(1)},${ex.toFixed(1)} ${ey.toFixed(1)}`;
-    const echoX=sideX+(isLeft?-3:3),echoD=d.replaceAll(sideX.toFixed(1),echoX.toFixed(1));
-    svg.setAttribute('viewBox',`0 0 ${docW} ${docH}`);svg.style.width=`${docW}px`;svg.style.height=`${docH}px`;main.setAttribute('d',d);echo.setAttribute('d',echoD);
-    main.style.strokeDasharray='none';main.style.strokeDashoffset='0';svg.classList.add('is-active');
-  };
-  const show=link=>{clearTimeout(clearTimer);activeLink=link;build(link)};
-  const hide=()=>{if(performance.now()<lockedUntil)return;svg.classList.remove('is-active');activeLink=null};
-  const schedule=()=>{if(!activeLink||frame)return;frame=requestAnimationFrame(()=>{frame=0;build(activeLink)})};
+  document.body.append(svg);
+  const lanes={learning:{side:-1,lane:0},platform:{side:-1,lane:1},consulting:{side:1,lane:0},research:{side:1,lane:1}};
+  const paths={};
   links.forEach(link=>{
+    const branch=link.closest('[data-ecosystem-branch]');if(!branch)return;
+    const key=branch.dataset.ecosystemBranch;if(!destinations[key]||paths[key])return;
+    const g=document.createElementNS(SVG_NS,'g');g.dataset.dir=key;
+    const echo=document.createElementNS(SVG_NS,'path');echo.classList.add('direction-continuity-guide__echo');
+    const main=document.createElementNS(SVG_NS,'path');main.classList.add('direction-continuity-guide__main');
+    g.append(echo,main);svg.append(g);
     const card=link.closest('.ecosystem-direction-card');
-    card?.addEventListener('pointerenter',()=>{if(fine.matches)show(link)});
-    card?.addEventListener('pointerleave',()=>{if(document.activeElement!==link)hide()});
-    link.addEventListener('focus',()=>show(link));
-    link.addEventListener('blur',hide);
-    link.addEventListener('click',()=>{show(link);lockedUntil=performance.now()+1400;clearTimer=setTimeout(()=>{lockedUntil=0;hide()},1450)});
+    paths[key]={g,main,echo,card};
+    card&&card.addEventListener('pointerenter',()=>g.classList.add('is-hot'));
+    card&&card.addEventListener('pointerleave',()=>g.classList.remove('is-hot'));
   });
-  addEventListener('scroll',schedule,{passive:true});addEventListener('resize',schedule,{passive:true});
+  const R=18;
+  const route=key=>{
+    const p=paths[key];if(!p||!p.card)return;
+    const target=document.querySelector(destinations[key]);if(!target)return;
+    const anchor=target.querySelector(':scope > .sec-head .num:first-child')||target.querySelector(':scope > .sec-head')||target.querySelector(':scope > .sec-headline')||target;
+    const cr=p.card.getBoundingClientRect(),tr=anchor.getBoundingClientRect();
+    if(cr.width<10)return;
+    const graph=document.querySelector('[data-ecosystem-graph]');
+    const gr=graph?graph.getBoundingClientRect():cr;
+    const {side,lane}=lanes[key];
+    const doc=document.documentElement,docW=Math.max(doc.scrollWidth,doc.clientWidth);
+    const sx=(side<0?cr.left+14:cr.right-14)+scrollX, sy=cr.bottom+scrollY+2;
+    const outer=(side<0?gr.left-14-lane*16:gr.right+14+lane*16)+scrollX;
+    const sideX=side<0?Math.max(12,outer):Math.min(docW-12,outer);
+    const shelfY=sy+12;
+    const ex=(side<0?tr.left-8:tr.right+8)+scrollX, ey=tr.top+scrollY+tr.height/2;
+    const dir1=sideX>sx?1:-1, dir2=ex>sideX?1:-1;
+    const d='M '+sx.toFixed(1)+' '+sy.toFixed(1)
+      +' L '+sx.toFixed(1)+' '+(shelfY-8).toFixed(1)
+      +' Q '+sx.toFixed(1)+' '+shelfY.toFixed(1)+' '+(sx+dir1*8).toFixed(1)+' '+shelfY.toFixed(1)
+      +' L '+(sideX-dir1*R).toFixed(1)+' '+shelfY.toFixed(1)
+      +' Q '+sideX.toFixed(1)+' '+shelfY.toFixed(1)+' '+sideX.toFixed(1)+' '+(shelfY+R).toFixed(1)
+      +' L '+sideX.toFixed(1)+' '+(ey-R).toFixed(1)
+      +' Q '+sideX.toFixed(1)+' '+ey.toFixed(1)+' '+(sideX+dir2*R).toFixed(1)+' '+ey.toFixed(1)
+      +' L '+ex.toFixed(1)+' '+ey.toFixed(1);
+    p.main.setAttribute('d',d);
+    p.echo.setAttribute('d',d);
+    p.echo.setAttribute('transform','translate('+(side*3)+' 0)');
+  };
+  let frame=0;
+  const build=()=>{frame=0;
+    const doc=document.documentElement,docW=Math.max(doc.scrollWidth,doc.clientWidth),docH=Math.max(doc.scrollHeight,doc.clientHeight);
+    svg.setAttribute('viewBox','0 0 '+docW+' '+docH);svg.style.width=docW+'px';svg.style.height=docH+'px';
+    Object.keys(paths).forEach(route);
+  };
+  const schedule=()=>{if(!frame)frame=requestAnimationFrame(build)};
+  addEventListener('resize',schedule,{passive:true});
+  addEventListener('load',schedule);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(schedule);
+  setInterval(schedule,3000);
+  build();
 })();
 </script>
 
@@ -5801,4 +5899,5 @@ details summary{font-size:var(--type-14);font-weight:var(--weight-medium)}
 /* Аня 08.09: обе карточки хиро — один акцент (--acid); --red-wine — только плашки секций */
 </style>
 <grammarly-desktop-integration data-grammarly-shadow-root="true" style="visibility: visible !important;"></grammarly-desktop-integration><aside-selection-handle data-placement="bottom-right" style="position: fixed; z-index: 2147483647; pointer-events: none; background: transparent; display: block; left: 0px; top: 0px; transition: transform 120ms, width 120ms, height 120ms; will-change: transform, width, height; transform: translate3d(181.109px, 402.727px, 0px); height: 40px; width: 40px; visibility: hidden; opacity: 0;"></aside-selection-handle><grammarly-popups data-grammarly-shadow-root="true" class="dnXmp" style="visibility: visible !important; --rem: 16;"></grammarly-popups><grammarly-popups data-grammarly-shadow-root="true" class="dnXmp" style="visibility: visible !important; --rem: 16;"></grammarly-popups><grammarly-extension-vbar-card data-grammarly-shadow-root="true" class="dnXmp" style="visibility: visible !important; --rem: 16;"></grammarly-extension-vbar-card><grammarly-extension-vbars-feedback-form data-grammarly-shadow-root="true" class="dnXmp" style="visibility: visible !important; --rem: 16;"></grammarly-extension-vbars-feedback-form><grammarly-extension-vbars data-grammarly-shadow-root="true" class="dnXmp" style="visibility: visible !important; display: contents; --rem: 16;"></grammarly-extension-vbars><grammarly-extension-vbar-card data-grammarly-shadow-root="true" class="dnXmp" style="visibility: visible !important; --rem: 16;"></grammarly-extension-vbar-card><grammarly-extension-vbars-feedback-form data-grammarly-shadow-root="true" class="dnXmp" style="visibility: visible !important; --rem: 16;"></grammarly-extension-vbars-feedback-form>
+
 </body></html>

@@ -1,0 +1,12 @@
+{
+  "object": "index.html",
+  "publicUrl": "https://aimindset-main.web.app/",
+  "statusUrl": "https://aim-v5-publisher-1004044787855.us-central1.run.app/__status?object=index.html",
+  "revision": 163,
+  "sha": "27c1942b6c8b0a60",
+  "bytes": 438948,
+  "generation": "see __status",
+  "updated": "2026-09-09T17:05:00Z",
+  "policy": "Before any Cloud or GitHub publication, run tools/check-cloud-main-state.sh. If revision or sha changed, stop and merge the manager's current Cloud text into the local design before publishing.",
+  "note": "rev 158 = rev 157 (тексты менеджера) + патч 07.09: acid→#c50d17, правило белого текста на красном, --red-wine на 2-й карточке хиро, фикс undo (execCommand). Локальный main-current/index.html — НЕ этот файл: в нём ещё пиксельная карта, микроменю и data-rev=150."
+}
