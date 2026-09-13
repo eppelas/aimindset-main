@@ -1,0 +1,61 @@
+name: Google inline-editor text to Wild commit
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: google-wild-save-sync
+  cancel-in-progress: false
+jobs:
+  sync:
+    if: github.repository == 'eppelas/aimindset-main' && github.ref == 'refs/heads/main' && vars.AIM_PLATFORM_INTEGRATION == 'enabled'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+      actions: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: wild
+          path: source
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Validate immutable parent dependency
+        id: parent
+        run: |
+          python3 - <<'PY'
+          import json, os, re
+          dependency = json.load(open('source/platform-dependency.json'))
+          assert dependency['repository'] == 'eppelas/aim-web-platform'
+          assert re.fullmatch('[a-f0-9]{40}', dependency['revision'])
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
+              output.write('sha=' + dependency['revision'] + '\n')
+          PY
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: eppelas/aim-web-platform
+          ref: ${{ steps.parent.outputs.sha }}
+          path: platform
+          persist-credentials: false
+          ssh-key: ${{ secrets.AIM_PLATFORM_DEPLOY_KEY }}
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: '22'
+      - run: npm ci --ignore-scripts
+        working-directory: source
+      - run: python3 -B -m unittest discover -s tests -v
+        working-directory: platform
+      - name: Check polling guards without network
+        run: python3 -B tools/release/sync-google-save.py --self-test
+        working-directory: source
+      - name: Import saved Google text and dispatch its release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 -B tools/release/sync-google-save.py --platform ../platform --publish
+        working-directory: source
