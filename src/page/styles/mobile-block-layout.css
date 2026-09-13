@@ -1,0 +1,62 @@
+
+.research-more{display:none}
+.manifesto-site-link{font-size:12px;line-height:1.45;color:#666;justify-self:start;align-self:start}
+@media(max-width:960px){
+ #products .ecosystem-direction-card{grid-template-rows:176px auto}
+ #products .ecosystem-direction-card .direction-scene{height:176px;min-height:176px}
+ #learning .learning-kicker{display:block;width:100%}
+ #learning .learning-kicker>.num{display:flex!important;width:100%;box-sizing:border-box;justify-content:space-between;align-items:center;padding:8px;font-size:var(--mobile-label-size,11px)!important;gap:12px}
+ #learning .program-trio[hidden]{display:none!important}
+ #learning .program-grid{grid-template-columns:minmax(0,1fr)}
+ #learning .program-card--main,#learning .program-card--current,#learning .program-trio{grid-column:1}
+ #learning .program-trio{display:grid;grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:82%;gap:12px;width:100%;min-width:0;max-width:100%;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x proximity;overscroll-behavior-x:contain;padding-bottom:12px}
+ #learning .program-trio>.program-card:nth-child(n){grid-column:auto;min-width:0;scroll-snap-align:start;padding:18px 12px;display:flex;flex-direction:column}
+ #learning .program-trio .program-card__footer{margin-top:auto;min-height:0;gap:12px;padding-top:24px;flex-wrap:wrap}
+ #learning .program-trio .program-card__morph{width:48px;height:48px;flex:none}
+ #learning .program-trio h3{font-size:24px;line-height:1.2}
+ #product-platform>.product-block,#product-space>.product-block,#product-consultations>.consultation-pair{width:100vw!important;max-width:none!important;margin-inline:calc(50% - 50vw)!important;box-sizing:border-box}
+ #product-platform>.product-block,#product-space>.product-block{grid-template-columns:minmax(0,1fr);border:0}
+ #product-platform>.product-block,#product-platform .product-visual,#product-platform .product-copy{background:#f7f7f2}
+ #product-space>.product-block,#product-space .product-copy{background:#f4f4ef}
+ #product-platform .product-copy,#product-space .product-copy{padding:24px 12px;min-width:0;max-width:none}
+ #product-platform .product-copy>p,#product-space .product-copy>p{max-width:none}
+ #product-space .product-copy h3{display:block!important;font-size:24px;line-height:1.2;white-space:normal}
+ #product-space .v1x-tone{display:inline;white-space:nowrap}
+ #product-space .v1x-tone .v1x-weak{display:none!important}
+ #product-space .v1x-tone .v1x-strong{display:inline!important;margin:0!important;padding:0;min-width:0!important}
+ #product-space .space-rhythm{width:100vw;margin-inline:calc(50% - 50vw);box-sizing:border-box;padding-inline:12px}
+ #product-consultations .consultation-pair{display:grid;grid-template-columns:minmax(0,1fr);gap:24px}
+ #product-consultations #product-teams,#product-consultations #product-consulting{width:100%;margin:0;padding:0}
+ #product-consultations .product-block--direction{grid-template-columns:minmax(0,1fr);grid-template-rows:176px auto;width:100%;border:0}
+ #product-consultations .product-direction-gfx{position:relative;inset:auto;grid-column:1;grid-row:1;min-height:176px}
+ #product-consultations .product-direction-copy{grid-column:1;grid-row:2;padding:24px 12px;max-width:none}
+ #product-teams .product-block,#product-teams .product-direction-gfx,#product-teams .product-direction-copy{background:#050505;color:#f7f7f3}
+ #product-teams .product-direction-copy h3,#product-teams .product-direction-copy p,#product-teams .product-cta{color:#f7f7f3}
+ #product-teams .product-cta{--px-fill:#050505;--px-line:#f7f7f3;--px-fill-hover:#f7f7f3;--px-ink-hover:#050505}
+ #product-consulting .product-cta{--px-fill:#f4f4ef;--px-line:#050505;--px-fill-hover:#050505;--px-ink-hover:#f7f7f3}
+ #product-teams .product-cta:hover,#product-teams .product-cta:focus-visible{color:#050505}
+ #product-consulting .product-cta:hover,#product-consulting .product-cta:focus-visible{color:#f7f7f3}
+ #product-consulting .product-block,#product-consulting .product-direction-gfx,#product-consulting .product-direction-copy{background:#f4f4ef;color:#000}
+ #product-consulting .product-direction-copy h3,#product-consulting .product-direction-copy p,#product-consulting .product-cta{color:#000}
+ #product-nonprofit .product-block--support{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:176px auto}
+ #product-nonprofit .product-support-mark{grid-column:1;grid-row:1;height:176px;min-height:176px}
+ #product-nonprofit .product-support-copy{grid-column:1;grid-row:2;display:flex;flex-direction:column;align-items:flex-start;gap:12px;padding:20px 12px}
+ #product-nonprofit .product-support-copy>*{max-width:100%;margin:0}
+ #research .row{grid-template-columns:104px minmax(0,1fr);column-gap:12px;row-gap:12px;align-items:start}
+ #research .row>.key{grid-column:1/-1;grid-row:1}
+ #research .row>.research-thumb{grid-column:1;grid-row:2;width:104px;height:78px}
+ #research .row>div{grid-column:2;grid-row:2/span 2;min-width:0}
+ #research .row>.go{grid-column:1;grid-row:3;justify-self:stretch;align-self:start;width:104px;box-sizing:border-box;margin:0;padding-inline:8px}
+ #researchProjects[data-expanded="false"]>.row:nth-child(n+4){display:none}
+ .research-more{display:block;margin:24px 0 0}
+ #reviews .company-proof{display:flex!important;flex-direction:column;gap:12px;width:100%;align-items:stretch}
+ #reviews .company-proof>.label,#reviews .company-proof>p{display:block;position:static;width:100%;max-width:none;min-width:0;margin:0;grid-area:auto}
+ #manifesto>.sec-head{display:grid!important;grid-template-columns:minmax(0,1fr);gap:12px;align-items:start;min-height:0;height:auto}
+ #manifesto>.sec-head>.num{width:100%;height:auto;min-height:0;box-sizing:border-box;grid-column:1}
+ #manifesto .manifesto-site-link{display:block;max-width:100%;white-space:normal;grid-column:1}
+ #manifesto .manifesto-intro h2{font-size:24px;line-height:1.2;max-width:none}
+ #follow .follow-intro{display:none}
+ main>section#follow{padding-bottom:16px!important}
+ main{padding-bottom:0!important}
+ #w19-marquee-band{display:none!important;height:0!important}
+}

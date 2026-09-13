@@ -1,0 +1,10 @@
+/.github/ @eppelas
+/tools/release/ @eppelas
+/src/page/runtime/inline-editor.js @eppelas
+/tools/source-build.py @eppelas
+/tools/check-generated-source.py @eppelas
+/source-build-record.json @eppelas
+/src/site-shell.js @eppelas
+/important-budget.json @eppelas
+/platform-dependency.json @eppelas
+/AGENTS.md @eppelas

@@ -1,0 +1,14 @@
+@font-face{font-family:"AIM Brand";src:url("../brand/aim-brand-mono-700.ttf") format("truetype");font-weight:700;font-style:normal;font-display:swap}
+:root{
+--bg:#ffffff;--ink:#000000;--soft:#d9d9d9;--hair:#ececec;--pale:#f7f7f7;--muted:#8a8a8a;--acid:#c50d17;--on-acid:#ffffff;--frame:1px;
+--red-wine:#9e1727;--red-carmine:#b4212f;--red-signal:#c02020;
+--mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+--top-height:58px;--page-shell-max:1320px;--page-gutter:clamp(32px,4.6vw,64px);--grid-gap:clamp(18px,1.8vw,24px);--pxu:5px;--pxu2:10px;
+--type-11:11px;--type-12:12px;--type-13:13px;--type-14:14px;--type-16:16px;--type-18:18px;--type-24:24px;--type-32:32px;--type-44:44px;
+--weight-regular:400;--weight-medium:600;--weight-bold:700;
+--tracking-body:0;--tracking-ui:.14em;--tracking-heading:-.01em;--tracking-tight:-.025em;
+--leading-solid:1;--leading-label:1.2;--leading-heading:1.25;--leading-card:1.35;--leading-ui:1.45;--leading-body:1.6;--leading-quote:1.45;--leading-display:1.05;--leading-small:1.65;
+--space-4:4px;--space-8:8px;--space-12:12px;--space-16:16px;--space-24:24px;--space-32:32px;--space-48:48px;--space-64:64px;--space-96:96px;
+}
+@media(max-width:980px){:root{--top-height:106px}}
+@media(max-width:640px){:root{--page-gutter:16px;--grid-gap:14px}}

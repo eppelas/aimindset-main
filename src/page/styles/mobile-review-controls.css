@@ -1,0 +1,10 @@
+
+@media(max-width:960px){
+ #hero>.stats{margin-top:48px!important}
+ #products .ecosystem-direction-arrow{color:#c50d17}
+ #team .has-scroll-sequence .team-ai-pair__item:not(.is-revealed){visibility:hidden}
+ .approach-metaphor{display:block;width:88px;height:88px;margin-top:12px}
+ #approach .rows .row{display:grid;grid-template-columns:96px minmax(0,1fr);gap:16px}
+ #approach .rows .row>span:last-child{display:none}
+}
+@media(min-width:961px){.approach-metaphor{display:none}}

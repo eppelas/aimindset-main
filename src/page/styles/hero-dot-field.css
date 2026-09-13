@@ -1,0 +1,29 @@
+
+  /* — хиро: резервируем нижнюю полосу пустого места под точечный силуэт A→B — */
+  #hero{position:relative}
+  .v1x-dots{position:absolute;left:0;bottom:30px;width:100%;height:120px;display:block;pointer-events:none}
+
+  /* — бейдж версии (верхний правый угол; датчик начинается ниже него) — */
+  .v1x-badge{position:fixed;top:10px;right:10px;z-index:9999;font-family:var(--mono);font-size:10px;line-height:1;
+    letter-spacing:.08em;padding:6px 9px 5px;border:1px solid #000;background:#fff;color:#000}
+  .v1x-badge:hover{background:#000;color:#fff;border-color:#000}
+
+  /* — тонкий вертикальный датчик растяжки у правого края — */
+  .v1x-gauge{position:fixed;top:64px;bottom:72px;right:9px;z-index:9998;display:none;flex-direction:column;
+    align-items:center;gap:7px;pointer-events:none}
+  .v1x-g-label{font-family:var(--mono);font-size:9px;line-height:1;letter-spacing:.14em;color:rgba(0,0,0,.35);writing-mode:vertical-rl}
+  .v1x-g-track{flex:1;width:2px;background:rgba(0,0,0,.1);position:relative}
+  .v1x-g-fill{position:absolute;top:0;left:0;width:100%;height:0;background:rgba(0,0,0,.35)}
+  @media(max-width:760px){.v1x-gauge,.v1x-badge{display:none}}
+
+  /* — числа: табличные цифры, ширина резервируется из JS, вёрстка не прыгает — */
+  #hero .stats b{display:block;font-variant-numeric:tabular-nums;transform-origin:left 65%}
+
+  /* — пары тон-карты: слабое слово зачёркивается, сильное печатается рядом — */
+  .v1x-tone{white-space:nowrap}
+  .v1x-weak{position:relative}
+  .v1x-strike{position:absolute;left:0;top:52%;height:1px;width:0;background:currentColor;pointer-events:none}
+  .v1x-strong{display:inline-block;box-sizing:content-box;white-space:pre;text-align:left;color:inherit;font-weight:600;margin-left:.5em;margin-right:1px;padding-right:3px;vertical-align:baseline}
+  /* Пунктуация живёт в той же неразрывной группе, но вне измеряемого
+     поля набираемого слова: финальная буква никогда не наезжает на запятую. */
+  .v1x-punctuation{display:inline-block;vertical-align:baseline}

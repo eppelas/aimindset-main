@@ -1,0 +1,134 @@
+
+/* Типографика вводного текста и ценностей; отступы команды; состояния карточек проектов. */
+.about-copy h2{line-height:var(--leading-display)}   /* поздний уровень шкалы задаёт 1.25 — display плотный */
+.approach-context p{font-size:var(--type-16);line-height:var(--leading-quote)}
+.value h3{font-size:var(--type-14)}
+.value p{font-size:var(--type-13)}
+@media(min-width:901px){.team-grid{row-gap:calc(var(--grid-gap)/2)}}
+.project-links{border-top:0;padding-top:2px;gap:8px}
+.project-links a{display:inline-block;padding:7px 11px;border:var(--frame) solid var(--ink);background:var(--bg);color:var(--ink);font:500 var(--type-11)/1.25 var(--mono);text-decoration:none;border-bottom-width:var(--frame)}
+.project-links a:hover,.project-links a:focus-visible{background:var(--ink);color:var(--bg);outline:none}
+.project-cards{overflow:visible}
+/* Обложка остаётся видимой, пока ролик не начал воспроизводиться. */
+.project-art .project-motion{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .25s ease;pointer-events:none}
+.project-card.is-motion-playing .project-art .project-motion{opacity:1}
+.project-card.is-motion-playing .project-art>img{visibility:hidden}
+.project-art .project-motion{z-index:2}
+@media(min-width:901px) and (hover:hover){
+  .project-card.is-project-preview{z-index:30;transform:none}
+  .project-card.is-project-preview .project-art{overflow:visible;z-index:3}
+  .project-card.is-project-preview .project-art>img,
+  .project-card.is-project-preview .project-art>.project-motion{transform-origin:0 0;transform:translate(var(--preview-x,0px),var(--preview-y,0px)) scale(var(--preview-scale,2));filter:none;outline:1px solid var(--hair);background:var(--bg);box-shadow:0 8px 24px #0002}
+}
+@media(prefers-reduced-motion:reduce){.project-art img,.project-art .project-motion{transition:none}}
+/* вордмарк «AI Mindset» — как на ai-native: Source Code Pro 700, clamp(15px,1.08vw,18px), трекинг .02em */
+.brand{font-family:"Source Code Pro",ui-monospace,SFMono-Regular,Menlo,monospace!important;font-weight:700!important;font-size:var(--type-16)!important;letter-spacing:.02em!important;text-transform:none!important}
+.brand *{font-size:inherit!important}
+/* 4-я кнопка из карточек обучения (.aim-button-outline) приведена к C */
+.aim-button-outline{display:inline-block;padding:9px 13px;border:var(--frame) solid var(--ink);background:var(--bg);font:500 var(--type-11)/1.25 var(--mono);box-shadow:none}
+.aim-button-outline:hover,.aim-button-outline:focus-visible{background:var(--ink)!important;color:var(--bg)!important}
+/* табы — по центру; консалтинговая цитата — в общем стиле плашек; манифест — цифра ближе к тексту;
+   красная подпись на чёрном — ярче; «суть» в футере — вправо, отдельно от ссылок */
+.tabs{display:flex;justify-content:center}
+.consultation-quote{margin-left:0!important;padding-left:0!important;border-left:0!important;font-size:var(--type-18)!important;line-height:var(--leading-quote)!important}
+.consultation-quote .rhythm-highlight{background:var(--ink);color:var(--bg);padding:3px 4px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+#manifesto .row{grid-template-columns:64px minmax(0,1fr) auto}
+:root{--red-on-dark:#ff4b3e}
+.follow-kicker{color:var(--red-on-dark)!important}
+/* «расписание {space}» в одну строку — теги правее компактнее */
+.space-schedule__head h3{white-space:nowrap}
+.space-schedule__head .space-schedule__eyebrow,.space-schedule__head .space-schedule__tags{letter-spacing:.06em}
+/* «попутчики {space}»: без растяжки между словами */
+#product-space .product-copy h3{display:block!important;justify-content:flex-start!important}
+#product-space .product-copy h3>*{display:inline!important;margin:0!important}
+/* Отступ блока компаний перед отзывами. */
+#reviews .company-proof{margin-top:16px;padding-top:12px}
+/* «Карта проектов AI Mindset» использует кнопку C (.learning-action). */
+.ecosystem-map-open.learning-action{position:static;isolation:auto;box-shadow:none;filter:none;letter-spacing:0}
+.ecosystem-map-open.learning-action::before,.ecosystem-map-open.learning-action::after{content:none;clip-path:none}
+.ecosystem-map-open.learning-action:hover,.ecosystem-map-open.learning-action:focus-visible{background:var(--ink)!important;color:var(--bg)!important;filter:none;transform:none}
+/* Карточки проектов: h3 — 16 px, p — 12 px; вся карточка является ссылкой, стрелка находится в углу. */
+.project-card{position:relative}
+.project-card .project-links{display:none}
+@media(min-width:961px){
+  .project-card,.project-card--wide{grid-template-rows:126px 28px auto 1fr}
+}
+.project-card h3{font-size:var(--type-16);line-height:var(--leading-card);padding-top:6px}
+.project-card>p{font-size:var(--type-12);line-height:var(--leading-small);padding:8px 13px 14px}
+.project-card .project-art::after{content:"";position:absolute;inset:0;z-index:2}
+.project-card h3::after{content:" ↗";color:#c50d17;font-weight:500}
+.project-card:hover h3{color:#c50d17}
+/* Вертикальный ритм: секции 64–96 px; группы 48/64/96 px. */
+main>section,main>section:not(#hero){padding-top:clamp(64px,7vw,96px)!important;padding-bottom:clamp(64px,7vw,96px)!important}
+#hero{padding-bottom:190px!important}
+.team-inline{margin-top:0}
+#approach .approach-context{margin-bottom:var(--space-96,96px)}
+.space-schedule-quote{padding:var(--space-24,24px) 0 var(--space-32,32px)}
+.space-schedule-quote--violet{padding:0 0 var(--space-48,48px)!important}   /* цитаты ближе к расписанию и друг к другу */
+.product-section--intro{padding-top:var(--space-64,64px)}
+#product-teams,#product-consulting{padding-top:var(--space-64,64px)}
+footer{padding:var(--space-48,48px) 0 var(--space-96,96px)}
+@media(min-width:961px){
+  :root{--page-gutter:64px;--grid-gap:24px;--section-space:80px}
+  main>section,main>section:not(#hero){padding-top:var(--section-space)!important;padding-bottom:var(--section-space)!important}
+  main{padding-bottom:40px}
+  main>section#product-consultations,main>section#follow{padding-bottom:40px!important}
+  main>section#product-nonprofit{padding-top:40px!important}
+  .about-copy>.lead{padding-left:48px}
+  .manifesto-layout{column-gap:48px}
+  .product-copy{padding:48px}
+  .follow-intro{padding:40px}
+  #reviews .review-emphasis{padding-inline:2px}
+  .team-grid{row-gap:12px}
+  .space-schedule__bar h3{font-size:var(--type-32)}
+  #w19-marquee-band{height:120px!important}
+}
+@media(min-width:961px) and (max-width:1200px){
+  :root{--page-gutter:48px;--section-space:64px}
+  .space-schedule__bar h3{font-size:var(--type-24)}
+  .about-copy>.lead{padding-left:40px}
+  .product-copy{padding:40px}
+}
+@media(min-width:1400px){:root{--section-space:96px}}
+/* UX-правило: соседние колонки равняются оптически — верхушка букв первой строки
+   текста справа = верхний край чёрной плашки/заголовка слева, а не line-box к line-box.
+   Сдвиг = полуинтерлиньяж + (ascent − cap-height) шрифта ≈ 0.3em + (lh−1)/2·em. */
+:root{--optical-cap:calc(-0.30em - (var(--leading-body) - 1) * 0.5em)}
+#approach .approach-context{margin-top:var(--optical-cap)}
+.about-copy>.lead{margin-top:var(--optical-cap)}
+/* карточка лаборатории в hero — вся кликабельна, если у неё есть ссылка (не только стрелка) */
+.hero-lab-card{position:relative}
+.hero-lab-card__title a::after{content:"";position:absolute;inset:0;z-index:1}
+.hero-lab-card:has(.hero-lab-card__title a){cursor:pointer}
+.hero-lab-card:has(.hero-lab-card__title a:hover) .hero-lab-card__title a{color:#c50d17}
+/* Низ карточки направления — одна ссылка (h2 и стрелка); списки проектов видны постоянно. */
+.ecosystem-direction-copy{grid-template-rows:auto}
+.ecosystem-direction-copy .ecosystem-direction-jump{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;width:100%;grid-column:1/-1;grid-row:1;padding-top:2px;color:inherit;text-decoration:none}
+.ecosystem-direction-copy .ecosystem-direction-jump h2{margin:0;grid-column:auto;grid-row:auto}
+.ecosystem-direction-copy .ecosystem-direction-jump .ecosystem-direction-arrow{grid-column:auto;grid-row:auto;font-size:0}
+.ecosystem-direction-copy .ecosystem-direction-jump:hover h2,.ecosystem-direction-copy .ecosystem-direction-jump:focus-visible h2{color:#c50d17}
+.ecosystem-direction-branch .ecosystem-children{opacity:.4;transition:none} /* muted until the branch is active */
+.ecosystem-direction-branch:is(:hover,:focus-within,.is-open) .ecosystem-children{opacity:1}
+.ecosystem-tree-lines{overflow:visible}
+.ecosystem-graph .ecosystem-direction-card{display:grid;grid-template-rows:auto auto;aspect-ratio:auto;overflow:visible}
+.ecosystem-graph .ecosystem-direction-card .ecosystem-direction-copy{position:relative;inset:auto;left:auto;right:auto;top:auto;bottom:auto;z-index:2;grid-row:2;padding:8px 2px 0;background:transparent}
+.ecosystem-graph .ecosystem-direction-card .direction-scene{position:relative;inset:auto;grid-row:1;aspect-ratio:1.6/1}
+/* !important — слои main (ссылка-оверлей absolute) и wild (grid подписи) спорят за карточку; подпись должна течь под сценой */
+.ecosystem-graph .ecosystem-direction-copy{display:block;height:auto;min-height:calc(2 * 1.15 * var(--type-18) + 14px);overflow:visible}
+.ecosystem-graph .ecosystem-direction-copy .ecosystem-direction-jump{position:static;inset:auto;display:inline-flex;align-items:baseline;justify-content:flex-start;gap:10px;width:auto;height:auto;min-height:0}
+.ecosystem-graph .ecosystem-direction-copy h2{position:static;height:auto;margin:0;font-size:var(--type-18);line-height:1.15;white-space:normal}
+/* одна высота у всех карточек: подпись резервирует две строки, однострочная сидит на нижней */
+@media(min-width:961px){
+  .ecosystem-graph .ecosystem-direction-card{height:200px}
+  .ecosystem-graph .ecosystem-direction-copy{min-height:56px}
+  .ecosystem-graph .ecosystem-direction-copy h2{line-height:21px}
+}
+@media(min-width:961px) and (max-width:1200px){.ecosystem-graph .ecosystem-direction-card{height:280px}}
+@media(min-width:1400px){.ecosystem-graph .ecosystem-direction-card{height:208px}}
+.ecosystem-tree-lines .ecosystem-tree-kids{opacity:.18!important;transition:opacity .25s ease}
+.ecosystem-direction-branch:is(:hover,:focus-within) ~ .ecosystem-tree-lines .ecosystem-tree-kids,.ecosystem-tree-lines .ecosystem-tree-kids.is-active{opacity:1!important}
+/* Основной читальный текст — type-16; цитатные плашки — type-18; компактный текст карточек и списков — 13/14 px. */
+.lead,#hero>.lead,.product-block p,details p,#manifesto .manifesto-rest>p,#manifesto .manifesto-intro>p{font-size:var(--type-16);line-height:var(--leading-body)}
+.about-quote,.rhythm-quote p,.manifesto-side-quote,.product-visual-quote,.product-voice,.direction-side-quote,.direction-side-quote p{font-size:var(--type-18);line-height:var(--leading-quote)}
+.direction-side-quote{border-left:0!important;padding-left:0!important;margin-left:0!important}/* Hover ссылки «наверх»: красный текст на белом фоне. */
+.team-note-cell .team-note{line-height:var(--leading-small)}

@@ -1,0 +1,45 @@
+
+/* The ecosystem topology is adapted from ecosystem-grid-legacy.html; its heavy
+   panels and color skin are intentionally omitted. The local glyph current is
+   adapted from v18-ruslo-code and lives only in the whitespace of this graph. */
+#products{overflow:visible;border-bottom:0}
+.ecosystem-graph{--ecosystem-line:rgba(17,18,16,.24);position:relative;isolation:isolate;margin-top:6px}
+.ecosystem-root-wrap{position:relative;z-index:3;display:flex;justify-content:center;padding:0 0 48px}
+.ecosystem-root{display:flex;align-items:center;justify-content:center;min-height:24px;padding:2px 8px;border:0;background:transparent;color:rgba(17,18,16,.42);font:500 var(--type-11)/1 var(--mono);letter-spacing:.13em;white-space:nowrap}
+.ecosystem-tree-lines,.ecosystem-flow-canvas{position:absolute;inset:0;display:block;width:100%;height:100%;pointer-events:none}
+.ecosystem-flow-canvas{z-index:0;opacity:.46}
+.ecosystem-tree-lines{z-index:1}
+.ecosystem-tree-line{fill:none;stroke:var(--ecosystem-line);stroke-width:1;vector-effect:non-scaling-stroke;stroke-linecap:butt;stroke-linejoin:miter;shape-rendering:crispEdges;transition:stroke .22s ease,opacity .22s ease}
+.ecosystem-tree-line.is-active{stroke:rgba(17,18,16,.62);opacity:1}
+.ecosystem-tree-px{fill:var(--ecosystem-line);stroke:none;shape-rendering:crispEdges;transition:fill .22s ease}
+.ecosystem-tree-px.is-active{fill:rgba(17,18,16,.62)}
+.ecosystem-directions{position:relative;z-index:2;align-items:start;padding:0}
+.ecosystem-directions::before{content:none}
+.ecosystem-direction-branch{position:relative;display:grid;grid-template-rows:auto auto;min-width:0}
+.ecosystem-direction-branch::before{content:none}
+.ecosystem-direction-card{height:clamp(164px,12vw,176px);aspect-ratio:auto}
+.ecosystem-direction-jump{position:absolute;right:0;bottom:0;left:0;z-index:4;display:block;height:76px;border:0;color:inherit;text-decoration:none;pointer-events:auto}
+.ecosystem-direction-jump:hover{border:0}
+.ecosystem-direction-jump:focus-visible{border:0;outline:2px solid currentColor;outline-offset:-4px}
+.ecosystem-direction-branch .ecosystem-direction-card:hover{transform:none}
+.ecosystem-children{position:relative;display:grid;gap:12px;min-height:118px;margin:0 8px;padding:30px 4px 8px 18px;list-style:none;color:rgba(17,18,16,.8);font-size:13px;line-height:1.35;letter-spacing:.02em;opacity:0;transition:opacity .25s ease}
+.ecosystem-child-label{position:relative;display:block;max-width:100%;overflow-wrap:anywhere}
+.ecosystem-children--few{gap:12px;padding-top:34px}
+.ecosystem-children--dense{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:20px;min-height:126px;padding-right:0;font-size:13px}
+.ecosystem-tree-kids{opacity:0;transition:opacity .25s ease}
+.ecosystem-tree-kids.is-active{opacity:1}
+@media(max-width:1200px){
+  .ecosystem-root-wrap{justify-content:flex-start;padding:0 0 38px 18px}
+  .ecosystem-direction-card{height:clamp(190px,22vw,236px)}
+  .ecosystem-children{min-height:94px}
+}
+@media(max-width:700px){
+  .ecosystem-graph{margin-top:0}
+  .ecosystem-root-wrap{padding:0 0 34px}
+  .ecosystem-directions{gap:12px;padding-left:22px}
+  .ecosystem-direction-branch{padding-left:16px}
+  .ecosystem-direction-card{height:clamp(185px,51vw,205px);aspect-ratio:auto}
+  .ecosystem-children{min-height:0;margin-left:3px;padding:24px 2px 13px 15px}
+  .ecosystem-children--dense{grid-template-columns:1fr 1fr;column-gap:18px;padding-bottom:17px}
+}
+@media(hover:none){.ecosystem-direction-branch.is-open .ecosystem-children{opacity:1}.ecosystem-direction-branch.is-open .ecosystem-tree-kids{opacity:1}}

@@ -1,0 +1,94 @@
+
+/* Editorial prose follows the page's eight-column grid. Type sizes stay owned by
+   the approved type system above; this layer controls measure and composition. */
+#approach>.approach-context{
+  width:100%;
+  max-width:none;
+  padding-left:0;
+}
+
+/* The approach list is a nested view of the same outer grid, not a separate
+   150px/20px component grid: key = outer column 3, copy = columns 4–8. */
+@media(min-width:701px){
+  #approach>.rows{
+    grid-column:3/-1;
+    display:grid;
+    grid-template-columns:repeat(6,minmax(0,1fr));
+    column-gap:var(--grid-gap);
+  }
+  #approach .row{
+    grid-column:1/-1;
+    grid-template-columns:repeat(6,minmax(0,1fr));
+    column-gap:var(--grid-gap);
+    padding:20px 0;
+  }
+  #approach .row>.key{
+    grid-column:1;
+  }
+  #approach .row>div{
+    grid-column:2/-1;
+    min-width:0;
+  }
+  #approach .row>span:last-child{
+    display:none;
+  }
+  #approach .row p{
+    max-width:none;
+  }
+}
+
+main .lead,
+#approach>.approach-context>p,
+#manifesto .manifesto-rest>p{
+  text-align:justify;
+  text-align-last:start;
+  text-justify:inter-word;
+  -webkit-hyphens:auto;
+  hyphens:auto;
+  -webkit-hyphenate-limit-before:2;
+  -webkit-hyphenate-limit-after:2;
+  -webkit-hyphenate-limit-lines:3;
+  hyphenate-limit-chars:5 2 2;
+  hyphenate-limit-lines:3;   /* больше переносов, меньше растянутых пробелов */
+  font-kerning:normal;
+  font-variant-ligatures:common-ligatures contextual;
+  letter-spacing:-.0075em;
+  word-break:normal;
+  overflow-wrap:normal;
+}
+
+/* The late desktop about-quote placement used to create three implicit mobile
+   columns. Keep every editorial block inside the single narrow-screen track. */
+@media(max-width:700px){
+  #approach .row{
+    padding-inline:0;
+  }
+  #approach .row p{
+    max-width:none;
+  }
+  .about-copy{
+    width:100%;
+    min-width:0;
+  }
+  .about-intro>.about-quote{
+    grid-column:1!important;
+    grid-row:auto;
+  }
+  main .lead,
+  #approach>.approach-context>p,
+  #manifesto .manifesto-rest>p{
+    overflow-wrap:anywhere;
+  }
+}
+
+/* Below one 360px viewport even a hyphenated mono column is too short for clean
+   justification. The usual phone widths keep the two-sided editorial edge. */
+@media(max-width:359px){
+  main .lead,
+  #approach>.approach-context>p,
+  #manifesto .manifesto-rest>p{
+    text-align:start;
+    text-align-last:auto;
+    letter-spacing:var(--tracking-body);
+  }
+}

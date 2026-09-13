@@ -1,0 +1,30 @@
+
+/* ═══ Система кнопок: ровно ТРИ кнопки ═══
+   A · .btn            — чёрная, полный пиксельный кант (главное действие): «присоединиться»
+   B · .product-cta    — контурная, диагональный кант, стрелка справа: «открыть платформу ↗»
+   C · .learning-action — линейки сверху/снизу, штрихи по бокам (кант + рамка 1px): «waitlist ↗»
+   Всё остальное приведено к ним: .section-page-cta / .ecosystem-map-open / .space-schedule__all / .waitlist-submit → A;
+   .space-schedule__toggle / .space-schedule__action → B; .row .go → C. «Наверх» — не кнопка, а тихая подпись. */
+:root{
+  --px-a:polygon(var(--pxu2) 0,calc(100% - var(--pxu2)) 0,calc(100% - var(--pxu2)) var(--pxu),calc(100% - var(--pxu)) var(--pxu),calc(100% - var(--pxu)) var(--pxu2),100% var(--pxu2),100% calc(100% - var(--pxu2)),calc(100% - var(--pxu)) calc(100% - var(--pxu2)),calc(100% - var(--pxu)) calc(100% - var(--pxu)),calc(100% - var(--pxu2)) calc(100% - var(--pxu)),calc(100% - var(--pxu2)) 100%,var(--pxu2) 100%,var(--pxu2) calc(100% - var(--pxu)),var(--pxu) calc(100% - var(--pxu)),var(--pxu) calc(100% - var(--pxu2)),0 calc(100% - var(--pxu2)),0 var(--pxu2),var(--pxu) var(--pxu2),var(--pxu) var(--pxu),var(--pxu2) var(--pxu),var(--pxu2) 0);
+  --px-b:polygon(var(--pxu2) 0,100% 0,100% calc(100% - var(--pxu2)),calc(100% - var(--pxu)) calc(100% - var(--pxu2)),calc(100% - var(--pxu)) calc(100% - var(--pxu)),calc(100% - var(--pxu2)) calc(100% - var(--pxu)),calc(100% - var(--pxu2)) 100%,0 100%,0 var(--pxu2),var(--pxu) var(--pxu2),var(--pxu) var(--pxu),var(--pxu2) var(--pxu),var(--pxu2) 0);
+}
+/* → A */
+.section-page-cta,.ecosystem-map-open,.space-schedule__all,.waitlist-submit{position:relative;isolation:isolate;display:inline-block;width:auto;max-width:100%;margin-top:18px;padding:10px 20px;border:0;border-radius:0;background:transparent;box-shadow:none;color:var(--bg);font:600 var(--type-12)/1.3 var(--mono);letter-spacing:.04em;text-decoration:none;text-transform:none;cursor:pointer;filter:none;transition:transform .18s steps(3,end),filter .18s steps(3,end)}
+.ecosystem-map-open{margin-top:0}
+.section-page-cta{display:flex;width:max-content;justify-content:space-between;gap:28px;margin-left:auto}
+.space-schedule__all{display:inline-flex;align-items:center;justify-content:space-between;gap:22px;margin:14px 0 18px}
+.section-page-cta::before,.ecosystem-map-open::before,.space-schedule__all::before,.waitlist-submit::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--ink);clip-path:var(--px-a);transition:none}
+.section-page-cta:hover,.section-page-cta:focus-visible,.ecosystem-map-open:hover,.ecosystem-map-open:focus-visible,.space-schedule__all:hover,.space-schedule__all:focus-visible,.waitlist-submit:hover,.waitlist-submit:focus-visible{transform:translate(-2px,-2px);filter:drop-shadow(4px 4px 0 var(--acid));background:transparent;color:var(--bg);box-shadow:none;outline:none}
+/* → B */
+.space-schedule__toggle,.space-schedule__action{position:relative;isolation:isolate;display:inline-flex;align-items:center;justify-content:space-between;gap:28px;width:auto;margin:18px 0 0;padding:13px 15px;border:0;border-radius:0;background:transparent;box-shadow:none;color:var(--ink);font:600 var(--type-12)/1.3 var(--mono);letter-spacing:0;text-decoration:none;white-space:nowrap;cursor:pointer;transition:filter .18s steps(3,end)}
+.space-schedule__toggle::before,.space-schedule__action::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--ink);clip-path:var(--px-b)}
+.space-schedule__toggle::after,.space-schedule__action::after{content:"";position:absolute;inset:1px;z-index:-1;background:var(--bg);clip-path:var(--px-b);transition:none}
+.space-schedule__toggle:hover,.space-schedule__toggle:focus-visible,.space-schedule__action:hover,.space-schedule__action:focus-visible{color:var(--bg);background:transparent;filter:drop-shadow(3px 3px 0 var(--acid));outline:none}
+.space-schedule__toggle:hover::after,.space-schedule__toggle:focus-visible::after,.space-schedule__action:hover::after,.space-schedule__action:focus-visible::after{background:var(--ink)}
+/* → C (кант на самом элементе, чтобы рамка читалась линейками и без скрипта мерцания — у ссылок его нет) */
+.learning-action,.row .go{display:inline-block;padding:9px 13px;border:var(--frame) solid var(--ink);background:var(--bg);color:var(--ink);font:500 var(--type-11)/1.25 var(--mono);letter-spacing:0;text-decoration:none;text-align:center;white-space:nowrap;cursor:pointer;clip-path:var(--px-a);transition:none}
+@media(max-width:700px){.row .go{grid-column:2;grid-row:3;justify-self:start;margin-top:6px}}
+@media(min-width:701px){#research .row>.go{grid-column:4;grid-row:1;justify-self:end;align-self:center;margin-top:0}}
+.learning-action:hover,.learning-action:focus-visible,.row .go:hover,.row .go:focus-visible{background:var(--ink);color:var(--bg);outline:none}/* «наверх» — тихая подпись, не кнопка: без плашки и рамки; показывается только после перехода по якорю */
+.quote-src,.quote-src a,.about-quote--origin .quote-src a{font-size:var(--type-11)}

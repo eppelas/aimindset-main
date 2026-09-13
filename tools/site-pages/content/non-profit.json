@@ -1,0 +1,512 @@
+{
+  "source_url": "https://aimindset.org/non-profit",
+  "resolved_url": "https://aimindset.org/non-profit",
+  "http_status": 200,
+  "captured_at": "2026-09-10T12:25:58.117164+00:00",
+  "bytes": 305309,
+  "sha256": "a95b6725b01c9dfd24077b76dcb54348a64d5ad9b44e1ab4112d4b23ffcc5403",
+  "title": "AI mindset {non-profit}",
+  "extraction_notes": [
+    "Scripts, navigation and repeated footer excluded from blocks; original footer links kept separately.",
+    "text normalizes whitespace only; text_raw preserves source whitespace; html preserves inline emphasis and exact hrefs.",
+    "No copy rewritten; source references and all main-surface links/media retained."
+  ],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "source_id": "block-3c79c733ce3180d48eeaf7a35f8e2934",
+      "text": "мы создаём пространство, где:",
+      "text_raw": "\nмы создаём пространство, где:",
+      "html": "<em><strong>мы создаём пространство, где:</strong></em>",
+      "links": [],
+      "context": {
+        "container_id": "block-88d4835da65842e38340d47d64c7741e",
+        "container_type": "callout"
+      }
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        {
+          "text": "mindset важнее инструментов — технологии меняются, а способ мышления остаётся,",
+          "text_raw": "mindset важнее инструментов — технологии меняются, а способ мышления остаётся,",
+          "html": "<em>mindset важнее инструментов — технологии меняются, а способ мышления остаётся,</em>",
+          "links": []
+        },
+        {
+          "text": "практика встроена в процесс — каждая неделя это эксперимент с реальными задачами,",
+          "text_raw": "практика встроена в процесс — каждая неделя это эксперимент с реальными задачами,",
+          "html": "<em>практика встроена в процесс — каждая неделя это эксперимент с реальными задачами,</em>",
+          "links": []
+        },
+        {
+          "text": "сообщество усиливает обучение — вы учитесь не только у экспертов, но и друг у друга,",
+          "text_raw": "сообщество усиливает обучение — вы учитесь не только у экспертов, но и друг у друга,",
+          "html": "<em>сообщество усиливает обучение — вы учитесь не только у экспертов, но и друг у друга,</em>",
+          "links": []
+        },
+        {
+          "text": "персонализация через треки — углубляйтесь в то, что резонирует именно с вами.",
+          "text_raw": "персонализация через треки — углубляйтесь в то, что резонирует именно с вами.",
+          "html": "<em>персонализация через треки — углубляйтесь в то, что резонирует именно с вами.</em>",
+          "links": []
+        }
+      ],
+      "source_id": null,
+      "text": "mindset важнее инструментов — технологии меняются, а способ мышления остаётся,практика встроена в процесс — каждая неделя это эксперимент с реальными задачами,сообщество усиливает обучение — вы учитесь не только у экспертов, но и друг у друга,персонализация через треки — углубляйтесь в то, что резонирует именно с вами.",
+      "text_raw": "mindset важнее инструментов — технологии меняются, а способ мышления остаётся,практика встроена в процесс — каждая неделя это эксперимент с реальными задачами,сообщество усиливает обучение — вы учитесь не только у экспертов, но и друг у друга,персонализация через треки — углубляйтесь в то, что резонирует именно с вами.",
+      "html": "<em>mindset важнее инструментов — технологии меняются, а способ мышления остаётся,</em><em>практика встроена в процесс — каждая неделя это эксперимент с реальными задачами,</em><em>сообщество усиливает обучение — вы учитесь не только у экспертов, но и друг у друга,</em><em>персонализация через треки — углубляйтесь в то, что резонирует именно с вами.</em>",
+      "links": [],
+      "context": {
+        "container_id": "block-88d4835da65842e38340d47d64c7741e",
+        "container_type": "callout"
+      }
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "source_id": "block-2e69c733ce31804ca88eef266a80d4e0",
+      "text": "подать заявку →",
+      "text_raw": "подать заявку →",
+      "html": "<a href=\"http://t.me/prod_ai_mind_set_bot?start=NonProfit\">подать заявку →</a>",
+      "links": [
+        {
+          "text": "подать заявку →",
+          "href": "http://t.me/prod_ai_mind_set_bot?start=NonProfit",
+          "resolved_url": "http://t.me/prod_ai_mind_set_bot?start=NonProfit"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "source_id": "block-12c9c733ce318072b02ddc9327db63a7",
+      "text": "Привет друг! Если ты здесь, то наверняка, как и мы, хочешь менять мир к лучшему.",
+      "text_raw": "Привет друг! \nЕсли ты здесь, то наверняка, как и мы, хочешь менять мир к лучшему. ",
+      "html": "Привет <strong>друг! </strong>\nЕсли ты здесь, то наверняка, как и мы, хочешь менять мир к лучшему.",
+      "links": []
+    },
+    {
+      "type": "paragraph",
+      "source_id": "block-2419c733ce3180a3ab32c1b7f178bdee",
+      "text": "Мы в AI Mindset верим, что искусственный интеллект – это не просто модный тренд, а мощный инструмент для усиления социального влияния, личного развития и расширения творческих возможностей. Это не только технический навык – в первую очередь это способ мышления (mindset). Мы создаем сообщество единомышленников, которые используют AI для решения важных общественных задач.",
+      "text_raw": "Мы в AI Mindset верим, что искусственный интеллект – это не просто модный тренд, а мощный инструмент для усиления социального влияния, личного развития и расширения творческих возможностей. Это не только технический навык – в первую очередь это способ мышления (mindset). Мы создаем сообщество единомышленников, которые используют AI для решения важных общественных задач.",
+      "html": "Мы в AI Mindset верим, что искусственный интеллект – это не просто модный тренд, а мощный инструмент для усиления социального влияния, личного развития и расширения творческих возможностей. Это не только технический навык – в первую очередь это способ мышления (mindset). Мы создаем сообщество единомышленников, которые используют AI для решения важных общественных задач.",
+      "links": []
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "source_id": "block-12c9c733ce3180f38ef2cb1af17de350",
+      "text": "Что мы предлагаем",
+      "text_raw": "Что мы предлагаем",
+      "html": "Что мы предлагаем",
+      "links": []
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        {
+          "text": "Бесплатное обучение для представителей НКО",
+          "text_raw": "Бесплатное обучение для представителей НКО",
+          "html": "Бесплатное обучение для представителей НКО",
+          "links": []
+        },
+        {
+          "text": "Практические навыки работы с современными AI-инструментами",
+          "text_raw": "Практические навыки работы с современными AI-инструментами",
+          "html": "Практические навыки работы с современными AI-инструментами",
+          "links": []
+        },
+        {
+          "text": "Доступ к сообществу практиков и экспертную поддержку",
+          "text_raw": "Доступ к сообществу практиков и экспертную поддержку",
+          "html": "Доступ к сообществу практиков и экспертную поддержку",
+          "links": []
+        },
+        {
+          "text": "Возможность масштабировать социальное влияние через технологии",
+          "text_raw": "Возможность масштабировать социальное влияние через технологии",
+          "html": "Возможность масштабировать социальное влияние через технологии",
+          "links": []
+        }
+      ],
+      "source_id": null,
+      "text": "Бесплатное обучение для представителей НКОПрактические навыки работы с современными AI-инструментамиДоступ к сообществу практиков и экспертную поддержкуВозможность масштабировать социальное влияние через технологии",
+      "text_raw": "Бесплатное обучение для представителей НКОПрактические навыки работы с современными AI-инструментамиДоступ к сообществу практиков и экспертную поддержкуВозможность масштабировать социальное влияние через технологии",
+      "html": "Бесплатное обучение для представителей НКОПрактические навыки работы с современными AI-инструментамиДоступ к сообществу практиков и экспертную поддержкуВозможность масштабировать социальное влияние через технологии",
+      "links": []
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "source_id": "block-12c9c733ce318043b684d8e18e115d3d",
+      "text": "Что хотим взамен",
+      "text_raw": "Что хотим взамен",
+      "html": "Что хотим взамен",
+      "links": []
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        {
+          "text": "Вашу активную позицию и регулярное участие в занятиях",
+          "text_raw": "Вашу активную позицию и регулярное участие в занятиях",
+          "html": "Вашу активную позицию и регулярное участие в занятиях",
+          "links": []
+        },
+        {
+          "text": "Реальный проект, направленный на общественное благо",
+          "text_raw": "Реальный проект, направленный на общественное благо",
+          "html": "Реальный проект, направленный на общественное благо",
+          "links": []
+        },
+        {
+          "text": "Желание делиться опытом и помогать другим участникам расти",
+          "text_raw": "Желание делиться опытом и помогать другим участникам расти",
+          "html": "Желание делиться опытом и помогать другим участникам расти",
+          "links": []
+        },
+        {
+          "text": "Готовность применять полученные знания на практике",
+          "text_raw": "Готовность применять полученные знания на практике",
+          "html": "Готовность применять полученные знания на практике",
+          "links": []
+        }
+      ],
+      "source_id": null,
+      "text": "Вашу активную позицию и регулярное участие в занятияхРеальный проект, направленный на общественное благоЖелание делиться опытом и помогать другим участникам растиГотовность применять полученные знания на практике",
+      "text_raw": "Вашу активную позицию и регулярное участие в занятияхРеальный проект, направленный на общественное благоЖелание делиться опытом и помогать другим участникам растиГотовность применять полученные знания на практике",
+      "html": "Вашу активную позицию и регулярное участие в занятияхРеальный проект, направленный на общественное благоЖелание делиться опытом и помогать другим участникам растиГотовность применять полученные знания на практике",
+      "links": []
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "source_id": "block-12c9c733ce3180f9a716e2415b774f01",
+      "text": "Критерии отбора",
+      "text_raw": "Критерии отбора",
+      "html": "Критерии отбора",
+      "links": []
+    },
+    {
+      "type": "paragraph",
+      "source_id": "block-9a76bc1320e744dc9e5711338bd494c1",
+      "text": "Общественное благо",
+      "text_raw": "Общественное благо",
+      "html": "<strong>Общественное благо</strong>",
+      "links": [],
+      "context": {
+        "container_id": "block-9f4d90a5e8b74e1ab947248a174c4c0e",
+        "container_type": "callout"
+      }
+    },
+    {
+      "type": "paragraph",
+      "source_id": "block-12c9c733ce3180a9881cc4079ca07c82",
+      "text": "Ваша организация или инициатива должна быть направлена на общественное благо. Это могут быть социальные, культурные, образовательные проекты, правозащитные инициативы, развитие науки и технологий, или другие направления, создающие позитивные изменения в обществе.",
+      "text_raw": "Ваша организация или инициатива должна быть направлена на общественное благо. Это могут быть социальные, культурные, образовательные проекты, правозащитные инициативы, развитие науки и технологий, или другие направления, создающие позитивные изменения в обществе.",
+      "html": "Ваша организация или инициатива должна быть направлена на общественное благо. Это могут быть социальные, культурные, образовательные проекты, правозащитные инициативы, развитие науки и технологий, или другие направления, создающие позитивные изменения в обществе.",
+      "links": [],
+      "context": {
+        "container_id": "block-9f4d90a5e8b74e1ab947248a174c4c0e",
+        "container_type": "callout"
+      }
+    },
+    {
+      "type": "paragraph",
+      "source_id": "block-353b0e8e08cd42db9ea8938e0dcb31d0",
+      "text": "Проекты с применением AI",
+      "text_raw": "Проекты с применением AI",
+      "html": "<strong>Проекты с применением AI</strong>",
+      "links": [],
+      "context": {
+        "container_id": "block-12c9c733ce318027885af4c801cf7a50",
+        "container_type": "callout"
+      }
+    },
+    {
+      "type": "paragraph",
+      "source_id": "block-4b12203e6c3a40c99e6d06d5e23afc36",
+      "text": "Мы приветствуем как опыт, так и искренний интерес к применению AI для улучшения ваших текущих программ и внутренних процессов. Важно иметь конкретные идеи по использованию AI или уже реализованные проекты. Расскажите нам о своем видении применения AI в вашей работе.",
+      "text_raw": "Мы приветствуем как опыт, так и искренний интерес к применению AI для улучшения ваших текущих программ и внутренних процессов. Важно иметь конкретные идеи по использованию AI или уже реализованные проекты. Расскажите нам о своем видении применения AI в вашей работе.",
+      "html": "Мы приветствуем как опыт, так и искренний интерес к применению AI для улучшения ваших текущих программ и внутренних процессов. Важно иметь конкретные идеи по использованию AI или уже реализованные проекты. Расскажите нам о своем видении применения AI в вашей работе.",
+      "links": [],
+      "context": {
+        "container_id": "block-12c9c733ce318027885af4c801cf7a50",
+        "container_type": "callout"
+      }
+    },
+    {
+      "type": "paragraph",
+      "source_id": "block-7c6af24a68ee48c4bbd5fe7f819cd2fd",
+      "text": "Готовность делиться",
+      "text_raw": "Готовность делиться",
+      "html": "<strong>Готовность делиться</strong>",
+      "links": [],
+      "context": {
+        "container_id": "block-12c9c733ce3180d0b21de282d21da803",
+        "container_type": "callout"
+      }
+    },
+    {
+      "type": "paragraph",
+      "source_id": "block-12c9c733ce3180cdaf9cde1f0e1e9b4a",
+      "text": "Мы ценим открытость к обмену опытом и активное участие в жизни сообщества. Вы должны быть готовы не только получать знания, но и делиться своими успехами и неудачами, помогать другим участникам в их развитии, участвовать в групповых обсуждениях и совместных проектах.",
+      "text_raw": "Мы ценим открытость к обмену опытом и активное участие в жизни сообщества. Вы должны быть готовы не только получать знания, но и делиться своими успехами и неудачами, помогать другим участникам в их развитии, участвовать в групповых обсуждениях и совместных проектах.\n",
+      "html": "Мы ценим открытость к обмену опытом и активное участие в жизни сообщества. Вы должны быть готовы не только получать знания, но и делиться своими успехами и неудачами, помогать другим участникам в их развитии, участвовать в групповых обсуждениях и совместных проектах.",
+      "links": [],
+      "context": {
+        "container_id": "block-12c9c733ce3180d0b21de282d21da803",
+        "container_type": "callout"
+      }
+    },
+    {
+      "type": "paragraph",
+      "source_id": "block-25dab107d332448fb84cbd5ef7866fe9",
+      "text": "Вовлеченность в обучение",
+      "text_raw": "Вовлеченность в обучение",
+      "html": "<strong>Вовлеченность в обучение</strong>",
+      "links": [],
+      "context": {
+        "container_id": "block-12c9c733ce3180069f5deabd7466156d",
+        "container_type": "callout"
+      }
+    },
+    {
+      "type": "paragraph",
+      "source_id": "block-12c9c733ce318062b660c30859f942b1",
+      "text": "Мы ожидаем активного участия в лаборатории. Курс нельзя \"посмотреть в записи\", хотя записи будут. Необходимо регулярно присутствовать на живых занятиях, выполнять практические задания и применять полученные инструменты к своему проекту – это ваша плата за участие в программе.",
+      "text_raw": "Мы ожидаем активного участия в лаборатории. Курс нельзя \"посмотреть в записи\", хотя записи будут. Необходимо регулярно присутствовать на живых занятиях, выполнять практические задания и применять полученные инструменты к своему проекту – это ваша плата за участие в программе.",
+      "html": "Мы ожидаем активного участия в лаборатории. Курс нельзя &quot;посмотреть в записи&quot;, хотя записи будут. Необходимо регулярно присутствовать на живых занятиях, выполнять практические задания и применять полученные инструменты к своему проекту – это ваша плата за участие в программе.",
+      "links": [],
+      "context": {
+        "container_id": "block-12c9c733ce3180069f5deabd7466156d",
+        "container_type": "callout"
+      }
+    },
+    {
+      "type": "image",
+      "media": [
+        {
+          "tag": "img",
+          "src": "https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/a36453cb-11e1-48b4-9ea6-0b10acb83ff2/d934e451-632d-4e6b-9dc4-f97fff8b33c0_text/w=1920,quality=90,fit=scale-down",
+          "resolved_url": "https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/a36453cb-11e1-48b4-9ea6-0b10acb83ff2/d934e451-632d-4e6b-9dc4-f97fff8b33c0_text/w=1920,quality=90,fit=scale-down",
+          "alt": "image",
+          "srcset": "https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/a36453cb-11e1-48b4-9ea6-0b10acb83ff2/d934e451-632d-4e6b-9dc4-f97fff8b33c0_text/w=1920,quality=90,fit=scale-down 640w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/a36453cb-11e1-48b4-9ea6-0b10acb83ff2/d934e451-632d-4e6b-9dc4-f97fff8b33c0_text/w=1920,quality=90,fit=scale-down 750w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/a36453cb-11e1-48b4-9ea6-0b10acb83ff2/d934e451-632d-4e6b-9dc4-f97fff8b33c0_text/w=1920,quality=90,fit=scale-down 828w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/a36453cb-11e1-48b4-9ea6-0b10acb83ff2/d934e451-632d-4e6b-9dc4-f97fff8b33c0_text/w=1920,quality=90,fit=scale-down 1080w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/a36453cb-11e1-48b4-9ea6-0b10acb83ff2/d934e451-632d-4e6b-9dc4-f97fff8b33c0_text/w=1920,quality=90,fit=scale-down 1200w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/a36453cb-11e1-48b4-9ea6-0b10acb83ff2/d934e451-632d-4e6b-9dc4-f97fff8b33c0_text/w=1920,quality=90,fit=scale-down 1920w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/a36453cb-11e1-48b4-9ea6-0b10acb83ff2/d934e451-632d-4e6b-9dc4-f97fff8b33c0_text/w=1920,quality=90,fit=scale-down 2048w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/a36453cb-11e1-48b4-9ea6-0b10acb83ff2/d934e451-632d-4e6b-9dc4-f97fff8b33c0_text/w=1920,quality=90,fit=scale-down 3840w",
+          "title": ""
+        }
+      ],
+      "source_id": "block-12c9c733ce31806a9f87e49197aadbf7",
+      "text": "",
+      "text_raw": "",
+      "html": "",
+      "links": []
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "source_id": "block-12c9c733ce31808b842fc45895ee8023",
+      "text": "Как подать заявку",
+      "text_raw": "Как подать заявку",
+      "html": "Как подать заявку",
+      "links": []
+    },
+    {
+      "type": "paragraph",
+      "source_id": "block-12c9c733ce3180a99dacf4793eb7d0af",
+      "text": "Просто напиши нам и расскажи о своем проекте и о том, как планируешь применять AI.",
+      "text_raw": "Просто напиши нам и расскажи о своем проекте и о том, как планируешь применять AI.",
+      "html": "Просто напиши нам и расскажи о своем проекте и о том, как планируешь применять AI.",
+      "links": []
+    },
+    {
+      "type": "paragraph",
+      "source_id": "block-12c9c733ce318083aaefcee26bfec6b0",
+      "text": "Мест немного, но мы всегда ищем возможности помочь тем, кто действительно хочет менять мир к лучшему. Не стесняйся подавать заявку, мы найдем как тебе помочь.",
+      "text_raw": "Мест немного, но мы всегда ищем возможности помочь тем, кто действительно хочет менять мир к лучшему. Не стесняйся подавать заявку, мы найдем как тебе помочь.",
+      "html": "Мест немного, но мы всегда ищем возможности помочь тем, кто действительно хочет менять мир к лучшему. Не стесняйся подавать заявку, мы найдем как тебе помочь.",
+      "links": []
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "source_id": "block-04608f3e645b41bcbc378a061625162b",
+      "text": "подать заявку →",
+      "text_raw": "подать заявку →",
+      "html": "<a href=\"http://t.me/prod_ai_mind_set_bot?start=NonProfit\">подать заявку →</a>",
+      "links": [
+        {
+          "text": "подать заявку →",
+          "href": "http://t.me/prod_ai_mind_set_bot?start=NonProfit",
+          "resolved_url": "http://t.me/prod_ai_mind_set_bot?start=NonProfit"
+        }
+      ]
+    }
+  ],
+  "source_notices": [
+    {
+      "type": "paragraph",
+      "source_id": null,
+      "text": "Наши текущие лаборатории:",
+      "text_raw": "Наши текущие лаборатории:",
+      "html": "Наши текущие лаборатории:",
+      "links": [],
+      "context": {
+        "container_id": "block-88d4835da65842e38340d47d64c7741e",
+        "container_type": "callout"
+      }
+    },
+    {
+      "type": "paragraph",
+      "source_id": "block-2fe9c733ce3180ba9f0cee47d884ef69",
+      "text": "– s26 summer {lab}: поток в эпоху агентов · идёт до 31 августа",
+      "text_raw": "– s26 summer {lab}: поток в эпоху агентов · идёт до 31 августа",
+      "html": "– <a href=\"https://s26.aimindset.org/\">s26 summer {lab}:</a> поток в эпоху агентов · идёт до 31 августа",
+      "links": [
+        {
+          "text": "s26 summer {lab}:",
+          "href": "https://s26.aimindset.org/",
+          "resolved_url": "https://s26.aimindset.org/"
+        }
+      ],
+      "context": {
+        "container_id": "block-88d4835da65842e38340d47d64c7741e",
+        "container_type": "callout"
+      }
+    },
+    {
+      "type": "paragraph",
+      "source_id": "block-34d9c733ce318021b1f5dde7122e2c20",
+      "text": "– marketing {sprint}: три недели практики – оффер и аудитория, каналы и дистрибуция · старт 14 сентября",
+      "text_raw": "– marketing {sprint}: три недели практики – оффер и аудитория, каналы и дистрибуция · старт 14 сентября",
+      "html": "– <a href=\"https://marketing.aimindset.org/\">marketing {sprint}</a>: три недели практики – оффер и аудитория, каналы и дистрибуция · старт 14 сентября",
+      "links": [
+        {
+          "text": "marketing {sprint}",
+          "href": "https://marketing.aimindset.org/",
+          "resolved_url": "https://marketing.aimindset.org/"
+        }
+      ],
+      "context": {
+        "container_id": "block-88d4835da65842e38340d47d64c7741e",
+        "container_type": "callout"
+      }
+    }
+  ],
+  "all_main_links": [
+    {
+      "text": "s26 summer {lab}:",
+      "href": "https://s26.aimindset.org/",
+      "resolved_url": "https://s26.aimindset.org/"
+    },
+    {
+      "text": "marketing {sprint}",
+      "href": "https://marketing.aimindset.org/",
+      "resolved_url": "https://marketing.aimindset.org/"
+    },
+    {
+      "text": "подать заявку →",
+      "href": "http://t.me/prod_ai_mind_set_bot?start=NonProfit",
+      "resolved_url": "http://t.me/prod_ai_mind_set_bot?start=NonProfit"
+    },
+    {
+      "text": "подать заявку →",
+      "href": "http://t.me/prod_ai_mind_set_bot?start=NonProfit",
+      "resolved_url": "http://t.me/prod_ai_mind_set_bot?start=NonProfit"
+    },
+    {
+      "text": "Наш канал в телеграм",
+      "href": "https://t.me/ai_mind_set",
+      "resolved_url": "https://t.me/ai_mind_set"
+    },
+    {
+      "text": "Наш подкаст",
+      "href": "https://aimindset.transistor.fm/",
+      "resolved_url": "https://aimindset.transistor.fm/"
+    }
+  ],
+  "footer_links": [
+    {
+      "text": "Наш канал в телеграм",
+      "href": "https://t.me/ai_mind_set",
+      "resolved_url": "https://t.me/ai_mind_set"
+    },
+    {
+      "text": "Наш подкаст",
+      "href": "https://aimindset.transistor.fm/",
+      "resolved_url": "https://aimindset.transistor.fm/"
+    }
+  ],
+  "all_main_media": [
+    {
+      "tag": "img",
+      "src": "https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/97c29202-ba13-44da-88ef-c2dcbd0dd343/AI_mindset_Obsidian_lab_dark_pics20/w=1920,quality=90,fit=scale-down",
+      "resolved_url": "https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/97c29202-ba13-44da-88ef-c2dcbd0dd343/AI_mindset_Obsidian_lab_dark_pics20/w=1920,quality=90,fit=scale-down",
+      "alt": "AI mindset {non-profit}",
+      "srcset": "https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/97c29202-ba13-44da-88ef-c2dcbd0dd343/AI_mindset_Obsidian_lab_dark_pics20/w=1920,quality=90,fit=scale-down 640w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/97c29202-ba13-44da-88ef-c2dcbd0dd343/AI_mindset_Obsidian_lab_dark_pics20/w=1920,quality=90,fit=scale-down 750w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/97c29202-ba13-44da-88ef-c2dcbd0dd343/AI_mindset_Obsidian_lab_dark_pics20/w=1920,quality=90,fit=scale-down 828w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/97c29202-ba13-44da-88ef-c2dcbd0dd343/AI_mindset_Obsidian_lab_dark_pics20/w=1920,quality=90,fit=scale-down 1080w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/97c29202-ba13-44da-88ef-c2dcbd0dd343/AI_mindset_Obsidian_lab_dark_pics20/w=1920,quality=90,fit=scale-down 1200w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/97c29202-ba13-44da-88ef-c2dcbd0dd343/AI_mindset_Obsidian_lab_dark_pics20/w=1920,quality=90,fit=scale-down 1920w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/97c29202-ba13-44da-88ef-c2dcbd0dd343/AI_mindset_Obsidian_lab_dark_pics20/w=1920,quality=90,fit=scale-down 2048w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/97c29202-ba13-44da-88ef-c2dcbd0dd343/AI_mindset_Obsidian_lab_dark_pics20/w=1920,quality=90,fit=scale-down 3840w",
+      "title": ""
+    },
+    {
+      "tag": "img",
+      "src": "https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/41e2aa80-ce14-4da7-a0e0-3f675ae03f14/logo_round/w=1920,quality=90,fit=scale-down",
+      "resolved_url": "https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/41e2aa80-ce14-4da7-a0e0-3f675ae03f14/logo_round/w=1920,quality=90,fit=scale-down",
+      "alt": "AI mindset {non-profit}",
+      "srcset": "https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/41e2aa80-ce14-4da7-a0e0-3f675ae03f14/logo_round/w=1920,quality=90,fit=scale-down 1x, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/41e2aa80-ce14-4da7-a0e0-3f675ae03f14/logo_round/w=1920,quality=90,fit=scale-down 2x",
+      "title": ""
+    },
+    {
+      "tag": "img",
+      "src": "https://app.notion.com/icons/exit_gray.svg",
+      "resolved_url": "https://app.notion.com/icons/exit_gray.svg",
+      "alt": "icon",
+      "srcset": "",
+      "title": ""
+    },
+    {
+      "tag": "img",
+      "src": "https://app.notion.com/icons/globe_pink.svg",
+      "resolved_url": "https://app.notion.com/icons/globe_pink.svg",
+      "alt": "icon",
+      "srcset": "",
+      "title": ""
+    },
+    {
+      "tag": "img",
+      "src": "https://app.notion.com/icons/robot_pink.svg",
+      "resolved_url": "https://app.notion.com/icons/robot_pink.svg",
+      "alt": "icon",
+      "srcset": "",
+      "title": ""
+    },
+    {
+      "tag": "img",
+      "src": "https://app.notion.com/icons/gift_pink.svg",
+      "resolved_url": "https://app.notion.com/icons/gift_pink.svg",
+      "alt": "icon",
+      "srcset": "",
+      "title": ""
+    },
+    {
+      "tag": "img",
+      "src": "https://app.notion.com/icons/graduate_pink.svg",
+      "resolved_url": "https://app.notion.com/icons/graduate_pink.svg",
+      "alt": "icon",
+      "srcset": "",
+      "title": ""
+    },
+    {
+      "tag": "img",
+      "src": "https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/a36453cb-11e1-48b4-9ea6-0b10acb83ff2/d934e451-632d-4e6b-9dc4-f97fff8b33c0_text/w=1920,quality=90,fit=scale-down",
+      "resolved_url": "https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/a36453cb-11e1-48b4-9ea6-0b10acb83ff2/d934e451-632d-4e6b-9dc4-f97fff8b33c0_text/w=1920,quality=90,fit=scale-down",
+      "alt": "image",
+      "srcset": "https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/a36453cb-11e1-48b4-9ea6-0b10acb83ff2/d934e451-632d-4e6b-9dc4-f97fff8b33c0_text/w=1920,quality=90,fit=scale-down 640w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/a36453cb-11e1-48b4-9ea6-0b10acb83ff2/d934e451-632d-4e6b-9dc4-f97fff8b33c0_text/w=1920,quality=90,fit=scale-down 750w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/a36453cb-11e1-48b4-9ea6-0b10acb83ff2/d934e451-632d-4e6b-9dc4-f97fff8b33c0_text/w=1920,quality=90,fit=scale-down 828w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/a36453cb-11e1-48b4-9ea6-0b10acb83ff2/d934e451-632d-4e6b-9dc4-f97fff8b33c0_text/w=1920,quality=90,fit=scale-down 1080w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/a36453cb-11e1-48b4-9ea6-0b10acb83ff2/d934e451-632d-4e6b-9dc4-f97fff8b33c0_text/w=1920,quality=90,fit=scale-down 1200w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/a36453cb-11e1-48b4-9ea6-0b10acb83ff2/d934e451-632d-4e6b-9dc4-f97fff8b33c0_text/w=1920,quality=90,fit=scale-down 1920w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/a36453cb-11e1-48b4-9ea6-0b10acb83ff2/d934e451-632d-4e6b-9dc4-f97fff8b33c0_text/w=1920,quality=90,fit=scale-down 2048w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/a36453cb-11e1-48b4-9ea6-0b10acb83ff2/d934e451-632d-4e6b-9dc4-f97fff8b33c0_text/w=1920,quality=90,fit=scale-down 3840w",
+      "title": ""
+    }
+  ],
+  "factual_risks": [
+    "Source still labels s26 summer lab as running until August 31; this is stale on September 10, 2026. Notices are excluded from body blocks and preserved in source_notices for editorial decision."
+  ]
+}

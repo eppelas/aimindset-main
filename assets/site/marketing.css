@@ -1,0 +1,372 @@
+/* Marketing compositions use the existing eight-column shell, typography,
+   inline ink quotes, card frames and A/B buttons from the main site. */
+[data-page="ai-mindset-consulting"],[data-page="non-profit"]{
+ --section-space-before:clamp(104px,9vw,148px);
+ --section-space-after:clamp(92px,7.5vw,124px);
+ --quote-space:var(--space-48);
+}
+.page-section.marketing-section,.page-section.nonprofit-mission{
+ display:grid;grid-template-columns:repeat(8,minmax(0,1fr));column-gap:var(--grid-gap);
+ padding-block:var(--section-space-before) var(--section-space-after);border:0;min-width:0;
+ scroll-margin-top:calc(var(--top-height) + 38px - var(--section-space-before));
+}
+.marketing-section>*{grid-column:1/-1;min-width:0}
+.marketing-section-head{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:var(--grid-gap);align-items:start;margin-bottom:var(--space-48)}
+.marketing-section-head h2{grid-column:1/4;max-width:18ch;font-size:var(--type-18);font-weight:600;letter-spacing:var(--tracking-heading);line-height:var(--leading-card);margin:0;text-wrap:balance}
+.marketing-section-intro{grid-column:4/9;max-width:64ch;padding-top:0;font-size:var(--type-16);line-height:var(--leading-body)}
+.marketing-section h3{font-size:var(--type-18);line-height:var(--leading-card);margin:0 0 var(--space-12)}
+.marketing-section .plain-list{padding-left:18px;margin-top:var(--space-12)}
+.marketing-section .plain-list li{font-size:var(--type-14);line-height:var(--leading-small)}
+.marketing-section .plain-list li+li{margin-top:6px}
+.marketing-section .rhythm-quote{display:block;margin:0;max-width:none}
+.marketing-section .rhythm-quote p{font-size:var(--type-18);line-height:var(--leading-quote);text-wrap:initial;font-weight:400}
+.marketing-section .result{font-size:var(--type-14)!important;font-weight:400;color:#555;margin-top:var(--space-16)}
+.team-ink{color:var(--acid)}
+.team-intro{grid-template-columns:repeat(8,minmax(0,1fr));align-items:center;padding-block:var(--space-64) var(--space-24);gap:var(--space-32) var(--grid-gap)}
+.team-hero-copy{grid-column:1/6}.team-hero-copy .eyebrow{margin-bottom:var(--space-16);color:var(--acid)}
+.team-hero-copy h1{font-size:var(--type-44);line-height:var(--leading-display);font-weight:700;max-width:20ch}
+.team-hero-lead{font-size:var(--type-16);line-height:var(--leading-body);font-weight:400;max-width:48ch;color:#333;margin-top:var(--space-24)}
+.team-hero-copy .intro-actions{margin-top:var(--space-32)}
+.team-hero-art{grid-column:6/9;justify-self:center;width:min(100%,264px);margin:0}
+.team-hero-art .source-image{height:290px;object-fit:cover;object-position:center;border-radius:var(--space-12)}
+.team-hero-art figcaption{font-size:var(--type-11);line-height:var(--leading-small);color:#555;margin-top:var(--space-12)}
+.team-hero-facts{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--grid-gap);padding:var(--space-24);background:var(--pale);margin-top:var(--space-16)}
+.team-hero-facts p{margin:0}.team-hero-facts strong{display:block;font-size:var(--type-24);line-height:var(--leading-heading);font-weight:600}.team-hero-facts span{display:block;font-size:var(--type-13);line-height:var(--leading-small);color:#555;margin-top:var(--space-8)}
+.team-format .outcome-grid{margin:0;gap:var(--space-24)}
+.team-format .outcome-grid li{font-size:var(--type-16);line-height:var(--leading-body);padding:0;background:none;max-width:32ch}
+.format-testimonial{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));align-items:center;gap:var(--grid-gap);margin-block:var(--quote-space)}
+.format-mark{grid-column:1/3;justify-self:center}.format-mark .program-card__morph{width:144px;height:120px}
+.format-testimonial .rhythm-quote{grid-column:4/9}
+.support-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-24)}
+.support-item{padding:var(--space-24);background:var(--pale);min-width:0}
+.support-title{display:flex;align-items:flex-start;justify-content:space-between;gap:var(--space-16)}
+.support-title h3{max-width:28ch}.support-title .program-card__morph{width:64px;height:44px;margin:0}
+.support-item>p,.support-item>div>p{font-size:var(--type-13);line-height:var(--leading-small);color:#555;font-weight:400}
+.support-after{margin-top:var(--space-32);align-items:center}.support-after>div:first-child{grid-column:1/5}.support-after>.supporting-visual{grid-column:5/9;justify-self:end;width:min(100%,360px)}
+.support-after .source-image{height:230px;object-fit:cover}.support-after h3{font-size:var(--type-24)}
+.case-grid{grid-template-columns:repeat(8,minmax(0,1fr));gap:var(--grid-gap);background:transparent;border:0}
+.case-card{grid-column:span 2;display:flex;flex-direction:column;padding:var(--space-24);border:1px solid var(--hair);background:var(--bg);min-width:0}
+.case-card--feature{grid-column:span 4;background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.case-card .eyebrow{font-size:var(--type-11);letter-spacing:.08em;color:#606060;margin-bottom:var(--space-12)}
+.case-card--feature .eyebrow{color:#f5f5f5}.case-card h3{font-size:var(--type-18);margin-bottom:var(--space-12)}
+.case-card--feature h3{font-size:var(--type-24)}
+.case-card>p:not(.eyebrow){font-size:var(--type-14);line-height:var(--leading-small);color:#333;margin:0}
+.case-card--feature>p:not(.eyebrow){font-size:var(--type-16);color:#eee;max-width:43ch}
+.case-footer{display:flex;gap:var(--space-8);align-items:flex-end;justify-content:space-between;margin-top:auto;padding-top:var(--space-24)}
+.case-tags{padding:0;margin:0;gap:4px}.case-tags li{font-size:var(--type-11);line-height:var(--leading-ui);color:#555;padding:2px 4px;background:var(--pale)}
+.case-card--feature .case-tags li{background:#262626;color:#ddd}
+.case-footer .program-card__morph{width:48px;height:44px}.case-card--feature .program-card__morph{width:88px;height:62px}
+.showcase-head{display:flex;align-items:baseline;justify-content:space-between;gap:var(--space-24);margin:var(--space-32) 0 var(--space-16)}
+.showcase-head h3{margin:0;font-size:var(--type-24)}.showcase-head p{font-size:var(--type-13);line-height:var(--leading-small);color:#555}
+.video-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-24);align-items:start}.video-card{display:flex;flex-direction:column;min-width:0}
+.video-card h3{font-size:var(--type-14);line-height:var(--leading-small);margin:var(--space-12) 0 0;font-weight:600}
+.video-cover{width:100%;flex:none}
+.context-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--space-24)}
+.context-item{min-width:0}.context-item h3{font-size:var(--type-16)}
+.community-grid{align-items:start}.community-copy{grid-column:1/4}.community-copy h3{font-size:var(--type-24)}.community-copy p{font-size:var(--type-16);line-height:var(--leading-body)}
+.community-copy .program-card__morph{margin-top:var(--space-24)}.community-quotes{grid-column:5/9}
+.community-quotes .rhythm-quote+.rhythm-quote{margin-top:var(--space-24)}
+.reason-cards{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:var(--grid-gap);align-items:start;margin-top:var(--space-32)}
+.reason-card{grid-column:1/4;padding:var(--space-24);background:var(--pale)}.reason-card--visual{grid-column:4/9;background:none;padding-right:0}
+.reason-card p{font-size:var(--type-14);line-height:var(--leading-small)}.reason-card>.program-card__morph{margin-top:var(--space-16);margin-left:auto}
+.synergy-visual{margin-top:var(--space-16);margin-left:auto;max-width:300px}.synergy-visual .source-image{max-height:110px}
+.roi-grid{grid-template-columns:repeat(8,minmax(0,1fr));align-items:center}.roi-grid>.supporting-visual{grid-column:1/3}.roi-grid .source-image{height:245px;max-height:245px;object-fit:cover;object-position:center;border-radius:var(--space-12)}
+.roi-copy{grid-column:4/9;max-width:56ch;font-size:var(--type-16);line-height:var(--leading-body)}
+.roi-quotes{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-32);margin-top:var(--space-32)}.roi-quotes .rhythm-quote p{font-size:var(--type-18)}
+.team-terms{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:var(--space-32) var(--grid-gap)}
+.team-terms>.marketing-section-head{display:block;grid-column:1/3;margin:0}.team-terms>.marketing-section-head h2{font-size:var(--type-24)}
+.team-terms .pricing{grid-column:3/9;gap:var(--grid-gap)}.price{padding:var(--space-24)}.price h3{font-size:var(--type-18)}.price .discount{color:var(--acid);margin-block:var(--space-24) var(--space-8)}
+.price .plain-list{font-size:var(--type-14)}.price .note{font-size:var(--type-12)}
+.company-proof{grid-column:1/-1;grid-template-columns:repeat(8,minmax(0,1fr));margin:0;padding-top:var(--space-16)}
+.company-proof .statement{grid-column:1/5;font-size:var(--type-24);line-height:var(--leading-card);font-weight:600}.company-proof .note{grid-column:5/9;font-size:var(--type-14);line-height:var(--leading-small)}
+.team-contact>.marketing-section-head h2{grid-column:1/6;font-size:var(--type-44);max-width:24ch;line-height:var(--leading-display)}
+.contact-grid{gap:var(--space-24);align-items:stretch}.contact-main,.contact-custom{display:flex;flex-direction:column;align-self:stretch;padding:var(--space-32);background:var(--pale);margin:0;min-width:0}
+.contact-custom{background:var(--bg);border:1px solid var(--hair)}.contact-eyebrow{font-size:var(--type-12)!important;color:#555;margin-bottom:var(--space-16)}
+.contact-grid h3{font-size:var(--type-24);margin-bottom:var(--space-16)}.contact-grid p:not(.contact-eyebrow){font-size:var(--type-16);line-height:var(--leading-body);margin:0}.contact-grid .intro-actions{margin-top:auto;padding-top:var(--space-24)}
+.cross-page{font-size:var(--type-13);line-height:var(--leading-small);margin-top:var(--space-24);color:#555}
+.nonprofit-intro{min-height:0;padding-block:var(--space-64) var(--space-24)}
+.nonprofit-hero-art img{height:360px}.nonprofit-hero-lead{max-width:42ch}
+.nonprofit-mission{padding-top:var(--space-64)}.nonprofit-mission-copy .mission-greeting{font-weight:400}
+.nonprofit-participation .marketing-section-head h2,.nonprofit-criteria .marketing-section-head h2,.nonprofit-labs .marketing-section-head h2{grid-column:1/6}
+.participation-grid{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:var(--grid-gap);align-items:start}
+.participation-offer{grid-column:1/6;padding:var(--space-32);background:var(--pale)}.participation-offer h3{font-size:var(--type-24)}
+.offer-list{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-24);list-style:none;margin-top:var(--space-24)}.offer-list li{font-size:var(--type-16);line-height:var(--leading-body)}
+.participation-exchange{grid-column:6/9;padding:var(--space-32) 0 0 var(--space-16)}.participation-exchange h3{font-size:var(--type-18)}.participation-exchange .program-card__morph{margin:var(--space-16) 0 0 auto}
+.criteria-grid{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:var(--space-48) var(--grid-gap)}.criteria-grid>.criterion{grid-column:span 4}
+.criterion{display:grid;grid-template-columns:40px minmax(0,1fr);gap:var(--space-16);min-width:0}
+.criterion-number{font-size:var(--type-24);line-height:var(--leading-heading);color:var(--acid)}
+.criterion h3{font-size:var(--type-18);margin-bottom:var(--space-12)}.criterion h3 strong{font-weight:600}.criterion p{font-size:var(--type-14);line-height:var(--leading-small);color:#333}
+.nonprofit-approach>.marketing-section-head h2{grid-column:1/6;max-width:24ch}
+.principles-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-24);list-style:none;margin:0;padding:0}
+.principles-grid li{display:flex;align-items:center;justify-content:space-between;gap:var(--space-24);padding:var(--space-24);background:var(--pale);font-size:var(--type-16);line-height:var(--leading-body);border:0}
+.principles-grid .program-card__morph{width:64px;height:54px}
+.nonprofit-labs .marketing-section-head{margin-bottom:var(--space-24)}
+.nonprofit-apply{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:var(--grid-gap)}
+.nonprofit-apply>.marketing-section-head{display:block;grid-column:1/4;margin:0}.nonprofit-apply .marketing-section-head h2{max-width:14ch}
+.nonprofit-apply .application-grid{grid-column:4/9;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:var(--space-24);margin:0;align-items:start}
+.application-copy p{font-size:var(--type-16);line-height:var(--leading-body)}.nonprofit-apply .application-grid>div:first-child{grid-column:auto}.nonprofit-apply .application-mark{grid-column:auto;align-self:end;justify-self:end}
+.application-mark .program-card__morph{width:72px;height:62px}.nonprofit-apply .cross-page{grid-column:4/9;margin-top:var(--space-16)}
+
+@media(max-width:1100px){
+ .case-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.case-card--feature{grid-column:span 2}.case-card{grid-column:span 2}.case-card--feature .program-card__morph{width:64px}
+ .team-terms>.marketing-section-head{grid-column:1/-1}.team-terms>.marketing-section-head h2{font-size:var(--type-32)}.team-terms .pricing{grid-column:1/-1}
+ .marketing-section-head h2{font-size:var(--type-24)}.team-hero-copy h1{font-size:var(--type-44)}
+ .context-grid{grid-template-columns:1fr 1fr}.participation-offer{grid-column:1/5}.participation-exchange{grid-column:5/9}.offer-list{grid-template-columns:1fr;gap:var(--space-16)}
+ .criteria-grid{gap:var(--space-32)}.criterion{grid-template-columns:32px minmax(0,1fr);gap:var(--space-12)}
+ .nonprofit-apply .application-grid{display:block}.nonprofit-apply .application-mark{display:none}
+}
+@media(max-width:700px){
+ .marketing-section,.marketing-section+.marketing-section{padding-top:var(--space-48);scroll-margin-top:calc(-1 * var(--space-48))}
+ .marketing-section-head{display:block;margin-bottom:var(--space-24)}.marketing-section-head h2{font-size:var(--type-24);max-width:24ch}.marketing-section-intro{margin-top:var(--space-16);padding:0;font-size:var(--type-14)}
+ .marketing-section h3{font-size:var(--type-18)}.marketing-section .rhythm-quote p{font-size:var(--type-16);line-height:1.65;text-wrap:initial}
+ .team-intro{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));padding-block:var(--space-32) 0;gap:var(--space-24) var(--grid-gap)}.team-hero-copy{grid-column:1/-1}.team-hero-copy h1{font-size:var(--type-32)}.team-hero-lead{font-size:var(--type-14)}.team-hero-copy .intro-actions{gap:var(--space-16);margin-top:var(--space-24)}
+ .team-hero-art{grid-column:3/5;width:100%;justify-self:stretch;grid-row:2}.team-hero-art .source-image{height:195px}.team-hero-art figcaption{font-size:var(--type-11)}
+ .team-hero-facts{grid-column:1/3;grid-row:2;display:block;margin:0;padding:0;background:none;align-self:center}.team-hero-facts p+p{margin-top:var(--space-24)}.team-hero-facts strong{font-size:var(--type-18)}.team-hero-facts span{font-size:var(--type-12);margin-top:var(--space-4)}
+ .team-format .outcome-grid{grid-template-columns:1fr;gap:var(--space-16);padding-left:18px;list-style:disc}.team-format .outcome-grid li{font-size:var(--type-14);max-width:none}
+ .format-testimonial{display:block;margin-top:var(--space-24)}.format-mark{display:none}
+ .support-grid{grid-template-columns:1fr;gap:var(--space-16)}.support-item{padding:var(--space-24)}.support-title .program-card__morph{width:44px;height:34px}
+ .support-after{grid-template-columns:1fr 1fr;gap:var(--space-24);margin-top:var(--space-24)}.support-after>div:first-child{grid-column:1/-1}.support-after>.supporting-visual{grid-column:2;width:100%}.support-after .source-image{height:130px}.support-after h3{font-size:var(--type-18)}
+ .case-grid{grid-template-columns:1fr;gap:var(--space-16)}.case-card,.case-card--feature{grid-column:1;padding:var(--space-24)}.case-card--feature h3{font-size:var(--type-24)}.case-card--feature>p:not(.eyebrow){font-size:var(--type-14)}.case-footer .program-card__morph{width:56px;height:44px}
+ .showcase-head{display:block;margin-top:var(--space-32)}.showcase-head h3{font-size:var(--type-24)}.showcase-head p{margin-top:var(--space-8)}
+ .video-grid{grid-template-columns:1fr;gap:var(--space-24)}.video-card{display:grid;grid-template-columns:2fr 3fr;gap:var(--space-8) var(--space-16);align-items:start}.video-card .video-cover{grid-row:1/3;max-width:none}.video-card h3{margin:0;font-size:var(--type-13)}.video-time{font-size:var(--type-11);padding:1px 3px}
+ .context-grid{grid-template-columns:1fr;gap:var(--space-24)}.context-item h3{font-size:var(--type-18)}
+ .community-grid{display:block}.community-copy h3{font-size:var(--type-18)}.community-copy p{font-size:var(--type-14)}.community-copy .program-card__morph{float:none;margin:var(--space-16) 0 0 auto}.community-quotes{margin-top:var(--space-24)}
+ .reason-cards{display:block;margin-top:var(--space-24)}.reason-card{padding:var(--space-24)}.reason-card--visual{margin-top:var(--space-24);padding:0;background:none}.reason-card>.program-card__morph{width:64px;height:44px}.synergy-visual{max-width:240px}
+ .roi-grid{grid-template-columns:1fr 2fr;gap:var(--space-16);align-items:start}.roi-grid>.supporting-visual{grid-column:1}.roi-grid .source-image{height:165px}.roi-copy{grid-column:2;font-size:var(--type-14)}.roi-copy .plain-list li{font-size:var(--type-13)}
+ .roi-quotes{grid-template-columns:1fr;gap:var(--space-24);margin-top:var(--space-24)}
+ .team-terms{display:block}.team-terms>.marketing-section-head{margin-bottom:var(--space-24)}.team-terms>.marketing-section-head h2{font-size:var(--type-24)}.pricing{grid-template-columns:1fr}.price{padding:var(--space-24)}.price .discount{margin:0;font-size:var(--type-32)}.price .plain-list li{font-size:var(--type-14)}
+ .company-proof{display:block;padding:0;margin-top:var(--space-24)}.company-proof .statement{font-size:var(--type-18)}.company-proof .note{font-size:var(--type-13);margin-top:var(--space-16)}
+ .team-contact>.marketing-section-head h2{font-size:var(--type-32)}.contact-grid{display:grid;grid-template-columns:1fr;gap:var(--space-24)}.contact-main,.contact-custom{padding:var(--space-24)}.contact-grid h3{font-size:var(--type-24)}.contact-grid p:not(.contact-eyebrow){font-size:var(--type-14)}
+ .nonprofit-intro{padding-block:var(--space-32) 0}.nonprofit-hero-art img{height:220px}.nonprofit-mission{padding-top:var(--space-48)}
+ .participation-grid{display:block}.participation-offer{padding:var(--space-24)}.offer-list{grid-template-columns:1fr;gap:var(--space-16)}.offer-list li{font-size:var(--type-14)}.participation-exchange{padding:var(--space-24) 0 0}.participation-exchange .program-card__morph{width:64px;height:44px}
+ .criteria-grid{grid-template-columns:1fr;gap:var(--space-24)}.criterion{grid-template-columns:32px minmax(0,1fr)}.criterion h3{font-size:var(--type-18)}.criterion p{font-size:var(--type-14)}
+ .principles-grid{grid-template-columns:1fr;gap:var(--space-16)}.principles-grid li{font-size:var(--type-14);padding:var(--space-24);gap:var(--space-16)}.principles-grid .program-card__morph{width:44px;height:44px}
+ .nonprofit-apply{display:block}.nonprofit-apply>.marketing-section-head{margin-bottom:var(--space-24)}.application-copy p{font-size:var(--type-14)}
+}
+@media(max-width:380px){.team-hero-copy h1{font-size:var(--type-32)}.video-card{display:flex}.video-card h3{font-size:var(--type-14)}.video-card .video-cover{margin-bottom:var(--space-8)}.roi-grid{display:block}.roi-grid>.supporting-visual{float:right;width:96px;margin:0 0 16px 16px}.roi-grid::after{content:"";display:block;clear:both}.roi-copy{max-width:none}.nonprofit-hero-art img{height:190px}}
+
+
+/* Page compositions share the same eight structural tracks. Card interiors
+   may have their own padding; independent thirds do not define page columns. */
+.team-hero-facts,.team-format .outcome-grid,.context-grid,.support-grid,.principles-grid,.contact-grid{
+ display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:var(--grid-gap);
+}
+.team-hero-facts{padding-inline:0;background:none}
+.team-hero-facts>p,.team-format .outcome-grid>li{grid-column:span 3}
+.team-hero-facts>p:first-child,.team-format .outcome-grid>li:first-child{grid-column:span 2}
+.context-grid>.context-item{grid-column:span 2}
+.support-grid>.support-item,.principles-grid>li,.contact-grid>div{grid-column:span 4}
+.video-grid>.video-card,.video-grid>.video-card:last-child{grid-column:auto}
+.marketing-section>.marketing-section-head h2,.nonprofit-mission-heading h2{
+ font:600 var(--type-18)/var(--leading-card) var(--mono);letter-spacing:var(--tracking-heading);max-width:28ch;
+}
+.marketing-section>.marketing-section-head h2 br{display:none}
+.marketing-section>.marketing-section-head h2 br::after{content:" "}
+.marketing-section>.marketing-section-head h2{white-space:normal}
+.marketing-section h3{font-weight:600}
+.marketing-section-intro p{margin:0}
+.support-after,.reason-cards{margin-top:var(--space-64)}
+.community-quotes{padding-block:var(--quote-space)}
+.community-quotes .rhythm-quote+.rhythm-quote{margin-top:var(--quote-space)}
+.roi-quotes{grid-template-columns:repeat(8,minmax(0,1fr));gap:var(--grid-gap);margin-block:var(--quote-space)}
+.roi-quotes>.rhythm-quote{grid-column:span 4}
+.nonprofit-mission-copy .nonprofit-mission-statement{margin-block:var(--quote-space)}
+.support-title .program-card__morph{width:96px;height:72px;opacity:.6}
+.community-copy>.program-card__morph{width:136px;height:112px}
+.principles-grid .program-card__morph{width:96px;height:80px}
+
+/* The case collection retains source order and dark/light roles.
+   Case-only color roles amplify gallery accents without changing source metadata.
+   Disclosure limits the initial reading load; graphics stay behind the copy. */
+.team-cases .case-grid{grid-template-columns:repeat(8,minmax(0,1fr));gap:var(--grid-gap)}
+.team-cases .case-card{
+ grid-column:span var(--case-span);position:relative;isolation:isolate;overflow:hidden;
+ min-height:240px;padding:var(--space-24);border:1px solid var(--hair);border-left:3px solid var(--case-color);
+ --case-color:var(--case-accent);--case-art-color:var(--case-color);
+ background:color-mix(in srgb,var(--case-color) 4%,#fff);color:var(--ink);display:flex;flex-direction:column;
+}
+.team-cases .case-card--dark{background:#1a1a1a;color:#fff;border-color:#1a1a1a;border-left-color:var(--case-color);--case-art-color:color-mix(in srgb,var(--case-color) 75%,#fff)}
+.team-cases .case-card:is([data-case-id="language"],[data-case-id="research"]){--case-color:#0e8aa0}
+.team-cases .case-card:is([data-case-id="project"],[data-case-id="support"],[data-case-id="workflow"]){--case-color:#519b8b}
+.team-cases .case-card[hidden]{display:none}
+.team-cases .case-card>.program-card__morph{
+ position:absolute;z-index:-1;right:0;bottom:8px;width:180px;height:152px;opacity:.76;margin:0;
+}
+.team-cases .case-card--feature>.program-card__morph{width:240px;height:208px;right:8px}
+.team-cases .case-card>.program-card__morph :is(.morph-path,.morph-ghost){stroke:var(--case-art-color);stroke-width:1.3px}
+.team-cases .case-card .eyebrow{color:color-mix(in srgb,var(--case-color) 75%,#111);font-size:var(--type-11);margin-bottom:var(--space-12)}
+.team-cases .case-card h3{font-size:var(--type-18);line-height:var(--leading-card);margin-bottom:var(--space-12);max-width:28ch}
+.team-cases .case-card>p:not(.eyebrow){font-size:var(--type-14);line-height:var(--leading-small);color:#333;max-width:48ch}
+.team-cases .case-card--dark .eyebrow{color:var(--case-art-color)}
+.team-cases .case-card--dark>p:not(.eyebrow){color:#ddd}
+.team-cases .case-tags li{background:#f2f2f2;color:#555}
+.team-cases .case-card--dark .case-tags li{background:#303030;color:#ddd}
+.team-cases .case-footer{padding-top:var(--space-24);margin-top:auto}
+.case-toggle{justify-self:start;margin-top:var(--space-24)}
+.case-toggle[hidden]{display:none}
+.showcase-head{margin-top:var(--space-48)}
+@media(max-width:1100px) and (min-width:701px){
+ .team-cases .case-card{grid-column:span 4;padding:var(--space-24)}
+ .team-cases .case-card h3{font-size:var(--type-18)}
+ .team-cases .case-card>p:not(.eyebrow){font-size:var(--type-14)}
+}
+@media(max-width:700px){
+ [data-page="ai-mindset-consulting"],[data-page="non-profit"]{--section-space-before:64px;--section-space-after:48px}
+ .page-section.marketing-section,.page-section.nonprofit-mission{display:block;padding-block:var(--section-space-before) var(--section-space-after);scroll-margin-top:calc(var(--top-height) + 38px - var(--section-space-before))}
+ .marketing-section-head{margin-bottom:var(--space-32)}
+ .team-hero-facts{display:block;padding:0}
+ .team-format .outcome-grid,.support-grid,.principles-grid,.contact-grid,.criteria-grid,.video-grid,.context-grid{grid-template-columns:1fr}
+ .team-format .outcome-grid>li,.support-grid>.support-item,.principles-grid>li,.contact-grid>div,.criteria-grid>.criterion,.video-grid>.video-card,.video-grid>.video-card:last-child,.context-grid>.context-item{grid-column:1/-1}
+ .context-grid{gap:var(--space-32)}
+ .format-testimonial{margin-block:var(--quote-space)}
+ .community-quotes{margin-top:0;padding-block:var(--quote-space)}
+ .roi-quotes{grid-template-columns:1fr;gap:var(--space-48);margin-block:var(--quote-space)}
+ .roi-quotes>.rhythm-quote{grid-column:1}
+ .marketing-section .rhythm-quote p,.nonprofit-mission-copy .nonprofit-mission-statement{font-size:var(--type-18);line-height:var(--leading-quote)}
+ .team-cases .case-grid{grid-template-columns:1fr}
+ .team-cases .case-card{grid-column:1;min-height:224px}
+ .team-cases .case-card h3{font-size:var(--type-18)}
+ .team-cases .case-card>.program-card__morph{width:176px;height:144px}
+ .team-cases .case-card--feature>.program-card__morph{width:216px;height:180px}
+ .nonprofit-mission-heading h2{max-width:18ch}
+ .support-title .program-card__morph{width:64px;height:56px}
+}
+
+.team-cases .case-card--dark>.program-card__morph{opacity:.95}
+@media(max-width:700px){.nonprofit-hero-copy h1{font-size:var(--type-32)}}
+
+/* Video actions are component B; the cover is a media link, not a new play control. */
+.video-cover{display:block;border:0}
+.video-card>.product-cta{align-self:start;margin-top:var(--space-24)}
+.video-card h3{margin-bottom:0}
+@media(max-width:700px){
+ .video-card .video-cover{grid-row:1}
+ .video-card>.product-cta{grid-column:1/-1;justify-self:start;margin-top:var(--space-8)}
+}
+
+/* Mobile typography follows the same semantic roles as the desktop system. */
+@media(max-width:700px){
+ .marketing-section-intro,.team-hero-lead,.team-format .outcome-grid li,.community-copy p,.roi-copy,.contact-grid p:not(.contact-eyebrow),.nonprofit-hero-lead,.nonprofit-mission-copy p,.offer-list li,.principles-grid li,.application-copy p{font-size:var(--type-16);line-height:var(--leading-body)}
+ .marketing-section .rhythm-quote p{font-size:var(--type-18);line-height:var(--leading-quote)}
+ .team-hero-art figcaption,.team-hero-facts span,.team-cases .case-tags li,.video-time,.price .note{font-size:var(--type-13);line-height:var(--leading-ui)}
+}
+
+/* Display experiment withdrawn; original .team-intro and .nonprofit-intro apply. */
+[data-page="non-profit"],[data-page="ai-mindset-consulting"]{--pullquote-space:80px}
+
+/* The Wild section opener is the heading, not a label beside a duplicate heading. */
+.marketing-section>.wild-section-head{display:flex;grid-column:1/-1;justify-content:space-between;align-items:baseline;gap:16px;margin:0 0 34px}
+.marketing-section>.wild-section-head .num{font:600 var(--type-11)/var(--leading-ui) var(--mono);letter-spacing:var(--tracking-ui);text-transform:uppercase;text-wrap:initial;max-width:100%;margin:0;padding:4px 7px 3px;background:var(--acid);color:#fff;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.marketing-section>.section-lead{grid-column:1/6;max-width:64ch;margin:0 0 40px;font-size:16px;line-height:1.6}
+.section-lead p{margin:0}
+.marketing-section.team-terms>.pricing{grid-column:1/-1}
+.marketing-section.nonprofit-apply{display:grid;grid-template-columns:repeat(8,minmax(0,1fr))}
+.nonprofit-apply>.application-grid{grid-column:4/9;display:block;margin:0}
+.nonprofit-apply>.cross-page{grid-column:4/9}
+
+/* Pull-quotes are their own editorial row. Empty tracks and whitespace are structural. */
+.marketing-section .quote-break{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:var(--grid-gap);margin-block:var(--pullquote-space);padding:0}
+.marketing-section .quote-break:last-child{margin-bottom:0}
+.marketing-section .quote-break>.editorial-pullquote{grid-column:1/6}
+.marketing-section .quote-break--right>.editorial-pullquote{grid-column:4/9}
+.marketing-section .editorial-pullquote{margin:0;padding:0;background:none;border:0}
+.marketing-section .editorial-pullquote p{font:400 var(--type-24)/1.45 var(--mono);letter-spacing:-.01em;text-align:start;text-wrap:initial;hyphens:none}
+.marketing-section .editorial-pullquote .rhythm-highlight{background:var(--ink);color:var(--bg);padding:3px 4px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.mission-layout{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:var(--grid-gap)}
+.mission-greeting{grid-column:1/4;padding-right:24px;max-width:30ch}
+.mission-greeting p{font-size:18px;line-height:1.6}
+.mission-prose{grid-column:4/9;max-width:64ch;font-size:16px;line-height:1.6}
+.mission-prose p+p{margin-top:24px}
+.community-grid{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:var(--grid-gap)}
+.community-copy{grid-column:1/4}.community-quotes{grid-column:5/9;padding-block:64px}
+.community-quotes .editorial-pullquote+.editorial-pullquote{margin-top:64px}
+.roi-quotes{margin-block:80px 0;gap:64px var(--grid-gap)}
+.roi-quotes>.editorial-pullquote:first-child{grid-column:1/5}.roi-quotes>.editorial-pullquote:last-child{grid-column:5/9;margin-top:64px}
+
+/* Each source ASCII figure explains the adjacent activity. */
+.support-item{background:var(--pale);border:1px solid var(--hair)}
+.support-title{align-items:center;min-height:104px;margin-bottom:16px}
+.support-title h3{max-width:23ch;margin-bottom:0}
+.support-title .program-card__morph{width:144px;height:104px;flex:none;opacity:1}
+.context-item{display:flex;flex-direction:column;padding:24px;background:var(--pale);border:1px solid var(--hair)}
+.context-item>.program-card__morph{width:100%;height:128px;margin:0 0 24px}
+.context-grid>.context-item{grid-column:span 4}
+.context-item h3{font-size:18px}.context-item .plain-list{font-size:14px}
+.participation-grid{align-items:start}
+.participation-exchange{padding:24px 0 0 16px}
+.participation-offer h3{font-size:18px}.offer-list{gap:24px}.offer-list li{font-size:14px}
+.criteria-grid{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:24px}
+.criteria-grid>.criterion{grid-column:span 4;display:flex;flex-direction:column;padding:32px;border:1px solid var(--hair);background:var(--pale);min-width:0}
+.criteria-grid>.criterion:nth-child(2),.criteria-grid>.criterion:nth-child(3){background:#fff}
+.criterion-head{display:grid;grid-template-columns:minmax(0,1fr) 160px;gap:16px;align-items:center;margin-bottom:24px;min-height:128px}
+.criterion-head .program-card__morph{width:160px;height:128px;margin:0;opacity:1}
+.criterion-number{display:block;font:400 var(--type-11)/1.45 var(--mono);letter-spacing:.14em;color:var(--muted);margin-bottom:12px}
+.criterion h3{font:600 var(--type-18)/1.35 var(--mono);max-width:20ch;margin:0}
+.criterion-copy{font-size:14px;line-height:1.65;color:#444}
+.criterion-copy p{font:inherit;margin:0;max-width:65ch}
+.criterion-copy p+p{margin-top:16px}
+.principles-grid{align-items:start}
+.principles-grid>li{display:flex;gap:24px;align-items:center;min-width:0;padding:24px;background:var(--pale);border:1px solid var(--hair)}
+.principles-grid>li:nth-child(2){grid-column:span 3;background:#fff}
+.principles-grid>li:first-child{grid-column:span 5}
+.principles-grid>li:nth-child(3){grid-column:span 3;background:#fff}
+.principles-grid>li:last-child{grid-column:span 5}
+.principles-grid h3{font-size:18px;margin-bottom:12px}
+.principles-grid p{font-size:14px;line-height:1.65;color:#555;margin:0}
+.principles-grid .program-card__morph{width:120px;height:112px;flex:none;opacity:1}
+.principles-grid>li:nth-child(2),.principles-grid>li:nth-child(3){display:block}
+.principles-grid>li:nth-child(2) .program-card__morph,.principles-grid>li:nth-child(3) .program-card__morph{margin:24px 0 0 auto}
+/* Keep the accepted 5/3 composition, with 18% less empty height in white cards. */
+@media(min-width:1101px){
+ .nonprofit-approach .principles-grid>li:nth-child(2),.nonprofit-approach .principles-grid>li:nth-child(3){padding-block:20px}
+ .nonprofit-approach .principles-grid>li:nth-child(2) .program-card__morph,.nonprofit-approach .principles-grid>li:nth-child(3) .program-card__morph{height:80px;margin-top:16px}
+}
+@media(max-width:1100px) and (min-width:701px){
+ .criterion-head{grid-template-columns:1fr 112px;gap:12px}.criterion-head .program-card__morph{width:112px;height:112px}
+ .criteria-grid>.criterion{padding:24px}
+ .support-title .program-card__morph{width:88px;height:80px}
+ .principles-grid>li{display:block}.principles-grid .program-card__morph{margin:24px 0 0 auto}
+}
+@media(max-width:700px){
+ [data-page="non-profit"],[data-page="ai-mindset-consulting"]{--section-space-before:64px;--section-space-after:48px;--pullquote-space:64px}
+ .marketing-section>.wild-section-head{flex-wrap:wrap;align-items:flex-start;margin-bottom:32px}
+ .marketing-section>.wild-section-head .num{font-size:11px;max-width:100%;white-space:normal}
+ .marketing-section>.section-lead{margin-bottom:32px;max-width:none}
+ .marketing-section .quote-break{display:block;margin-block:64px}.marketing-section .quote-break:last-child{margin-bottom:0}
+ .marketing-section .editorial-pullquote p{font-size:18px;line-height:1.45}
+ .mission-layout{display:block}.mission-greeting{max-width:none;padding:0;margin-bottom:32px}.mission-greeting p{font-size:16px}
+ .mission-prose{font-size:16px}.mission-prose p+p{margin-top:24px}
+ .community-grid{display:block}.community-quotes{padding-block:64px 0}.community-quotes .editorial-pullquote+.editorial-pullquote{margin-top:64px}
+ .roi-quotes{display:block;margin-block:64px 0}.roi-quotes>.editorial-pullquote:last-child{margin-top:64px}
+ .marketing-section.nonprofit-apply{display:block}
+ .support-title{min-height:80px;gap:12px}.support-title .program-card__morph{width:80px;height:72px}.support-title h3{font-size:16px}
+ .context-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-16)}.context-grid>.context-item{grid-column:auto}
+ .context-item{padding:var(--space-12);min-width:0}.context-item>.program-card__morph{height:104px;width:100%;margin:0 0 var(--space-16)}
+ .context-item h3{font-size:var(--type-14);line-height:var(--leading-card);hyphens:auto;text-wrap:wrap}
+ .context-item .plain-list{font-size:var(--type-13);line-height:var(--leading-ui);list-style:none;padding-left:0}
+ .context-item .plain-list li{font-size:inherit;line-height:inherit;hyphens:auto;text-wrap:pretty}
+ .criteria-grid{grid-template-columns:1fr;gap:24px}.criteria-grid>.criterion{grid-column:1;padding:24px}
+ .criterion-head{grid-template-columns:minmax(0,1fr) 104px;min-height:104px;gap:12px}.criterion-head .program-card__morph{width:104px;height:96px}.criterion h3{font-size:16px}.criterion-copy{font-size:14px}
+ .principles-grid{grid-template-columns:1fr;gap:24px}.principles-grid>li,.principles-grid>li:first-child,.principles-grid>li:nth-child(2),.principles-grid>li:nth-child(3),.principles-grid>li:last-child{grid-column:1;display:block;padding:24px}
+ .principles-grid .program-card__morph{width:120px;height:96px;margin:24px 0 0 auto}
+ .participation-offer{padding:24px}.offer-list li{font-size:16px}.participation-exchange{padding:32px 0 0}
+}
+@media(max-width:380px){
+ .criterion-head{grid-template-columns:1fr}.criterion-head .program-card__morph{justify-self:end;width:136px;height:96px}
+}
+
+/* A percentage never lays out independently from its meaning. */
+.price{display:grid;grid-template-columns:minmax(0,1fr);align-content:start;gap:var(--space-24)}
+.price h3,.price .plain-list{margin:0}
+.price-discount{display:grid;gap:var(--space-4);align-content:start}
+.price .price-discount .discount,.price .price-discount .note{margin:0;grid-area:auto}
+.price .price-discount .note{font-size:var(--type-13);line-height:var(--leading-card)}
+@media(max-width:700px){.price{gap:var(--space-16)}}
+
+/* Mobile cases anchors: reserve the shared 58px menu bar once (+24px breathing
+   room), and cancel the section's internal top padding. Hidden desktop tabs
+   and the legacy 106px typography token must not add another scroll offset. */
+@media(max-width:1100px){
+ html:has(body[data-page="ai-mindset-consulting"]){scroll-padding-top:82px}
+ [data-page="ai-mindset-consulting"] .page-section.marketing-section{scroll-margin-top:calc(-1 * var(--section-space-before))}
+}

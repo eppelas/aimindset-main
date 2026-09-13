@@ -1,0 +1,66 @@
+
+/* Отступы, размеры и расположение команды. */
+
+/* кто мы: заголовок и подпись канала — одно целое; лид справа */
+.about-head{grid-column:1/span 3;grid-row:1;align-self:start}
+.about-head h2{margin:0}
+.about-head .quote-src{margin:10px 0 0}
+.about-copy>.lead{grid-row:1/span 2}
+.about-intro>.about-quote{grid-column:1/span 3;grid-row:2;align-self:start;margin-top:48px}
+.values-intro{margin-top:96px}
+.values{margin-top:20px}
+
+/* hero: синк с main-current (rev 134) — та же раскладка рядов и потоковые цифры */
+#hero>h1{font-size:clamp(28px,3vw,44px);line-height:1.0!important;letter-spacing:-.025em}
+#hero>.lead{font-size:13.5px;margin-top:0;margin-bottom:0}
+/* цифры: воздух сверху, равные просветы между парами, не заезжают под воксель.
+   Раскладка не сеткой, а потоком — колонки 1fr давали визуально рваные дыры
+   («30+ СТРАН» короткое, дыра после него огромная). */
+#hero>.stats{column-gap:46px}
+@media(max-width:1180px){}
+@media(max-width:960px){#hero>.stats{margin-top:120px}}
+@media(max-width:640px){}
+/* Reserve the same inline-block baseline before the pixel-hover wrapper mounts. */
+#hero>p:not(.small):not(.lead)>.btn{overflow:hidden}
+@media(max-width:900px){#hero>p:not(.small):not(.lead){margin-top:24px}#hero>.hero-lab-cards{margin-top:22px!important}}
+/* Отдельного DOM-лица в Wild нет: знак рисует само поле, logoBox повторяет
+   геометрию main (392px, right -10, top -60 от заголовка). */
+@media(max-width:960px){
+  /* В main лицо стоит в потоке сразу после h1. В Wild оно остаётся частью
+     общего canvas, поэтому резервируем ровно ту же строку без отдельного DOM. */
+  #hero>h1{margin-bottom:240px}
+}
+
+/* подход: отступы, линии по ширине колонок, без хвоста */
+.approach-context{max-width:600px;margin-bottom:104px}
+.approach-context p{max-width:none}
+#approach .rows{max-width:820px;border-top:var(--frame) solid var(--ink);margin-bottom:36px}
+#approach .row{padding:20px 2px}
+#approach .row:last-child{border-bottom:0}
+
+/* команда: без чёрной линии, люди МЕНЬШЕ, подпись — отдельный элемент */
+#about{border-bottom:0}
+.team-inline-head{border-bottom:0;padding-bottom:14px}
+.team-inline{padding-top:26px}
+.team-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--grid-gap);align-items:stretch}
+.team-member{grid-column:auto;position:relative;overflow:hidden;display:grid;grid-template-columns:88px minmax(0,1fr);gap:16px;align-items:start;padding:16px 18px;box-shadow:0 0 0 1px var(--hair);flex:none}   /* фото и имя прижаты к верху — не прыгают при смене числа строк */
+.team-member img{width:88px;height:88px;aspect-ratio:1/1;object-fit:cover;border-bottom:0}
+.team-member-copy{padding:0}
+.team-member h3{font-size:14px;margin:4px 0 4px}
+.team-member p{font-size:11px;line-height:1.5;min-height:calc(1.5em * 3)}   /* три строки зарезервированы: текст меняется вниз, рамка и фото стоят */
+.team-member .team-activity-token{display:inline-block;position:relative;z-index:1;transition:transform .48s steps(6),color .28s ease,opacity .2s ease}
+.team-member.is-flowing .team-activity-token{color:#1c2541}
+.team-member.is-flowing .team-member-copy{position:relative;z-index:2}
+.team-role{font-size:9px}
+#team{border-bottom:0;padding-bottom:24px;}
+.team-ai-pair{grid-column:1/-1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--grid-gap);align-items:start;margin-top:8px;padding:4px 0 12px}
+.team-ai-pair__item{display:grid;grid-template-rows:auto 1fr;justify-items:center;align-items:start;gap:12px;min-width:0;min-height:146px;padding:20px 18px 0;color:var(--muted);font:var(--type-11) "JetBrains Mono",ui-monospace,monospace;letter-spacing:.14em;cursor:pointer}
+.team-ai-pair__item canvas{display:block;width:96px;height:96px;max-width:100%;opacity:0;pointer-events:none;transform:translateY(5px) scale(.94);transform-origin:50% 0;transition:transform .2s ease,opacity .16s ease}
+.team-ai-pair__item:hover canvas{opacity:1;transform:translateY(0) scale(1)}
+.team-note-cell{grid-column:1/-1;margin-top:6px;padding:0;border:0;max-width:none}
+.team-note-cell .team-note{margin:0;font-size:13.5px;line-height:1.6;letter-spacing:0;color:var(--muted);max-width:74ch}
+@media(max-width:960px){
+  .team-grid{grid-template-columns:1fr}
+  .team-member,.team-ai-pair,.team-note-cell{grid-column:1/-1}
+}
+@media(max-width:520px){.team-ai-pair{grid-template-columns:1fr 1fr;gap:12px;padding-bottom:10px}.team-ai-pair__item{min-height:118px;padding:0 4px;gap:10px}.team-ai-pair__item canvas{width:96px;height:96px}}

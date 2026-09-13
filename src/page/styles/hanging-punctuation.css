@@ -1,0 +1,8 @@
+
+/* Висячая пунктуация: в выключке по двум сторонам знаки в конце строки выносятся за правый край. */
+main .lead, #approach>.approach-context>p, #manifesto .manifesto-rest>p{hanging-punctuation:none}
+/* Suppress the native glyph only while the measured runtime owns its replacement. */
+.hang-native{position:relative;hyphenate-character:""}
+.hang-native-mark{position:absolute;pointer-events:none;user-select:none;line-height:1;white-space:pre}
+.hang-native-mark::before{content:"-"}
+span.hang{margin-right:var(--hang-width,0px)}

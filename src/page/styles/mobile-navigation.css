@@ -1,0 +1,16 @@
+
+.section-number::after{content:' · '}
+.projects-mobile-caption{display:none}
+@media(max-width:960px){
+ main>section>.sec-head>.num:first-child{display:flex!important;align-items:center;justify-content:space-between;gap:12px;font-size:var(--mobile-label-size,11px)!important}
+ .section-number{flex:none}.section-number::after{content:none}.section-name{flex:none;text-align:right}
+ #about{position:relative}
+ #about .about-head .quote-src,#about .about-head .quote-src a{font-size:11px!important;letter-spacing:0!important;text-transform:none!important}
+ .about-mobile-logo{display:block;position:absolute;z-index:8;width:54px;height:72px;margin:0;touch-action:none;cursor:grab}
+ .about-mobile-logo #aim-cursor-logo{width:54px;height:72px}
+ .about-mobile-logo:active{cursor:grabbing}
+ .projects-mobile-caption{display:block;font-size:14px;line-height:1.4;margin:0 0 16px}
+ #products .ecosystem-direction-arrow{display:block;flex:0 0 20px;width:20px;height:24px;color:var(--ink)}
+ #products .ecosystem-direction-copy .ecosystem-direction-jump{justify-content:space-between;gap:12px}
+ #products .ecosystem-direction-copy h2{min-width:0;max-width:calc(100% - 32px)}
+}

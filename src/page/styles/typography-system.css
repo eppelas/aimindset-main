@@ -1,0 +1,83 @@
+
+/* Type system (source: archive/main-type-system). Nine intentional sizes,
+   three weights and four tracking roles replace the inherited fractional scale. */
+:root{
+  --type-11:11px; --type-12:12px; --type-13:13px; --type-14:14px;
+  --type-16:16px; --type-18:18px; --type-24:24px; --type-32:32px; --type-44:44px;
+  --weight-regular:400; --weight-medium:600; --weight-bold:700;
+  --tracking-body:0; --tracking-ui:.14em; --tracking-heading:-.01em; --tracking-tight:-.025em;
+  --leading-solid:1; --leading-label:1.2; --leading-heading:1.25;
+  --leading-card:1.35; --leading-ui:1.45; --leading-body:1.6; --leading-quote:1.45;
+  --leading-display:1.05; --leading-small:1.65;  /* шкала межстрочных — крупнее кегль, плотнее строка */
+}
+body{font-size:var(--type-13);line-height:var(--leading-body)}
+.brand{font-weight:var(--weight-bold);letter-spacing:var(--tracking-body);line-height:var(--leading-solid)}
+.primary-nav a{font-size:var(--type-14);font-weight:var(--weight-medium);letter-spacing:var(--tracking-ui);line-height:var(--leading-label)}
+.primary-nav a+a::before{font-weight:var(--weight-medium)}
+.tabs a{font-size:var(--type-12);font-weight:var(--weight-medium);letter-spacing:var(--tracking-body);line-height:var(--leading-card)}
+.tabs a.is-current{font-weight:var(--weight-medium)}
+.sec-head .num,.sec-head .num:first-child,.stats span,.row .key,.product-meta,.space-schedule__eyebrow,.space-schedule__status,.learning-topic__meta,.waitlist-dialog__eyebrow,.waitlist-field span,.project-meta,.company-proof .label,.team-inline-head span,.team-role,.about-quote--origin .quote-src,.follow-intro .follow-kicker,.follow-more>span,blockquote .src,footer .h,.eco-root .eco-kicker,.eco-branch-head .eco-index,.eco-card .eco-type,.eco-branch-note,.ecosystem-direction-meta,.ecosystem-map-dialog__title,.section-rail-title,.about-origin-note,.origin-src{font-size:var(--type-11);line-height:var(--leading-ui);letter-spacing:var(--tracking-ui)}
+.sec-head .num:first-child,.row .key.live,.hero-lab-card__status{font-weight:var(--weight-medium)}
+h1{font-size:var(--type-24);font-weight:var(--weight-bold);letter-spacing:var(--tracking-heading);line-height:var(--leading-heading)}
+h2{font-size:var(--type-18);font-weight:var(--weight-medium);letter-spacing:var(--tracking-heading);line-height:var(--leading-card)}
+h3{font-size:var(--type-14);font-weight:var(--weight-medium);line-height:var(--leading-card)}
+.lead,.approach-context p{font-size:var(--type-14);line-height:var(--leading-body)}
+.small{font-size:var(--type-13);letter-spacing:var(--tracking-body)}
+.k,.btn,.row .go,.project-links,footer{font-size:var(--type-12);letter-spacing:var(--tracking-body)}
+.stats b{font-size:var(--type-24);font-weight:var(--weight-bold);letter-spacing:var(--tracking-heading)}
+.hero-lab-card__status{font-size:var(--type-11);letter-spacing:var(--tracking-ui)}
+.hero-lab-card__title{font-size:var(--type-18);font-weight:var(--weight-bold);letter-spacing:var(--tracking-tight);line-height:var(--leading-card)}
+.hero-lab-card__meta{font-size:var(--type-13);line-height:var(--leading-card)}
+.row p,.product-block--direction p,.learning-topic p,.waitlist-form>p,.project-card>p,.company-proof p,.team-member h3,.team-member p,.team-note,.follow-intro p,.follow-contact,.follow-link__index,.follow-link__copy small,.follow-more,.reviews-grid>blockquote:not(.about-quote),details p,.eco-root .eco-copy,.eco-branch-head p,.eco-card .eco-note{font-size:var(--type-13);line-height:var(--leading-small);letter-spacing:var(--tracking-body)}
+.product-block h3{font-size:var(--type-24);letter-spacing:var(--tracking-tight);line-height:var(--leading-heading)}
+.product-block p{line-height:var(--leading-body)}
+.product-secondary-links{font-size:var(--type-13)}
+.product-block--direction h3,.product-block--support h3,.waitlist-dialog h2,.project-card h3,.team-inline-head h3{font-size:var(--type-18);line-height:var(--leading-card)}
+.product-block--direction .product-cta,.product-support-copy .product-meta{font-size:var(--type-13)}
+#product-teams .product-block--direction h3{font-size:var(--type-32);font-weight:var(--weight-regular);letter-spacing:var(--tracking-tight);line-height:var(--leading-solid)}
+.product-block-drag-handle,.space-schedule__toggle,.ecosystem-map-open,.section-rail-index{font-size:var(--type-11);letter-spacing:var(--tracking-ui)}
+.space-schedule__toggle{font-weight:var(--weight-medium)}
+.space-schedule__toggle-icon,.follow-link__arrow{font-size:var(--type-16)}
+.space-schedule__head h3{font-size:var(--type-18);line-height:var(--leading-heading)}
+.learning-topic h3{font-size:var(--type-16)}
+.section-page-cta{font-size:var(--type-13);font-weight:var(--weight-medium)}
+.waitlist-form__status{font-size:var(--type-13)}
+.project-gfx-label{font:600 var(--type-11) var(--mono);letter-spacing:var(--tracking-ui)}
+.project-gfx-number{font:700 var(--type-24) var(--mono)}
+.values-intro{font-size:var(--type-13);font-weight:var(--weight-medium);letter-spacing:var(--tracking-body)}
+.value h3{font-size:var(--type-13)}.value p{font-size:var(--type-12)}
+.about-copy h2{font-size:var(--type-32);font-weight:var(--weight-medium);letter-spacing:var(--tracking-tight);line-height:var(--leading-heading)}
+.about-copy>.lead,.product-visual-quote,.product-voice,.manifesto-side-quote{font-size:var(--type-16);line-height:var(--leading-quote)}
+.about-quote,.rhythm-quote p{font-size:var(--type-18);line-height:var(--leading-quote)}
+.direction-side-quote{font-size:var(--type-13);line-height:var(--leading-body)}
+.follow-intro h2{font-size:var(--type-24)}
+.follow-link__copy strong{font-size:var(--type-14)}
+.eco-root strong{font-size:var(--type-32);letter-spacing:var(--tracking-body)}
+.eco-branch-head h3{font-size:var(--type-16)}.eco-card strong{font-size:var(--type-12);letter-spacing:var(--tracking-body)}
+.ecosystem-direction-card h2{font-size:var(--type-16)}
+.ecosystem-direction-arrow{font-size:var(--type-24)}
+.section-rail-label{font-size:var(--type-13);letter-spacing:var(--tracking-body)}
+#hero>h1{font-size:var(--type-32);letter-spacing:var(--tracking-tight);line-height:var(--leading-solid)}
+#hero>.lead{font-size:var(--type-14);line-height:var(--leading-body)}
+.team-member h3{font-size:var(--type-14)}.team-role{font-size:var(--type-13);letter-spacing:var(--tracking-body)}
+.team-note-cell .team-note{font-size:var(--type-14)}
+.rhythm-quote{font-size:var(--type-18)}
+.product-voice{font-size:var(--type-16)!important}.product-visual-quote{font-size:var(--type-16)!important}
+.hero-lab-card__title .go-arrow{font-size:var(--type-11)}
+.ecosystem-map-dialog__close{font-size:var(--type-18);font-weight:var(--weight-medium)}
+.v1x-badge,.v1x-g-label,#stretch-gauge .sg-word,#stretch-gauge .sg-morph{font-size:var(--type-11);letter-spacing:var(--tracking-ui)}
+.about-origin-note,.origin-src{font-size:var(--type-11);letter-spacing:var(--tracking-ui)}
+/* Domains are useful labels. They may wrap inside a narrow project card instead of widening the page. */
+.project-links{min-width:0;gap:6px 12px;flex-wrap:wrap}.project-links a{min-width:0;white-space:normal;overflow-wrap:anywhere;word-break:normal}
+@media(min-width:641px){
+  .brand{font-size:var(--type-18)}h1{font-size:var(--type-32)}h2{font-size:var(--type-24)}
+  .product-block h3{font-size:var(--type-32)}.about-copy h2,#hero>h1{font-size:var(--type-44)}
+  .follow-intro h2{font-size:var(--type-32)}.ecosystem-direction-card h2{font-size:var(--type-18)}.space-schedule__head h3{font-size:var(--type-24)}
+}
+@media(max-width:640px){
+  .primary-nav a{font-size:var(--type-12);letter-spacing:var(--tracking-ui)}
+  .project-links{font-size:var(--type-12);line-height:1.35}
+  .sec-head{flex-wrap:wrap;align-items:flex-start}.ecosystem-map-open{max-width:100%;white-space:normal}
+  .about-copy h2{font-size:var(--type-32)}
+  .product-visual-quote{font-size:var(--type-14)}.direction-side-quote{font-size:var(--type-12)}
+}

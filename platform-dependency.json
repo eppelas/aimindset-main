@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "repository": "eppelas/aim-web-platform",
+  "revision": "6d36ebf8ef3c4eec049e6dd6674a8f4b02a29924",
+  "components": [
+    "navigation",
+    "footer",
+    "learning"
+  ]
+}

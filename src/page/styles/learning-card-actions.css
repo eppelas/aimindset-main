@@ -1,0 +1,6 @@
+
+#learning .program-card{cursor:pointer}
+#learning .program-card:hover .aim-button-outline{transform:translate(-3px,-3px);color:var(--bg)!important;background:transparent!important}
+#learning .program-card:hover .aim-button-outline::after{background:var(--ink)}
+#learning .program-card:hover .aim-button{transform:translate(-2px,-2px);filter:drop-shadow(4px 4px 0 var(--skin-accent));background:transparent;color:#fff}
+@media(prefers-reduced-motion:reduce){#learning .program-card:hover .aim-button-outline,#learning .program-card:hover .aim-button{transform:none}}

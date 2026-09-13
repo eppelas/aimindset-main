@@ -1,2 +1,28 @@
 .DS_Store
 **/.DS_Store
+__perf-probe.html
+__perf-probe-base.html
+__live-probe.html
+__live-probe-base.html
+__live-bisect.html
+__visual-diff.html
+__wild-rev136-preview.html
+__wild-rev137-preview.html
+__design-probe.html
+__scene-probe.html
+
+# Source builds and local verification
+backups/
+hero-type-comparison/
+index.html.before-luma-widget
+__pycache__/
+*.pyc
+node_modules/
+build/
+.env
+.env.*
+!*.example
+assets/site/aim-favicon.bin
+
+# Short-lived Actions authentication output
+gha-creds-*.json

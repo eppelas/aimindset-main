@@ -1,0 +1,1215 @@
+{
+  "version": 1,
+  "policy": "Exact declaration allowlist. New values, selectors, scopes or entries require explicit review; no record/reset command.",
+  "entries": [
+    {
+      "file": "src/page/styles/about-cursor.css",
+      "context": [
+        "#about a, #about button"
+      ],
+      "property": "cursor",
+      "value": "pointer",
+      "role": "decorative-canvas",
+      "reason": "Retains decorative canvas placement or visibility."
+    },
+    {
+      "file": "src/page/styles/about-project-typography.css",
+      "context": [
+        ".brand"
+      ],
+      "property": "font-family",
+      "value": "\"Source Code Pro\",ui-monospace,SFMono-Regular,Menlo,monospace",
+      "role": "component-layout",
+      "reason": "Retains accepted component cascade; removal requires selector-specific visual verification."
+    },
+    {
+      "file": "src/page/styles/about-project-typography.css",
+      "context": [
+        ".brand"
+      ],
+      "property": "font-weight",
+      "value": "700",
+      "role": "component-layout",
+      "reason": "Retains accepted component cascade; removal requires selector-specific visual verification."
+    },
+    {
+      "file": "src/page/styles/about-project-typography.css",
+      "context": [
+        ".brand"
+      ],
+      "property": "font-size",
+      "value": "var(--type-16)",
+      "role": "component-layout",
+      "reason": "Retains accepted component cascade; removal requires selector-specific visual verification."
+    },
+    {
+      "file": "src/page/styles/about-project-typography.css",
+      "context": [
+        ".brand"
+      ],
+      "property": "letter-spacing",
+      "value": ".02em",
+      "role": "component-layout",
+      "reason": "Retains accepted component cascade; removal requires selector-specific visual verification."
+    },
+    {
+      "file": "src/page/styles/about-project-typography.css",
+      "context": [
+        ".brand"
+      ],
+      "property": "text-transform",
+      "value": "none",
+      "role": "component-layout",
+      "reason": "Retains accepted component cascade; removal requires selector-specific visual verification."
+    },
+    {
+      "file": "src/page/styles/about-project-typography.css",
+      "context": [
+        ".brand *"
+      ],
+      "property": "font-size",
+      "value": "inherit",
+      "role": "component-layout",
+      "reason": "Retains accepted component cascade; removal requires selector-specific visual verification."
+    },
+    {
+      "file": "src/page/styles/about-project-typography.css",
+      "context": [
+        ".aim-button-outline:hover,.aim-button-outline:focus-visible"
+      ],
+      "property": "background",
+      "value": "var(--ink)",
+      "role": "component-layout",
+      "reason": "Retains accepted component cascade; removal requires selector-specific visual verification."
+    },
+    {
+      "file": "src/page/styles/about-project-typography.css",
+      "context": [
+        ".aim-button-outline:hover,.aim-button-outline:focus-visible"
+      ],
+      "property": "color",
+      "value": "var(--bg)",
+      "role": "component-layout",
+      "reason": "Retains accepted component cascade; removal requires selector-specific visual verification."
+    },
+    {
+      "file": "src/page/styles/about-project-typography.css",
+      "context": [
+        ".consultation-quote"
+      ],
+      "property": "margin-left",
+      "value": "0",
+      "role": "component-layout",
+      "reason": "Retains accepted component cascade; removal requires selector-specific visual verification."
+    },
+    {
+      "file": "src/page/styles/about-project-typography.css",
+      "context": [
+        ".consultation-quote"
+      ],
+      "property": "padding-left",
+      "value": "0",
+      "role": "component-layout",
+      "reason": "Retains accepted component cascade; removal requires selector-specific visual verification."
+    },
+    {
+      "file": "src/page/styles/about-project-typography.css",
+      "context": [
+        ".consultation-quote"
+      ],
+      "property": "border-left",
+      "value": "0",
+      "role": "component-layout",
+      "reason": "Retains accepted component cascade; removal requires selector-specific visual verification."
+    },
+    {
+      "file": "src/page/styles/about-project-typography.css",
+      "context": [
+        ".consultation-quote"
+      ],
+      "property": "font-size",
+      "value": "var(--type-18)",
+      "role": "component-layout",
+      "reason": "Retains accepted component cascade; removal requires selector-specific visual verification."
+    },
+    {
+      "file": "src/page/styles/about-project-typography.css",
+      "context": [
+        ".consultation-quote"
+      ],
+      "property": "line-height",
+      "value": "var(--leading-quote)",
+      "role": "component-layout",
+      "reason": "Retains accepted component cascade; removal requires selector-specific visual verification."
+    },
+    {
+      "file": "src/page/styles/about-project-typography.css",
+      "context": [
+        ".follow-kicker"
+      ],
+      "property": "color",
+      "value": "var(--red-on-dark)",
+      "role": "component-layout",
+      "reason": "Retains accepted component cascade; removal requires selector-specific visual verification."
+    },
+    {
+      "file": "src/page/styles/about-project-typography.css",
+      "context": [
+        "#product-space .product-copy h3"
+      ],
+      "property": "display",
+      "value": "block",
+      "role": "component-layout",
+      "reason": "Retains accepted component cascade; removal requires selector-specific visual verification."
+    },
+    {
+      "file": "src/page/styles/about-project-typography.css",
+      "context": [
+        "#product-space .product-copy h3"
+      ],
+      "property": "justify-content",
+      "value": "flex-start",
+      "role": "component-layout",
+      "reason": "Retains accepted component cascade; removal requires selector-specific visual verification."
+    },
+    {
+      "file": "src/page/styles/about-project-typography.css",
+      "context": [
+        "#product-space .product-copy h3>*"
+      ],
+      "property": "display",
+      "value": "inline",
+      "role": "component-layout",
+      "reason": "Retains accepted component cascade; removal requires selector-specific visual verification."
+    },
+    {
+      "file": "src/page/styles/about-project-typography.css",
+      "context": [
+        "#product-space .product-copy h3>*"
+      ],
+      "property": "margin",
+      "value": "0",
+      "role": "component-layout",
+      "reason": "Retains accepted component cascade; removal requires selector-specific visual verification."
+    },
+    {
+      "file": "src/page/styles/about-project-typography.css",
+      "context": [
+        ".ecosystem-map-open.learning-action:hover,.ecosystem-map-open.learning-action:focus-visible"
+      ],
+      "property": "background",
+      "value": "var(--ink)",
+      "role": "component-layout",
+      "reason": "Retains accepted component cascade; removal requires selector-specific visual verification."
+    },
+    {
+      "file": "src/page/styles/about-project-typography.css",
+      "context": [
+        ".ecosystem-map-open.learning-action:hover,.ecosystem-map-open.learning-action:focus-visible"
+      ],
+      "property": "color",
+      "value": "var(--bg)",
+      "role": "component-layout",
+      "reason": "Retains accepted component cascade; removal requires selector-specific visual verification."
+    },
+    {
+      "file": "src/page/styles/about-project-typography.css",
+      "context": [
+        "main>section,main>section:not(#hero)"
+      ],
+      "property": "padding-top",
+      "value": "clamp(64px,7vw,96px)",
+      "role": "component-layout",
+      "reason": "Retains accepted component cascade; removal requires selector-specific visual verification."
+    },
+    {
+      "file": "src/page/styles/about-project-typography.css",
+      "context": [
+        "main>section,main>section:not(#hero)"
+      ],
+      "property": "padding-bottom",
+      "value": "clamp(64px,7vw,96px)",
+      "role": "component-layout",
+      "reason": "Retains accepted component cascade; removal requires selector-specific visual verification."
+    },
+    {
+      "file": "src/page/styles/about-project-typography.css",
+      "context": [
+        "#hero"
+      ],
+      "property": "padding-bottom",
+      "value": "190px",
+      "role": "component-layout",
+      "reason": "Retains accepted component cascade; removal requires selector-specific visual verification."
+    },
+    {
+      "file": "src/page/styles/about-project-typography.css",
+      "context": [
+        ".space-schedule-quote--violet"
+      ],
+      "property": "padding",
+      "value": "0 0 var(--space-48,48px)",
+      "role": "component-layout",
+      "reason": "Retains accepted component cascade; removal requires selector-specific visual verification."
+    },
+    {
+      "file": "src/page/styles/about-project-typography.css",
+      "context": [
+        "@media (min-width:961px)",
+        "main>section,main>section:not(#hero)"
+      ],
+      "property": "padding-top",
+      "value": "var(--section-space)",
+      "role": "component-layout",
+      "reason": "Retains accepted component cascade; removal requires selector-specific visual verification."
+    },
+    {
+      "file": "src/page/styles/about-project-typography.css",
+      "context": [
+        "@media (min-width:961px)",
+        "main>section,main>section:not(#hero)"
+      ],
+      "property": "padding-bottom",
+      "value": "var(--section-space)",
+      "role": "component-layout",
+      "reason": "Retains accepted component cascade; removal requires selector-specific visual verification."
+    },
+    {
+      "file": "src/page/styles/about-project-typography.css",
+      "context": [
+        "@media (min-width:961px)",
+        "main>section#product-consultations,main>section#follow"
+      ],
+      "property": "padding-bottom",
+      "value": "40px",
+      "role": "component-layout",
+      "reason": "Retains accepted component cascade; removal requires selector-specific visual verification."
+    },
+    {
+      "file": "src/page/styles/about-project-typography.css",
+      "context": [
+        "@media (min-width:961px)",
+        "main>section#product-nonprofit"
+      ],
+      "property": "padding-top",
+      "value": "40px",
+      "role": "component-layout",
+      "reason": "Retains accepted component cascade; removal requires selector-specific visual verification."
+    },
+    {
+      "file": "src/page/styles/about-project-typography.css",
+      "context": [
+        "@media (min-width:961px)",
+        "#w19-marquee-band"
+      ],
+      "property": "height",
+      "value": "120px",
+      "role": "component-layout",
+      "reason": "Retains accepted component cascade; removal requires selector-specific visual verification."
+    },
+    {
+      "file": "src/page/styles/about-project-typography.css",
+      "context": [
+        ".ecosystem-tree-lines .ecosystem-tree-kids"
+      ],
+      "property": "opacity",
+      "value": ".18",
+      "role": "component-layout",
+      "reason": "Retains accepted component cascade; removal requires selector-specific visual verification."
+    },
+    {
+      "file": "src/page/styles/about-project-typography.css",
+      "context": [
+        ".ecosystem-direction-branch:is(:hover,:focus-within) ~ .ecosystem-tree-lines .ecosystem-tree-kids,.ecosystem-tree-lines .ecosystem-tree-kids.is-active"
+      ],
+      "property": "opacity",
+      "value": "1",
+      "role": "component-layout",
+      "reason": "Retains accepted component cascade; removal requires selector-specific visual verification."
+    },
+    {
+      "file": "src/page/styles/about-project-typography.css",
+      "context": [
+        ".direction-side-quote"
+      ],
+      "property": "border-left",
+      "value": "0",
+      "role": "component-layout",
+      "reason": "Retains accepted component cascade; removal requires selector-specific visual verification."
+    },
+    {
+      "file": "src/page/styles/about-project-typography.css",
+      "context": [
+        ".direction-side-quote"
+      ],
+      "property": "padding-left",
+      "value": "0",
+      "role": "component-layout",
+      "reason": "Retains accepted component cascade; removal requires selector-specific visual verification."
+    },
+    {
+      "file": "src/page/styles/about-project-typography.css",
+      "context": [
+        ".direction-side-quote"
+      ],
+      "property": "margin-left",
+      "value": "0",
+      "role": "component-layout",
+      "reason": "Retains accepted component cascade; removal requires selector-specific visual verification."
+    },
+    {
+      "file": "src/page/styles/about-team-layout.css",
+      "context": [
+        "#hero>h1"
+      ],
+      "property": "line-height",
+      "value": "1.0",
+      "role": "component-layout",
+      "reason": "Retains accepted component cascade; removal requires selector-specific visual verification."
+    },
+    {
+      "file": "src/page/styles/about-team-layout.css",
+      "context": [
+        "@media (max-width:900px)",
+        "#hero>.hero-lab-cards"
+      ],
+      "property": "margin-top",
+      "value": "22px",
+      "role": "component-layout",
+      "reason": "Retains accepted component cascade; removal requires selector-specific visual verification."
+    },
+    {
+      "file": "src/page/styles/about-team-spacing.css",
+      "context": [
+        "@media (min-width:961px)",
+        "main>section#about"
+      ],
+      "property": "padding-bottom",
+      "value": "0",
+      "role": "component-layout",
+      "reason": "Retains accepted component cascade; removal requires selector-specific visual verification."
+    },
+    {
+      "file": "src/page/styles/about-team-spacing.css",
+      "context": [
+        "@media (min-width:961px)",
+        "main>section#team"
+      ],
+      "property": "padding-top",
+      "value": "152px",
+      "role": "component-layout",
+      "reason": "Retains accepted component cascade; removal requires selector-specific visual verification."
+    },
+    {
+      "file": "src/page/styles/accent-text.css",
+      "context": [
+        ".sec-head .num:first-child,.sec-head .num:first-child *"
+      ],
+      "property": "color",
+      "value": "#fff",
+      "role": "accent-contrast",
+      "reason": "Retains white text on accent surfaces, including nested elements."
+    },
+    {
+      "file": "src/page/styles/accent-text.css",
+      "context": [
+        ".hero-lab-card__status,.hero-lab-card__status *"
+      ],
+      "property": "color",
+      "value": "#f4f4ef",
+      "role": "accent-contrast",
+      "reason": "Retains white text on accent surfaces, including nested elements."
+    },
+    {
+      "file": "src/page/styles/accent-text.css",
+      "context": [
+        ".eco-branch--learning .eco-branch-head,.eco-branch--learning .eco-branch-head *"
+      ],
+      "property": "color",
+      "value": "#f4f4ef",
+      "role": "accent-contrast",
+      "reason": "Retains white text on accent surfaces, including nested elements."
+    },
+    {
+      "file": "src/page/styles/accent-text.css",
+      "context": [
+        ".product-block-drag-handle,.follow-link:hover,.follow-link:focus-visible,.space-schedule__toggle:hover,.space-schedule__toggle:focus-visible,.space-schedule__all:hover,.space-schedule__all:focus-visible"
+      ],
+      "property": "color",
+      "value": "var(--on-acid,#fff)",
+      "role": "accent-contrast",
+      "reason": "Retains white text on accent surfaces, including nested elements."
+    },
+    {
+      "file": "src/page/styles/brand-layout.css",
+      "context": [
+        ".product-voice"
+      ],
+      "property": "margin",
+      "value": "-2px 0 18px",
+      "role": "component-layout",
+      "reason": "Retains accepted component cascade; removal requires selector-specific visual verification."
+    },
+    {
+      "file": "src/page/styles/brand-layout.css",
+      "context": [
+        ".product-voice"
+      ],
+      "property": "font-size",
+      "value": "15px",
+      "role": "component-layout",
+      "reason": "Retains accepted component cascade; removal requires selector-specific visual verification."
+    },
+    {
+      "file": "src/page/styles/brand-layout.css",
+      "context": [
+        ".product-voice"
+      ],
+      "property": "line-height",
+      "value": "1.55",
+      "role": "component-layout",
+      "reason": "Retains accepted component cascade; removal requires selector-specific visual verification."
+    },
+    {
+      "file": "src/page/styles/brand-layout.css",
+      "context": [
+        ".follow-link:hover *,.follow-link:focus-visible *"
+      ],
+      "property": "color",
+      "value": "#fff",
+      "role": "component-layout",
+      "reason": "Retains accepted component cascade; removal requires selector-specific visual verification."
+    },
+    {
+      "file": "src/page/styles/brand-layout.css",
+      "context": [
+        "@media (max-width:700px)",
+        "main>section:not(.product-section)>*"
+      ],
+      "property": "grid-column",
+      "value": "1/-1",
+      "role": "component-layout",
+      "reason": "Retains accepted component cascade; removal requires selector-specific visual verification."
+    },
+    {
+      "file": "src/page/styles/brand-layout.css",
+      "context": [
+        ".reviews-grid>.about-quote--origin"
+      ],
+      "property": "margin",
+      "value": "0",
+      "role": "component-layout",
+      "reason": "Retains accepted component cascade; removal requires selector-specific visual verification."
+    },
+    {
+      "file": "src/page/styles/brand-layout.css",
+      "context": [
+        "body.editing [data-editable]"
+      ],
+      "property": "pointer-events",
+      "value": "auto",
+      "role": "component-layout",
+      "reason": "Retains accepted component cascade; removal requires selector-specific visual verification."
+    },
+    {
+      "file": "src/page/styles/editorial-typesetting.css",
+      "context": [
+        "@media (max-width:700px)",
+        ".about-intro>.about-quote"
+      ],
+      "property": "grid-column",
+      "value": "1",
+      "role": "typography",
+      "reason": "Retains accepted type and reading measures against earlier component styles."
+    },
+    {
+      "file": "src/page/styles/hero-static.css",
+      "context": [
+        "#hero>p.small"
+      ],
+      "property": "margin-bottom",
+      "value": "0",
+      "role": "hero-layout",
+      "reason": "Retains accepted hero composition against earlier base layout."
+    },
+    {
+      "file": "src/page/styles/hero-static.css",
+      "context": [
+        "#hero>h1"
+      ],
+      "property": "line-height",
+      "value": "1",
+      "role": "hero-layout",
+      "reason": "Retains accepted hero composition against earlier base layout."
+    },
+    {
+      "file": "src/page/styles/hero-static.css",
+      "context": [
+        "#hero>.hero-lab-cards"
+      ],
+      "property": "margin-top",
+      "value": "44px",
+      "role": "hero-layout",
+      "reason": "Retains accepted hero composition against earlier base layout."
+    },
+    {
+      "file": "src/page/styles/learning-card-actions.css",
+      "context": [
+        "#learning .program-card:hover .aim-button-outline"
+      ],
+      "property": "color",
+      "value": "var(--bg)",
+      "role": "interactive-control",
+      "reason": "Retains accepted hover/focus geometry and foreground/background states."
+    },
+    {
+      "file": "src/page/styles/learning-card-actions.css",
+      "context": [
+        "#learning .program-card:hover .aim-button-outline"
+      ],
+      "property": "background",
+      "value": "transparent",
+      "role": "interactive-control",
+      "reason": "Retains accepted hover/focus geometry and foreground/background states."
+    },
+    {
+      "file": "src/page/styles/lower-reading.css",
+      "context": [
+        "main>section#reviews"
+      ],
+      "property": "padding-bottom",
+      "value": "32px",
+      "role": "responsive-layout",
+      "reason": "Retains accepted mobile cascade against earlier desktop/component selectors."
+    },
+    {
+      "file": "src/page/styles/lower-reading.css",
+      "context": [
+        "main>section#manifesto,main>section#follow"
+      ],
+      "property": "padding-top",
+      "value": "32px",
+      "role": "responsive-layout",
+      "reason": "Retains accepted mobile cascade against earlier desktop/component selectors."
+    },
+    {
+      "file": "src/page/styles/lower-reading.css",
+      "context": [
+        "main>section#manifesto,main>section#follow"
+      ],
+      "property": "padding-bottom",
+      "value": "32px",
+      "role": "responsive-layout",
+      "reason": "Retains accepted mobile cascade against earlier desktop/component selectors."
+    },
+    {
+      "file": "src/page/styles/lower-reading.css",
+      "context": [
+        "#w19-marquee-band"
+      ],
+      "property": "display",
+      "value": "none",
+      "role": "responsive-layout",
+      "reason": "Retains accepted mobile cascade against earlier desktop/component selectors."
+    },
+    {
+      "file": "src/page/styles/lower-reading.css",
+      "context": [
+        "@media (max-width:960px)",
+        "#manifesto .sec-head"
+      ],
+      "property": "flex-direction",
+      "value": "row",
+      "role": "responsive-layout",
+      "reason": "Retains accepted mobile cascade against earlier desktop/component selectors."
+    },
+    {
+      "file": "src/page/styles/mobile-block-layout.css",
+      "context": [
+        "@media (max-width:960px)",
+        "#learning .learning-kicker>.num"
+      ],
+      "property": "display",
+      "value": "flex",
+      "role": "responsive-layout",
+      "reason": "Retains accepted mobile cascade against earlier desktop/component selectors."
+    },
+    {
+      "file": "src/page/styles/mobile-block-layout.css",
+      "context": [
+        "@media (max-width:960px)",
+        "#learning .learning-kicker>.num"
+      ],
+      "property": "font-size",
+      "value": "var(--mobile-label-size,11px)",
+      "role": "responsive-layout",
+      "reason": "Retains accepted mobile cascade against earlier desktop/component selectors."
+    },
+    {
+      "file": "src/page/styles/mobile-block-layout.css",
+      "context": [
+        "@media (max-width:960px)",
+        "#learning .program-trio[hidden]"
+      ],
+      "property": "display",
+      "value": "none",
+      "role": "responsive-layout",
+      "reason": "Retains accepted mobile cascade against earlier desktop/component selectors."
+    },
+    {
+      "file": "src/page/styles/mobile-block-layout.css",
+      "context": [
+        "@media (max-width:960px)",
+        "#product-platform>.product-block,#product-space>.product-block,#product-consultations>.consultation-pair"
+      ],
+      "property": "width",
+      "value": "100vw",
+      "role": "responsive-layout",
+      "reason": "Retains accepted mobile cascade against earlier desktop/component selectors."
+    },
+    {
+      "file": "src/page/styles/mobile-block-layout.css",
+      "context": [
+        "@media (max-width:960px)",
+        "#product-platform>.product-block,#product-space>.product-block,#product-consultations>.consultation-pair"
+      ],
+      "property": "max-width",
+      "value": "none",
+      "role": "responsive-layout",
+      "reason": "Retains accepted mobile cascade against earlier desktop/component selectors."
+    },
+    {
+      "file": "src/page/styles/mobile-block-layout.css",
+      "context": [
+        "@media (max-width:960px)",
+        "#product-platform>.product-block,#product-space>.product-block,#product-consultations>.consultation-pair"
+      ],
+      "property": "margin-inline",
+      "value": "calc(50% - 50vw)",
+      "role": "responsive-layout",
+      "reason": "Retains accepted mobile cascade against earlier desktop/component selectors."
+    },
+    {
+      "file": "src/page/styles/mobile-block-layout.css",
+      "context": [
+        "@media (max-width:960px)",
+        "#product-space .product-copy h3"
+      ],
+      "property": "display",
+      "value": "block",
+      "role": "responsive-layout",
+      "reason": "Retains accepted mobile cascade against earlier desktop/component selectors."
+    },
+    {
+      "file": "src/page/styles/mobile-block-layout.css",
+      "context": [
+        "@media (max-width:960px)",
+        "#product-space .v1x-tone .v1x-weak"
+      ],
+      "property": "display",
+      "value": "none",
+      "role": "responsive-layout",
+      "reason": "Retains accepted mobile cascade against earlier desktop/component selectors."
+    },
+    {
+      "file": "src/page/styles/mobile-block-layout.css",
+      "context": [
+        "@media (max-width:960px)",
+        "#product-space .v1x-tone .v1x-strong"
+      ],
+      "property": "display",
+      "value": "inline",
+      "role": "responsive-layout",
+      "reason": "Retains accepted mobile cascade against earlier desktop/component selectors."
+    },
+    {
+      "file": "src/page/styles/mobile-block-layout.css",
+      "context": [
+        "@media (max-width:960px)",
+        "#product-space .v1x-tone .v1x-strong"
+      ],
+      "property": "margin",
+      "value": "0",
+      "role": "responsive-layout",
+      "reason": "Retains accepted mobile cascade against earlier desktop/component selectors."
+    },
+    {
+      "file": "src/page/styles/mobile-block-layout.css",
+      "context": [
+        "@media (max-width:960px)",
+        "#product-space .v1x-tone .v1x-strong"
+      ],
+      "property": "min-width",
+      "value": "0",
+      "role": "responsive-layout",
+      "reason": "Retains accepted mobile cascade against earlier desktop/component selectors."
+    },
+    {
+      "file": "src/page/styles/mobile-block-layout.css",
+      "context": [
+        "@media (max-width:960px)",
+        "#reviews .company-proof"
+      ],
+      "property": "display",
+      "value": "flex",
+      "role": "responsive-layout",
+      "reason": "Retains accepted mobile cascade against earlier desktop/component selectors."
+    },
+    {
+      "file": "src/page/styles/mobile-block-layout.css",
+      "context": [
+        "@media (max-width:960px)",
+        "#manifesto>.sec-head"
+      ],
+      "property": "display",
+      "value": "grid",
+      "role": "responsive-layout",
+      "reason": "Retains accepted mobile cascade against earlier desktop/component selectors."
+    },
+    {
+      "file": "src/page/styles/mobile-block-layout.css",
+      "context": [
+        "@media (max-width:960px)",
+        "main>section#follow"
+      ],
+      "property": "padding-bottom",
+      "value": "16px",
+      "role": "responsive-layout",
+      "reason": "Retains accepted mobile cascade against earlier desktop/component selectors."
+    },
+    {
+      "file": "src/page/styles/mobile-block-layout.css",
+      "context": [
+        "@media (max-width:960px)",
+        "main"
+      ],
+      "property": "padding-bottom",
+      "value": "0",
+      "role": "responsive-layout",
+      "reason": "Retains accepted mobile cascade against earlier desktop/component selectors."
+    },
+    {
+      "file": "src/page/styles/mobile-block-layout.css",
+      "context": [
+        "@media (max-width:960px)",
+        "#w19-marquee-band"
+      ],
+      "property": "display",
+      "value": "none",
+      "role": "responsive-layout",
+      "reason": "Retains accepted mobile cascade against earlier desktop/component selectors."
+    },
+    {
+      "file": "src/page/styles/mobile-block-layout.css",
+      "context": [
+        "@media (max-width:960px)",
+        "#w19-marquee-band"
+      ],
+      "property": "height",
+      "value": "0",
+      "role": "responsive-layout",
+      "reason": "Retains accepted mobile cascade against earlier desktop/component selectors."
+    },
+    {
+      "file": "src/page/styles/mobile-content-rhythm.css",
+      "context": [
+        "@media (max-width:960px)",
+        "#reviews .company-proof"
+      ],
+      "property": "margin-top",
+      "value": "72px",
+      "role": "responsive-layout",
+      "reason": "Retains accepted mobile cascade against earlier desktop/component selectors."
+    },
+    {
+      "file": "src/page/styles/mobile-hero-reading.css",
+      "context": [
+        "@media (max-width:960px)",
+        "#hero>.lead"
+      ],
+      "property": "text-align",
+      "value": "justify",
+      "role": "responsive-layout",
+      "reason": "Retains accepted mobile cascade against earlier desktop/component selectors."
+    },
+    {
+      "file": "src/page/styles/mobile-hero.css",
+      "context": [
+        "@media (max-width:1100px),(hover:none),(pointer:coarse)",
+        "#editBar,.edit-bar,#sectionRail,.section-drag-handle,.product-block-drag-handle,\n  [data-editor-control],#stretch-gauge"
+      ],
+      "property": "display",
+      "value": "none",
+      "role": "responsive-layout",
+      "reason": "Retains accepted mobile cascade against earlier desktop/component selectors."
+    },
+    {
+      "file": "src/page/styles/mobile-hero.css",
+      "context": [
+        "@media (max-width:1100px),(hover:none),(pointer:coarse)",
+        "#editBar,.edit-bar,#sectionRail,.section-drag-handle,.product-block-drag-handle,\n  [data-editor-control],#stretch-gauge"
+      ],
+      "property": "pointer-events",
+      "value": "none",
+      "role": "responsive-layout",
+      "reason": "Retains accepted mobile cascade against earlier desktop/component selectors."
+    },
+    {
+      "file": "src/page/styles/mobile-hero.css",
+      "context": [
+        "@media (max-width:1100px),(hover:none),(pointer:coarse)",
+        "body.editing"
+      ],
+      "property": "padding-right",
+      "value": "0",
+      "role": "responsive-layout",
+      "reason": "Retains accepted mobile cascade against earlier desktop/component selectors."
+    },
+    {
+      "file": "src/page/styles/mobile-hero.css",
+      "context": [
+        "@media (max-width:1100px),(hover:none),(pointer:coarse)",
+        "body.editing [data-editable]"
+      ],
+      "property": "outline",
+      "value": "none",
+      "role": "responsive-layout",
+      "reason": "Retains accepted mobile cascade against earlier desktop/component selectors."
+    },
+    {
+      "file": "src/page/styles/mobile-hierarchy.css",
+      "context": [
+        "@media (max-width:960px)",
+        "main>section>.sec-head"
+      ],
+      "property": "display",
+      "value": "flex",
+      "role": "responsive-layout",
+      "reason": "Retains accepted mobile cascade against earlier desktop/component selectors."
+    },
+    {
+      "file": "src/page/styles/mobile-hierarchy.css",
+      "context": [
+        "@media (max-width:960px)",
+        "main>section>.sec-head>.num:first-child"
+      ],
+      "property": "white-space",
+      "value": "nowrap",
+      "role": "responsive-layout",
+      "reason": "Retains accepted mobile cascade against earlier desktop/component selectors."
+    },
+    {
+      "file": "src/page/styles/mobile-hierarchy.css",
+      "context": [
+        "@media (max-width:960px)",
+        "main>section>.sec-head>.num:first-child"
+      ],
+      "property": "font-size",
+      "value": "var(--mobile-label-size,12px)",
+      "role": "responsive-layout",
+      "reason": "Retains accepted mobile cascade against earlier desktop/component selectors."
+    },
+    {
+      "file": "src/page/styles/mobile-hierarchy.css",
+      "context": [
+        "@media (max-width:960px)",
+        "main>section#cases"
+      ],
+      "property": "padding-bottom",
+      "value": "40px",
+      "role": "responsive-layout",
+      "reason": "Retains accepted mobile cascade against earlier desktop/component selectors."
+    },
+    {
+      "file": "src/page/styles/mobile-hierarchy.css",
+      "context": [
+        "@media (max-width:960px)",
+        "main>section#products"
+      ],
+      "property": "padding-top",
+      "value": "48px",
+      "role": "responsive-layout",
+      "reason": "Retains accepted mobile cascade against earlier desktop/component selectors."
+    },
+    {
+      "file": "src/page/styles/mobile-hierarchy.css",
+      "context": [
+        "@media (max-width:960px)",
+        "#products .ecosystem-map-open,#products>.sec-headline,#products .ecosystem-root-wrap"
+      ],
+      "property": "display",
+      "value": "none",
+      "role": "responsive-layout",
+      "reason": "Retains accepted mobile cascade against earlier desktop/component selectors."
+    },
+    {
+      "file": "src/page/styles/mobile-hierarchy.css",
+      "context": [
+        "@media (max-width:960px)",
+        "#products .ecosystem-children,#products .ecosystem-flow-canvas"
+      ],
+      "property": "display",
+      "value": "none",
+      "role": "responsive-layout",
+      "reason": "Retains accepted mobile cascade against earlier desktop/component selectors."
+    },
+    {
+      "file": "src/page/styles/mobile-interactions.css",
+      "context": [
+        "@media (max-width:960px)",
+        "#hero .stats b"
+      ],
+      "property": "min-width",
+      "value": "0",
+      "role": "responsive-layout",
+      "reason": "Retains accepted mobile cascade against earlier desktop/component selectors."
+    },
+    {
+      "file": "src/page/styles/mobile-interactions.css",
+      "context": [
+        "@media (max-width:960px)",
+        "#hero .v1x-dots"
+      ],
+      "property": "display",
+      "value": "none",
+      "role": "responsive-layout",
+      "reason": "Retains accepted mobile cascade against earlier desktop/component selectors."
+    },
+    {
+      "file": "src/page/styles/mobile-interactions.css",
+      "context": [
+        "@media (max-width:960px)",
+        "main>section#hero"
+      ],
+      "property": "border-bottom",
+      "value": "0",
+      "role": "responsive-layout",
+      "reason": "Retains accepted mobile cascade against earlier desktop/component selectors."
+    },
+    {
+      "file": "src/page/styles/mobile-interactions.css",
+      "context": [
+        "@media (max-width:960px)",
+        "main>section#hero"
+      ],
+      "property": "padding-bottom",
+      "value": "24px",
+      "role": "responsive-layout",
+      "reason": "Retains accepted mobile cascade against earlier desktop/component selectors."
+    },
+    {
+      "file": "src/page/styles/mobile-interactions.css",
+      "context": [
+        "@media (max-width:960px)",
+        "main>section#about"
+      ],
+      "property": "padding-bottom",
+      "value": "6px",
+      "role": "responsive-layout",
+      "reason": "Retains accepted mobile cascade against earlier desktop/component selectors."
+    },
+    {
+      "file": "src/page/styles/mobile-interactions.css",
+      "context": [
+        "@media (max-width:960px)",
+        "main>section#team"
+      ],
+      "property": "padding-top",
+      "value": "6px",
+      "role": "responsive-layout",
+      "reason": "Retains accepted mobile cascade against earlier desktop/component selectors."
+    },
+    {
+      "file": "src/page/styles/mobile-navigation.css",
+      "context": [
+        "@media (max-width:960px)",
+        "main>section>.sec-head>.num:first-child"
+      ],
+      "property": "display",
+      "value": "flex",
+      "role": "responsive-layout",
+      "reason": "Retains accepted mobile cascade against earlier desktop/component selectors."
+    },
+    {
+      "file": "src/page/styles/mobile-navigation.css",
+      "context": [
+        "@media (max-width:960px)",
+        "main>section>.sec-head>.num:first-child"
+      ],
+      "property": "font-size",
+      "value": "var(--mobile-label-size,11px)",
+      "role": "responsive-layout",
+      "reason": "Retains accepted mobile cascade against earlier desktop/component selectors."
+    },
+    {
+      "file": "src/page/styles/mobile-navigation.css",
+      "context": [
+        "@media (max-width:960px)",
+        "#about .about-head .quote-src,#about .about-head .quote-src a"
+      ],
+      "property": "font-size",
+      "value": "11px",
+      "role": "responsive-layout",
+      "reason": "Retains accepted mobile cascade against earlier desktop/component selectors."
+    },
+    {
+      "file": "src/page/styles/mobile-navigation.css",
+      "context": [
+        "@media (max-width:960px)",
+        "#about .about-head .quote-src,#about .about-head .quote-src a"
+      ],
+      "property": "letter-spacing",
+      "value": "0",
+      "role": "responsive-layout",
+      "reason": "Retains accepted mobile cascade against earlier desktop/component selectors."
+    },
+    {
+      "file": "src/page/styles/mobile-navigation.css",
+      "context": [
+        "@media (max-width:960px)",
+        "#about .about-head .quote-src,#about .about-head .quote-src a"
+      ],
+      "property": "text-transform",
+      "value": "none",
+      "role": "responsive-layout",
+      "reason": "Retains accepted mobile cascade against earlier desktop/component selectors."
+    },
+    {
+      "file": "src/page/styles/mobile-reading.css",
+      "context": [
+        "@media (max-width:960px)",
+        "main :is(p,li,blockquote,h1,h2,h3,h4,.lead,.key)"
+      ],
+      "property": "word-break",
+      "value": "normal",
+      "role": "responsive-layout",
+      "reason": "Retains accepted mobile cascade against earlier desktop/component selectors."
+    },
+    {
+      "file": "src/page/styles/mobile-reading.css",
+      "context": [
+        "@media (max-width:960px)",
+        "main :is(p,li,blockquote,h1,h2,h3,h4,.lead,.key)"
+      ],
+      "property": "overflow-wrap",
+      "value": "normal",
+      "role": "responsive-layout",
+      "reason": "Retains accepted mobile cascade against earlier desktop/component selectors."
+    },
+    {
+      "file": "src/page/styles/mobile-reading.css",
+      "context": [
+        "@media (max-width:960px)",
+        "main .lead,#approach>.approach-context>p,#manifesto .manifesto-rest>p"
+      ],
+      "property": "text-align",
+      "value": "start",
+      "role": "responsive-layout",
+      "reason": "Retains accepted mobile cascade against earlier desktop/component selectors."
+    },
+    {
+      "file": "src/page/styles/mobile-reading.css",
+      "context": [
+        "@media (max-width:960px)",
+        "main .hang"
+      ],
+      "property": "margin",
+      "value": "0",
+      "role": "responsive-layout",
+      "reason": "Retains accepted mobile cascade against earlier desktop/component selectors."
+    },
+    {
+      "file": "src/page/styles/mobile-reading.css",
+      "context": [
+        "@media (max-width:960px)",
+        "#team .team-ai-pair__item"
+      ],
+      "property": "transition-delay",
+      "value": "0s",
+      "role": "responsive-layout",
+      "reason": "Retains accepted mobile cascade against earlier desktop/component selectors."
+    },
+    {
+      "file": "src/page/styles/mobile-review-controls.css",
+      "context": [
+        "@media (max-width:960px)",
+        "#hero>.stats"
+      ],
+      "property": "margin-top",
+      "value": "48px",
+      "role": "responsive-layout",
+      "reason": "Retains accepted mobile cascade against earlier desktop/component selectors."
+    },
+    {
+      "file": "src/page/styles/reviews-markers.css",
+      "context": [
+        "#reviews .reviews-grid>.about-quote--origin"
+      ],
+      "property": "margin",
+      "value": "0",
+      "role": "component-layout",
+      "reason": "Retains accepted component cascade; removal requires selector-specific visual verification."
+    },
+    {
+      "file": "src/page/styles/space-schedule-controls.css",
+      "context": [
+        "#spaceSchedule [hidden]"
+      ],
+      "property": "display",
+      "value": "none",
+      "role": "component-layout",
+      "reason": "Retains accepted component cascade; removal requires selector-specific visual verification."
+    },
+    {
+      "file": "src/page/styles/type-scale.css",
+      "context": [
+        "#stretch-gauge,.v1x-gauge"
+      ],
+      "property": "display",
+      "value": "none",
+      "role": "typography",
+      "reason": "Retains accepted type and reading measures against earlier component styles."
+    },
+    {
+      "file": "src/page/styles/type-scale.css",
+      "context": [
+        ".product-visual-quote,.product-voice"
+      ],
+      "property": "font-size",
+      "value": "var(--type-18)",
+      "role": "typography",
+      "reason": "Retains accepted type and reading measures against earlier component styles."
+    },
+    {
+      "file": "src/page/styles/type-scale.css",
+      "context": [
+        "@media (max-width:640px)",
+        ".product-visual-quote,.product-voice"
+      ],
+      "property": "font-size",
+      "value": "var(--type-16)",
+      "role": "typography",
+      "reason": "Retains accepted type and reading measures against earlier component styles."
+    },
+    {
+      "file": "src/page/styles/typography-system.css",
+      "context": [
+        ".product-voice"
+      ],
+      "property": "font-size",
+      "value": "var(--type-16)",
+      "role": "component-layout",
+      "reason": "Retains accepted component cascade; removal requires selector-specific visual verification."
+    },
+    {
+      "file": "src/page/styles/typography-system.css",
+      "context": [
+        ".product-visual-quote"
+      ],
+      "property": "font-size",
+      "value": "var(--type-16)",
+      "role": "component-layout",
+      "reason": "Retains accepted component cascade; removal requires selector-specific visual verification."
+    }
+  ]
+}

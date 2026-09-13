@@ -1,0 +1,6 @@
+
+/* курсор-лого в «про нас»: самодостаточный слой (не зависит от полевого движка) */
+section#about, #about { cursor: auto; }   /* курсор не прячем: кончик для клика всегда виден, лицо — рядом */
+#about a, #about button { cursor: pointer !important; }
+#aim-cursor-logo { position: fixed; inset: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 9; }
+@media (prefers-reduced-motion: reduce) { #aim-cursor-logo { display: none; } }

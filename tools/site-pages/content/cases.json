@@ -1,0 +1,364 @@
+{
+  "source_url": "https://w26-cases.netlify.app/",
+  "source_html": "cases-source.html",
+  "source_html_sha256": "cf0b6dcf5dacee66039d77b9189ac22d238905ae8b26261faa60aab659646045",
+  "captured_at": "2026-09-10T14:32:13.278638+00:00",
+  "extraction": "All entries in inline const CASES array. Full original text, order and tool tags preserved. desc mapped to description; stack mapped to tags. Source data also retained per card.",
+  "count": 15,
+  "cards": [
+    {
+      "id": "coaching",
+      "category": "AI Coaching",
+      "title": "Персональный AI-коуч",
+      "description": "AI-ассистент для коучинга и терапии с голосовым интерфейсом. Контекст из заметок, распознавание эмоций.",
+      "tags": [
+        "Claude",
+        "Vapi",
+        "Obsidian"
+      ],
+      "source_order": 0,
+      "source_data": {
+        "id": "coaching",
+        "category": "AI Coaching",
+        "title": "Персональный AI-коуч",
+        "desc": "AI-ассистент для коучинга и терапии с голосовым интерфейсом. Контекст из заметок, распознавание эмоций.",
+        "stack": [
+          "Claude",
+          "Vapi",
+          "Obsidian"
+        ],
+        "dark": true,
+        "color": "#DC2626",
+        "size": "tall"
+      }
+    },
+    {
+      "id": "portfolio",
+      "category": "AI Vision",
+      "title": "Категоризация изображений",
+      "description": "Автоматическая сортировка и теггинг визуального контента.",
+      "tags": [
+        "GPT Vision",
+        "Claude"
+      ],
+      "source_order": 1,
+      "source_data": {
+        "id": "portfolio",
+        "category": "AI Vision",
+        "title": "Категоризация изображений",
+        "desc": "Автоматическая сортировка и теггинг визуального контента.",
+        "stack": [
+          "GPT Vision",
+          "Claude"
+        ],
+        "color": "#DC2626"
+      }
+    },
+    {
+      "id": "language",
+      "category": "AI Learning",
+      "title": "Языковой партнер",
+      "description": "Разговорная практика с адаптивной сложностью.",
+      "tags": [
+        "GPT-4",
+        "ElevenLabs"
+      ],
+      "source_order": 2,
+      "source_data": {
+        "id": "language",
+        "category": "AI Learning",
+        "title": "Языковой партнер",
+        "desc": "Разговорная практика с адаптивной сложностью.",
+        "stack": [
+          "GPT-4",
+          "ElevenLabs"
+        ],
+        "color": "#666"
+      }
+    },
+    {
+      "id": "calls",
+      "category": "AI Summary",
+      "title": "Суммаризация встреч",
+      "description": "Транскрипция Zoom/Meet со speaker diarization. Action items, синхронизация с CRM.",
+      "tags": [
+        "Zoom",
+        "Gemini",
+        "Whisper"
+      ],
+      "source_order": 3,
+      "source_data": {
+        "id": "calls",
+        "category": "AI Summary",
+        "title": "Суммаризация встреч",
+        "desc": "Транскрипция Zoom/Meet со speaker diarization. Action items, синхронизация с CRM.",
+        "stack": [
+          "Zoom",
+          "Gemini",
+          "Whisper"
+        ],
+        "color": "#8B5CF6",
+        "size": "tall"
+      }
+    },
+    {
+      "id": "obsidian",
+      "category": "AI Knowledge",
+      "title": "Чат с базой знаний",
+      "description": "RAG-система для Obsidian. Семантический поиск по заметкам.",
+      "tags": [
+        "Obsidian",
+        "Claude API"
+      ],
+      "source_order": 4,
+      "source_data": {
+        "id": "obsidian",
+        "category": "AI Knowledge",
+        "title": "Чат с базой знаний",
+        "desc": "RAG-система для Obsidian. Семантический поиск по заметкам.",
+        "stack": [
+          "Obsidian",
+          "Claude API"
+        ],
+        "dark": true,
+        "color": "#8B5CF6"
+      }
+    },
+    {
+      "id": "project",
+      "category": "AI Project",
+      "title": "PM-ассистент",
+      "description": "Мониторинг прогресса с автостатусами.",
+      "tags": [
+        "Linear",
+        "Notion"
+      ],
+      "source_order": 5,
+      "source_data": {
+        "id": "project",
+        "category": "AI Project",
+        "title": "PM-ассистент",
+        "desc": "Мониторинг прогресса с автостатусами.",
+        "stack": [
+          "Linear",
+          "Notion"
+        ],
+        "color": "#666"
+      }
+    },
+    {
+      "id": "automation",
+      "category": "AI Automation",
+      "title": "Автоматизация воркфлоу",
+      "description": "Email-триаж, CRM-обновления, документооборот. Триггеры с AI-анализом.",
+      "tags": [
+        "n8n",
+        "Make",
+        "Claude"
+      ],
+      "source_order": 6,
+      "source_data": {
+        "id": "automation",
+        "category": "AI Automation",
+        "title": "Автоматизация воркфлоу",
+        "desc": "Email-триаж, CRM-обновления, документооборот. Триггеры с AI-анализом.",
+        "stack": [
+          "n8n",
+          "Make",
+          "Claude"
+        ],
+        "color": "#DC2626",
+        "size": "tall"
+      }
+    },
+    {
+      "id": "research",
+      "category": "AI Research",
+      "title": "Исследовательский ассистент",
+      "description": "Поиск и синтез из научных баз.",
+      "tags": [
+        "Perplexity",
+        "Elicit"
+      ],
+      "source_order": 7,
+      "source_data": {
+        "id": "research",
+        "category": "AI Research",
+        "title": "Исследовательский ассистент",
+        "desc": "Поиск и синтез из научных баз.",
+        "stack": [
+          "Perplexity",
+          "Elicit"
+        ],
+        "color": "#666"
+      }
+    },
+    {
+      "id": "content",
+      "category": "AI Content",
+      "title": "Генерация контента",
+      "description": "Создание с сохранением brand voice.",
+      "tags": [
+        "GPT-4",
+        "Midjourney"
+      ],
+      "source_order": 8,
+      "source_data": {
+        "id": "content",
+        "category": "AI Content",
+        "title": "Генерация контента",
+        "desc": "Создание с сохранением brand voice.",
+        "stack": [
+          "GPT-4",
+          "Midjourney"
+        ],
+        "dark": true,
+        "color": "#DC2626"
+      }
+    },
+    {
+      "id": "analysis",
+      "category": "AI Analytics",
+      "title": "Анализ данных",
+      "description": "Выявление паттернов, генерация дашбордов и отчетов с визуализацией.",
+      "tags": [
+        "Python",
+        "GPT-4",
+        "Plotly"
+      ],
+      "source_order": 9,
+      "source_data": {
+        "id": "analysis",
+        "category": "AI Analytics",
+        "title": "Анализ данных",
+        "desc": "Выявление паттернов, генерация дашбордов и отчетов с визуализацией.",
+        "stack": [
+          "Python",
+          "GPT-4",
+          "Plotly"
+        ],
+        "dark": true,
+        "color": "#8B5CF6",
+        "size": "tall"
+      }
+    },
+    {
+      "id": "voice",
+      "category": "AI Voice",
+      "title": "Голосовые агенты",
+      "description": "IVR и outbound calling с естественной речью.",
+      "tags": [
+        "Vapi",
+        "ElevenLabs"
+      ],
+      "source_order": 10,
+      "source_data": {
+        "id": "voice",
+        "category": "AI Voice",
+        "title": "Голосовые агенты",
+        "desc": "IVR и outbound calling с естественной речью.",
+        "stack": [
+          "Vapi",
+          "ElevenLabs"
+        ],
+        "color": "#DC2626"
+      }
+    },
+    {
+      "id": "crm",
+      "category": "AI Sales",
+      "title": "CRM-ассистент",
+      "description": "Обогащение лидов, автоквалификация.",
+      "tags": [
+        "HubSpot",
+        "Apollo"
+      ],
+      "source_order": 11,
+      "source_data": {
+        "id": "crm",
+        "category": "AI Sales",
+        "title": "CRM-ассистент",
+        "desc": "Обогащение лидов, автоквалификация.",
+        "stack": [
+          "HubSpot",
+          "Apollo"
+        ],
+        "dark": true,
+        "color": "#DC2626"
+      }
+    },
+    {
+      "id": "code",
+      "category": "AI Dev",
+      "title": "Code Review",
+      "description": "Анализ PR, выявление багов и уязвимостей.",
+      "tags": [
+        "GitHub",
+        "Claude"
+      ],
+      "source_order": 12,
+      "source_data": {
+        "id": "code",
+        "category": "AI Dev",
+        "title": "Code Review",
+        "desc": "Анализ PR, выявление багов и уязвимостей.",
+        "stack": [
+          "GitHub",
+          "Claude"
+        ],
+        "color": "#8B5CF6",
+        "size": "tall"
+      }
+    },
+    {
+      "id": "support",
+      "category": "AI Support",
+      "title": "Служба поддержки",
+      "description": "Классификация тикетов, автоответы.",
+      "tags": [
+        "Intercom",
+        "Zendesk"
+      ],
+      "source_order": 13,
+      "source_data": {
+        "id": "support",
+        "category": "AI Support",
+        "title": "Служба поддержки",
+        "desc": "Классификация тикетов, автоответы.",
+        "stack": [
+          "Intercom",
+          "Zendesk"
+        ],
+        "color": "#666"
+      }
+    },
+    {
+      "id": "workflow",
+      "category": "AI Workflow",
+      "title": "Оптимизация процессов",
+      "description": "Аудит и улучшение рабочих процессов.",
+      "tags": [
+        "Taskade",
+        "Notion"
+      ],
+      "source_order": 14,
+      "source_data": {
+        "id": "workflow",
+        "category": "AI Workflow",
+        "title": "Оптимизация процессов",
+        "desc": "Аудит и улучшение рабочих процессов.",
+        "stack": [
+          "Taskade",
+          "Notion"
+        ],
+        "color": "#666"
+      }
+    }
+  ],
+  "source_behavior_notes": [
+    "The source gallery contains 15 cards, built client-side from one inline CASES array.",
+    "Source cards have no outbound URL, onclick handler, or detailed case document; do not invent links for individual cards.",
+    "Source CSS clamps descriptions to 2 or 4 visible lines; extracted descriptions contain the complete underlying strings.",
+    "Source getCaseSVG generates continuous SVG animations; it is preserved in raw HTML for provenance, not required for native content reconstruction."
+  ]
+}

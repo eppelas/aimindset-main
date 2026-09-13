@@ -1,0 +1,10 @@
+
+/* Фиолетовый #7b55ad — цвет {space}: двух цитатных плашек и акцента кнопок. */
+#product-space .product-voice .rhythm-highlight{background:#7b55ad;color:#fff}
+.space-schedule-quote--violet .rhythm-highlight{background:#7b55ad;color:#fff}
+.space-schedule-quote--violet{padding-top:0}
+.space-schedule-quote--violet .rhythm-quote{grid-column:5/-1;justify-self:end}
+.space-schedule-quote--violet .rhythm-quote p{text-align:right}   /* Выравнивание цитаты по правому краю. */
+#product-space .product-cta:hover,#product-space .product-cta:focus-visible{filter:drop-shadow(3px 3px 0 #7b55ad)}
+.space-schedule__toggle:hover,.space-schedule__toggle:focus-visible,.space-schedule__action:hover,.space-schedule__action:focus-visible{filter:drop-shadow(3px 3px 0 #7b55ad)}
+.space-schedule__all:hover,.space-schedule__all:focus-visible{background:#7b55ad;color:#fff}

@@ -1,0 +1,144 @@
+/* Exact selected round-3 rules, scoped to approved heroes. User approval 2026-09-11. */
+@font-face{font-family:"JetBrains Mono";src:url("fonts/jetbrains-extrabold.woff2") format("woff2");font-weight:800;font-display:swap}
+.approved-hero{font-synthesis:none;--hero-face:"JetBrains Mono",monospace;--hero-weight:800;--hero-track:-.055em;--hero-scale:1;--hero-cyan:#1fb6d1;--hero-red:#c50d17;--review-size:100px;--review-leading:.95;--review-weight:800}
+.approved-hero.hero-ngo{--hero-face:"JetBrains Mono",monospace;--hero-weight:800;--hero-track:-.035em;--hero-scale:1.04;--review-leading:.94;--review-weight:800}
+.approved-hero{--title-size: clamp(44px,5.45vw,82px); display: grid; grid-template-columns: repeat(8, minmax(0px, 1fr)); gap: 24px; align-items: start; align-content: start; padding-block: 8px 20px;}
+.approved-hero > *{min-width: 0px;}
+.approved-hero .hero-heading{grid-column: 1 / 7;}
+.approved-hero .hero-eyebrow{font: 600 12px/1.4 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--hero-red); margin-bottom: 20px;}
+.approved-hero .hero-title{margin: 0px; font-family: var(--hero-face); font-weight: var(--hero-weight); font-size: calc(var(--title-size)*var(--hero-scale)); line-height: 0.98; letter-spacing: var(--hero-track); text-wrap: initial; overflow-wrap: normal; hyphens: none;}
+.approved-hero .title-line{display: block;}
+.approved-hero .hero-title .line-1{color: var(--hero-red);}
+.approved-hero.hero-ngo .hero-title .line-1{color: inherit;}
+.approved-hero.hero-ngo .hero-title .line-2{color: var(--hero-red);}
+.approved-hero .hero-copy{grid-column: 1 / 7; align-self: start;}
+.approved-hero .hero-lead{font: 400 16px/1.6 var(--mono); max-width: 52ch; color: rgb(48, 48, 48); margin: 0px; hyphens: none;}
+.approved-hero .hero-actions{display: flex; align-items: center; flex-wrap: wrap; gap: 16px; margin-top: 24px; min-width: 0px;}
+.approved-hero .program-card__morph{height: auto; aspect-ratio: 1 / 1; width: 100%; overflow: visible; align-self: center;}
+.approved-hero .program-card__morph svg{width: 100%; height: 100%; display: block;}
+.approved-hero .hero-graphic{grid-area: 1 / 7 / 3 / 9; max-width: 264px; justify-self: center;}
+.approved-hero .hero-facts{grid-column: 1 / -1; display: grid; grid-template-columns: repeat(8, minmax(0px, 1fr)); gap: 24px; margin-top: 28px;}
+.approved-hero .hero-fact{grid-column: span 3; min-width: 0px; display: grid; grid-template-columns: minmax(0px, 1fr) 92px; grid-template-rows: max-content 1fr; column-gap: 12px; align-content: start;}
+.approved-hero .hero-fact:last-child{grid-column: span 2; grid-template-columns: minmax(0px, 1fr) 64px;}
+.approved-hero .hero-fact dt{font: 400 13px/1.35 var(--mono); color: rgb(51, 51, 51); align-self: start; display:flex; align-items:baseline; gap:var(--space-8); white-space:nowrap;}
+.approved-hero .hero-fact dt strong{font: 800 40px/1 var(--mono); letter-spacing: -0.065em; color: rgb(17, 17, 17); display: inline-block; margin: 0;}
+.approved-hero .hero-fact dd{font: 400 13px/var(--leading-card) var(--mono); color: rgb(85, 85, 85); margin-top: 8px; grid-column: 1;}
+.approved-hero .hero-fact .program-card__morph{grid-area: 1 / 2 / 3; max-height: 112px;}
+.approved-hero .hero-media{min-width: 0px; position: relative; grid-area: 1 / 7 / 3 / 9;}
+.approved-hero .hero-photo{margin: 0px;}
+.approved-hero .hero-photo img{display: block; object-fit: cover; object-position: 54% 50%; width: 100%; height: 100%; min-width: 0px;}
+.approved-hero .hero-media .photo-graphic{width: 120px; max-width: 100%; margin: 16px 0px 0px auto;}
+.approved-hero.hero-teams.composition-3 .hero-graphic{grid-area: 1 / 1 / 3 / 3; align-self: start; margin-top: 32px; max-width: 196px;}
+.approved-hero.hero-teams.composition-3 .hero-heading,.approved-hero.hero-teams.composition-3 .hero-copy{grid-column: 3 / 9;}
+.approved-hero.hero-teams.composition-3 .hero-title{--title-size: clamp(44px,5.65vw,86px);}
+.approved-hero .color-field{background: var(--hero-cyan);}
+.approved-hero.hero-ngo.composition-5 .hero-media{grid-area: 1 / 6 / 3 / 9; padding: 28px; align-self: stretch; display: flex; flex-direction: column; justify-content: space-between; gap: 24px;}
+.approved-hero.hero-ngo.composition-5 .hero-photo{height: 184px;}
+.approved-hero.hero-ngo.composition-5 .photo-graphic{width: 140px; margin: 0px;}
+.approved-hero.hero-ngo.composition-5 .hero-heading,.approved-hero.hero-ngo.composition-5 .hero-copy{grid-column: 1 / 6;}
+.approved-hero.hero-ngo.composition-5 .hero-title{--title-size: clamp(44px,5.1vw,78px);}
+@media (min-width: 701px) and (max-width: 1100px){
+.approved-hero{--title-size: 5.35vw; gap: 20px;}
+.approved-hero .hero-lead{font-size: 14px;}
+.approved-hero .hero-facts{gap: 20px;}
+.approved-hero .hero-fact,.approved-hero .hero-fact:last-child{grid-template-columns: minmax(0px, 1fr) 48px; gap: 6px;}
+.approved-hero .hero-fact dt strong{font-size: 32px;}
+.approved-hero .hero-fact dt,.approved-hero .hero-fact dd{font-size: 12px;}
+.approved-hero.hero-ngo.composition-5 .hero-media{padding: 20px;}
+}
+@media (max-width: 700px){
+.approved-hero{--title-size: clamp(32px,8.3vw,56px); grid-template-columns: repeat(4, minmax(0px, 1fr)); gap: 24px 14px; padding-top: 0px;}
+.approved-hero .hero-heading,.approved-hero .hero-copy,.approved-hero .hero-facts{grid-area: auto / 1 / auto / -1;}
+.approved-hero .hero-title{--title-size: clamp(32px,8.3vw,56px); line-height: 0.98;}
+.approved-hero .hero-eyebrow{font-size: 11px; margin-bottom: 16px;}
+.approved-hero .hero-lead{font-size: 14px; line-height: 1.6;}
+.approved-hero .hero-actions{gap: 12px; margin-top: 20px;}
+.approved-hero .hero-graphic{grid-area: auto / 4; max-width: 100%; width: 100%; margin: 0px; align-self: center;}
+.approved-hero .hero-facts{grid-template-columns: repeat(4, minmax(0px, 1fr)); gap: 24px 14px; margin-top: 12px;}
+.approved-hero .hero-fact{grid-column: span 2; grid-template-columns: minmax(0px, 1fr) 36px; gap: 4px;}
+.approved-hero .hero-fact:last-child{grid-column: 1 / -1; grid-template-columns: minmax(0px, 1fr) 64px; max-width: 320px;}
+.approved-hero .hero-fact dt{font-size:var(--type-12);gap:var(--space-4)}
+.approved-hero .hero-fact dt strong{display: inline-block; font-size: 32px; margin: 0; min-width: 0px;}
+.approved-hero .hero-fact dd{font-size: 13px; margin-top: 6px;}
+.approved-hero .hero-fact .program-card__morph{width: 100%; height: auto; max-height: 80px;}
+.approved-hero.hero-ngo .hero-heading{grid-column: 1 / -1;}
+.approved-hero.hero-ngo .hero-media{grid-area: 2 / 4; padding: 0px; display: block; align-self: start;}
+.approved-hero.hero-ngo .hero-photo{height: 136px; width: 100%;}
+.approved-hero.hero-ngo .hero-media .photo-graphic{width: 100%; max-width: 88px; margin: 16px 0px 0px auto; position: static; background: transparent;}
+.approved-hero.hero-ngo .hero-copy{grid-area: 2 / 1 / auto / 4; margin-top: 0px;}
+.approved-hero.hero-teams.composition-3 .hero-graphic{grid-area: 2 / 1; margin-top: 0px;}
+.approved-hero.hero-teams.composition-3 .hero-copy{grid-area: 2 / 2 / auto / 5;}
+.approved-hero.hero-ngo.composition-5 .hero-media{grid-area: 2 / 4; padding: 8px; display: flex; align-self: stretch; gap: 16px;}
+.approved-hero.hero-ngo.composition-5 .hero-photo{height: 120px;}
+.approved-hero.hero-ngo.composition-5 .photo-graphic{margin: 0px; width: 100%;}
+}
+@media print{
+.approved-hero{break-inside: avoid;}
+}
+.approved-hero .hero-title{font-weight: var(--review-weight,var(--hero-weight)) !important; font-size: var(--review-size,80px) !important; line-height: var(--review-leading,.94) !important;}
+.approved-hero .hero-eyebrow{text-transform: none; letter-spacing: 0px;}
+.approved-hero .hero-actions .aim-button-outline{align-self: center;}
+.approved-hero .hero-facts{gap: 24px; margin-top: 36px;}
+.approved-hero .hero-fact,.approved-hero .hero-fact:last-child{grid-template-columns: 80px minmax(0px, 1fr); column-gap: 16px;}
+.approved-hero .hero-fact dt,.approved-hero .hero-fact dd{grid-column: 2;}
+.approved-hero .hero-fact .program-card__morph{grid-area: 1 / 1 / 3; width: 80px; max-height: none; align-self: start;}
+.approved-hero .hero-fact dt strong{font-size: 32px;}
+.approved-hero.hero-teams.composition-3 .hero-graphic{grid-area: 1 / 1 / 3 / 4; max-width: 100%; width: 100%; align-self: center; margin: 0px;}
+.approved-hero.hero-teams.composition-3 .hero-heading,.approved-hero.hero-teams.composition-3 .hero-copy{grid-column: 4 / 9;}
+.approved-hero.hero-ngo.composition-5 .hero-media{background: linear-gradient(145deg, rgb(17, 17, 17) 25%, rgb(36, 37, 43) 65%, rgb(7, 91, 107) 100%); border-top: 6px solid var(--hero-red);}
+.approved-hero.hero-ngo.composition-5 .hero-photo{height: 180px;}
+.approved-hero.hero-ngo.composition-5 .hero-media .photo-graphic{width: 140px; align-self: flex-end;}
+@media (min-width: 701px) and (max-width: 1100px){
+.approved-hero .hero-fact,.approved-hero .hero-fact:last-child{grid-template-columns: 64px minmax(0px, 1fr); column-gap: 12px;}
+.approved-hero .hero-fact .program-card__morph{width: 64px;}
+}
+@media (max-width: 700px){
+/* Facts share the four-track mobile grid: two tracks per fact. */
+.approved-hero.hero-teams .hero-lead{line-height:var(--leading-card)}
+.approved-hero .hero-facts{grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-24) var(--space-16);margin-top:var(--space-12)}
+.approved-hero .hero-fact,.approved-hero .hero-fact:last-child{grid-column:auto;grid-template-columns:minmax(0,1fr) 40px;gap:var(--space-4) var(--space-8);max-width:none;min-height:0;align-content:start}
+.approved-hero .hero-fact dt{grid-area:1/1;line-height:var(--leading-card)}
+.approved-hero .hero-fact dt strong{display:inline-block;margin:0;font-size:var(--type-24);line-height:var(--leading-solid)}
+.approved-hero .hero-fact dd{grid-area:2/1/auto/-1;margin:0;line-height:var(--leading-card)}
+.approved-hero .hero-fact .program-card__morph{grid-area:1/2;width:40px;height:32px;align-self:start}
+.approved-hero.hero-teams.composition-3 .hero-graphic{grid-area: 2 / 1; align-self: start; max-width: 100%; width: 100%;}
+.approved-hero.hero-teams.composition-3 .hero-heading{grid-column: 1 / -1;}
+.approved-hero.hero-teams.composition-3 .hero-copy{grid-area: 2 / 2 / auto / 5;}
+.approved-hero.hero-ngo.composition-5 .hero-media .photo-graphic{width: 100%; align-self: center;}
+.approved-hero.hero-ngo.composition-5 .hero-photo{height: 120px;}
+}
+.approved-hero .morph-path{stroke-width: 1.25px;}
+.approved-hero.hero-teams.composition-3 .hero-graphic{height: 280px; aspect-ratio: auto;}
+@media (max-width: 1100px) and (min-width: 701px){
+.approved-hero.hero-teams.composition-3 .hero-graphic{height: 220px;}
+}
+@media (max-width: 700px){
+.approved-hero.hero-teams.composition-3 .hero-graphic{height: 88px;}
+}
+@media (max-width: 700px){
+.approved-hero .hero-heading{grid-area: 1 / 1 / auto / -1;}
+.approved-hero.hero-ngo.composition-5 .hero-copy{grid-area: 2 / 1 / auto / 4;}
+.approved-hero.hero-ngo.composition-5 .hero-media{grid-area: 2 / 4;}
+}
+@media (min-width: 701px) and (max-width: 1100px){
+.approved-hero .hero-fact,.approved-hero .hero-fact:last-child{grid-template-columns: minmax(0px, 1fr); grid-template-rows:max-content max-content 1fr; gap: 0px;}
+.approved-hero .hero-fact .program-card__morph{grid-area: 1 / 1; width: 64px; height: 56px; margin-bottom: 8px;}
+.approved-hero .hero-fact dt{grid-area: 2 / 1;}
+.approved-hero .hero-fact dd{grid-area: 3 / 1;}
+}
+/* Only page integration: replace review chrome with the site's existing intro inset. */
+.approved-hero{padding-top:var(--space-64);margin-bottom:var(--space-32)}
+@media(max-width:700px){.approved-hero{--review-size:48px;padding-top:var(--space-32)}}
+
+/* Keep the number and its unit together in the narrowest two-column facts. */
+@media(max-width:359px){
+.approved-hero .hero-fact,.approved-hero .hero-fact:last-child{grid-template-columns:minmax(0,1fr) 32px;column-gap:var(--space-4)}
+.approved-hero .hero-fact .program-card__morph{width:32px;height:32px}
+}
+
+/* Mobile NGO artwork follows the height of the adjacent copy and CTA. */
+@media(max-width:700px){
+ .approved-hero.hero-ngo.composition-5 .hero-media{contain:size;min-height:0}
+ .approved-hero.hero-ngo.composition-5 .hero-photo{flex:1;min-height:0;height:auto}
+ .approved-hero.hero-ngo.composition-5 .hero-media .photo-graphic{flex:0 0 32px;height:32px;aspect-ratio:auto}
+}

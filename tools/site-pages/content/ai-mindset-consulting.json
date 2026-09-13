@@ -1,0 +1,1157 @@
+{
+  "source_url": "https://aimindset.org/ai-mindset-consulting",
+  "resolved_url": "https://aimindset.org/ai-mindset-consulting",
+  "http_status": 200,
+  "captured_at": "2026-09-10T12:25:58.627964+00:00",
+  "bytes": 430424,
+  "sha256": "2983008a6ef73ba9ca27475ef09783b0f14c312a0c7fae3420a3c22773258f95",
+  "title": "AI Mindset. Team track",
+  "extraction_notes": [
+    "Scripts, navigation and repeated footer excluded from blocks; original footer links kept separately.",
+    "text normalizes whitespace only; text_raw preserves source whitespace; html preserves inline emphasis and exact hrefs.",
+    "No copy rewritten; source references and all main-surface links/media retained."
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "level": 3,
+      "source_id": "block-2e39c733ce31804081dcc5293934fcae",
+      "text": "обучение на реальных задачах компании · персонализированная поддержка · экспертиза с рынка",
+      "text_raw": "обучение на реальных задачах компании \n· персонализированная поддержка · экспертиза с рынка",
+      "html": "обучение на реальных задачах компании \n· персонализированная поддержка · экспертиза с рынка",
+      "links": []
+    },
+    {
+      "type": "heading",
+      "level": 1,
+      "source_id": "block-2e39c733ce3180a1a285cbe0660559b7",
+      "text": "# как это работает",
+      "text_raw": "# как это работает",
+      "html": "<strong># </strong>как это работает",
+      "links": []
+    },
+    {
+      "type": "paragraph",
+      "source_id": "block-2e39c733ce31802ab209ffe8e8abede1",
+      "text": "3+ человек из компании проходят любой продукт AI Mindset. работают над реальными задачами бизнеса и получают:",
+      "text_raw": "3+ человек из компании проходят любой продукт AI Mindset. работают над реальными задачами бизнеса и получают:  ",
+      "html": "3+ человек из компании проходят <a href=\"/\">любой продукт AI Mindset</a>. работают над реальными задачами бизнеса и получают:",
+      "links": [
+        {
+          "text": "любой продукт AI Mindset",
+          "href": "/",
+          "resolved_url": "https://aimindset.org/"
+        }
+      ]
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        {
+          "text": "единое понимание возможностей и ограничений AI внутри команды",
+          "text_raw": "единое понимание возможностей и ограничений AI внутри команды",
+          "html": "единое понимание возможностей и ограничений AI внутри команды",
+          "links": []
+        },
+        {
+          "text": "рабочие сценарии, автоматизации и агентов под реальные процессы компании",
+          "text_raw": "рабочие сценарии, автоматизации и агентов под реальные процессы компании",
+          "html": "рабочие сценарии, автоматизации и агентов под реальные процессы компании",
+          "links": []
+        },
+        {
+          "text": "экономию до 20% времени и ресурсов",
+          "text_raw": "экономию до 20% времени и ресурсов ",
+          "html": "экономию до 20% времени и ресурсов",
+          "links": []
+        }
+      ],
+      "source_id": null,
+      "text": "единое понимание возможностей и ограничений AI внутри командырабочие сценарии, автоматизации и агентов под реальные процессы компанииэкономию до 20% времени и ресурсов",
+      "text_raw": "единое понимание возможностей и ограничений AI внутри командырабочие сценарии, автоматизации и агентов под реальные процессы компанииэкономию до 20% времени и ресурсов ",
+      "html": "единое понимание возможностей и ограничений AI внутри командырабочие сценарии, автоматизации и агентов под реальные процессы компанииэкономию до 20% времени и ресурсов",
+      "links": []
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "source_id": "block-2e39c733ce3180dbb8abe710112c0613",
+      "text": "Operational System",
+      "text_raw": "                               \n                                    Operational System        ",
+      "html": "<strong>                               \n                                    Operational System        </strong>",
+      "links": [],
+      "context": {
+        "container_id": "block-2e69c733ce318088b5fbcb66fdef1f26",
+        "container_type": "column"
+      }
+    },
+    {
+      "type": "heading",
+      "level": 1,
+      "source_id": "block-2e99c733ce31804cb13cc0b7ba4380ee",
+      "text": "Personal ↔ Founder ↔ Team",
+      "text_raw": "               Personal ↔ Founder ↔ Team ",
+      "html": "<strong>               Personal ↔ Founder ↔ Team </strong>",
+      "links": [],
+      "context": {
+        "container_id": "block-2e69c733ce318088b5fbcb66fdef1f26",
+        "container_type": "column"
+      }
+    },
+    {
+      "type": "image",
+      "media": [
+        {
+          "tag": "img",
+          "src": "https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/4e25ff93-ed66-416a-a4da-5ff83da76dfa/1fce1cf5-7170-494b-84f4-aad77d4c0ccf/w=1920,quality=90,fit=scale-down",
+          "resolved_url": "https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/4e25ff93-ed66-416a-a4da-5ff83da76dfa/1fce1cf5-7170-494b-84f4-aad77d4c0ccf/w=1920,quality=90,fit=scale-down",
+          "alt": "image",
+          "srcset": "https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/4e25ff93-ed66-416a-a4da-5ff83da76dfa/1fce1cf5-7170-494b-84f4-aad77d4c0ccf/w=1920,quality=90,fit=scale-down 128w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/4e25ff93-ed66-416a-a4da-5ff83da76dfa/1fce1cf5-7170-494b-84f4-aad77d4c0ccf/w=1920,quality=90,fit=scale-down 256w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/4e25ff93-ed66-416a-a4da-5ff83da76dfa/1fce1cf5-7170-494b-84f4-aad77d4c0ccf/w=1920,quality=90,fit=scale-down 384w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/4e25ff93-ed66-416a-a4da-5ff83da76dfa/1fce1cf5-7170-494b-84f4-aad77d4c0ccf/w=1920,quality=90,fit=scale-down 640w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/4e25ff93-ed66-416a-a4da-5ff83da76dfa/1fce1cf5-7170-494b-84f4-aad77d4c0ccf/w=1920,quality=90,fit=scale-down 750w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/4e25ff93-ed66-416a-a4da-5ff83da76dfa/1fce1cf5-7170-494b-84f4-aad77d4c0ccf/w=1920,quality=90,fit=scale-down 828w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/4e25ff93-ed66-416a-a4da-5ff83da76dfa/1fce1cf5-7170-494b-84f4-aad77d4c0ccf/w=1920,quality=90,fit=scale-down 1080w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/4e25ff93-ed66-416a-a4da-5ff83da76dfa/1fce1cf5-7170-494b-84f4-aad77d4c0ccf/w=1920,quality=90,fit=scale-down 1200w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/4e25ff93-ed66-416a-a4da-5ff83da76dfa/1fce1cf5-7170-494b-84f4-aad77d4c0ccf/w=1920,quality=90,fit=scale-down 1920w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/4e25ff93-ed66-416a-a4da-5ff83da76dfa/1fce1cf5-7170-494b-84f4-aad77d4c0ccf/w=1920,quality=90,fit=scale-down 2048w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/4e25ff93-ed66-416a-a4da-5ff83da76dfa/1fce1cf5-7170-494b-84f4-aad77d4c0ccf/w=1920,quality=90,fit=scale-down 3840w",
+          "title": ""
+        }
+      ],
+      "source_id": "block-2e69c733ce3180de8acce357a5a30524",
+      "text": "",
+      "text_raw": "",
+      "html": "",
+      "links": [],
+      "context": {
+        "container_id": "block-2e69c733ce31805aac09f4ff80066221",
+        "container_type": "column"
+      }
+    },
+    {
+      "type": "quote",
+      "source_id": "block-2e39c733ce3180109514edc72181c72e",
+      "text": "Эта лаборатория стала настоящим переходом от цифрового хаоса к осмысленной, связанной системе. Каждый проект рождал ощущение движения вперёд. Бонусом я получала время от улучшения продуктивности и энергию от удачных запусков",
+      "text_raw": "Эта лаборатория стала настоящим переходом от цифрового хаоса к осмысленной, связанной системе. Каждый проект рождал ощущение движения вперёд. Бонусом я получала время от улучшения продуктивности и энергию от удачных запусков",
+      "html": "<em>Эта лаборатория стала настоящим переходом от цифрового хаоса к осмысленной, связанной системе. Каждый проект рождал ощущение движения вперёд. Бонусом я получала время от улучшения продуктивности и энергию от удачных запусков</em>",
+      "links": []
+    },
+    {
+      "type": "heading",
+      "level": 1,
+      "source_id": "block-a6ced289513a46c6b46c48e53e6fb2d6",
+      "text": "# что получает команда сверх базовой программы",
+      "text_raw": "# что получает команда сверх базовой программы",
+      "html": "<strong># </strong>что получает команда сверх базовой программы",
+      "links": []
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "source_id": "block-f58e925fb62246a096e8e2a05d01b3cc",
+      "text": "2+ командные стратсессии",
+      "text_raw": "2+ командные стратсессии",
+      "html": "2+ командные стратсессии",
+      "links": [],
+      "context": {
+        "container_id": "block-2e39c733ce318066b422c2628658c660",
+        "container_type": "column"
+      }
+    },
+    {
+      "type": "paragraph",
+      "source_id": "block-2e39c733ce3180fc8accfa32f0217fd0",
+      "text": "в начале и конце лаборатории:",
+      "text_raw": "в начале и конце лаборатории:",
+      "html": "<strong>в начале и конце лаборатории:</strong>",
+      "links": [],
+      "context": {
+        "container_id": "block-2e39c733ce318066b422c2628658c660",
+        "container_type": "column"
+      }
+    },
+    {
+      "type": "paragraph",
+      "source_id": "block-2e39c733ce31804ea0cfe35c3f418342",
+      "text": "▪︎ аудит текущих AI-практик в компании ▪︎ определение командных целей на 4 недели ▪︎ выбор приоритетных проектов",
+      "text_raw": "▪︎ аудит текущих AI-практик в компании\n▪︎ определение командных целей на 4 недели\n▪︎ выбор приоритетных проектов",
+      "html": "▪︎ аудит текущих AI-практик в компании\n▪︎ определение командных целей на 4 недели\n▪︎ выбор приоритетных проектов",
+      "links": [],
+      "context": {
+        "container_id": "block-2e39c733ce318066b422c2628658c660",
+        "container_type": "column"
+      }
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "source_id": "block-98d5765663dd427c963c31738f95b35c",
+      "text": "tech set-up сессия на 2 часа",
+      "text_raw": "tech set-up сессия на 2 часа",
+      "html": "tech set-up сессия на 2 часа",
+      "links": [],
+      "context": {
+        "container_id": "block-2e39c733ce3180f79be1fb70a678e0bd",
+        "container_type": "column"
+      }
+    },
+    {
+      "type": "paragraph",
+      "source_id": "block-49d5c5fed3f54fd58fbff655e21d6022",
+      "text": "в первую неделю: ▪︎ настройка tech-инфраструктуры и подбор AI-экосистемы ▪︎ интеграция с существующими инструментами",
+      "text_raw": "в первую неделю:\n▪︎ настройка tech-инфраструктуры и подбор AI-экосистемы\n▪︎ интеграция с существующими инструментами",
+      "html": "<strong>в первую неделю:</strong>\n▪︎ настройка tech-инфраструктуры и подбор AI-экосистемы\n▪︎ интеграция с существующими инструментами",
+      "links": [],
+      "context": {
+        "container_id": "block-2e39c733ce3180f79be1fb70a678e0bd",
+        "container_type": "column"
+      }
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "source_id": "block-76061629f8aa4ec4a7d9465313ed6244",
+      "text": "закрытый командный чат",
+      "text_raw": "закрытый командный чат",
+      "html": "закрытый командный чат",
+      "links": [],
+      "context": {
+        "container_id": "block-2e39c733ce3180e78077e35c3658666d",
+        "container_type": "column"
+      }
+    },
+    {
+      "type": "paragraph",
+      "source_id": "block-2e39c733ce318029b07bee3d0cb8064b",
+      "text": "на весь период лаборатории: ▪︎ приоритетная поддержка ▪︎ ответы на вопросы команды ▪︎ помощь в troubleshooting",
+      "text_raw": "на весь период лаборатории:\n▪︎ приоритетная поддержка \n▪︎ ответы на вопросы команды\n▪︎ помощь в troubleshooting",
+      "html": "<strong>на весь период лаборатории:</strong>\n▪︎ приоритетная поддержка \n▪︎ ответы на вопросы команды\n▪︎ помощь в troubleshooting",
+      "links": [],
+      "context": {
+        "container_id": "block-2e39c733ce3180e78077e35c3658666d",
+        "container_type": "column"
+      }
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "source_id": "block-5fc9c43c38024c6885d26cb8db72df27",
+      "text": "еженедельные прогресс-отчёты",
+      "text_raw": "еженедельные прогресс-отчёты",
+      "html": "еженедельные прогресс-отчёты",
+      "links": [],
+      "context": {
+        "container_id": "block-2e39c733ce3180e9b608de89ea9ef4de",
+        "container_type": "column"
+      }
+    },
+    {
+      "type": "paragraph",
+      "source_id": "block-09a22e6db01641faaeea3726b4b92f11",
+      "text": "каждую неделю — письменно: ▪︎ review прогресса команды ▪︎ решение блокеров ▪︎ подготовка к следующей неделе",
+      "text_raw": "каждую неделю — письменно:\n▪︎ review прогресса команды\n▪︎ решение блокеров\n▪︎ подготовка к следующей неделе",
+      "html": "<strong>каждую неделю — письменно:</strong>\n▪︎ review прогресса команды\n▪︎ решение блокеров\n▪︎ подготовка к следующей неделе",
+      "links": [],
+      "context": {
+        "container_id": "block-2e39c733ce3180e9b608de89ea9ef4de",
+        "container_type": "column"
+      }
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "source_id": "block-4648d3dc084141489007acfcfcf8f1cc",
+      "text": "+ наша поддержка после завершения лаборатории от 2 до 12 недель",
+      "text_raw": "+ наша поддержка после завершения лаборатории \nот 2 до 12 недель",
+      "html": "+ наша поддержка <strong>после завершения лаборатории \nот </strong>2 до 12 недель",
+      "links": [],
+      "context": {
+        "container_id": "block-2e79c733ce31809794c1d5706551d47b",
+        "container_type": "column"
+      }
+    },
+    {
+      "type": "paragraph",
+      "source_id": "block-2e79c733ce31806fb2b1da5b22f38360",
+      "text": "▪︎ командная ретро-сессия на 1.5 часа",
+      "text_raw": "▪︎ командная ретро-сессия на 1.5 часа",
+      "html": "▪︎ командная ретро-сессия на 1.5 часа",
+      "links": [],
+      "context": {
+        "container_id": "block-2e79c733ce31809794c1d5706551d47b",
+        "container_type": "column"
+      }
+    },
+    {
+      "type": "paragraph",
+      "source_id": "block-2e79c733ce31802ca499ed5e22bf453b",
+      "text": "▪︎ roadmap внедрения в компании",
+      "text_raw": "▪︎ roadmap внедрения в компании",
+      "html": "▪︎ roadmap внедрения в компании",
+      "links": [],
+      "context": {
+        "container_id": "block-2e79c733ce31809794c1d5706551d47b",
+        "container_type": "column"
+      }
+    },
+    {
+      "type": "paragraph",
+      "source_id": "block-2e79c733ce318013beb6e37b4887c9fb",
+      "text": "▪︎ рекомендации по масштабированию решений",
+      "text_raw": "▪︎ рекомендации по масштабированию решений",
+      "html": "▪︎ рекомендации по масштабированию решений",
+      "links": [],
+      "context": {
+        "container_id": "block-2e79c733ce31809794c1d5706551d47b",
+        "container_type": "column"
+      }
+    },
+    {
+      "type": "image",
+      "media": [
+        {
+          "tag": "img",
+          "src": "https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/c00a0621-a5fc-47e3-bc70-df0f532aa1f6/f0c77c93-7079-4b82-bd2d-13e89b39880d/w=1920,quality=90,fit=scale-down",
+          "resolved_url": "https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/c00a0621-a5fc-47e3-bc70-df0f532aa1f6/f0c77c93-7079-4b82-bd2d-13e89b39880d/w=1920,quality=90,fit=scale-down",
+          "alt": "image",
+          "srcset": "https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/c00a0621-a5fc-47e3-bc70-df0f532aa1f6/f0c77c93-7079-4b82-bd2d-13e89b39880d/w=1920,quality=90,fit=scale-down 384w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/c00a0621-a5fc-47e3-bc70-df0f532aa1f6/f0c77c93-7079-4b82-bd2d-13e89b39880d/w=1920,quality=90,fit=scale-down 640w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/c00a0621-a5fc-47e3-bc70-df0f532aa1f6/f0c77c93-7079-4b82-bd2d-13e89b39880d/w=1920,quality=90,fit=scale-down 750w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/c00a0621-a5fc-47e3-bc70-df0f532aa1f6/f0c77c93-7079-4b82-bd2d-13e89b39880d/w=1920,quality=90,fit=scale-down 828w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/c00a0621-a5fc-47e3-bc70-df0f532aa1f6/f0c77c93-7079-4b82-bd2d-13e89b39880d/w=1920,quality=90,fit=scale-down 1080w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/c00a0621-a5fc-47e3-bc70-df0f532aa1f6/f0c77c93-7079-4b82-bd2d-13e89b39880d/w=1920,quality=90,fit=scale-down 1200w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/c00a0621-a5fc-47e3-bc70-df0f532aa1f6/f0c77c93-7079-4b82-bd2d-13e89b39880d/w=1920,quality=90,fit=scale-down 1920w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/c00a0621-a5fc-47e3-bc70-df0f532aa1f6/f0c77c93-7079-4b82-bd2d-13e89b39880d/w=1920,quality=90,fit=scale-down 2048w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/c00a0621-a5fc-47e3-bc70-df0f532aa1f6/f0c77c93-7079-4b82-bd2d-13e89b39880d/w=1920,quality=90,fit=scale-down 3840w",
+          "title": ""
+        }
+      ],
+      "source_id": "block-2e79c733ce3180ccae40e1aef1cb28f4",
+      "text": "",
+      "text_raw": "",
+      "html": "",
+      "links": [],
+      "context": {
+        "container_id": "block-2e79c733ce318034ac7dffe0562dad67",
+        "container_type": "column"
+      }
+    },
+    {
+      "type": "heading",
+      "level": 1,
+      "source_id": "block-179abbccb0bc40c6b4281c8230e2427d",
+      "text": "# почему это работает",
+      "text_raw": "# почему это работает",
+      "html": "<strong># </strong>почему это работает",
+      "links": []
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "source_id": "block-0ea7fd606ed84aed90afceaaab5bf232",
+      "text": "1. real context, real results",
+      "text_raw": "1. real context, real results",
+      "html": "1. real context, real results",
+      "links": []
+    },
+    {
+      "type": "paragraph",
+      "source_id": "block-0496a012874a4efaa8ab484601a5d582",
+      "text": "не абстрактное обучение. команда работает над реальными задачами компании.",
+      "text_raw": "не абстрактное обучение. \nкоманда работает над реальными задачами компании.\n",
+      "html": "не абстрактное обучение. \nкоманда работает над реальными задачами компании.",
+      "links": []
+    },
+    {
+      "type": "paragraph",
+      "source_id": "block-3391eb269bfc4f90a5425ce58489f6d7",
+      "text": "продуктовые команды ▪︎ AI-помощник для customer support ▪︎ автоматизация техподдержки ▪︎ система для анализа user-feedback",
+      "text_raw": "продуктовые команды\n▪︎ AI-помощник для customer support\n▪︎ автоматизация техподдержки\n▪︎ система для анализа user-feedback",
+      "html": "<strong>продуктовые команды</strong>\n▪︎ AI-помощник для customer support\n▪︎ автоматизация техподдержки\n▪︎ система для анализа user-feedback",
+      "links": [],
+      "context": {
+        "container_id": "block-2e39c733ce318098a431ef2da445df64",
+        "container_type": "column"
+      }
+    },
+    {
+      "type": "paragraph",
+      "source_id": "block-2e39c733ce3180458dfbf3f03c8be2c0",
+      "text": "маркетинг/контент ▪︎ контент-завод ▪︎ персонализированные email-рассылки ▪︎ AI для A/B тестирования",
+      "text_raw": "маркетинг/контент\n▪︎ контент-завод\n▪︎ персонализированные email-рассылки\n▪︎ AI для A/B тестирования",
+      "html": "<strong>маркетинг/контент</strong>\n▪︎ контент-завод\n▪︎ персонализированные email-рассылки\n▪︎ AI для A/B тестирования",
+      "links": [],
+      "context": {
+        "container_id": "block-2e39c733ce31805693ede155e27787d3",
+        "container_type": "column"
+      }
+    },
+    {
+      "type": "paragraph",
+      "source_id": "block-2e39c733ce318030ad5be5617f6cbc3c",
+      "text": "HR/L&D ▪︎ AI-onboarding assistant ▪︎ персонализированные ИПР ▪︎ система анализа фидбека",
+      "text_raw": "HR/L&D\n▪︎ AI-onboarding assistant\n▪︎ персонализированные ИПР\n▪︎ система анализа фидбека",
+      "html": "<strong>HR/L&amp;D</strong>\n▪︎ AI-onboarding assistant\n▪︎ персонализированные ИПР\n▪︎ система анализа фидбека",
+      "links": [],
+      "context": {
+        "container_id": "block-2e39c733ce31807f8a36d92dbb1a4f5e",
+        "container_type": "column"
+      }
+    },
+    {
+      "type": "paragraph",
+      "source_id": "block-2e39c733ce3180f9954de176e751b8d1",
+      "text": "operations ▪︎ автоматизация документооборота ▪︎ суммаризатор встреч ▪︎ task management с AI-приоритизацией",
+      "text_raw": "operations\n▪︎ автоматизация документооборота\n▪︎ суммаризатор встреч\n▪︎ task management с AI-приоритизацией",
+      "html": "<strong>operations</strong>\n▪︎ автоматизация документооборота\n▪︎ суммаризатор встреч\n▪︎ task management с AI-приоритизацией",
+      "links": [],
+      "context": {
+        "container_id": "block-2e39c733ce318045be39e21251d7ce21",
+        "container_type": "column"
+      }
+    },
+    {
+      "type": "heading",
+      "level": 1,
+      "source_id": "block-2e79c733ce3180a8b9a9cb4ee7bf28af",
+      "text": "# CASES",
+      "text_raw": "# CASES",
+      "html": "# CASES",
+      "links": []
+    },
+    {
+      "type": "paragraph",
+      "source_id": "block-2e79c733ce318058b69adb6022b3d65a",
+      "text": "что создают команды за 4 недели?",
+      "text_raw": "что создают команды за 4 недели?",
+      "html": "<strong>что создают команды за 4 недели?</strong>",
+      "links": []
+    },
+    {
+      "type": "paragraph",
+      "source_id": "block-2e79c733ce31809b8519fe2a1611d302",
+      "text": "результат: не учебные примеры презентации, а рабочие процессы и системы для бизнеса. например, такие:",
+      "text_raw": "результат: не учебные примеры презентации, а рабочие процессы и системы для бизнеса. например, такие:",
+      "html": "<strong>результат: не учебные примеры презентации, а рабочие процессы и системы для бизнеса. например, такие:</strong>",
+      "links": []
+    },
+    {
+      "type": "embed",
+      "media": [
+        {
+          "tag": "iframe",
+          "src": "https://w26-cases.netlify.app/",
+          "resolved_url": "https://w26-cases.netlify.app/",
+          "alt": "",
+          "srcset": "",
+          "title": "w26-cases.netlify.app"
+        }
+      ],
+      "source_id": "block-2e79c733ce3180e8ad7ee23f3fbaf67f",
+      "text": "",
+      "text_raw": "",
+      "html": "",
+      "links": []
+    },
+    {
+      "type": "paragraph",
+      "source_id": "block-796d3cfc27304f2380e3726cb482dc18",
+      "text": "и такие:",
+      "text_raw": "и такие:  ",
+      "html": "<strong>и такие:  </strong>",
+      "links": []
+    },
+    {
+      "type": "embed",
+      "media": [
+        {
+          "tag": "iframe",
+          "src": "https://www.youtube.com/embed/CLHb3aYr9Is?rel=0&start=2881",
+          "resolved_url": "https://www.youtube.com/embed/CLHb3aYr9Is?rel=0&start=2881",
+          "alt": "",
+          "srcset": "",
+          "title": "www.youtube.com"
+        }
+      ],
+      "source_id": "block-2939c733ce3180c4b5a8f4dadbff68d5",
+      "text": "",
+      "text_raw": "",
+      "html": "",
+      "links": [],
+      "context": {
+        "container_id": "block-2939c733ce3180a9943ec54a10bd9395",
+        "container_type": "column"
+      }
+    },
+    {
+      "type": "embed",
+      "media": [
+        {
+          "tag": "iframe",
+          "src": "https://www.youtube.com/embed/H9pyA92Xxn8?rel=0&start=1264",
+          "resolved_url": "https://www.youtube.com/embed/H9pyA92Xxn8?rel=0&start=1264",
+          "alt": "",
+          "srcset": "",
+          "title": "www.youtube.com"
+        }
+      ],
+      "source_id": "block-2939c733ce3180bf9df9c5542176cebc",
+      "text": "",
+      "text_raw": "",
+      "html": "",
+      "links": [],
+      "context": {
+        "container_id": "block-2939c733ce3180a48682f30c1340c052",
+        "container_type": "column"
+      }
+    },
+    {
+      "type": "embed",
+      "media": [
+        {
+          "tag": "iframe",
+          "src": "https://www.youtube.com/embed/H9pyA92Xxn8?rel=0&start=2373",
+          "resolved_url": "https://www.youtube.com/embed/H9pyA92Xxn8?rel=0&start=2373",
+          "alt": "",
+          "srcset": "",
+          "title": "www.youtube.com"
+        }
+      ],
+      "source_id": "block-2939c733ce318069b1fdfb8d566ba562",
+      "text": "",
+      "text_raw": "",
+      "html": "",
+      "links": [],
+      "context": {
+        "container_id": "block-2939c733ce3180839aa5d4b8e59ab4a3",
+        "container_type": "column"
+      }
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "source_id": "block-b61a27bdaa5c41b084e419f7286302cb",
+      "text": "2. учеба в комьюнити",
+      "text_raw": "2. учеба в комьюнити",
+      "html": "2. учеба в комьюнити",
+      "links": []
+    },
+    {
+      "type": "paragraph",
+      "source_id": "block-a802b33f994b4ae09ad499895e2e65ea",
+      "text": "не изолированный корпоративный тренинг. команда учится в окружении сильных практиков из разных индустрий и получает дополнительную экспертизу с рынка.",
+      "text_raw": "не изолированный корпоративный тренинг.\nкоманда учится в окружении сильных практиков из разных индустрий и получает дополнительную экспертизу с рынка.\n",
+      "html": "не изолированный корпоративный тренинг.\nкоманда учится в окружении сильных практиков из разных индустрий и получает дополнительную экспертизу с рынка.",
+      "links": []
+    },
+    {
+      "type": "quote",
+      "source_id": "block-88b3bcd364944d438d3682f98c8a9acc",
+      "text": "Самым ценным было нахождение в течение четырех недель в атмосфере единомышленников, которые пользовались всеми инструментами, и меня это подтягивало тоже",
+      "text_raw": "Самым ценным было нахождение в течение четырех недель в атмосфере единомышленников, которые пользовались всеми инструментами, и меня это подтягивало тоже",
+      "html": "<em>Самым ценным было нахождение в течение четырех недель в атмосфере единомышленников, которые пользовались всеми инструментами, и меня это подтягивало тоже</em>",
+      "links": []
+    },
+    {
+      "type": "quote",
+      "source_id": "block-0af3f0efbf1843139e9aec22acbb117c",
+      "text": "Допом я получил расширение горизонта в мире ИИ и новые контакты",
+      "text_raw": "Допом я получил расширение горизонта в мире ИИ и новые контакты",
+      "html": "<em>Допом я получил расширение горизонта в мире ИИ и новые контакты</em>",
+      "links": []
+    },
+    {
+      "type": "paragraph",
+      "source_id": "block-1fe5b6f33f6b4cc99c3564bda7f42e65",
+      "text": "результат: кросс-индустриальные инсайты, нетворкинг, расширение перспективы.",
+      "text_raw": "результат: кросс-индустриальные инсайты, нетворкинг, расширение перспективы.",
+      "html": "<strong>результат: кросс-индустриальные инсайты, нетворкинг, расширение перспективы.</strong>",
+      "links": []
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "source_id": "block-554084c1534c4d0fab27fd07c9cacc05",
+      "text": "3. персонализация + стандарт",
+      "text_raw": "3. персонализация + стандарт",
+      "html": "3. персонализация + стандарт",
+      "links": []
+    },
+    {
+      "type": "paragraph",
+      "source_id": "block-7771c925102248fa9e516279b1349150",
+      "text": "базовая программа – выверенная и проверенная (мы проводим 5+ лабораторий в год). командные опции – адаптированы под ваши задачи.",
+      "text_raw": "базовая программа – выверенная и проверенная (мы проводим 5+ лабораторий в год).\nкомандные опции – адаптированы под ваши задачи.",
+      "html": "базовая программа – выверенная и проверенная (мы проводим 5+ лабораторий в год).\nкомандные опции – адаптированы под ваши задачи.",
+      "links": []
+    },
+    {
+      "type": "paragraph",
+      "source_id": "block-0f2efe40024e4d89ac91164320c27139",
+      "text": "результат: качество + relevance.",
+      "text_raw": "результат: качество + relevance.",
+      "html": "<strong>результат: качество + relevance.</strong>",
+      "links": []
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "source_id": "block-22b0cb1a762245c49aa1d75bd45c9a56",
+      "text": "4. синергия через команду",
+      "text_raw": "4. синергия через команду",
+      "html": "4. синергия через команду",
+      "links": []
+    },
+    {
+      "type": "paragraph",
+      "source_id": "block-2e69c733ce3180eba87fdf6eb30ed682",
+      "text": "когда учится команда – результаты внедряются быстрее. есть с кем обсудить, кто поддержит и продолжит трансформацию после обучения.",
+      "text_raw": "когда учится команда – \nрезультаты внедряются быстрее. есть с кем обсудить,\nкто поддержит и продолжит трансформацию после обучения.",
+      "html": "когда учится команда – \nрезультаты внедряются быстрее. есть с кем обсудить,\nкто поддержит и продолжит трансформацию после обучения.",
+      "links": [],
+      "context": {
+        "container_id": "block-2e69c733ce3180889f44fbe9ea6ca693",
+        "container_type": "column"
+      }
+    },
+    {
+      "type": "image",
+      "media": [
+        {
+          "tag": "img",
+          "src": "https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/653d161e-1843-47ac-91f7-5ea7fbf7af75/c72946ce-21e9-49c2-b638-9ff1aea152d2/w=1920,quality=90,fit=scale-down",
+          "resolved_url": "https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/653d161e-1843-47ac-91f7-5ea7fbf7af75/c72946ce-21e9-49c2-b638-9ff1aea152d2/w=1920,quality=90,fit=scale-down",
+          "alt": "image",
+          "srcset": "https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/653d161e-1843-47ac-91f7-5ea7fbf7af75/c72946ce-21e9-49c2-b638-9ff1aea152d2/w=1920,quality=90,fit=scale-down 640w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/653d161e-1843-47ac-91f7-5ea7fbf7af75/c72946ce-21e9-49c2-b638-9ff1aea152d2/w=1920,quality=90,fit=scale-down 750w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/653d161e-1843-47ac-91f7-5ea7fbf7af75/c72946ce-21e9-49c2-b638-9ff1aea152d2/w=1920,quality=90,fit=scale-down 828w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/653d161e-1843-47ac-91f7-5ea7fbf7af75/c72946ce-21e9-49c2-b638-9ff1aea152d2/w=1920,quality=90,fit=scale-down 1080w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/653d161e-1843-47ac-91f7-5ea7fbf7af75/c72946ce-21e9-49c2-b638-9ff1aea152d2/w=1920,quality=90,fit=scale-down 1200w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/653d161e-1843-47ac-91f7-5ea7fbf7af75/c72946ce-21e9-49c2-b638-9ff1aea152d2/w=1920,quality=90,fit=scale-down 1920w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/653d161e-1843-47ac-91f7-5ea7fbf7af75/c72946ce-21e9-49c2-b638-9ff1aea152d2/w=1920,quality=90,fit=scale-down 2048w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/653d161e-1843-47ac-91f7-5ea7fbf7af75/c72946ce-21e9-49c2-b638-9ff1aea152d2/w=1920,quality=90,fit=scale-down 3840w",
+          "title": ""
+        }
+      ],
+      "source_id": "block-2e69c733ce3180d2b974f751ebfed08a",
+      "text": "",
+      "text_raw": "",
+      "html": "",
+      "links": [],
+      "context": {
+        "container_id": "block-2e69c733ce3180b4918bc7d13ff9a5f4",
+        "container_type": "column"
+      }
+    },
+    {
+      "type": "paragraph",
+      "source_id": "block-45fd3eb1e7a449268fdb50e8e9a19178",
+      "text": "результат: устойчивые изменения, а не разовый энтузиазм.",
+      "text_raw": "результат: устойчивые изменения, а не разовый энтузиазм.",
+      "html": "<strong>результат: устойчивые изменения, а не разовый энтузиазм.</strong>",
+      "links": []
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "source_id": "block-ca7af0d00b9848cc9800b71255a1dee4",
+      "text": "5. ROI начинается сразу",
+      "text_raw": "5. ROI начинается сразу",
+      "html": "5. ROI начинается сразу",
+      "links": []
+    },
+    {
+      "type": "image",
+      "media": [
+        {
+          "tag": "img",
+          "src": "https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/fdabd131-0ca0-45b3-8fd8-2d56711ff1a1/ai_mindset_analogue_studio_composition/w=1920,quality=90,fit=scale-down",
+          "resolved_url": "https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/fdabd131-0ca0-45b3-8fd8-2d56711ff1a1/ai_mindset_analogue_studio_composition/w=1920,quality=90,fit=scale-down",
+          "alt": "image",
+          "srcset": "https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/fdabd131-0ca0-45b3-8fd8-2d56711ff1a1/ai_mindset_analogue_studio_composition/w=1920,quality=90,fit=scale-down 128w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/fdabd131-0ca0-45b3-8fd8-2d56711ff1a1/ai_mindset_analogue_studio_composition/w=1920,quality=90,fit=scale-down 256w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/fdabd131-0ca0-45b3-8fd8-2d56711ff1a1/ai_mindset_analogue_studio_composition/w=1920,quality=90,fit=scale-down 384w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/fdabd131-0ca0-45b3-8fd8-2d56711ff1a1/ai_mindset_analogue_studio_composition/w=1920,quality=90,fit=scale-down 640w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/fdabd131-0ca0-45b3-8fd8-2d56711ff1a1/ai_mindset_analogue_studio_composition/w=1920,quality=90,fit=scale-down 750w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/fdabd131-0ca0-45b3-8fd8-2d56711ff1a1/ai_mindset_analogue_studio_composition/w=1920,quality=90,fit=scale-down 828w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/fdabd131-0ca0-45b3-8fd8-2d56711ff1a1/ai_mindset_analogue_studio_composition/w=1920,quality=90,fit=scale-down 1080w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/fdabd131-0ca0-45b3-8fd8-2d56711ff1a1/ai_mindset_analogue_studio_composition/w=1920,quality=90,fit=scale-down 1200w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/fdabd131-0ca0-45b3-8fd8-2d56711ff1a1/ai_mindset_analogue_studio_composition/w=1920,quality=90,fit=scale-down 1920w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/fdabd131-0ca0-45b3-8fd8-2d56711ff1a1/ai_mindset_analogue_studio_composition/w=1920,quality=90,fit=scale-down 2048w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/fdabd131-0ca0-45b3-8fd8-2d56711ff1a1/ai_mindset_analogue_studio_composition/w=1920,quality=90,fit=scale-down 3840w",
+          "title": ""
+        }
+      ],
+      "source_id": "block-2e69c733ce318039bb7ad049a229aa8c",
+      "text": "",
+      "text_raw": "",
+      "html": "",
+      "links": [],
+      "context": {
+        "container_id": "block-2e69c733ce31801b9c51ea72ef204c96",
+        "container_type": "column"
+      }
+    },
+    {
+      "type": "paragraph",
+      "source_id": "block-2e69c733ce3180b38544c4928f550a0d",
+      "text": "не ждём конца обучения, чтобы начать применять. в процессе лаборатории вы получаете: ▪︎ базу для командной AI-инфраструктуры ▪︎ внедрение инструментов, которые экономят часы каждую неделю ▪︎ промпты и workflows для текущих задач ▪︎ трансформацию мышления",
+      "text_raw": "не ждём конца обучения, чтобы начать применять.\nв процессе лаборатории вы получаете:\n▪︎ базу для командной AI-инфраструктуры\n▪︎ внедрение инструментов, которые экономят часы \nкаждую неделю\n▪︎ промпты и workflows для текущих задач\n▪︎ трансформацию мышления\n",
+      "html": "не ждём конца обучения, чтобы начать применять.\nв процессе лаборатории вы получаете:\n▪︎ базу для командной AI-инфраструктуры\n▪︎ внедрение инструментов, которые экономят часы \nкаждую неделю\n▪︎ промпты и workflows для текущих задач\n▪︎ трансформацию мышления",
+      "links": [],
+      "context": {
+        "container_id": "block-2e69c733ce3180a493add3678f001c18",
+        "container_type": "column"
+      }
+    },
+    {
+      "type": "quote",
+      "source_id": "block-2e39c733ce31804db82bcd18c7b0cd4e",
+      "text": "Я на 30% начала думать AI-first в работе. Качественно изменилась подготовка обучающих материалов",
+      "text_raw": "Я на 30% начала думать AI-first в работе. Качественно изменилась подготовка обучающих материалов",
+      "html": "<em>Я на 30% начала думать AI-first в работе. Качественно изменилась подготовка обучающих материалов</em>",
+      "links": []
+    },
+    {
+      "type": "quote",
+      "source_id": "block-6ba742d9898b4029bd797dd113745805",
+      "text": "Самое крутое, что произошло во время лабы — смена мышления. Со ступора до мысли \"окей, как это можно разделить на таски и что использовать для их решения?”",
+      "text_raw": "Самое крутое, что произошло во время лабы —  смена мышления. Со ступора до мысли \"окей, как это можно разделить на таски и что использовать для их решения?”",
+      "html": "<em>Самое крутое, что произошло во время лабы —  смена мышления. Со ступора до мысли &quot;окей, как это можно разделить на таски и что использовать для их решения?”</em>",
+      "links": []
+    },
+    {
+      "type": "paragraph",
+      "source_id": "block-ab8446b7da5e4c1ea05a03e5d83d619e",
+      "text": "результат: ROI начинается ДО завершения обучения, а не после.",
+      "text_raw": "результат: ROI начинается ДО завершения обучения, а не после.",
+      "html": "<strong>результат: ROI начинается ДО завершения обучения, а не после.</strong>",
+      "links": []
+    },
+    {
+      "type": "heading",
+      "level": 1,
+      "source_id": "block-2e39c733ce31802fa63bd66d705dcb7c",
+      "text": "# спецусловия для команд",
+      "text_raw": "# спецусловия для команд",
+      "html": "<strong># спецусловия для команд</strong>",
+      "links": []
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "source_id": "block-2e39c733ce31806ba56be843b3a441cb",
+      "text": "3-5 человек",
+      "text_raw": "3-5 человек",
+      "html": "<strong>3-5 человек</strong>",
+      "links": [],
+      "context": {
+        "container_id": "block-2e39c733ce3180cf9f84cdcf65fc2516",
+        "container_type": "column"
+      }
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        {
+          "text": "1 лидер (Premium)",
+          "text_raw": "1 лидер (Premium)",
+          "html": "1 лидер (Premium)",
+          "links": []
+        },
+        {
+          "text": "2-4 участника",
+          "text_raw": "2-4 участника",
+          "html": "2-4 участника",
+          "links": []
+        },
+        {
+          "text": "скидка 10% на всю команду",
+          "text_raw": "скидка 10% на всю команду",
+          "html": "<strong>скидка 10% на всю команду</strong>",
+          "links": []
+        }
+      ],
+      "source_id": null,
+      "text": "1 лидер (Premium)2-4 участникаскидка 10% на всю команду",
+      "text_raw": "1 лидер (Premium)2-4 участникаскидка 10% на всю команду",
+      "html": "1 лидер (Premium)2-4 участника<strong>скидка 10% на всю команду</strong>",
+      "links": [],
+      "context": {
+        "container_id": "block-2e39c733ce3180cf9f84cdcf65fc2516",
+        "container_type": "column"
+      }
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "source_id": "block-2e39c733ce3180d39e46c8dcfd42906c",
+      "text": "6-9 человек",
+      "text_raw": "6-9 человек",
+      "html": "<strong>6-9 человек</strong>",
+      "links": [],
+      "context": {
+        "container_id": "block-2e39c733ce3180d88979e65b4476bfe1",
+        "container_type": "column"
+      }
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        {
+          "text": "1-2 лидера (Premium)",
+          "text_raw": "1-2 лидера (Premium)",
+          "html": "1-2 лидера (Premium)",
+          "links": []
+        },
+        {
+          "text": "5-8 участников",
+          "text_raw": "5-8 участников",
+          "html": "5-8 участников",
+          "links": []
+        },
+        {
+          "text": "скидка 15% на всю команду",
+          "text_raw": "скидка 15% на всю команду",
+          "html": "<strong>скидка 15% на всю команду</strong>",
+          "links": []
+        }
+      ],
+      "source_id": null,
+      "text": "1-2 лидера (Premium)5-8 участниковскидка 15% на всю команду",
+      "text_raw": "1-2 лидера (Premium)5-8 участниковскидка 15% на всю команду",
+      "html": "1-2 лидера (Premium)5-8 участников<strong>скидка 15% на всю команду</strong>",
+      "links": [],
+      "context": {
+        "container_id": "block-2e39c733ce3180d88979e65b4476bfe1",
+        "container_type": "column"
+      }
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "source_id": "block-2e39c733ce318040851bcf4ebb6e9795",
+      "text": "10+ человек",
+      "text_raw": "10+ человек",
+      "html": "<strong>10+ человек</strong>",
+      "links": [],
+      "context": {
+        "container_id": "block-2e39c733ce3180feb5c5d030f62387a5",
+        "container_type": "column"
+      }
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        {
+          "text": "2-3 лидера (Premium)",
+          "text_raw": "2-3 лидера (Premium)",
+          "html": "2-3 лидера (Premium)",
+          "links": []
+        },
+        {
+          "text": "8+ участников",
+          "text_raw": "8+ участников",
+          "html": "8+ участников",
+          "links": []
+        },
+        {
+          "text": "скидка 20% на всю команду",
+          "text_raw": "скидка 20% на всю команду",
+          "html": "<strong>скидка 20% на всю команду</strong>",
+          "links": []
+        }
+      ],
+      "source_id": null,
+      "text": "2-3 лидера (Premium)8+ участниковскидка 20% на всю команду",
+      "text_raw": "2-3 лидера (Premium)8+ участниковскидка 20% на всю команду",
+      "html": "2-3 лидера (Premium)8+ участников<strong>скидка 20% на всю команду</strong>",
+      "links": [],
+      "context": {
+        "container_id": "block-2e39c733ce3180feb5c5d030f62387a5",
+        "container_type": "column"
+      }
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "source_id": "block-2e39c733ce31803e961cf0be31e3d273",
+      "text": "700+ человек уже прошли лаборатории и превратили AI из вкладки в мышечную память процессов",
+      "text_raw": "700+ человек уже прошли лаборатории и превратили AI из вкладки в мышечную память процессов\n",
+      "html": "<strong>700+ человек уже прошли лаборатории и превратили AI из вкладки в мышечную память процессов\n</strong>",
+      "links": []
+    },
+    {
+      "type": "paragraph",
+      "source_id": "block-2e39c733ce318015aa89db315e821f4f",
+      "text": "Yandex · EPAM · Luxoft · Revolut · SberDevices · Wargaming · PandaDoc · Авито · Renesas",
+      "text_raw": "Yandex · EPAM · Luxoft · Revolut · SberDevices · Wargaming · PandaDoc · Авито · Renesas",
+      "html": "Yandex · EPAM · Luxoft · Revolut · SberDevices · Wargaming · PandaDoc · Авито · Renesas",
+      "links": []
+    },
+    {
+      "type": "heading",
+      "level": 1,
+      "source_id": "block-8b0213897ce042428df88fea5e952e36",
+      "text": "# готовы внедрить AI в процессы вашей компании?",
+      "text_raw": "# готовы внедрить AI в процессы вашей компании?",
+      "html": "<strong># готовы внедрить AI в процессы вашей компании?</strong>",
+      "links": []
+    },
+    {
+      "type": "paragraph",
+      "source_id": "block-d84415cc48e141ed8d645d141bd40813",
+      "text": "➊ напишите Владе (Telegram)",
+      "text_raw": "➊ напишите Владе (Telegram)",
+      "html": "➊ напишите <a href=\"https://t.me/solnesy\">Владе</a> (Telegram)",
+      "links": [
+        {
+          "text": "Владе",
+          "href": "https://t.me/solnesy",
+          "resolved_url": "https://t.me/solnesy"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "source_id": "block-a7e4b948b96949c2974492758363eb57",
+      "text": "➋ назначим бесплатную 30-минутную консультацию, где разберем ваши задачи и предложим конкретные шаги",
+      "text_raw": "➋ назначим бесплатную 30-минутную консультацию, где разберем ваши задачи и предложим конкретные шаги\n",
+      "html": "➋ назначим бесплатную 30-минутную консультацию, где разберем ваши задачи и предложим конкретные шаги",
+      "links": []
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "source_id": "block-2e89c733ce31800a925df0f5bf190499",
+      "text": "# или же хотите кастомный продукт для вашей компании?",
+      "text_raw": "# или же хотите кастомный продукт для вашей компании? ",
+      "html": "<strong># или же хотите кастомный продукт для вашей компании? </strong>",
+      "links": []
+    },
+    {
+      "type": "paragraph",
+      "source_id": "block-2e89c733ce3180948424c0399e9fdf1e",
+      "text": "➊ напишите основателю проекта Александру (Telegram)",
+      "text_raw": "➊ напишите основателю проекта Александру (Telegram)",
+      "html": "➊ напишите основателю проекта <a href=\"/ai-mindset-consulting\">Александру</a> (Telegram)",
+      "links": [
+        {
+          "text": "Александру",
+          "href": "/ai-mindset-consulting",
+          "resolved_url": "https://aimindset.org/ai-mindset-consulting"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "source_id": "block-2e79c733ce31808092d6c408356c7e0d",
+      "text": "➋ обсудим ваши цели и задачи, и предложим кастомный формат",
+      "text_raw": "➋ обсудим ваши цели и задачи, и предложим кастомный формат",
+      "html": "➋ обсудим ваши цели и задачи, и предложим кастомный формат",
+      "links": []
+    }
+  ],
+  "source_notices": [],
+  "all_main_links": [
+    {
+      "text": "любой продукт AI Mindset",
+      "href": "/",
+      "resolved_url": "https://aimindset.org/"
+    },
+    {
+      "text": "Владе",
+      "href": "https://t.me/solnesy",
+      "resolved_url": "https://t.me/solnesy"
+    },
+    {
+      "text": "Александру",
+      "href": "/ai-mindset-consulting",
+      "resolved_url": "https://aimindset.org/ai-mindset-consulting"
+    },
+    {
+      "text": "подкаст",
+      "href": "https://www.youtube.com/@A-I-Mindset",
+      "resolved_url": "https://www.youtube.com/@A-I-Mindset"
+    },
+    {
+      "text": "канал в Телеграм",
+      "href": "https://t.me/ai_mind_set",
+      "resolved_url": "https://t.me/ai_mind_set"
+    },
+    {
+      "text": "публичный договор-оферта",
+      "href": "https://docs.google.com/document/d/e/2PACX-1vRfnWZMiHbq8fvnnI0gACZuHtvJkZHJM0_kRWPZBwzBuzVQRLz2aqrwOO4qZfJUW2EkYc8rGt0f5QrJ/pub",
+      "resolved_url": "https://docs.google.com/document/d/e/2PACX-1vRfnWZMiHbq8fvnnI0gACZuHtvJkZHJM0_kRWPZBwzBuzVQRLz2aqrwOO4qZfJUW2EkYc8rGt0f5QrJ/pub"
+    },
+    {
+      "text": "политика конфиденциальности",
+      "href": "/confpolicy",
+      "resolved_url": "https://aimindset.org/confpolicy"
+    },
+    {
+      "text": "Выигрывает дистрибуция — маркетинг-спринт AI Mindset · 14.09–02.10.2026Три недели практики: оффер и аудитория, каналы и дистрибуция, метрики и первый эксперимент. Ведут те, кто собрал дистрибуцию для своих компаний. Online, старт 14.09.2026, €890.marketing.aimindset.org",
+      "href": "https://marketing.aimindset.org/",
+      "resolved_url": "https://marketing.aimindset.org/"
+    },
+    {
+      "text": "AI-Native Organizations Sprint — AI MindsetAI-лаборатория, подстраивающаяся под задачи вашей компании. От личного AI-стека до инфраструктуры компании за 3 недели.ai-native.aimindset.org",
+      "href": "https://ai-native.aimindset.org/",
+      "resolved_url": "https://ai-native.aimindset.org/"
+    },
+    {
+      "text": "Al mindset {space}практический клуб для фаундеров, продактов и дизайнеров. разбираем кейсы, собираем прототипы и связиaimindset.org",
+      "href": "/ai-mindset-community",
+      "resolved_url": "https://aimindset.org/ai-mindset-community"
+    }
+  ],
+  "footer_links": [
+    {
+      "text": "подкаст",
+      "href": "https://www.youtube.com/@A-I-Mindset",
+      "resolved_url": "https://www.youtube.com/@A-I-Mindset"
+    },
+    {
+      "text": "канал в Телеграм",
+      "href": "https://t.me/ai_mind_set",
+      "resolved_url": "https://t.me/ai_mind_set"
+    },
+    {
+      "text": "публичный договор-оферта",
+      "href": "https://docs.google.com/document/d/e/2PACX-1vRfnWZMiHbq8fvnnI0gACZuHtvJkZHJM0_kRWPZBwzBuzVQRLz2aqrwOO4qZfJUW2EkYc8rGt0f5QrJ/pub",
+      "resolved_url": "https://docs.google.com/document/d/e/2PACX-1vRfnWZMiHbq8fvnnI0gACZuHtvJkZHJM0_kRWPZBwzBuzVQRLz2aqrwOO4qZfJUW2EkYc8rGt0f5QrJ/pub"
+    },
+    {
+      "text": "политика конфиденциальности",
+      "href": "/confpolicy",
+      "resolved_url": "https://aimindset.org/confpolicy"
+    },
+    {
+      "text": "Выигрывает дистрибуция — маркетинг-спринт AI Mindset · 14.09–02.10.2026Три недели практики: оффер и аудитория, каналы и дистрибуция, метрики и первый эксперимент. Ведут те, кто собрал дистрибуцию для своих компаний. Online, старт 14.09.2026, €890.marketing.aimindset.org",
+      "href": "https://marketing.aimindset.org/",
+      "resolved_url": "https://marketing.aimindset.org/"
+    },
+    {
+      "text": "AI-Native Organizations Sprint — AI MindsetAI-лаборатория, подстраивающаяся под задачи вашей компании. От личного AI-стека до инфраструктуры компании за 3 недели.ai-native.aimindset.org",
+      "href": "https://ai-native.aimindset.org/",
+      "resolved_url": "https://ai-native.aimindset.org/"
+    },
+    {
+      "text": "Al mindset {space}практический клуб для фаундеров, продактов и дизайнеров. разбираем кейсы, собираем прототипы и связиaimindset.org",
+      "href": "/ai-mindset-community",
+      "resolved_url": "https://aimindset.org/ai-mindset-community"
+    }
+  ],
+  "all_main_media": [
+    {
+      "tag": "img",
+      "src": "https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/efb7d083-112e-4bcb-9ce4-fdb832db0841/ai_mindset_studio_scene/w=1920,quality=90,fit=scale-down",
+      "resolved_url": "https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/efb7d083-112e-4bcb-9ce4-fdb832db0841/ai_mindset_studio_scene/w=1920,quality=90,fit=scale-down",
+      "alt": "AI Mindset. Team track",
+      "srcset": "https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/efb7d083-112e-4bcb-9ce4-fdb832db0841/ai_mindset_studio_scene/w=1920,quality=90,fit=scale-down 640w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/efb7d083-112e-4bcb-9ce4-fdb832db0841/ai_mindset_studio_scene/w=1920,quality=90,fit=scale-down 750w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/efb7d083-112e-4bcb-9ce4-fdb832db0841/ai_mindset_studio_scene/w=1920,quality=90,fit=scale-down 828w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/efb7d083-112e-4bcb-9ce4-fdb832db0841/ai_mindset_studio_scene/w=1920,quality=90,fit=scale-down 1080w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/efb7d083-112e-4bcb-9ce4-fdb832db0841/ai_mindset_studio_scene/w=1920,quality=90,fit=scale-down 1200w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/efb7d083-112e-4bcb-9ce4-fdb832db0841/ai_mindset_studio_scene/w=1920,quality=90,fit=scale-down 1920w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/efb7d083-112e-4bcb-9ce4-fdb832db0841/ai_mindset_studio_scene/w=1920,quality=90,fit=scale-down 2048w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/efb7d083-112e-4bcb-9ce4-fdb832db0841/ai_mindset_studio_scene/w=1920,quality=90,fit=scale-down 3840w",
+      "title": ""
+    },
+    {
+      "tag": "img",
+      "src": "https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/0e9da51d-34f3-453b-a59b-646eebf9285a/logo_round/w=1920,quality=90,fit=scale-down",
+      "resolved_url": "https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/0e9da51d-34f3-453b-a59b-646eebf9285a/logo_round/w=1920,quality=90,fit=scale-down",
+      "alt": "AI Mindset. Team track",
+      "srcset": "https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/0e9da51d-34f3-453b-a59b-646eebf9285a/logo_round/w=1920,quality=90,fit=scale-down 1x, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/0e9da51d-34f3-453b-a59b-646eebf9285a/logo_round/w=1920,quality=90,fit=scale-down 2x",
+      "title": ""
+    },
+    {
+      "tag": "img",
+      "src": "https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/4e25ff93-ed66-416a-a4da-5ff83da76dfa/1fce1cf5-7170-494b-84f4-aad77d4c0ccf/w=1920,quality=90,fit=scale-down",
+      "resolved_url": "https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/4e25ff93-ed66-416a-a4da-5ff83da76dfa/1fce1cf5-7170-494b-84f4-aad77d4c0ccf/w=1920,quality=90,fit=scale-down",
+      "alt": "image",
+      "srcset": "https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/4e25ff93-ed66-416a-a4da-5ff83da76dfa/1fce1cf5-7170-494b-84f4-aad77d4c0ccf/w=1920,quality=90,fit=scale-down 128w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/4e25ff93-ed66-416a-a4da-5ff83da76dfa/1fce1cf5-7170-494b-84f4-aad77d4c0ccf/w=1920,quality=90,fit=scale-down 256w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/4e25ff93-ed66-416a-a4da-5ff83da76dfa/1fce1cf5-7170-494b-84f4-aad77d4c0ccf/w=1920,quality=90,fit=scale-down 384w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/4e25ff93-ed66-416a-a4da-5ff83da76dfa/1fce1cf5-7170-494b-84f4-aad77d4c0ccf/w=1920,quality=90,fit=scale-down 640w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/4e25ff93-ed66-416a-a4da-5ff83da76dfa/1fce1cf5-7170-494b-84f4-aad77d4c0ccf/w=1920,quality=90,fit=scale-down 750w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/4e25ff93-ed66-416a-a4da-5ff83da76dfa/1fce1cf5-7170-494b-84f4-aad77d4c0ccf/w=1920,quality=90,fit=scale-down 828w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/4e25ff93-ed66-416a-a4da-5ff83da76dfa/1fce1cf5-7170-494b-84f4-aad77d4c0ccf/w=1920,quality=90,fit=scale-down 1080w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/4e25ff93-ed66-416a-a4da-5ff83da76dfa/1fce1cf5-7170-494b-84f4-aad77d4c0ccf/w=1920,quality=90,fit=scale-down 1200w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/4e25ff93-ed66-416a-a4da-5ff83da76dfa/1fce1cf5-7170-494b-84f4-aad77d4c0ccf/w=1920,quality=90,fit=scale-down 1920w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/4e25ff93-ed66-416a-a4da-5ff83da76dfa/1fce1cf5-7170-494b-84f4-aad77d4c0ccf/w=1920,quality=90,fit=scale-down 2048w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/4e25ff93-ed66-416a-a4da-5ff83da76dfa/1fce1cf5-7170-494b-84f4-aad77d4c0ccf/w=1920,quality=90,fit=scale-down 3840w",
+      "title": ""
+    },
+    {
+      "tag": "img",
+      "src": "https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/c00a0621-a5fc-47e3-bc70-df0f532aa1f6/f0c77c93-7079-4b82-bd2d-13e89b39880d/w=1920,quality=90,fit=scale-down",
+      "resolved_url": "https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/c00a0621-a5fc-47e3-bc70-df0f532aa1f6/f0c77c93-7079-4b82-bd2d-13e89b39880d/w=1920,quality=90,fit=scale-down",
+      "alt": "image",
+      "srcset": "https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/c00a0621-a5fc-47e3-bc70-df0f532aa1f6/f0c77c93-7079-4b82-bd2d-13e89b39880d/w=1920,quality=90,fit=scale-down 384w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/c00a0621-a5fc-47e3-bc70-df0f532aa1f6/f0c77c93-7079-4b82-bd2d-13e89b39880d/w=1920,quality=90,fit=scale-down 640w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/c00a0621-a5fc-47e3-bc70-df0f532aa1f6/f0c77c93-7079-4b82-bd2d-13e89b39880d/w=1920,quality=90,fit=scale-down 750w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/c00a0621-a5fc-47e3-bc70-df0f532aa1f6/f0c77c93-7079-4b82-bd2d-13e89b39880d/w=1920,quality=90,fit=scale-down 828w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/c00a0621-a5fc-47e3-bc70-df0f532aa1f6/f0c77c93-7079-4b82-bd2d-13e89b39880d/w=1920,quality=90,fit=scale-down 1080w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/c00a0621-a5fc-47e3-bc70-df0f532aa1f6/f0c77c93-7079-4b82-bd2d-13e89b39880d/w=1920,quality=90,fit=scale-down 1200w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/c00a0621-a5fc-47e3-bc70-df0f532aa1f6/f0c77c93-7079-4b82-bd2d-13e89b39880d/w=1920,quality=90,fit=scale-down 1920w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/c00a0621-a5fc-47e3-bc70-df0f532aa1f6/f0c77c93-7079-4b82-bd2d-13e89b39880d/w=1920,quality=90,fit=scale-down 2048w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/c00a0621-a5fc-47e3-bc70-df0f532aa1f6/f0c77c93-7079-4b82-bd2d-13e89b39880d/w=1920,quality=90,fit=scale-down 3840w",
+      "title": ""
+    },
+    {
+      "tag": "iframe",
+      "src": "https://w26-cases.netlify.app/",
+      "resolved_url": "https://w26-cases.netlify.app/",
+      "alt": "",
+      "srcset": "",
+      "title": "w26-cases.netlify.app"
+    },
+    {
+      "tag": "iframe",
+      "src": "https://www.youtube.com/embed/CLHb3aYr9Is?rel=0&start=2881",
+      "resolved_url": "https://www.youtube.com/embed/CLHb3aYr9Is?rel=0&start=2881",
+      "alt": "",
+      "srcset": "",
+      "title": "www.youtube.com"
+    },
+    {
+      "tag": "iframe",
+      "src": "https://www.youtube.com/embed/H9pyA92Xxn8?rel=0&start=1264",
+      "resolved_url": "https://www.youtube.com/embed/H9pyA92Xxn8?rel=0&start=1264",
+      "alt": "",
+      "srcset": "",
+      "title": "www.youtube.com"
+    },
+    {
+      "tag": "iframe",
+      "src": "https://www.youtube.com/embed/H9pyA92Xxn8?rel=0&start=2373",
+      "resolved_url": "https://www.youtube.com/embed/H9pyA92Xxn8?rel=0&start=2373",
+      "alt": "",
+      "srcset": "",
+      "title": "www.youtube.com"
+    },
+    {
+      "tag": "img",
+      "src": "https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/653d161e-1843-47ac-91f7-5ea7fbf7af75/c72946ce-21e9-49c2-b638-9ff1aea152d2/w=1920,quality=90,fit=scale-down",
+      "resolved_url": "https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/653d161e-1843-47ac-91f7-5ea7fbf7af75/c72946ce-21e9-49c2-b638-9ff1aea152d2/w=1920,quality=90,fit=scale-down",
+      "alt": "image",
+      "srcset": "https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/653d161e-1843-47ac-91f7-5ea7fbf7af75/c72946ce-21e9-49c2-b638-9ff1aea152d2/w=1920,quality=90,fit=scale-down 640w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/653d161e-1843-47ac-91f7-5ea7fbf7af75/c72946ce-21e9-49c2-b638-9ff1aea152d2/w=1920,quality=90,fit=scale-down 750w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/653d161e-1843-47ac-91f7-5ea7fbf7af75/c72946ce-21e9-49c2-b638-9ff1aea152d2/w=1920,quality=90,fit=scale-down 828w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/653d161e-1843-47ac-91f7-5ea7fbf7af75/c72946ce-21e9-49c2-b638-9ff1aea152d2/w=1920,quality=90,fit=scale-down 1080w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/653d161e-1843-47ac-91f7-5ea7fbf7af75/c72946ce-21e9-49c2-b638-9ff1aea152d2/w=1920,quality=90,fit=scale-down 1200w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/653d161e-1843-47ac-91f7-5ea7fbf7af75/c72946ce-21e9-49c2-b638-9ff1aea152d2/w=1920,quality=90,fit=scale-down 1920w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/653d161e-1843-47ac-91f7-5ea7fbf7af75/c72946ce-21e9-49c2-b638-9ff1aea152d2/w=1920,quality=90,fit=scale-down 2048w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/653d161e-1843-47ac-91f7-5ea7fbf7af75/c72946ce-21e9-49c2-b638-9ff1aea152d2/w=1920,quality=90,fit=scale-down 3840w",
+      "title": ""
+    },
+    {
+      "tag": "img",
+      "src": "https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/fdabd131-0ca0-45b3-8fd8-2d56711ff1a1/ai_mindset_analogue_studio_composition/w=1920,quality=90,fit=scale-down",
+      "resolved_url": "https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/fdabd131-0ca0-45b3-8fd8-2d56711ff1a1/ai_mindset_analogue_studio_composition/w=1920,quality=90,fit=scale-down",
+      "alt": "image",
+      "srcset": "https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/fdabd131-0ca0-45b3-8fd8-2d56711ff1a1/ai_mindset_analogue_studio_composition/w=1920,quality=90,fit=scale-down 128w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/fdabd131-0ca0-45b3-8fd8-2d56711ff1a1/ai_mindset_analogue_studio_composition/w=1920,quality=90,fit=scale-down 256w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/fdabd131-0ca0-45b3-8fd8-2d56711ff1a1/ai_mindset_analogue_studio_composition/w=1920,quality=90,fit=scale-down 384w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/fdabd131-0ca0-45b3-8fd8-2d56711ff1a1/ai_mindset_analogue_studio_composition/w=1920,quality=90,fit=scale-down 640w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/fdabd131-0ca0-45b3-8fd8-2d56711ff1a1/ai_mindset_analogue_studio_composition/w=1920,quality=90,fit=scale-down 750w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/fdabd131-0ca0-45b3-8fd8-2d56711ff1a1/ai_mindset_analogue_studio_composition/w=1920,quality=90,fit=scale-down 828w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/fdabd131-0ca0-45b3-8fd8-2d56711ff1a1/ai_mindset_analogue_studio_composition/w=1920,quality=90,fit=scale-down 1080w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/fdabd131-0ca0-45b3-8fd8-2d56711ff1a1/ai_mindset_analogue_studio_composition/w=1920,quality=90,fit=scale-down 1200w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/fdabd131-0ca0-45b3-8fd8-2d56711ff1a1/ai_mindset_analogue_studio_composition/w=1920,quality=90,fit=scale-down 1920w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/fdabd131-0ca0-45b3-8fd8-2d56711ff1a1/ai_mindset_analogue_studio_composition/w=1920,quality=90,fit=scale-down 2048w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/fdabd131-0ca0-45b3-8fd8-2d56711ff1a1/ai_mindset_analogue_studio_composition/w=1920,quality=90,fit=scale-down 3840w",
+      "title": ""
+    },
+    {
+      "tag": "img",
+      "src": "https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/b6c50d2f-8d68-45bd-b229-66b52f524411/logo_round/w=1920,quality=90,fit=scale-down",
+      "resolved_url": "https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/b6c50d2f-8d68-45bd-b229-66b52f524411/logo_round/w=1920,quality=90,fit=scale-down",
+      "alt": "image",
+      "srcset": "https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/b6c50d2f-8d68-45bd-b229-66b52f524411/logo_round/w=1920,quality=90,fit=scale-down 64w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/b6c50d2f-8d68-45bd-b229-66b52f524411/logo_round/w=1920,quality=90,fit=scale-down 96w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/b6c50d2f-8d68-45bd-b229-66b52f524411/logo_round/w=1920,quality=90,fit=scale-down 128w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/b6c50d2f-8d68-45bd-b229-66b52f524411/logo_round/w=1920,quality=90,fit=scale-down 256w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/b6c50d2f-8d68-45bd-b229-66b52f524411/logo_round/w=1920,quality=90,fit=scale-down 384w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/b6c50d2f-8d68-45bd-b229-66b52f524411/logo_round/w=1920,quality=90,fit=scale-down 640w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/b6c50d2f-8d68-45bd-b229-66b52f524411/logo_round/w=1920,quality=90,fit=scale-down 750w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/b6c50d2f-8d68-45bd-b229-66b52f524411/logo_round/w=1920,quality=90,fit=scale-down 828w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/b6c50d2f-8d68-45bd-b229-66b52f524411/logo_round/w=1920,quality=90,fit=scale-down 1080w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/b6c50d2f-8d68-45bd-b229-66b52f524411/logo_round/w=1920,quality=90,fit=scale-down 1200w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/b6c50d2f-8d68-45bd-b229-66b52f524411/logo_round/w=1920,quality=90,fit=scale-down 1920w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/b6c50d2f-8d68-45bd-b229-66b52f524411/logo_round/w=1920,quality=90,fit=scale-down 2048w, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/b6c50d2f-8d68-45bd-b229-66b52f524411/logo_round/w=1920,quality=90,fit=scale-down 3840w",
+      "title": ""
+    },
+    {
+      "tag": "img",
+      "src": "https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/d56ff22d-8e3b-4ec7-abee-2f8caec8df0f/apple-touch-icon/w=1920,quality=90,fit=scale-down",
+      "resolved_url": "https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/d56ff22d-8e3b-4ec7-abee-2f8caec8df0f/apple-touch-icon/w=1920,quality=90,fit=scale-down",
+      "alt": "",
+      "srcset": "https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/d56ff22d-8e3b-4ec7-abee-2f8caec8df0f/apple-touch-icon/w=1920,quality=90,fit=scale-down 1x",
+      "title": ""
+    },
+    {
+      "tag": "img",
+      "src": "https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/c0d11164-0799-45ad-941e-2fbf657059ae/web-cover-v6/w=1920,quality=90,fit=scale-down",
+      "resolved_url": "https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/c0d11164-0799-45ad-941e-2fbf657059ae/web-cover-v6/w=1920,quality=90,fit=scale-down",
+      "alt": "Выигрывает дистрибуция — маркетинг-спринт AI Mindset · 14.09–02.10.2026",
+      "srcset": "https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/c0d11164-0799-45ad-941e-2fbf657059ae/web-cover-v6/w=1920,quality=90,fit=scale-down 1x, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/c0d11164-0799-45ad-941e-2fbf657059ae/web-cover-v6/w=1920,quality=90,fit=scale-down 2x",
+      "title": ""
+    },
+    {
+      "tag": "img",
+      "src": "https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/c986f27c-51fc-45c4-89d9-f167aa7c4d50/favicon-192/w=1920,quality=90,fit=scale-down",
+      "resolved_url": "https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/c986f27c-51fc-45c4-89d9-f167aa7c4d50/favicon-192/w=1920,quality=90,fit=scale-down",
+      "alt": "",
+      "srcset": "https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/c986f27c-51fc-45c4-89d9-f167aa7c4d50/favicon-192/w=1920,quality=90,fit=scale-down 1x",
+      "title": ""
+    },
+    {
+      "tag": "img",
+      "src": "https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/34f0a684-3cc8-4c70-b620-2221bb5419ac/og-cover/w=1920,quality=90,fit=scale-down",
+      "resolved_url": "https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/34f0a684-3cc8-4c70-b620-2221bb5419ac/og-cover/w=1920,quality=90,fit=scale-down",
+      "alt": "AI-Native Organizations Sprint — AI Mindset",
+      "srcset": "https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/34f0a684-3cc8-4c70-b620-2221bb5419ac/og-cover/w=1920,quality=90,fit=scale-down 1x, https://images.spr.so/cdn-cgi/imagedelivery/j42No7y-dcokJuNgXeA0ig/34f0a684-3cc8-4c70-b620-2221bb5419ac/og-cover/w=1920,quality=90,fit=scale-down 2x",
+      "title": ""
+    },
+    {
+      "tag": "img",
+      "src": "/_next/image?url=https%3A%2F%2Fassets.super.so%2Fd1b77c11-02de-4b64-94ed-f2afd85ee950%2Fuploads%2Ffavicon%2Fa4c287a9-47ff-4f6b-860d-1996924c512f.png&w=32&q=75",
+      "resolved_url": "https://aimindset.org/_next/image?url=https%3A%2F%2Fassets.super.so%2Fd1b77c11-02de-4b64-94ed-f2afd85ee950%2Fuploads%2Ffavicon%2Fa4c287a9-47ff-4f6b-860d-1996924c512f.png&w=32&q=75",
+      "alt": "",
+      "srcset": "/_next/image?url=https%3A%2F%2Fassets.super.so%2Fd1b77c11-02de-4b64-94ed-f2afd85ee950%2Fuploads%2Ffavicon%2Fa4c287a9-47ff-4f6b-860d-1996924c512f.png&w=32&q=75 1x",
+      "title": ""
+    },
+    {
+      "tag": "img",
+      "src": "/_next/image?url=https%3A%2F%2Fassets.super.so%2Fd1b77c11-02de-4b64-94ed-f2afd85ee950%2Fuploads%2Fcover%2F3baef00a-e96a-4aa9-81e7-8ebbd02257bc.png&w=640&q=75",
+      "resolved_url": "https://aimindset.org/_next/image?url=https%3A%2F%2Fassets.super.so%2Fd1b77c11-02de-4b64-94ed-f2afd85ee950%2Fuploads%2Fcover%2F3baef00a-e96a-4aa9-81e7-8ebbd02257bc.png&w=640&q=75",
+      "alt": "Al mindset {space}",
+      "srcset": "/_next/image?url=https%3A%2F%2Fassets.super.so%2Fd1b77c11-02de-4b64-94ed-f2afd85ee950%2Fuploads%2Fcover%2F3baef00a-e96a-4aa9-81e7-8ebbd02257bc.png&w=256&q=75 1x, /_next/image?url=https%3A%2F%2Fassets.super.so%2Fd1b77c11-02de-4b64-94ed-f2afd85ee950%2Fuploads%2Fcover%2F3baef00a-e96a-4aa9-81e7-8ebbd02257bc.png&w=640&q=75 2x",
+      "title": ""
+    }
+  ],
+  "factual_risks": [
+    "Inspect the original Александру contact href in all_main_links before mapping the CTA; preserve the original target."
+  ]
+}

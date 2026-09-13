@@ -1,0 +1,4 @@
+
+#spaceSchedule .space-schedule__controls{display:flex;justify-content:center;width:100%;padding:18px 0}
+#spaceSchedule .space-schedule__toggle{margin:0;max-width:100%;white-space:normal;text-align:center;justify-content:center;line-height:1.4}
+#spaceSchedule [hidden]{display:none!important}

@@ -1,0 +1,720 @@
+{
+  "version": 1,
+  "sourceOfTruth": "src/page/index.html",
+  "generated": "index.html",
+  "baselineSha256": "a69b3891fdc01c4e3bc42e8b3c0bb551f4b052bacae9a16d0b90e381ece2a8f1",
+  "blocks": [
+    {
+      "path": "src/page/styles/astro-islands.css",
+      "tag": "style",
+      "attributes": {},
+      "sha256": "beff48a0aa3b0522db59c507af7b4d99f3559a6e4bffd09f9f61fa2cc93bfe8c",
+      "start": 131,
+      "end": 190
+    },
+    {
+      "path": "src/page/runtime/astro-load.js",
+      "tag": "script",
+      "attributes": {},
+      "sha256": "433585662f852c8c76ded9e6f52054e1a120c78c7c0ecb8048fd3b99faa897f7",
+      "start": 207,
+      "end": 337
+    },
+    {
+      "path": "src/page/runtime/astro-client-only.js",
+      "tag": "script",
+      "attributes": {},
+      "sha256": "5b1d1d93166b21221abf9b01f256ee7d05501f3b417bdd5427d4141549ce0856",
+      "start": 355,
+      "end": 466
+    },
+    {
+      "path": "src/page/runtime/astro-island-runtime.js",
+      "tag": "script",
+      "attributes": {},
+      "sha256": "53b6bbda82ae145cfc0fb1941cb035359d1c8b298798339cf53f5a543836ad65",
+      "start": 484,
+      "end": 3946
+    },
+    {
+      "path": "src/page/styles/brand-layout.css",
+      "tag": "style",
+      "attributes": {},
+      "sha256": "223bc7c2a76a4a4b5acad59230be7272b3fe454b66e353e77046a612ee896be9",
+      "start": 4534,
+      "end": 67871
+    },
+    {
+      "path": "src/page/styles/hero-dot-field.css",
+      "tag": "style",
+      "attributes": {
+        "id": "v1x-style"
+      },
+      "sha256": "631831d96d258cdfd75bfe5dab4bbeded2d1e9859c59151e81666cad7d2436cd",
+      "start": 68164,
+      "end": 70192
+    },
+    {
+      "path": "src/page/styles/state-stretch.css",
+      "tag": "style",
+      "attributes": {},
+      "sha256": "c955e4b4913d7fef9ddd3ed5553ec162af6deb0a439cc21a2b1e341dc5262e0e",
+      "start": 70208,
+      "end": 71477
+    },
+    {
+      "path": "src/page/styles/hero-composition.css",
+      "tag": "style",
+      "attributes": {},
+      "sha256": "048e9e5a13bcf1f7db5df204a452de043687e156fb9ed3657cd63d7610fb2892",
+      "start": 71493,
+      "end": 72018
+    },
+    {
+      "path": "src/page/styles/about-team-layout.css",
+      "tag": "style",
+      "attributes": {},
+      "sha256": "0bd273f73cd3f8e0a1770be0b6ef0e3e92feb07854b585ea36211c8a48d8ce1d",
+      "start": 72034,
+      "end": 77094
+    },
+    {
+      "path": "src/page/styles/direction-card-canvas.css",
+      "tag": "style",
+      "attributes": {},
+      "sha256": "acd8bbfde96be7b78e1566ff102427a04e91dd61fa50e6bc937adee742465201",
+      "start": 77110,
+      "end": 77421
+    },
+    {
+      "path": "src/page/styles/hero-static.css",
+      "tag": "style",
+      "attributes": {
+        "id": "main-current-hero-static-transfer"
+      },
+      "sha256": "4981ae1b4554b7163b8c2910bb878b978c2765e8ef0e44095f665aa1f833efe3",
+      "start": 77476,
+      "end": 78661
+    },
+    {
+      "path": "src/page/styles/typography-system.css",
+      "tag": "style",
+      "attributes": {},
+      "sha256": "92182882e7e48e2631b2394ec723f980060d38e610ce76f7b9fe68170638e41f",
+      "start": 78677,
+      "end": 86684
+    },
+    {
+      "path": "src/page/styles/consulting-nonprofit-buttons.css",
+      "tag": "style",
+      "attributes": {
+        "id": "consulting-group-nonprofit-pixel-buttons"
+      },
+      "sha256": "3a0355024148bd3d695483e32b4ff1532e8f0e6284f5c8accb5d8a5879c156bc",
+      "start": 86746,
+      "end": 98251
+    },
+    {
+      "path": "src/page/styles/editorial-typesetting.css",
+      "tag": "style",
+      "attributes": {
+        "id": "editorial-typesetting"
+      },
+      "sha256": "b6555fcdefb349c45c9db81842a4035c59219f84713950c895e966cd4d3b3e3b",
+      "start": 98294,
+      "end": 100661
+    },
+    {
+      "path": "src/page/styles/type-scale.css",
+      "tag": "style",
+      "attributes": {
+        "id": "type-scale-wild"
+      },
+      "sha256": "5355fba1f38c7ee44ee4e65b035245dee7cc841fded90728282abf460fed5dea",
+      "start": 100698,
+      "end": 107840
+    },
+    {
+      "path": "src/page/styles/reviews-markers.css",
+      "tag": "style",
+      "attributes": {
+        "id": "reviews-inline-markers"
+      },
+      "sha256": "8ae7ec257f8f29c5e4e684a6f430f313f872418546eea0037980f5366b74ee23",
+      "start": 107884,
+      "end": 109774
+    },
+    {
+      "path": "src/page/styles/direction-scenes.css",
+      "tag": "style",
+      "attributes": {
+        "id": "direction-card-scenes-transfer"
+      },
+      "sha256": "6310660ab09230a3ead8162eb07f768ddd2535ff0f1cf16a9c7261a1b7fae9f0",
+      "start": 109826,
+      "end": 114813
+    },
+    {
+      "path": "src/page/styles/hero-symbol-field.css",
+      "tag": "style",
+      "attributes": {},
+      "sha256": "93086c5993d76e4018fb8f8eb655a73bf9df32067f7855520b62731fdefca57d",
+      "start": 114829,
+      "end": 115143
+    },
+    {
+      "path": "src/page/styles/pixel-buttons.css",
+      "tag": "style",
+      "attributes": {},
+      "sha256": "95cad82cadaebcc4423003eecd489962415595351bede5c267d44ac219b4dc8e",
+      "start": 115159,
+      "end": 116658
+    },
+    {
+      "path": "src/page/styles/ascii-river.css",
+      "tag": "style",
+      "attributes": {},
+      "sha256": "d76856513805fec5ce59406b519329cfd55eb5689cd8cec3dbea7c0f62246da0",
+      "start": 116674,
+      "end": 117351
+    },
+    {
+      "path": "src/page/styles/companion-canvas.css",
+      "tag": "style",
+      "attributes": {},
+      "sha256": "177132f4e76b63dff5a5e41098c7890cc040c73a415064f8c6479babda1d7c69",
+      "start": 117367,
+      "end": 117502
+    },
+    {
+      "path": "src/page/styles/about-cursor.css",
+      "tag": "style",
+      "attributes": {},
+      "sha256": "e395a44020c33799f82d74b7351dae4bdadc33977a8c2c9754967f9512fa6310",
+      "start": 117518,
+      "end": 117960
+    },
+    {
+      "path": "src/page/styles/hanging-punctuation.css",
+      "tag": "style",
+      "attributes": {
+        "id": "hanging-punctuation"
+      },
+      "sha256": "467a80a2e66f49e660b3b987c328b2f8aa25eb7bd5a79a987b6a755b700f59c8",
+      "start": 118001,
+      "end": 118531
+    },
+    {
+      "path": "src/page/styles/button-system.css",
+      "tag": "style",
+      "attributes": {
+        "id": "button-system"
+      },
+      "sha256": "cfb73d9f9f79acd9d3b9e0298c3852a7291587c1c10c4aee5f3bc2f2b7995fe1",
+      "start": 118566,
+      "end": 123629
+    },
+    {
+      "path": "src/page/styles/ecosystem-graph.css",
+      "tag": "style",
+      "attributes": {
+        "id": "ecosystem-graph-layer"
+      },
+      "sha256": "893bce43c3580cf94ca18f334d79242e8a0ec0e600f191398e1753a459cf6e81",
+      "start": 123672,
+      "end": 127382
+    },
+    {
+      "path": "src/page/styles/direction-card-layout.css",
+      "tag": "style",
+      "attributes": {
+        "id": "direction-cards-outside"
+      },
+      "sha256": "07c61586e038ba2e65160edccc0bf866ab28731b00ed321f0a046266bf0e25ac",
+      "start": 127427,
+      "end": 130457
+    },
+    {
+      "path": "src/page/styles/section-accents.css",
+      "tag": "style",
+      "attributes": {
+        "id": "red-chip-test"
+      },
+      "sha256": "aedcf22783ec691fbb55e950d205744d4a83b5c5c9bdd44386129bf37bec262c",
+      "start": 130492,
+      "end": 130675
+    },
+    {
+      "path": "src/page/styles/accent-text.css",
+      "tag": "style",
+      "attributes": {
+        "id": "red-text-rule"
+      },
+      "sha256": "db9e09a4ec49d73f3c3a1676bcb257be2951b7a0d7ff2944a165a4d6e57d828a",
+      "start": 130710,
+      "end": 131313
+    },
+    {
+      "path": "src/page/styles/accent-palette.css",
+      "tag": "style",
+      "attributes": {
+        "id": "red-palette-use"
+      },
+      "sha256": "65c936912881576c25c826aacd2950d316739272335f3cca0d9d5af648e67568",
+      "start": 131350,
+      "end": 131470
+    },
+    {
+      "path": "src/page/styles/space-schedule-controls.css",
+      "tag": "style",
+      "attributes": {
+        "id": "space-schedule-controls-fix"
+      },
+      "sha256": "3609e760e1cf41f99dc4c6a38845fe6af4f4bd6b13f445c0af8ec9401f14d078",
+      "start": 131519,
+      "end": 131812
+    },
+    {
+      "path": "src/page/styles/mobile-layout.css",
+      "tag": "style",
+      "attributes": {
+        "id": "wild-mobile-layout-fixes"
+      },
+      "sha256": "90ea9e801a0c65179dc547c5e84caec15315440f288c2857eb7d31ced4b8c647",
+      "start": 131858,
+      "end": 133565
+    },
+    {
+      "path": "src/page/styles/space-accents.css",
+      "tag": "style",
+      "attributes": {
+        "id": "space-violet-accents-20260909"
+      },
+      "sha256": "04fd0d0c93370f162eb3ebe79641aa203e2b419aad68b5fbd62c91c4f4646c82",
+      "start": 133616,
+      "end": 134471
+    },
+    {
+      "path": "src/page/styles/about-project-typography.css",
+      "tag": "style",
+      "attributes": {
+        "id": "type-tweaks-20260910"
+      },
+      "sha256": "12ef195c73d17dbf0d508508b7e24beff1d941e31fac5aa83b1491c357961385",
+      "start": 134513,
+      "end": 145886
+    },
+    {
+      "path": "src/page/styles/direction-minimap.css",
+      "tag": "style",
+      "attributes": {
+        "id": "direction-minimap-layer"
+      },
+      "sha256": "193eaf5647c462a59c0f8597dfee3cb1404595eaddcadf3179c5e9a1f53d6bf5",
+      "start": 145931,
+      "end": 147749
+    },
+    {
+      "path": "src/page/styles/direction-continuity.css",
+      "tag": "style",
+      "attributes": {
+        "id": "direction-continuity-layer"
+      },
+      "sha256": "2c2776c78f73f8d51a43ef08f65c004c246070247af5506a825e8e25879533ea",
+      "start": 147797,
+      "end": 149583
+    },
+    {
+      "path": "src/page/styles/learning-catalogue.css",
+      "tag": "style",
+      "attributes": {
+        "id": "wild-learning-catalogue"
+      },
+      "sha256": "049ed076828294226585805b01763dc4cec1f47b2fabe4ff0b837a050199b4d6",
+      "start": 149628,
+      "end": 160761
+    },
+    {
+      "path": "src/page/styles/mobile-hero.css",
+      "tag": "style",
+      "attributes": {
+        "id": "wild-mobile-hero-20260910"
+      },
+      "sha256": "e813e3ad4497d3ac58007ea82a3c9fbd673c93c2ce8d85650be7f3d686f01823",
+      "start": 160808,
+      "end": 161521
+    },
+    {
+      "path": "src/page/styles/mobile-interactions.css",
+      "tag": "style",
+      "attributes": {
+        "id": "mobile-rhythm-interactions-20260910"
+      },
+      "sha256": "8db720da5b7de8a324c18de0cd33f8ec3b6644c9062f5a15e6772fa71fabbc80",
+      "start": 161578,
+      "end": 164604
+    },
+    {
+      "path": "src/page/styles/mobile-reading.css",
+      "tag": "style",
+      "attributes": {
+        "id": "mobile-reading-rhythm-20260910"
+      },
+      "sha256": "333eba843d0c63085a9113383322e7a2b91ffa0c95b51c82da6fe42f6d68fd71",
+      "start": 164656,
+      "end": 166562
+    },
+    {
+      "path": "src/page/styles/mobile-hierarchy.css",
+      "tag": "style",
+      "attributes": {
+        "id": "mobile-hierarchy-20260911"
+      },
+      "sha256": "d9b2e6238c297e860f78f2821c64c39d8d74b20a57c222d369a0a29061702ebc",
+      "start": 166609,
+      "end": 169225
+    },
+    {
+      "path": "src/page/styles/lower-reading.css",
+      "tag": "style",
+      "attributes": {
+        "id": "lower-reading-rhythm-20260911"
+      },
+      "sha256": "ea58abb783e2b1ff4646de39436f1b41f9d3e11104b21b84c607298eb709d851",
+      "start": 169276,
+      "end": 171470
+    },
+    {
+      "path": "src/page/styles/mobile-hero-reading.css",
+      "tag": "style",
+      "attributes": {
+        "id": "mobile-hero-reading-20260911"
+      },
+      "sha256": "576e25a370b2c352604e4d60df7b4a0a7e775881b3f128516527801bf33c9bcb",
+      "start": 171520,
+      "end": 171717
+    },
+    {
+      "path": "src/page/styles/mobile-navigation.css",
+      "tag": "style",
+      "attributes": {
+        "id": "mobile-navigation-refinement-20260911"
+      },
+      "sha256": "fcf74b5c3bb8d42c4d2f161d76b09af0ab9193429b8edf009ae356c930f7fde8",
+      "start": 171848,
+      "end": 173043
+    },
+    {
+      "path": "src/page/styles/mobile-block-layout.css",
+      "tag": "style",
+      "attributes": {
+        "id": "mobile-blocks-review-20260911"
+      },
+      "sha256": "a321cb29ba0cdada4bff975317d6c117f48635cb61b896515e66aab321d72e83",
+      "start": 173094,
+      "end": 179192
+    },
+    {
+      "path": "src/page/styles/mobile-review-controls.css",
+      "tag": "style",
+      "attributes": {
+        "id": "mobile-review-controls"
+      },
+      "sha256": "cef68f611dd0bc17b284f5b04919d5b493c36d0b57ebd8933181717b64bef091",
+      "start": 179237,
+      "end": 179724
+    },
+    {
+      "path": "src/page/styles/mobile-content-rhythm.css",
+      "tag": "style",
+      "attributes": {
+        "id": "mobile-final-content-rhythm"
+      },
+      "sha256": "6b2517c440846235b4f9bdc234a545b93dad24a94affc79c4fc4717b9a581527",
+      "start": 179773,
+      "end": 180896
+    },
+    {
+      "path": "src/page/styles/mobile-team-heading.css",
+      "tag": "style",
+      "attributes": {},
+      "sha256": "86b752dbde4da2d19ffb0a67fc75de3e26f034a4830e1113cb79ae27a80d6528",
+      "start": 180984,
+      "end": 181046
+    },
+    {
+      "path": "src/page/styles/learning-card-actions.css",
+      "tag": "style",
+      "attributes": {
+        "id": "learning-card-actions"
+      },
+      "sha256": "41cd7402aa9e5bccccc44cf3b9d583537f5991cdfddba4fe451a5db0545f1380",
+      "start": 181089,
+      "end": 181655
+    },
+    {
+      "path": "src/page/styles/about-team-spacing.css",
+      "tag": "style",
+      "attributes": {
+        "id": "about-team-spacing"
+      },
+      "sha256": "3908b0292c52a2369185d10ca6e4c994e643c72b9e906e62607debcefad09913",
+      "start": 181695,
+      "end": 181897
+    },
+    {
+      "path": "src/page/runtime/direction-scenes.js",
+      "tag": "script",
+      "attributes": {},
+      "sha256": "8845e4fe990b9e6fdf599aec132751f953dcea7e8458db2738baf94a38d3d196",
+      "start": 226070,
+      "end": 254315
+    },
+    {
+      "path": "src/page/runtime/space-schedule.js",
+      "tag": "script",
+      "attributes": {},
+      "sha256": "dbb5ad00a48cc81e4e43d3dd6b0e29a1fd35f0e622b549d9f9a34bc8fb72afc6",
+      "start": 257712,
+      "end": 261969
+    },
+    {
+      "path": "src/page/runtime/ecosystem-dialog.js",
+      "tag": "script",
+      "attributes": {},
+      "sha256": "05a964cdfcb474152d0ff7bd1c421864c14a264374ad56e0578e38cb5ae33344",
+      "start": 280286,
+      "end": 281860
+    },
+    {
+      "path": "src/page/runtime/learning-waitlist.js",
+      "tag": "script",
+      "attributes": {
+        "data-learning-runtime": "waitlist"
+      },
+      "sha256": "56fe8a7aaf2b33dd53a00ed2e3b43cd4cf3c53112a37aa3b3a0b306bfd0c571c",
+      "start": 281977,
+      "end": 285680
+    },
+    {
+      "path": "src/page/runtime/product-reordering.js",
+      "tag": "script",
+      "attributes": {},
+      "sha256": "0b7ff5fc434a3d0a4229c469f499f409771834bd9ab7e47dc3becd0f9796f5c4",
+      "start": 285699,
+      "end": 289551
+    },
+    {
+      "path": "src/page/runtime/inline-editor.js",
+      "tag": "script",
+      "attributes": {},
+      "sha256": "b34957592623ce7cf0ec0cec972414145a1a6e463bd38633559e840b44765b82",
+      "start": 289570,
+      "end": 316800
+    },
+    {
+      "path": "src/page/runtime/section-navigation.js",
+      "tag": "script",
+      "attributes": {},
+      "sha256": "b46a9e4cbddd2055c9e76d10dd16ad0f1d0b72b2b09449c24bb7f84cfaaf6e36",
+      "start": 316818,
+      "end": 325917
+    },
+    {
+      "path": "src/page/runtime/product-fields.js",
+      "tag": "script",
+      "attributes": {},
+      "sha256": "32fc5138354c0696f756643520864cafb875683c6fb23a61229186875d246e0b",
+      "start": 325972,
+      "end": 423707
+    },
+    {
+      "path": "src/page/runtime/state-stretch-engine.js",
+      "tag": "script",
+      "attributes": {
+        "id": "v1x-script"
+      },
+      "sha256": "356588d6ea37168f0cdd9e997b83f55c575e96aad310968ea2c950fa672ae42c",
+      "start": 424099,
+      "end": 435328
+    },
+    {
+      "path": "src/page/runtime/state-stretch-interaction.js",
+      "tag": "script",
+      "attributes": {},
+      "sha256": "9f039ddd11c7bf7b7cd5f11ff1979b14093bf3f2deb0e0faaf1f83a27fb0c0ab",
+      "start": 435349,
+      "end": 440916
+    },
+    {
+      "path": "src/page/runtime/preview-navigation.js",
+      "tag": "script",
+      "attributes": {},
+      "sha256": "41ab1490285e7c2d7ccf25a8a7acb3590c41346333c66ba5ec5e4fb001387de7",
+      "start": 440937,
+      "end": 441360
+    },
+    {
+      "path": "src/page/runtime/hero-field.js",
+      "tag": "script",
+      "attributes": {},
+      "sha256": "84c29e5d64a8ee68e53546ddbbc75d4cb66aff3e8362d2b0afbf5362f097a06f",
+      "start": 445624,
+      "end": 630657
+    },
+    {
+      "path": "src/page/runtime/pixel-hover-and-team.js",
+      "tag": "script",
+      "attributes": {},
+      "sha256": "3d39d5f9694967943658deb8f85926e37225e27b5aaa647081b4fb05dcf82734",
+      "start": 630679,
+      "end": 642817
+    },
+    {
+      "path": "src/page/runtime/wheel-scroll.js",
+      "tag": "script",
+      "attributes": {},
+      "sha256": "46297756dc77ffd5ef4cf8948570ff6105116da3bae7bfba544a77c9619ef818",
+      "start": 642837,
+      "end": 644379
+    },
+    {
+      "path": "src/page/runtime/ascii-river.js",
+      "tag": "script",
+      "attributes": {},
+      "sha256": "dada42f19d0e6bd886ea48fa5bb827179896089517423dad845503194dbf7b3a",
+      "start": 644399,
+      "end": 670946
+    },
+    {
+      "path": "src/page/runtime/team-faces.js",
+      "tag": "script",
+      "attributes": {},
+      "sha256": "c52f2d37f6aa93a73e55f3bfe3c7a188fc88e6ee0117da482c00b1cc46067b38",
+      "start": 670967,
+      "end": 673922
+    },
+    {
+      "path": "src/page/runtime/companion.js",
+      "tag": "script",
+      "attributes": {},
+      "sha256": "43dcd08083e5413aad7dd8174d762096a580a8e4339ad3e1ecb3522b79c7f995",
+      "start": 674062,
+      "end": 699630
+    },
+    {
+      "path": "src/page/runtime/about-cursor.js",
+      "tag": "script",
+      "attributes": {},
+      "sha256": "33a76e06ad19aca6e2ff96959f43f64ec62fcc2363cefa81e03e4a9dec9abdb6",
+      "start": 699651,
+      "end": 706056
+    },
+    {
+      "path": "src/page/runtime/optical-punctuation.js",
+      "tag": "script",
+      "attributes": {},
+      "sha256": "80dce968b3c96d200e38416d149c55840cc2426df67b4b6bd30d21c37dde7371",
+      "start": 706076,
+      "end": 711881
+    },
+    {
+      "path": "src/page/runtime/ecosystem-graph.js",
+      "tag": "script",
+      "attributes": {
+        "id": "ecosystem-graph-runtime"
+      },
+      "sha256": "f8e296c85e81f8b0c0db2127590069c31dee12ef6f653fb79877fcecd51042f6",
+      "start": 711930,
+      "end": 722714
+    },
+    {
+      "path": "src/page/runtime/direction-card-links.js",
+      "tag": "script",
+      "attributes": {},
+      "sha256": "2186fad2755a9fab4e4e343690a6706b43028fc62594b517e5ade63ecdae4ccb",
+      "start": 722733,
+      "end": 723113
+    },
+    {
+      "path": "src/page/runtime/direction-minimap.js",
+      "tag": "script",
+      "attributes": {
+        "id": "direction-minimap-runtime"
+      },
+      "sha256": "f00f67bafaf4ed01bf533a30b94ddb041b7464f0cdda2daf4adf80253fcc1195",
+      "start": 723172,
+      "end": 724869
+    },
+    {
+      "path": "src/page/runtime/direction-continuity.js",
+      "tag": "script",
+      "attributes": {
+        "id": "direction-continuity-runtime"
+      },
+      "sha256": "cef7adc4c79c65003a59b37bdae03a78987c2045f60b017d33d9956443e60357",
+      "start": 724922,
+      "end": 733680
+    },
+    {
+      "path": "src/page/runtime/learning-program-morph.js",
+      "tag": "script",
+      "attributes": {
+        "id": "wild-program-morph",
+        "data-learning-runtime": "motion"
+      },
+      "sha256": "73e304b8f3b05c2f5fd76d6131c24ba11fef0a872c18ccdbcc1b9099d1bad6dc",
+      "start": 733754,
+      "end": 749667
+    },
+    {
+      "path": "src/page/runtime/media-preview.js",
+      "tag": "script",
+      "attributes": {},
+      "sha256": "46c4f269dccdf2415afb6905a1dd5ef99fa237f328cb1713c0f2e6989a1afafa",
+      "start": 749685,
+      "end": 753068
+    },
+    {
+      "path": "src/page/runtime/mobile-team-interactions.js",
+      "tag": "script",
+      "attributes": {
+        "id": "mobile-team-interactions-20260910"
+      },
+      "sha256": "fa428e0eac20e4ce5202aafdbd0d4900d80c1a8a5891bbde6cb5e000575de898",
+      "start": 753133,
+      "end": 758138
+    },
+    {
+      "path": "src/page/runtime/mobile-hierarchy-fit.js",
+      "tag": "script",
+      "attributes": {
+        "id": "mobile-hierarchy-fit-20260911"
+      },
+      "sha256": "5e41d12fddb2fc439f78a81ba82a8dd5a532daa2114a053b25040eb241ca0ba8",
+      "start": 758197,
+      "end": 760007
+    },
+    {
+      "path": "src/page/runtime/mobile-programs-research.js",
+      "tag": "script",
+      "attributes": {
+        "id": "mobile-programs-research-20260911",
+        "data-learning-runtime": "responsive"
+      },
+      "sha256": "c32867807094901f69ab85ab014ea4b6d8c297c0e6d691f0a64e3350e4c77664",
+      "start": 760102,
+      "end": 761420
+    },
+    {
+      "path": "src/page/runtime/learning-card-click.js",
+      "tag": "script",
+      "attributes": {
+        "id": "learning-card-click-runtime"
+      },
+      "sha256": "e545e7193b854a69b6e3aeacba8d1f8db6a5ef9b9e4824446accec2430d47ffd",
+      "start": 761472,
+      "end": 761795
+    }
+  ]
+}

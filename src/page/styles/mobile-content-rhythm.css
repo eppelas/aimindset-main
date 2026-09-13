@@ -1,0 +1,17 @@
+
+@media(max-width:960px){
+ #learning .learning-intro h2,#product-consultations>.sec-headline{display:none}
+ #product-nonprofit .product-block--support{grid-template-rows:150px auto}
+ #product-nonprofit .product-support-mark{height:150px;min-height:150px}
+ #product-nonprofit .product-support-copy{padding-block:16px}
+ #product-nonprofit .product-support-copy .product-cta{align-self:flex-end;justify-self:end;margin-left:auto}
+ #research .row{grid-template-columns:80px minmax(0,1fr);column-gap:20px}
+ #research .row>.research-thumb{width:80px;height:60px}
+ #research .row>.go{width:80px}
+ #research .row>div p{max-width:none;text-align:justify;text-align-last:start;hyphens:auto;-webkit-hyphens:auto;overflow-wrap:normal;hyphenate-limit-chars:5 2 2}
+ .research-more{margin:24px auto 0}
+ #reviews .reviews-grid>blockquote{padding-block:29px}
+ #reviews .reviews-grid>blockquote:nth-child(even){align-items:flex-end;text-align:right}
+ #reviews .reviews-grid>blockquote:nth-child(even) .review-copy,#reviews .reviews-grid>blockquote:nth-child(even) .src{text-align:right}
+ #reviews .company-proof{margin-top:72px!important}
+}

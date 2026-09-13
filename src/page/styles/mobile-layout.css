@@ -1,0 +1,23 @@
+
+@media(max-width:700px){
+  #follow .follow-intro .follow-kicker{color:#b6b6b0}
+  #about .values{grid-template-columns:minmax(0,1fr)}
+  #about .value{min-width:0}
+  #about .value h3,#approach p{overflow-wrap:anywhere}
+  #learning .learning-topic{min-width:0;grid-template-columns:minmax(0,1fr)}
+  #learning .learning-topic>div{min-width:0}
+  #learning .learning-topic__meta{display:flex;flex-wrap:wrap;gap:5px 14px}
+  #learning .learning-topic--active .learning-topic__meta::before{flex-basis:100%}
+  #learning .learning-topic__meta time{max-width:100%;white-space:normal}
+  #learning .learning-topic:not(.learning-topic--active){grid-template-columns:minmax(0,1fr) auto;column-gap:12px;row-gap:8px}
+  #learning .learning-topic:not(.learning-topic--active)>.learning-topic__meta{grid-column:1/-1;grid-row:1}
+  #learning .learning-topic:not(.learning-topic--active)>div:not(.learning-topic__meta){display:contents}
+  #learning .learning-topic:not(.learning-topic--active) h3{grid-column:1;grid-row:2;margin:0;align-self:center;overflow-wrap:anywhere}
+  #learning .learning-topic:not(.learning-topic--active) p{grid-column:1/-1;grid-row:3}
+  #learning .learning-topic:not(.learning-topic--active)>.learning-action{grid-column:2;grid-row:2;margin:0;align-self:center;justify-self:end}
+  #learning .learning-action{min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+  #products .ecosystem-directions{margin-left:0;padding-left:0;padding-right:0;width:100%;overflow:visible}
+  .waitlist-dialog__close,.ecosystem-map-dialog__close{width:44px;height:44px}
+  .waitlist-dialog__head>div{min-width:0}
+  .waitlist-dialog h2{overflow-wrap:anywhere}
+}

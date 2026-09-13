@@ -1,11 +1,60 @@
-# AI Mindset main · v5
+# AI Mindset Wild
 
-GitHub Pages fallback for the canonical AI Mindset main page.
+Оригинальный сайт и его исходники. Рабочая папка остаётся на Яндекс.Диске; `.git` указывает на Git-метаданные в `~/Documents/Repos/aimindset-wild.git`. Другой редактируемой копии сайта нет.
 
-- Canonical source: `../index.html`
-- Published page: <https://eppelas.github.io/aimindset-main/>
-- The visible page and local assets are copied without rewriting product copy.
+## Источники
 
-The inline editor remains present, but persistent remote saving depends on the
-Google Cloud publisher configured in the canonical page. GitHub Pages itself is
-static and does not provide an anonymous write API.
+| Что менять | Источник |
+| --- | --- |
+| Структура главной | `src/page/index.html` |
+| Тексты главной | `src/content/main.json` — 370 обычных текстовых полей |
+| CSS и поведение | `src/page/styles/`, `src/page/runtime/`; порядок — `source-manifest.json` |
+| Меню, футер, обучение | Приватный [aim-web-platform](https://github.com/eppelas/aim-web-platform), `components/approved/` |
+| Остальные четыре страницы | `tools/site-pages/` и страницы `non-profit/`, `ai-mindset-consulting/`, `oferta/`, `confpolicy/` |
+| Облачный редактор | Существующий `src/page/runtime/inline-editor.js` и Google `aim-v5-publisher` |
+
+`index.html` и `assets/site/site-shell.js` — результаты сборки. Не сохранять поверх них старый HTML из Google и не править их вместо исходников. Изменения меню, футера и обучения проходят через родительский `skills/shared-content/SKILL.md`; публичный exporter не создаёт ещё одну базу контента. Non-profit получает обучение из собранной главной через существующий iframe.
+
+## Сборка и проверка
+
+Нужны Python 3.12+, Node 22 и checkout родителя. `platform-dependency.json` закрепляет его ревизию. Локальный `AIM_PLATFORM_PATH` может указывать на существующую папку родителя.
+
+```sh
+npm ci --ignore-scripts
+npm run check
+npm run test:editor
+python3 tools/source-build.py --platform /path/to/aim-web-platform
+python3 tools/verify-source-build.py --platform /path/to/aim-web-platform
+python3 tools/check-generated-source.py
+node tools/verify-idle-schedulers.cjs
+node tools/verify-idle-scenes.cjs
+python3 -m unittest discover -s tools/release -p 'test_*.py'
+python3 tools/site-pages/check-components.py
+python3 tools/release/public_build.py --output /tmp/aim-wild-public
+```
+
+На этом Mac проверки могут использовать уже установленные PostCSS/Babel через `AIM_POSTCSS_PATH` и `AIM_BABEL_PARSER_PATH`; runtime браузера в репозиторий не устанавливается. Зависимости сборки фиксирует `package-lock.json`. Генератор сохраняет исходный порядок CSS/JS. `important-budget.json` содержит точный список оставшихся приоритетов: добавленные и забытые записи отклоняются проверкой.
+
+Для обычного просмотра открыть `_ AIM Wild.app` в корне AIM Website. Вложенный `! Open AIM Wild.command` собирает публичный вариант, проверяет порт и возвращает адрес. Генерируемые preview-файлы хранятся во временной папке вне облака.
+
+## Публикация
+
+Исходники Wild хранятся в ветке `wild` репозитория [eppelas/aimindset-main](https://github.com/eppelas/aimindset-main/tree/wild). Ветка `main` содержит существующую Main и опубликованный Wild под `wild/`. Не пушить корень этой рабочей папки в удалённую `main`.
+
+Non-profit использует JetBrains Mono ExtraBold. Trial-шрифт и отвергнутый отдельный OAuth-прототип сохранены в локальной резервной папке и исключены из исходного коммита и публичной сборки.
+
+Публичный адрес Wild: [eppelas.github.io/aimindset-main/wild/](https://eppelas.github.io/aimindset-main/wild/). В релиз попадают только файлы из `release-manifest.json`, с SHA исходников и родителя. Редактор, операции записи, служебные файлы и резервные копии исключены. Расписание обращается к существующему Google API; waitlist сохраняет прежний обработчик.
+
+Первичная доставка проверенного артефакта выполняется `tools/release/publish-artifact.py`: по умолчанию dry-run; `--publish --source-sha <SHA>` обновляет только `wild/` с сохранением Main и истории. При конкурентном изменении `main` операция останавливается. Для отката повторно собрать принятую пару SHA и опубликовать её новым коммитом.
+
+`source-checks.yml` проверяет источник и сборку закреплённого приватного родителя. `wild-release.yml` после проверок обновляет существующий Google publisher и публикует Pages без редактора. Push в `wild` означает публикацию; часовой запуск берёт SHA последнего опубликованного источника и актуальный parent main. Точная пара сохраняется в release-manifest; одинаковая пара не пересобирается.
+
+## Google и передача команде
+
+Google использует прежний inline-редактор: «править» → пароль 0281 → изменить текст → «сохранить». Google-аккаунт и список редакторов не требуются. `google-save-sync.yml` примерно раз в пять минут переносит изменённые текстовые поля прямо в коммит Wild, затем явно запускает release. PR не создаются. HTML/CSS/JS из Google не копируются в GitHub. Трёхстороннее сравнение и ревизии защищают от затёртых правок; меню, футер и обучение редактируются только в родителе через skill.
+
+GitHub→Google работает через `tools/release/publish-google.py`, существующий `aim-v5-publisher` и объекты `wild/` существующего бакета. Доступ Actions короткоживущий (Workload Identity), постоянный Google-ключ не нужен. Старые файлы сохраняются в `wild/release-backups/`; журнал создаётся до записи. Неперенесённый Google-текст блокирует обратную публикацию. Одинаковые версии не создают цикл коммитов.
+
+Настроены `AIM_PLATFORM_DEPLOY_KEY`, `AIM_GOOGLE_WIF_PROVIDER`, `AIM_GOOGLE_SERVICE_ACCOUNT`; рабочий флаг — `AIM_PLATFORM_INTEGRATION=enabled`. Последнюю фактическую доставку проверять по [Actions](https://github.com/eppelas/aimindset-main/actions) и [release-manifest](https://eppelas.github.io/aimindset-main/wild/release-manifest.json). Пользователь разрешил branch protection, Codex пропустил повторный запрос; GitHub вернул 403 — защита приватного родителя требует Pro. Доступ потребителя к общему приватному источнику — только чтение.
+
+[Инструкция команде](https://github.com/eppelas/aim-web-platform/blob/main/docs/team-handoff.md) перечисляет репозитории, Google-ресурсы, перенос в организацию, права машинной публикации и откат. Технические архивы не входят в релиз.

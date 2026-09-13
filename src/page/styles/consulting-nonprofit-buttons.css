@@ -1,0 +1,174 @@
+
+/* ═══ 05C · консультации ═══════════════════════════════════════════════════
+   Две карточки — одна услуга, поэтому у них одна сетка, одна типографика и
+   один ритм отступов. Различие оставлено только в палитре: тёмная — работа с
+   командой, светлая — работа один на один. Надзаголовки «направление · …»
+   сняты: они повторяли заголовок другими словами.
+   Размеры кегля берутся только из шкалы --type-*. */
+#product-teams .product-block--direction,
+#product-consulting .product-block--direction{
+  position:relative;display:grid;grid-template-columns:minmax(232px,.42fr) minmax(0,1fr);
+  grid-template-rows:none;min-height:320px;isolation:isolate}
+
+/* Пара стоит в две колонки (inline-block по 50%), поэтому заголовок раздела
+   живёт в левой секции, но растянут на всю строку из двух карточек; обе секции
+   получают одинаковый отступ сверху, чтобы карточки начинались на одном уровне. */
+#product-teams{position:relative}
+#product-teams>.sec-head{position:absolute;top:32px;left:0;width:calc(200% + 32px);margin:0}
+#product-teams,#product-consulting{padding-top:74px}
+#product-teams .product-direction-gfx,
+#product-consulting .product-direction-gfx{position:absolute;inset:0;z-index:0;min-height:100%;border:0}
+#product-teams .product-direction-copy,
+#product-consulting .product-direction-copy{
+  position:relative;z-index:4;grid-column:2;justify-content:center;padding:32px 28px 30px}
+#product-teams .product-direction-copy{background:linear-gradient(90deg,rgba(5,5,5,.08),rgba(5,5,5,.9) 22%,#050505 48%)}
+#product-consulting .product-direction-copy{background:linear-gradient(90deg,rgba(255,255,255,.06),rgba(255,255,255,.93) 22%,var(--bg) 48%)}
+#product-teams .product-block--direction h3,
+#product-consulting .product-block--direction h3{
+  margin:0 0 14px;font-family:var(--mono);font-size:var(--type-24);font-style:normal;
+  font-weight:var(--weight-medium);letter-spacing:var(--tracking-tight);line-height:var(--leading-heading)}
+#product-teams .product-block--direction h3{color:#f7f7f3}
+#product-teams .product-block--direction p,
+#product-consulting .product-block--direction p{
+  max-width:44ch;font-size:var(--type-14);line-height:var(--leading-body)}
+#product-teams .product-block--direction .product-cta,
+#product-consulting .product-block--direction .product-cta{margin-top:26px;font-size:var(--type-12)}
+#product-consulting .direction-side-quote{right:auto;max-width:196px}
+@media(min-width:641px){
+  #product-teams .product-block--direction h3,
+  #product-consulting .product-block--direction h3{font-size:var(--type-24)}
+}
+@media(min-width:1181px){
+  #product-teams .product-block--direction h3,
+  #product-consulting .product-block--direction h3{font-size:var(--type-32)}
+}
+@media(max-width:980px){
+  #product-teams>.sec-head{position:static;width:auto;margin:0 0 24px}
+  #product-teams,#product-consulting{padding-top:32px}
+}
+/* На узком экране пара разворачивается в две одинаковые вертикальные карточки:
+   графика сверху, текст под ней. Правила повторяют ранний мобильный блок —
+   он стоит выше по документу, и без этого поздние десктопные значения
+   перекрыли бы его. */
+@media(max-width:960px){
+  #product-teams,#product-consulting{padding-top:22px}
+  #product-teams .product-block--direction,
+  #product-consulting .product-block--direction{grid-template-columns:1fr;grid-template-rows:170px auto;min-height:0}
+  #product-teams .product-direction-gfx,
+  #product-consulting .product-direction-gfx{position:relative;inset:auto;grid-row:1;min-height:170px}
+  #product-teams .product-direction-copy,
+  #product-consulting .product-direction-copy{grid-column:1;grid-row:2;padding:29px 22px 31px}
+  #product-teams .product-direction-copy{background:#050505}
+  #product-consulting .product-direction-copy{background:var(--bg)}
+  #product-consulting .direction-side-quote{max-width:250px}
+}
+
+/* ═══ Места для non-profit ═════════════════════════════════════════════════
+   Это самостоятельная восьмиколоночная полоса: графика занимает 1–2,
+   заголовок 3–4, описание 5–7, ссылка — 8. Так все её вертикали совпадают с
+   сеткой остальной страницы, а не с произвольной внутренней пропорцией. */
+#product-nonprofit .product-block--support{
+  grid-template-columns:repeat(8,minmax(0,1fr));column-gap:var(--grid-gap);min-height:118px}
+#product-nonprofit .product-support-mark{grid-column:1/span 2;min-height:118px}
+#product-nonprofit .product-support-copy{
+  grid-column:3/-1;grid-template-columns:repeat(6,minmax(0,1fr));column-gap:var(--grid-gap);padding:17px 0 18px}
+#product-nonprofit .product-support-copy .product-meta{font-size:var(--type-11)}
+#product-nonprofit .product-support-copy>div{display:contents}
+#product-nonprofit .product-block--support h3{
+  grid-column:1/span 2;margin:0;font-size:var(--type-18);font-weight:var(--weight-medium);
+  letter-spacing:var(--tracking-tight);line-height:var(--leading-card);white-space:normal}
+#product-nonprofit .product-block--support p{grid-column:3/span 3;max-width:none;font-size:var(--type-13);line-height:var(--leading-body)}
+#product-nonprofit .product-block--support .product-cta{grid-column:6;grid-row:auto;justify-self:end;align-self:center;font-size:var(--type-12)}
+@media(max-width:760px){
+  #product-nonprofit .product-block--support{grid-template-columns:1fr;grid-template-rows:66px auto;min-height:0}
+  #product-nonprofit .product-support-mark{grid-column:1;min-height:66px}
+  #product-nonprofit .product-support-copy{grid-column:1;grid-template-columns:minmax(0,1fr) auto;column-gap:14px;row-gap:6px;padding:13px 15px 15px}
+  #product-nonprofit .product-block--support h3{grid-column:1;margin:0 0 4px;font-size:var(--type-16)}
+  #product-nonprofit .product-block--support p{grid-column:1;grid-row:2;max-width:72ch}
+  #product-nonprofit .product-block--support .product-cta{grid-column:2;grid-row:1/span 2}
+}
+
+/* ═══ «люди из этих компаний нам доверяют» ═════════════════════════════════
+   Подпись живёт в двух колонках восьмиколонника (две строки), список — в пяти,
+   восьмая остаётся полем. Список больше не тянется во всю ширину полосы. */
+/* ═══ Реплика под расписанием {space} ══════════════════════════════════════
+   Раньше блок стоял отдельной центрованной колонкой в 760px и не попадал ни в
+   одну направляющую поля {space}. Теперь он лежит на том же восьмиколоннике,
+   что и расписание над ним, и занимает колонки 1–4 — от левого края поля.
+   Ширины хватает ровно на две строки; text-wrap:balance делает их равными,
+   чтобы плашки не торчали разной длиной. */
+.space-schedule-quote{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));column-gap:var(--grid-gap);width:100%;margin:0}
+.space-schedule-quote .rhythm-quote{display:block;grid-column:1/span 4;margin:0}
+.space-schedule-quote .rhythm-quote p{text-wrap:balance}
+@media(max-width:700px){
+  .space-schedule-quote{display:block;padding:44px 17px 52px}
+  .space-schedule-quote .rhythm-quote p{text-wrap:initial}
+}
+
+.company-proof{grid-template-columns:repeat(8,minmax(0,1fr));column-gap:var(--grid-gap);row-gap:10px;align-items:start;padding-inline:0}
+.company-proof .label{justify-self:end;max-width:182px}
+@media(max-width:700px){
+  .company-proof{grid-template-columns:1fr}
+  .company-proof .label,.company-proof p{grid-column:1}
+  .company-proof .label{justify-self:start}
+}
+
+/* ═══ Кнопки: пиксельный конструктор ═══════════════════════════════════════
+   Силуэт собран из модулей --pxu, как в v19-wild-1to1 (референс craft.wild.as):
+   углы не скруглены, а сложены ступенями. Три конструкции, чтобы набор читался
+   как один конструктор, а не один штамп:
+     A — ступени на всех четырёх углах (главные CTA страницы)
+     B — ступени по диагонали, два угла остаются прямыми (кнопки карточек)
+     C — одна ступень в один модуль (кнопка формы)
+   Форму держат два слоя под текстом: ::before — контур, ::after — заливка на
+   1px внутрь. Режутся clip-path именно слои, а не сама кнопка: clip-path
+   срезает и box-shadow, и filter, поэтому смещённая кислотная тень живёт на
+   кнопке (drop-shadow) и повторяет пиксельный край. */
+:root{--pxu:5px;--pxu2:10px}
+.btn,.product-cta,.section-page-cta,.waitlist-submit{
+  position:relative;isolation:isolate;border:0;border-radius:0;background:transparent;box-shadow:none}
+a.btn.plain{border-bottom:0}  /* подчёркивание ссылки заменяет пиксельный силуэт */
+.btn::before,.product-cta::before,.section-page-cta::before,.waitlist-submit::before{
+  content:"";position:absolute;inset:0;z-index:-1;background:var(--px-line,var(--ink));
+  transition:none}
+.product-cta::after{
+  content:"";position:absolute;inset:1px;z-index:-1;background:var(--px-fill,var(--bg));
+  transition:none}
+
+/* A — все четыре угла ступенями */
+.btn::before,.section-page-cta::before{
+  clip-path:polygon(
+    var(--pxu2) 0,calc(100% - var(--pxu2)) 0,calc(100% - var(--pxu2)) var(--pxu),calc(100% - var(--pxu)) var(--pxu),
+    calc(100% - var(--pxu)) var(--pxu2),100% var(--pxu2),100% calc(100% - var(--pxu2)),
+    calc(100% - var(--pxu)) calc(100% - var(--pxu2)),calc(100% - var(--pxu)) calc(100% - var(--pxu)),
+    calc(100% - var(--pxu2)) calc(100% - var(--pxu)),calc(100% - var(--pxu2)) 100%,var(--pxu2) 100%,
+    var(--pxu2) calc(100% - var(--pxu)),var(--pxu) calc(100% - var(--pxu)),var(--pxu) calc(100% - var(--pxu2)),
+    0 calc(100% - var(--pxu2)),0 var(--pxu2),var(--pxu) var(--pxu2),var(--pxu) var(--pxu),
+    var(--pxu2) var(--pxu),var(--pxu2) 0)}
+/* B — ступени по диагонали */
+.product-cta::before,.product-cta::after{
+  clip-path:polygon(
+    var(--pxu2) 0,100% 0,100% calc(100% - var(--pxu2)),
+    calc(100% - var(--pxu)) calc(100% - var(--pxu2)),calc(100% - var(--pxu)) calc(100% - var(--pxu)),
+    calc(100% - var(--pxu2)) calc(100% - var(--pxu)),calc(100% - var(--pxu2)) 100%,
+    0 100%,0 var(--pxu2),var(--pxu) var(--pxu2),var(--pxu) var(--pxu),var(--pxu2) var(--pxu),var(--pxu2) 0)}
+/* C — одна ступень в один модуль */
+.waitlist-submit::before{
+  clip-path:polygon(
+    var(--pxu) 0,calc(100% - var(--pxu)) 0,calc(100% - var(--pxu)) var(--pxu),100% var(--pxu),
+    100% calc(100% - var(--pxu)),calc(100% - var(--pxu)) calc(100% - var(--pxu)),calc(100% - var(--pxu)) 100%,
+    var(--pxu) 100%,var(--pxu) calc(100% - var(--pxu)),0 calc(100% - var(--pxu)),0 var(--pxu),var(--pxu) var(--pxu))}
+
+/* состояния: заливка перещёлкивается ступенями, смещение — кислотной тенью */
+.product-cta{font-size:var(--type-12)}
+.product-cta:hover,.product-cta:focus-visible{
+  color:var(--px-ink-hover,var(--bg));filter:drop-shadow(3px 3px 0 var(--acid))}
+.product-cta:hover::after,.product-cta:focus-visible::after{background:var(--px-fill-hover,var(--ink))}
+#product-teams .product-cta{--px-line:#8b8b84;--px-fill:rgba(5,5,5,.72);--px-fill-hover:#f7f7f3;--px-ink-hover:#050505}
+.product-block--support .product-cta{--px-line:#8a8a84;--px-fill:#f4f4ef;--px-fill-hover:var(--ink)}
+.btn{transition:transform .18s steps(3,end),filter .18s steps(3,end)}
+.btn:hover,.btn:focus-visible{transform:translate(-2px,-2px);filter:drop-shadow(4px 4px 0 var(--acid));outline:none}
+.section-page-cta{filter:drop-shadow(3px 3px 0 var(--acid));transition:transform .18s steps(3,end),filter .18s steps(3,end)}
+.section-page-cta:hover,.section-page-cta:focus-visible{filter:drop-shadow(5px 5px 0 var(--acid))}
+.waitlist-submit{transition:transform .18s steps(3,end),filter .18s steps(3,end)}
+.waitlist-submit:hover,.waitlist-submit:focus-visible{transform:translate(-2px,-2px);filter:drop-shadow(3px 3px 0 var(--acid))}

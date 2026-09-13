@@ -1,0 +1,12 @@
+
+/* Хиро: крупный заголовок, компактный лид под ним, знак справа. */
+#hero>h1{font-size:clamp(30px,4.2vw,46px)}
+#hero>.lead{font-size:13.5px}
+#hero>.hero-face{grid-column:6/span 3;grid-row:2/span 2;align-self:start;justify-self:center;margin:0;padding-right:24px}
+.hero-face{width:min(300px,100%)}
+.hero-face astro-island>div{width:100%}
+@media(max-width:960px){
+  #hero>.hero-face{grid-column:1/-1;grid-row:auto;justify-self:start}
+  .hero-face{width:min(240px,62%)}
+}
+

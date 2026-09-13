@@ -1,0 +1,16 @@
+
+/* тексты карточек направлений — снаружи; карточка = сцена (2:1); фоны единые (чёрный + белые);
+   без подъёма на ховере (текст и стрелка не прыгают); стрелка красная; клик по тексту ведёт туда же, куда стрелка. */
+.ecosystem-direction-card,.ecosystem-direction-card--learning,.ecosystem-direction-card--platform,.ecosystem-direction-card--research,.ecosystem-direction-card--consulting{display:grid;grid-template-rows:auto auto;aspect-ratio:auto;overflow:visible;border:0;background:transparent;box-shadow:none;color:var(--ink);transition:none}
+.ecosystem-direction-card:hover,.ecosystem-direction-card:focus-visible{transform:none;box-shadow:none}
+.ecosystem-direction-card .direction-scene{position:relative;inset:auto;z-index:0;aspect-ratio:2/1;overflow:hidden;border:1px solid #d8d8d1;background:#fff;pointer-events:none}
+.ecosystem-direction-card--learning .direction-scene{background:#101110;border-color:#101110}
+.ecosystem-direction-card:hover .direction-scene,.ecosystem-direction-card:focus-visible .direction-scene{filter:none;border-color:#111}
+.ecosystem-direction-card .ecosystem-direction-effect{position:absolute;left:0;top:0;right:0;bottom:auto;height:auto;aspect-ratio:2/1;z-index:1}
+.ecosystem-direction-card .ecosystem-direction-copy{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:auto auto;gap:5px 10px;align-items:end;min-height:0;padding:12px 2px 0;background:transparent;cursor:pointer}
+.ecosystem-direction-card .ecosystem-direction-meta,.ecosystem-direction-card--learning .ecosystem-direction-meta,.ecosystem-direction-card--platform .ecosystem-direction-meta,.ecosystem-direction-card--research .ecosystem-direction-meta,.ecosystem-direction-card--consulting .ecosystem-direction-meta{position:static;left:auto;right:auto;top:auto;grid-column:1/-1;grid-row:1;justify-content:flex-start;gap:9px;padding:0;background:transparent;color:#686864;text-align:left}
+.ecosystem-direction-card h2,.ecosystem-direction-card--learning h2,.ecosystem-direction-card--platform h2,.ecosystem-direction-card--research h2,.ecosystem-direction-card--consulting h2{position:static;left:auto;right:auto;bottom:auto;grid-column:1;grid-row:2;max-width:none;margin:0;padding:0;color:var(--ink);text-align:left;font-size:var(--type-18);line-height:1.15;white-space:normal}
+.ecosystem-direction-card .ecosystem-direction-arrow,.ecosystem-direction-card--learning .ecosystem-direction-arrow,.ecosystem-direction-card--platform .ecosystem-direction-arrow,.ecosystem-direction-card--research .ecosystem-direction-arrow,.ecosystem-direction-card--consulting .ecosystem-direction-arrow{position:static;left:auto;right:auto;bottom:auto;grid-column:2;grid-row:2;width:auto;height:auto;color:#C50D17}
+.ecosystem-direction-card .ecosystem-direction-arrow::after{font-size:var(--type-18)}
+.ecosystem-direction-card .ecosystem-direction-copy:hover .ecosystem-direction-arrow::after{transform:translate(3px,2px)}
+@media(max-width:1200px){.ecosystem-direction-card{aspect-ratio:auto}}

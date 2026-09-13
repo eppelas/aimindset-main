@@ -1,0 +1,1 @@
+(self.Astro||(self.Astro={})).only=async t=>{await(await t())()};window.dispatchEvent(new Event("astro:only"));

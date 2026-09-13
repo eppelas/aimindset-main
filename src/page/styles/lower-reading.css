@@ -1,0 +1,35 @@
+
+@media(max-width:960px){
+#reviews .reviews-grid{border:0;background:transparent;gap:32px 40px}
+#reviews .reviews-grid>blockquote,#reviews .reviews-grid>.about-quote--origin{padding:0;background:transparent;border:0}
+#reviews .review-copy{max-width:none}
+#reviews .reviews-grid>.about-quote--origin .quote-line{transform:none}
+}
+@media(min-width:961px){#reviews .company-proof{margin-top:48px;padding-top:24px;border-top:var(--frame) solid var(--hair)}}
+#manifesto .manifesto-summary,#manifesto .manifesto-summary .k{font-size:var(--type-16);line-height:1.5;letter-spacing:normal}
+#manifesto .manifesto-summary .k{display:inline;padding:0;border:0;background:none;color:inherit;white-space:normal}
+main>section#reviews{padding-bottom:32px!important}
+main>section#manifesto,main>section#follow{padding-top:32px!important;padding-bottom:32px!important}
+main{padding-bottom:0}
+#w19-marquee-band{display:none!important}
+@media(max-width:960px){
+ #reviews .reviews-grid{grid-template-columns:minmax(0,1fr);gap:32px;margin-top:0}
+ .space-schedule__bar{flex-wrap:wrap;gap:8px}
+ .space-schedule__descriptor{white-space:normal;min-width:0;max-width:100%}
+ #reviews .company-proof{grid-template-columns:minmax(0,1fr)}
+ #reviews .company-proof .label,#reviews .company-proof p{grid-column:1;grid-row:auto;min-width:0;max-width:none;justify-self:start}
+ #reviews .company-proof p{font-size:14px;line-height:1.5}
+ #manifesto .sec-head{flex-direction:row!important}
+ #manifesto .sec-head>.num+ .num{flex:0 1 auto;max-width:100%}
+ #reviews .review-copy{font-size:16px;line-height:1.5}
+ #manifesto .row{grid-template-columns:24px minmax(0,1fr);gap:12px;padding:20px 0;align-items:start}
+ #manifesto .row>div{min-width:0}
+ #manifesto .row>span:last-child{display:none}
+ #manifesto .row p{font-size:16px;line-height:1.5}
+ #manifesto .row h3{font-size:18px;line-height:1.25;margin-bottom:8px}
+ #manifesto .manifesto-side-quote{margin:0}
+ #follow .rhythm-quote{display:block;width:100%;max-width:none}
+ #follow .rhythm-quote p{width:100%;max-width:none}
+ #follow .follow-panel{grid-template-columns:minmax(0,1fr)}
+ #follow .follow-intro{padding:24px 16px;border-right:0;border-bottom:1px solid #454545}
+}

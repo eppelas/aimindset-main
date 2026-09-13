@@ -1,0 +1,7 @@
+
+/* Хиро: символьное поле и навигация. */
+#hero-kv{position:fixed;inset:0;width:100vw;height:100vh;z-index:3;pointer-events:none;}
+#about{cursor:auto;}
+@media(max-width:859px){}
+/* Reduced motion убирает движение, а не сам киввизуал: поле и знак
+   остаются статичным кадром, скрывается только игровой контрол. */

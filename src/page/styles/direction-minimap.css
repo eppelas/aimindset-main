@@ -1,0 +1,20 @@
+
+/* Боковой навигатор направлений: без квадратиков — вертикальная
+   волосяная линия и тики, как у списков проектов; прячется на узких экранах
+   и под открытой картой, чтобы не налезать на контент. */
+.direction-minimap{position:fixed;top:50%;left:22px;z-index:60;display:flex;flex-direction:column;gap:9px;transform:translateY(-50%);opacity:0;pointer-events:none;transition:none}
+.direction-minimap.is-visible{opacity:1;pointer-events:auto}
+.direction-minimap::before{content:"";position:absolute;top:22px;bottom:6px;left:6px;width:1px;background:rgba(17,18,16,.18)}   /* ствол начинается под корнем */
+.direction-minimap a{position:relative;display:block;padding-left:22px;border:0;color:rgba(17,18,16,.38);font:500 var(--type-11)/1 var(--mono);letter-spacing:.1em;text-decoration:none}
+.direction-minimap a::before{content:"";position:absolute;top:50%;left:6px;width:10px;height:1px;background:rgba(17,18,16,.18)}
+.direction-minimap a:hover,.direction-minimap a:focus-visible{color:rgba(17,18,16,.8);outline:none}
+.direction-minimap a.is-current{color:var(--ink);font-weight:700}
+.direction-minimap a.is-current::before{background:#c50d17;height:2px}
+.direction-minimap .direction-minimap-root{padding-left:0;margin-bottom:2px;color:rgba(17,18,16,.62);letter-spacing:.13em}
+.direction-minimap .direction-minimap-root::before{content:none}
+@media(max-width:1599px){.direction-minimap{display:none}}   /* на 13" не помещается рядом с линиями */
+body:has(.ecosystem-map-dialog[open]) .direction-minimap{display:none}
+body.editing .direction-minimap{display:none}
+/* Тики соответствуют спискам схемы; текущий пункт отмечен красной чёрточкой. */
+.direction-minimap a{letter-spacing:.06em;text-transform:lowercase}
+.direction-minimap .direction-minimap-root{text-transform:uppercase}

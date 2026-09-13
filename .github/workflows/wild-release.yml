@@ -1,0 +1,160 @@
+name: Wild source and public release
+on:
+  push:
+    branches: [wild]
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: Publish the accepted source to GitHub Pages
+        type: boolean
+        default: false
+      source_ref:
+        description: Exact accepted source commit (empty uses wild)
+        type: string
+        default: ''
+      platform_ref:
+        description: Exact parent commit (empty uses source dependency pin)
+        type: string
+        default: ''
+  schedule:
+    - cron: '23 * * * *'
+permissions:
+  contents: read
+concurrency:
+  group: aim-wild-release
+  cancel-in-progress: false
+jobs:
+  build:
+    if: vars.AIM_PLATFORM_INTEGRATION == 'enabled'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    outputs:
+      source_sha: ${{ steps.revisions.outputs.source_sha }}
+      platform_sha: ${{ steps.revisions.outputs.platform_sha }}
+      changed: ${{ steps.revisions.outputs.changed }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event_name == 'push' && github.sha || inputs.source_ref || 'wild' }}
+          path: source
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Use the published source for scheduled parent rebuilds
+        if: github.event_name == 'schedule'
+        run: |
+          python3 - <<'PY'
+          import json, re, subprocess
+          from urllib.request import urlopen
+          with urlopen('https://eppelas.github.io/aimindset-main/wild/release-manifest.json', timeout=30) as response:
+              sha = json.load(response)['sourceCommit']
+          assert re.fullmatch('[a-f0-9]{40}', sha)
+          subprocess.run(['git', '-C', 'source', 'merge-base', '--is-ancestor', sha, 'HEAD'], check=True)
+          subprocess.run(['git', '-C', 'source', 'checkout', '--detach', sha], check=True)
+          PY
+      - name: Read parent dependency pin
+        id: dependency
+        run: echo "sha=$(python3 -c 'import json; print(json.load(open("source/platform-dependency.json"))["revision"])')" >> "$GITHUB_OUTPUT"
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: eppelas/aim-web-platform
+          ref: ${{ github.event_name == 'schedule' && 'main' || inputs.platform_ref || steps.dependency.outputs.sha }}
+          path: platform
+          persist-credentials: false
+          ssh-key: ${{ secrets.AIM_PLATFORM_DEPLOY_KEY }}
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: '22'
+      - name: Record immutable inputs
+        id: revisions
+        run: python3 source/tools/release/release-inputs.py source platform
+      - run: python -B -m unittest discover -s tests -v
+        if: steps.revisions.outputs.changed == 'true'
+        working-directory: platform
+      - run: npm ci --ignore-scripts
+        if: steps.revisions.outputs.changed == 'true'
+        working-directory: source
+      - run: npm run check
+        if: steps.revisions.outputs.changed == 'true'
+        working-directory: source
+      - run: python -B tools/source-build.py --platform ../platform --platform-revision "$PLATFORM_SHA"
+        if: steps.revisions.outputs.changed == 'true'
+        env:
+          PLATFORM_SHA: ${{ steps.revisions.outputs.platform_sha }}
+        working-directory: source
+      - run: python -B tools/verify-source-build.py --platform ../platform --platform-revision "$PLATFORM_SHA"
+        if: steps.revisions.outputs.changed == 'true'
+        env:
+          PLATFORM_SHA: ${{ steps.revisions.outputs.platform_sha }}
+        working-directory: source
+      - run: node tools/verify-idle-schedulers.cjs && node tools/verify-idle-scenes.cjs
+        if: steps.revisions.outputs.changed == 'true'
+        working-directory: source
+      - run: python -B -m unittest discover -s tools/release -p 'test_*.py' -v
+        if: steps.revisions.outputs.changed == 'true'
+        working-directory: source
+      - run: npm run test:editor
+        if: steps.revisions.outputs.changed == 'true'
+        working-directory: source
+      - run: python -B tools/release/public_build.py --output ../public-wild --source-sha "$SOURCE_SHA" --platform-sha "$PLATFORM_SHA"
+        if: steps.revisions.outputs.changed == 'true'
+        env:
+          SOURCE_SHA: ${{ steps.revisions.outputs.source_sha }}
+          PLATFORM_SHA: ${{ steps.revisions.outputs.platform_sha }}
+        working-directory: source
+      - run: python -B tools/release/check-public.py ../public-wild
+        if: steps.revisions.outputs.changed == 'true'
+        working-directory: source
+      - name: Authenticate this release to the existing Google bucket
+        id: google
+        if: steps.revisions.outputs.changed == 'true' && (inputs.publish || github.event_name == 'schedule' || github.event_name == 'push')
+        uses: google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093 # v3
+        with:
+          project_id: cr-ref-genmedia-20260529
+          workload_identity_provider: ${{ vars.AIM_GOOGLE_WIF_PROVIDER }}
+          service_account: ${{ vars.AIM_GOOGLE_SERVICE_ACCOUNT }}
+          token_format: access_token
+          create_credentials_file: false
+      - name: Update Google through the existing publisher
+        if: steps.revisions.outputs.changed == 'true' && (inputs.publish || github.event_name == 'schedule' || github.event_name == 'push')
+        env:
+          GOOGLE_ACCESS_TOKEN: ${{ steps.google.outputs.access_token }}
+          SOURCE_SHA: ${{ steps.revisions.outputs.source_sha }}
+        run: python -B tools/release/publish-google.py --artifact ../public-wild --source-sha "$SOURCE_SHA" --publish --receipt "$RUNNER_TEMP/wild-google-release.json"
+        working-directory: source
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        if: steps.revisions.outputs.changed == 'true'
+        with:
+          name: wild-public
+          path: public-wild
+          include-hidden-files: true
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        if: steps.revisions.outputs.changed == 'true' && (inputs.publish || github.event_name == 'schedule' || github.event_name == 'push')
+        with:
+          ref: main
+          path: existing-main
+          persist-credentials: false
+      - name: Preserve Main and replace only Wild in the Pages artifact
+        if: steps.revisions.outputs.changed == 'true' && (inputs.publish || github.event_name == 'schedule' || github.event_name == 'push')
+        run: python source/tools/release/assemble-pages.py existing-main public-wild pages
+      - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        if: steps.revisions.outputs.changed == 'true' && (inputs.publish || github.event_name == 'schedule' || github.event_name == 'push')
+        with:
+          path: pages
+  deploy:
+    if: needs.build.outputs.changed == 'true' && (inputs.publish || github.event_name == 'schedule' || github.event_name == 'push')
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
+        id: deployment

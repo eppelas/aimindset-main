@@ -1,0 +1,55 @@
+name: Wild source checks
+on:
+  push:
+    branches: [wild]
+  pull_request:
+    branches: [wild]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+      - name: Read shared component revision
+        if: vars.AIM_PLATFORM_INTEGRATION == 'enabled'
+        id: parent
+        run: python -c 'import json,re; sha=json.load(open("platform-dependency.json"))["revision"]; assert re.fullmatch("[0-9a-f]{40}",sha); print("sha="+sha)' >> "$GITHUB_OUTPUT"
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        if: vars.AIM_PLATFORM_INTEGRATION == 'enabled'
+        with:
+          repository: eppelas/aim-web-platform
+          ref: ${{ steps.parent.outputs.sha }}
+          path: .platform
+          persist-credentials: false
+          ssh-key: ${{ secrets.AIM_PLATFORM_DEPLOY_KEY }}
+      - name: Compile text changes with shared components
+        if: vars.AIM_PLATFORM_INTEGRATION == 'enabled'
+        run: python -B tools/source-build.py --platform .platform
+      - run: python -B tools/check-generated-source.py
+      - run: npm ci --ignore-scripts
+      - run: npm run check
+      - run: npm run test:editor
+      - run: node tools/verify-animation-scheduling.cjs
+      - run: node tools/verify-idle-schedulers.cjs
+      - run: node tools/verify-idle-scenes.cjs
+      - run: python -B -m unittest discover -s tools/release -p 'test_*.py'
+      - run: python -B tools/site-pages/check-components.py
+      - run: python -B tools/release/public_build.py --output "$RUNNER_TEMP/wild-public"
+      - run: python -B tools/release/check-public.py "$RUNNER_TEMP/wild-public"
+      - name: Shared release configuration
+        env:
+          PARENT_INTEGRATION: ${{ vars.AIM_PLATFORM_INTEGRATION }}
+        run: |
+          if [ "$PARENT_INTEGRATION" != enabled ]; then
+            echo '::notice::Parent compilation and automatic publishing are inactive until read-only parent access is configured.'
+          fi

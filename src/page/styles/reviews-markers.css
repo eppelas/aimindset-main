@@ -1,0 +1,65 @@
+
+/* Цвет живёт только под строками цитаты: источник и белое поле страницы чистые. */
+#reviews .reviews-grid{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:1px;
+  margin-top:30px;
+  border:1px solid var(--hair);
+  border-top-color:var(--ink);
+  background:var(--hair);
+}
+#reviews .reviews-grid>blockquote{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:14px;
+  grid-column:auto;
+  width:auto;
+  max-width:none;
+  min-width:0;
+  min-height:0;
+  margin:0;
+  padding:26px;
+  border:0;
+  background:var(--bg);
+  font-size:var(--type-16);
+  line-height:var(--leading-body);
+  letter-spacing:var(--tracking-body);
+}
+#reviews .review-copy{max-width:48ch;margin:0}
+#reviews .review-emphasis{
+  display:inline;
+  padding:0 .12em;
+  background:var(--ink);
+  color:var(--bg);
+  -webkit-box-decoration-break:clone;
+  box-decoration-break:clone;
+}
+#reviews .reviews-grid>blockquote .src{
+  display:block;
+  margin:0;
+  background:transparent;
+  color:var(--muted);
+  font-size:var(--type-11);
+  line-height:var(--leading-ui);
+  letter-spacing:var(--tracking-ui);
+}
+#reviews .reviews-grid>blockquote .src a{border-bottom:1px solid currentColor;white-space:nowrap}
+#reviews .reviews-grid>.about-quote--origin{
+  display:flex;
+  align-items:center;
+  grid-column:auto;
+  margin:0!important;
+  padding:30px 26px;
+  border:0;
+  background:var(--bg);
+}
+#reviews .reviews-grid>.about-quote--origin .quote-line{margin:0;font-size:var(--type-24);line-height:var(--leading-card);transform:translateY(8px)}
+@media(max-width:700px){
+  #reviews .reviews-grid{grid-template-columns:1fr;gap:1px}
+  #reviews .reviews-grid>blockquote,
+  #reviews .reviews-grid>blockquote:nth-child(n),
+  #reviews .reviews-grid>.about-quote--origin{grid-column:auto;max-width:none}
+  #reviews .reviews-grid>blockquote{padding:17px 16px}
+  #reviews .reviews-grid>.about-quote--origin{padding:20px 16px}
+}

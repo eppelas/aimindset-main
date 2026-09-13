@@ -1,0 +1,6 @@
+
+/* One desktop gap from the values cards to the team heading. */
+@media(min-width:961px){
+ main>section#about{padding-bottom:0!important}
+ main>section#team{margin-top:0;padding-top:152px!important}
+}
