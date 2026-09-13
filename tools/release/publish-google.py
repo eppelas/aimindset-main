@@ -1,6 +1,7 @@
 """Publish compiled Wild through its existing Google publisher, preserving pending text."""
 import argparse,base64,hashlib,importlib.util,json,mimetypes,os,re,subprocess,sys,uuid
 from pathlib import Path
+from concurrent.futures import ThreadPoolExecutor
 from urllib.request import Request,urlopen
 from urllib.error import HTTPError
 from urllib.parse import quote
@@ -21,7 +22,7 @@ def module(name,path):
 def run(command,cwd):return subprocess.check_output(command,cwd=cwd,text=True,timeout=60).strip()
 def request(url,method='GET',data=None,token=None,kind=None,missing=False):
     headers={'Cache-Control':'no-cache'}
-    if token:headers.update({'Authorization':'Bearer '+token,'x-goog-user-project':PROJECT})
+    if token:headers.update({'Authorization':'Bearer '+token})
     if isinstance(data,dict):data=json.dumps(data).encode();kind='application/json'
     if kind:headers['Content-Type']=kind
     try:
@@ -103,8 +104,9 @@ def main():
         assert digest(public)==manifest['files'][name]['sha256'],'Source differs from verified artifact: '+name
     token=os.environ.get('GOOGLE_ACCESS_TOKEN') or run(['gcloud','auth','print-access-token'],root)
     planned=[]
-    for name,data in desired.items():
-        old=json_request(object_url('wild/'+name),token=token,missing=True)
+    with ThreadPoolExecutor(max_workers=6) as pool:
+        existing=list(pool.map(lambda name:json_request(object_url('wild/'+name),token=token,missing=True),desired))
+    for (name,data),old in zip(desired.items(),existing):
         if old and old.get('md5Hash')==base64.b64encode(hashlib.md5(data).digest()).decode():continue
         planned.append((name,data,old))
     receipt={'sourceCommit':source,'platformCommit':manifest['platformCommit'],'oldGoogle':cloud[0],'mode':'publish' if a.publish else 'dry-run','changedFiles':[x[0] for x in planned],'moves':[]}
