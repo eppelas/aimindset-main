@@ -1,6 +1,7 @@
 """Reverse publication guards, with all network/Git effects mocked."""
 import base64
 import hashlib
+import html
 import importlib.util
 import json
 from pathlib import Path
@@ -87,7 +88,7 @@ class PublishGoogleTests(unittest.TestCase):
             return result
 
     def test_pending_google_text_blocks_publication_with_real_importer(self):
-        base=(ROOT/'index.html').read_text();raw=json.loads((ROOT/'src/content/original-text.json').read_text())['text.0052']
+        base=(ROOT/'index.html').read_text();original=json.loads((ROOT/'src/content/original-text.json').read_text())['text.0052'];value=json.loads((ROOT/'src/content/main.json').read_text())['fields']['text.0052'];raw=original if html.unescape(original)==value else html.escape(value,quote=False)
         self.pending(base)
         with self.assertRaisesRegex(ValueError,'unimported text.*text.0052'):
             self.pending(base.replace(raw,'A new cloud heading',1))

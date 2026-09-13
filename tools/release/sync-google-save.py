@@ -5,6 +5,7 @@ import base64
 import hashlib
 from html.parser import HTMLParser
 import json
+import os
 from pathlib import Path
 import re
 import subprocess
@@ -15,13 +16,25 @@ REPO = 'eppelas/aimindset-main'
 ORIGIN = 'https://aimindset-wild.web.app'
 STATUS = ORIGIN + '/__status?object=wild%2Findex.html'
 CONTENT = 'src/content/main.json'
-ALLOWED = {CONTENT, 'index.html', 'assets/site/site-shell.js', 'source-build-record.json'}
+DEPENDENCY = 'platform-dependency.json'
+PAGES_MANIFEST = 'https://eppelas.github.io/aimindset-main/wild/release-manifest.json'
+ALLOWED = {CONTENT, DEPENDENCY, 'index.html', 'assets/site/site-shell.js', 'source-build-record.json'}
 
 
 def run(args, cwd, data=None):
     result = subprocess.run(args, cwd=cwd, input=data, capture_output=True, check=False, timeout=180)
     if result.returncode:
-        raise RuntimeError('Command failed: ' + ' '.join(args[:3]))
+        message = 'Command failed: ' + ' '.join(args[:3])
+        # Local validation failures need the actual failing assertion. Never
+        # expose gh/gcloud responses or environment dumps through this helper.
+        if Path(args[0]).name in {'python', 'python3', 'node', 'npm'}:
+            detail = (result.stderr + b'\n' + result.stdout).decode('utf-8', errors='replace')[-6000:]
+            for name, value in os.environ.items():
+                if len(value) >= 8 and any(word in name.upper() for word in ('TOKEN', 'SECRET', 'PASSWORD', 'PRIVATE_KEY')):
+                    detail = detail.replace(value, '[REDACTED]')
+            detail = re.sub(r'(?i)Bearer\s+[^\s]+|gh[pousr]_[A-Za-z0-9_]+|github_pat_[A-Za-z0-9_]+', '[REDACTED]', detail)
+            message += '\n' + detail.strip()
+        raise RuntimeError(message)
     return result.stdout
 
 
@@ -77,6 +90,37 @@ def gh(root, path, method='GET', body=None):
     return json.loads(run(args, root, None if body is None else json.dumps(body).encode()))
 
 
+def ensure_delivery(root, head, pin, cloud_base, api=None, reader=None, runner=None):
+    """Retry delivery of an existing current commit; never create another commit."""
+    api, reader, runner = api or gh, reader or fetch, runner or run
+    if api(root, 'git/ref/heads/wild')['object']['sha'] != head:
+        raise ValueError('Wild advanced before delivery; retry the current HEAD next poll')
+    try:
+        published = json.loads(reader(PAGES_MANIFEST, 131072))
+    except (OSError, ValueError):
+        published = {}
+    if cloud_base == head and published.get('sourceCommit') == head and published.get('platformCommit') == pin:
+        return 'delivered'
+    page = 1
+    active = {'queued', 'in_progress', 'waiting', 'pending', 'requested'}
+    while True:
+        runs = api(root, 'actions/workflows/wild-release.yml/runs?head_sha=' + head + '&per_page=100&page=' + str(page))
+        if any(r.get('head_sha') == head and r.get('status') in active for r in runs.get('workflow_runs', [])):
+            return 'release-active'
+        if page * 100 >= runs.get('total_count', 0):
+            break
+        page += 1
+    if api(root, 'git/ref/heads/wild')['object']['sha'] != head:
+        raise ValueError('Wild advanced before dispatch; retry the current HEAD next poll')
+    runner(['gh', 'workflow', 'run', 'wild-release.yml', '--repo', REPO, '--ref', 'wild', '-f', 'publish=true', '-f', 'source_ref=' + head], root)
+    return 'release-dispatched'
+
+
+def assert_same_snapshot(before, after):
+    if any(before[0].get(k) != after[0].get(k) for k in ('rev', 'sha', 'generation')) or before[1:] != after[1:]:
+        raise ValueError('Google changed while validating; no commit written, retry next poll')
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--self-test', action='store_true', help='Run deterministic polling safety tests without network')
@@ -114,14 +158,25 @@ def main():
         raise ValueError('Importer report differs from validated content delta')
     summary = {'cloud_revision': status['rev'], 'cloud_sha': status['sha'], 'base_source': base, 'current_source': head, 'changed_fields': changed, 'mode': 'publish' if args.publish else 'dry-run'}
     print(json.dumps(summary))
-    if not changed or not args.publish:
+    if not args.publish:
         return
-    pin = json.loads((root / 'platform-dependency.json').read_text())['revision']
-    if run(['git', 'rev-parse', 'HEAD'], args.platform).decode().strip() != pin:
-        raise ValueError('Parent checkout differs from trusted source pin')
-    if run(['git', 'status', '--porcelain'], args.platform).strip():
-        raise ValueError('Parent checkout must be clean')
-    (root / CONTENT).write_bytes(output.read_bytes())
+    dependency = json.loads((root / DEPENDENCY).read_text())
+    pin = dependency['revision']
+    if dependency.get('repository') != 'eppelas/aim-web-platform' or not re.fullmatch('[a-f0-9]{40}', pin):
+        raise ValueError('Invalid trusted parent dependency')
+    latest = run(['git', 'rev-parse', 'HEAD'], args.platform).decode().strip()
+    if not re.fullmatch('[a-f0-9]{40}', latest) or run(['git', 'status', '--porcelain'], args.platform).strip():
+        raise ValueError('Parent checkout must be an exact clean commit')
+    run(['git', 'merge-base', '--is-ancestor', pin, latest], args.platform)
+    parent_changed = latest != pin
+    if not changed and not parent_changed:
+        assert_same_snapshot((status, html, base), cloud_snapshot())
+        print(json.dumps({'status': ensure_delivery(root, head, pin, base), 'commit': head}))
+        return
+    if changed:
+        (root / CONTENT).write_bytes(output.read_bytes())
+    if parent_changed:
+        (root / DEPENDENCY).write_text(json.dumps({**dependency, 'revision': latest}, indent=2) + '\n')
     for command in [
         ['python3', '-B', 'tools/source-build.py', '--platform', str(args.platform.resolve())],
         ['python3', '-B', 'tools/source-build.py', '--platform', str(args.platform.resolve()), '--check'],
@@ -134,17 +189,22 @@ def main():
     ]:
         run(command, root)
     files = run(['git', 'diff', '--name-only'], root).decode().splitlines()
-    if CONTENT not in files or set(files) - ALLOWED:
+    required = ({CONTENT} if changed else set()) | ({DEPENDENCY} if parent_changed else set())
+    if not required.issubset(files) or set(files) - ALLOWED:
         raise ValueError('Generated changes escaped content/build allowlist')
-    commit = commit_text(root, head, {path: (root / path).read_bytes() for path in files}, status, base, changed)
-    run(['gh', 'workflow', 'run', 'wild-release.yml', '--repo', REPO, '--ref', 'main', '-f', 'publish=true', '-f', 'source_ref=' + commit], root)
-    print(json.dumps({'status': 'committed-release-dispatched', 'commit': commit, 'url': 'https://github.com/' + REPO + '/commit/' + commit}))
+    assert_same_snapshot((status, html, base), cloud_snapshot())
+    commit = commit_text(root, head, {path: (root / path).read_bytes() for path in files}, status, base, changed, parent_revision=latest if parent_changed else None)
+    delivery = ensure_delivery(root, commit, latest, base)
+    print(json.dumps({'status': delivery, 'commit': commit, 'url': 'https://github.com/' + REPO + '/commit/' + commit}))
 
 
-def commit_text(root, head, contents, status, base, changed, api=None):
-    if not changed:
+def commit_text(root, head, contents, status, base, changed, api=None, parent_revision=None):
+    if parent_revision is not None and not re.fullmatch('[a-f0-9]{40}', parent_revision):
+        raise ValueError('Invalid parent commit')
+    if not changed and not parent_revision:
         return None
-    if CONTENT not in contents or set(contents) - ALLOWED:
+    required = ({CONTENT} if changed else set()) | ({DEPENDENCY} if parent_revision else set())
+    if not required.issubset(contents) or set(contents) - ALLOWED:
         raise ValueError('Commit paths escaped the allowlist')
     api = api or gh
     if api(root, 'git/ref/heads/wild')['object']['sha'] != head:
@@ -156,6 +216,9 @@ def commit_text(root, head, contents, status, base, changed, api=None):
         entries.append({'path': path, 'mode': '100644', 'type': 'blob', 'sha': blob['sha']})
     tree = api(root, 'git/trees', 'POST', {'base_tree': target['tree']['sha'], 'tree': entries})
     message = 'Import Google text revision ' + str(status['rev']) + '\n\nGoogle-Base-Source: ' + base + '\nChanged-Fields: ' + ', '.join(changed)
+    message += '\nGoogle-Snapshot-Sha: ' + str(status.get('sha', ''))
+    if parent_revision:
+        message += '\nPlatform-Revision: ' + parent_revision
     commit = api(root, 'git/commits', 'POST', {'message': message, 'tree': tree['sha'], 'parents': [head]})['sha']
     api(root, 'git/refs/heads/wild', 'PATCH', {'sha': commit, 'force': False})
     return commit

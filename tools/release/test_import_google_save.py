@@ -21,7 +21,8 @@ class GoogleSaveImportTests(unittest.TestCase):
         cls.template=(ROOT/'src/page/index.html').read_text()
         cls.base=(ROOT/'index.html').read_text()
         cls.content=json.loads((ROOT/'src/content/main.json').read_text())
-        cls.raw=json.loads((ROOT/'src/content/original-text.json').read_text())
+        original=json.loads((ROOT/'src/content/original-text.json').read_text())
+        cls.raw={key:original[key] if key in original and html.unescape(original[key])==value else html.escape(value,quote=False) for key,value in cls.content['fields'].items()}
 
     def edited(self,fields):
         source=self.base

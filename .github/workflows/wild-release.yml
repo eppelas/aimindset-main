@@ -49,25 +49,25 @@ jobs:
           path: source
           fetch-depth: 0
           persist-credentials: false
-      - name: Use the published source for scheduled parent rebuilds
-        if: github.event_name == 'schedule'
-        run: |
-          python3 - <<'PY'
-          import json, re, subprocess
-          from urllib.request import urlopen
-          with urlopen('https://eppelas.github.io/aimindset-main/wild/release-manifest.json', timeout=30) as response:
-              sha = json.load(response)['sourceCommit']
-          assert re.fullmatch('[a-f0-9]{40}', sha)
-          subprocess.run(['git', '-C', 'source', 'merge-base', '--is-ancestor', sha, 'HEAD'], check=True)
-          subprocess.run(['git', '-C', 'source', 'checkout', '--detach', sha], check=True)
-          PY
-      - name: Read parent dependency pin
+      - name: Read immutable parent dependency and reject release overrides
         id: dependency
-        run: echo "sha=$(python3 -c 'import json; print(json.load(open("source/platform-dependency.json"))["revision"])')" >> "$GITHUB_OUTPUT"
+        env:
+          REQUESTED_PARENT: ${{ inputs.platform_ref }}
+        run: |
+          python3 - <<'PYCODE'
+          import json, os, re
+          dependency = json.load(open('source/platform-dependency.json'))
+          sha = dependency['revision']
+          assert dependency['repository'] == 'eppelas/aim-web-platform'
+          assert re.fullmatch('[a-f0-9]{40}', sha)
+          assert not os.environ.get('REQUESTED_PARENT') or os.environ['REQUESTED_PARENT'] == sha, 'Parent updates require a consumer source commit first'
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
+              output.write('sha=' + sha + '\n')
+          PYCODE
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           repository: eppelas/aim-web-platform
-          ref: ${{ github.event_name == 'schedule' && 'main' || inputs.platform_ref || steps.dependency.outputs.sha }}
+          ref: ${{ steps.dependency.outputs.sha }}
           path: platform
           persist-credentials: false
           ssh-key: ${{ secrets.AIM_PLATFORM_DEPLOY_KEY }}
@@ -89,12 +89,12 @@ jobs:
       - run: npm run check
         if: steps.revisions.outputs.changed == 'true'
         working-directory: source
-      - run: python -B tools/source-build.py --platform ../platform --platform-revision "$PLATFORM_SHA"
+      - run: python -B tools/source-build.py --platform ../platform
         if: steps.revisions.outputs.changed == 'true'
         env:
           PLATFORM_SHA: ${{ steps.revisions.outputs.platform_sha }}
         working-directory: source
-      - run: python -B tools/verify-source-build.py --platform ../platform --platform-revision "$PLATFORM_SHA"
+      - run: python -B tools/verify-source-build.py --platform ../platform
         if: steps.revisions.outputs.changed == 'true'
         env:
           PLATFORM_SHA: ${{ steps.revisions.outputs.platform_sha }}
@@ -139,6 +139,15 @@ jobs:
           if [ -n "$BOOTSTRAP_REV" ]; then args+=(--bootstrap-rev "$BOOTSTRAP_REV" --bootstrap-sha "$BOOTSTRAP_SHA"); fi
           python -B tools/release/publish-google.py --artifact ../public-wild --source-sha "$SOURCE_SHA" --publish --receipt "$RUNNER_TEMP/wild-google-release.json" "${args[@]}"
         working-directory: source
+      - name: Preserve Google rollback receipt and partial-failure journal
+        if: always() && steps.google.outcome == 'success'
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: wild-google-release-receipt
+          path: |
+            ${{ runner.temp }}/wild-google-release.json
+            ${{ runner.temp }}/wild-google-release.journal.jsonl
+          if-no-files-found: warn
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         if: steps.revisions.outputs.changed == 'true'
         with:

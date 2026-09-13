@@ -1,4 +1,4 @@
-name: Google inline-editor text to Wild commit
+name: Google text and shared parent to Wild commit
 on:
   schedule:
     - cron: '*/5 * * * *'
@@ -37,7 +37,8 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           repository: eppelas/aim-web-platform
-          ref: ${{ steps.parent.outputs.sha }}
+          ref: main
+          fetch-depth: 0
           path: platform
           persist-credentials: false
           ssh-key: ${{ secrets.AIM_PLATFORM_DEPLOY_KEY }}
@@ -54,7 +55,7 @@ jobs:
       - name: Check polling guards without network
         run: python3 -B tools/release/sync-google-save.py --self-test
         working-directory: source
-      - name: Import saved Google text and dispatch its release
+      - name: Import text and parent updates and ensure release delivery
         env:
           GH_TOKEN: ${{ github.token }}
         run: python3 -B tools/release/sync-google-save.py --platform ../platform --publish
