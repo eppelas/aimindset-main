@@ -54,10 +54,16 @@ def build(platform, output=None, check=False, platform_revision=None):
             raise ValueError('Source include outside src/page')
         return path.read_text()
     homepage = re.sub(r'\{\{source:([^}]+)\}\}', include, shared.materialize(template, components))
-    shell = shared.materialize_shell((ROOT / 'src/site-shell.js').read_text(), components)
+    shell = shared.consumer_shell(json.loads((ROOT / 'src/site-sections.json').read_text()))
     shared.verify_outputs(homepage, shell, components)
     destination = Path(output) if output else ROOT
-    outputs = {'index.html': homepage, 'assets/site/site-shell.js': shell}
+    versions = {'js': hashlib.sha256(shell.encode()).hexdigest()[:10],
+                'css': freshness.digest(ROOT / 'assets/site/site-shell.css')[:10]}
+    def shell_versions(text):
+        return re.sub(r'(assets/site/site-shell\.(js|css))(?:\?v=[\w-]+)?',
+                      lambda match: match[1] + '?v=' + versions[match[2]], text)
+    outputs = {'index.html': shell_versions(homepage), 'assets/site/site-shell.js': shell}
+    outputs.update({name: shell_versions((ROOT / name).read_text()) for name in freshness.SHELL_PAGES})
     record = {
         'schemaVersion': 1,
         'inputs': input_hashes,

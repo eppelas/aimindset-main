@@ -18,7 +18,8 @@ STATUS = ORIGIN + '/__status?object=wild%2Findex.html'
 CONTENT = 'src/content/main.json'
 DEPENDENCY = 'platform-dependency.json'
 PAGES_MANIFEST = 'https://eppelas.github.io/aimindset-main/wild/release-manifest.json'
-ALLOWED = {CONTENT, DEPENDENCY, 'index.html', 'assets/site/site-shell.js', 'source-build-record.json'}
+ALLOWED = {CONTENT, DEPENDENCY, 'index.html', 'assets/site/site-shell.js', 'source-build-record.json',
+           'non-profit/index.html', 'ai-mindset-consulting/index.html', 'oferta/index.html', 'confpolicy/index.html'}
 
 
 def run(args, cwd, data=None):

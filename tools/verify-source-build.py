@@ -16,7 +16,7 @@ module = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(module)
 output = Path(tempfile.mkdtemp(prefix='wild-source-build-'))
 module.build(args.platform, output, platform_revision=args.platform_revision)
-for name in ('index.html', 'assets/site/site-shell.js'):
+for name in ('index.html', 'assets/site/site-shell.js', 'non-profit/index.html', 'ai-mindset-consulting/index.html', 'oferta/index.html', 'confpolicy/index.html'):
     assert (output / name).read_bytes() == (root / name).read_bytes(), name
 html = (output / 'index.html').read_text()
 assert '{{source:' not in html and '{{shared:' not in html

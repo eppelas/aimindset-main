@@ -5,6 +5,7 @@
 /tools/check-generated-source.py @eppelas
 /source-build-record.json @eppelas
 /src/site-shell.js @eppelas
+/src/site-sections.json @eppelas
 /important-budget.json @eppelas
 /platform-dependency.json @eppelas
 /AGENTS.md @eppelas

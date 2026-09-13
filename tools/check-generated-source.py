@@ -7,7 +7,8 @@ from pathlib import Path, PurePosixPath
 
 ROOT = Path(__file__).resolve().parents[1]
 RECORD = 'source-build-record.json'
-OUTPUTS = ('index.html', 'assets/site/site-shell.js')
+SHELL_PAGES = ('non-profit/index.html', 'ai-mindset-consulting/index.html', 'oferta/index.html', 'confpolicy/index.html')
+OUTPUTS = ('index.html', 'assets/site/site-shell.js', *SHELL_PAGES)
 SHA256 = re.compile(r'[0-9a-f]{64}')
 
 
@@ -24,8 +25,9 @@ def inputs(root):
         path = PurePosixPath(name)
         if path.is_absolute() or str(path) != name or '\\' in name or '..' in path.parts or not name.startswith('src/page/'):
             raise ValueError('Invalid source manifest path')
-    names = ['src/page/index.html', 'src/site-shell.js', 'source-manifest.json',
-             'platform-dependency.json', 'tools/source-build.py', 'tools/check-generated-source.py']
+    names = ['src/page/index.html', 'src/site-sections.json', 'source-manifest.json',
+             'platform-dependency.json', 'tools/source-build.py', 'tools/check-generated-source.py',
+             'assets/site/site-shell.css', *SHELL_PAGES]
     names += includes
     names += [p.relative_to(root).as_posix() for p in (root / 'src/content').rglob('*.json') if p.is_file()]
     if len(names) != len(set(names)):
@@ -35,7 +37,12 @@ def inputs(root):
         path = root / name
         if not path.resolve().is_relative_to(root.resolve()) or path.is_symlink() or not path.is_file():
             raise ValueError('Missing or non-local compiler input: ' + name)
-        result[name] = digest(path)
+        # These pages retain their current body; only generated shell cache keys vary.
+        if name in SHELL_PAGES:
+            content = re.sub(r'(assets/site/site-shell\.(?:js|css))(?:\?v=[\w-]+)?', r'\1', path.read_text())
+            result[name] = hashlib.sha256(content.encode()).hexdigest()
+        else:
+            result[name] = digest(path)
     return result
 
 

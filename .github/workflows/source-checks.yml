@@ -46,6 +46,13 @@ jobs:
       - run: python -B tools/site-pages/check-components.py
       - run: python -B tools/release/public_build.py --output "$RUNNER_TEMP/wild-public"
       - run: python -B tools/release/check-public.py "$RUNNER_TEMP/wild-public"
+      - name: Verify parent-owned shell in the browser
+        if: vars.AIM_PLATFORM_INTEGRATION == 'enabled'
+        run: |
+          npm install --prefix "$RUNNER_TEMP/aim-browser" --ignore-scripts --no-audit --no-fund playwright@1.62.1
+          "$RUNNER_TEMP/aim-browser/node_modules/.bin/playwright" install --with-deps chromium
+          export PLAYWRIGHT_MODULE="$RUNNER_TEMP/aim-browser/node_modules/playwright"
+          python3 -B .platform/tools/browser-check.py --directory "$RUNNER_TEMP/wild-public" --paths / non-profit/ ai-mindset-consulting/ oferta/ confpolicy/
       - name: Shared release configuration
         env:
           PARENT_INTEGRATION: ${{ vars.AIM_PLATFORM_INTEGRATION }}

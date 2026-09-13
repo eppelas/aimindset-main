@@ -117,6 +117,16 @@ jobs:
       - run: python -B tools/release/check-public.py ../public-wild
         if: steps.revisions.outputs.changed == 'true'
         working-directory: source
+      - name: Install parent browser contract runner
+        if: steps.revisions.outputs.changed == 'true'
+        run: |
+          npm install --prefix "$RUNNER_TEMP/aim-browser" --ignore-scripts --no-audit --no-fund playwright@1.62.1
+          "$RUNNER_TEMP/aim-browser/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Verify shared menu and footer in the final public artifact
+        if: steps.revisions.outputs.changed == 'true'
+        run: |
+          export PLAYWRIGHT_MODULE="$RUNNER_TEMP/aim-browser/node_modules/playwright"
+          python3 -B platform/tools/browser-check.py --directory public-wild --paths / non-profit/ ai-mindset-consulting/ oferta/ confpolicy/
       - name: Authenticate this release to the existing Google bucket
         id: google
         if: steps.revisions.outputs.changed == 'true' && (inputs.publish || github.event_name == 'schedule' || github.event_name == 'push')

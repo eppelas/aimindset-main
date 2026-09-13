@@ -10,3 +10,9 @@
 - Run the relevant source, component, editor and release checks; verify desktop/mobile behavior and public dependency closure. Keep backups and source-to-destination logs outside the public artifact.
 - The source branch is `wild`. Remote `main` contains another homepage: update only its `wild/` artifact via the release tool. Do not force push, discard changes, or permanently delete files.
 - CODEOWNERS and skills guide changes; they are not an access-control mechanism. Report missing repository protection or credentials explicitly.
+
+## Parent shell boundary
+
+The complete header/footer renderer is parent-owned in `components/shell/runtime.js`. `src/site-sections.json` contains only validated page-local section links. The old `src/site-shell.js` is retained unchanged for recovery and is not a build input. Do not edit or reconnect that legacy file; generated output uses only the pinned parent renderer. Do not add DOM mutations to change menu/footer text, links, order or visibility. Release checks compare the final desktop/mobile DOM against the pinned parent, including mobile menu copies.
+
+For a new independent page repository, follow the parent's `docs/new-page.md` and `skills/connect-page/SKILL.md`; install its `templates/page/AGENTS.md`. Use its theme API for colors/sizes. An ordinary page task does not authorize a shared-content change; use the parent `skills/shared-content/SKILL.md` only for an explicit shared request.

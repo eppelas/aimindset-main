@@ -1,6 +1,11 @@
 {
   "inputs": {
-    "platform-dependency.json": "6aa5572f441b384fb0dcda47405d31ba8597b207f2d8a033984e176141992aec",
+    "ai-mindset-consulting/index.html": "d93b1ec8019f83edbfa7b43f983093c82c9c63e9f78dd4d53394a8813870b34d",
+    "assets/site/site-shell.css": "8eb156095afb425e7dc4d8951b1ce68102c860215069a984c2d06e260db6487f",
+    "confpolicy/index.html": "aa9279db9bf8ced6b9d8f4fb6ea7c41396823e8cdccb1cf64b727e49ee7c493b",
+    "non-profit/index.html": "e60b060cad8a4d1ac6100ec6d47bc5465b5a6109af0c1b25620c2a488695a6a0",
+    "oferta/index.html": "7ca43db582ad0814dc7a91684c145aeb56f8fcfe1396f03b8873820226220c6a",
+    "platform-dependency.json": "845020991485934bcaeaad254fa71a719e501f79ad7a8b6e8e270d4c7203447a",
     "source-manifest.json": "1bb8c6fa1e0ac0f7585b85e6969faa17666bf54b114fdcd6484065abaeee0762",
     "src/content/main.json": "4965f61f883c5cabf6acfdf2e788e1bf12b68886cb7a63cf374c76fcb9e8fb37",
     "src/content/original-text.json": "00150ea5240884519d823533ea19e9cce78c8bf2be44fc675d166e5dc0df0910",
@@ -83,25 +88,29 @@
     "src/page/styles/state-stretch.css": "c955e4b4913d7fef9ddd3ed5553ec162af6deb0a439cc21a2b1e341dc5262e0e",
     "src/page/styles/type-scale.css": "bb8d771597a83c9cfed32714bf1a669e9666dd6af81be6afb91346a4de118973",
     "src/page/styles/typography-system.css": "4043373371da13cb58806b577d1f6d65e21f856694986578cf9dd36f8a83a283",
-    "src/site-shell.js": "8886f26b0b3979347649747df63045c2a507d00e01fec57c5081f2aaada8e7f6",
-    "tools/check-generated-source.py": "50a457a37eb60e1fbe5f6695f95dfcb3e878ea1ab09725be7eebcf2ef78f9499",
-    "tools/source-build.py": "f3c5ead6efde788e914639cb9f64e85298ccb305862f243be064954bc4b60eda"
+    "src/site-sections.json": "842501cf85c918f8e9ce65adbf054e05b17f7290133d14aa43340235abfb242b",
+    "tools/check-generated-source.py": "5f9bc52c01a0215ed32e5bda1c2f6127f4b5d5a434191e5ef6186595623fba55",
+    "tools/source-build.py": "38b6f45eb98c4c06835c939bffc865b2081370e04edf416aba8539337fabb45e"
   },
   "outputs": {
+    "ai-mindset-consulting/index.html": "f0806f08f2fa8c53bf0fddc07df569957d0b167f0136e135037f1506e4bdd0f6",
     "assets/site/site-shell.js": "aba3e70aeca4169ce0b448eaf99615cca24d6ea8984a636daa65efa40bd64405",
-    "index.html": "b6545f57b0f6489f4240d41a787c7360cd0104b81f72c421cb4e46b407eefa98"
+    "confpolicy/index.html": "32f6eb8fe7037d00d47784d3512c72bff538438ab3add5603dd242b7c305533f",
+    "index.html": "b6545f57b0f6489f4240d41a787c7360cd0104b81f72c421cb4e46b407eefa98",
+    "non-profit/index.html": "94f13e48970e5c7a82b08af16de960e3f0f3264d05040287824e6465434abca4",
+    "oferta/index.html": "66bb8f6d01d87687eb66fd32314b5af87802bdcdfd179db854545b713d5ed1fb"
   },
   "platform": {
-    "compilerSha256": "743be0a0b0e1d6809dcd72d474e3e17d3097d2f7b3598a76c3c9abe2f937528a",
+    "compilerSha256": "13d8afd9cc877e4df4516aaee6f7a7ac888f7c757fc76354cdd07498c5125eef",
     "components": {
       "footer": "9f62c0f6b387475acfc91f53a9d1a4659e72cf631a037b5340bf4af8cd03836a",
       "learning": "c149c257fbbac5f6e27a2e63ba3f38860d879336ec5b9534ecba4f0fee5ee2d9",
       "navigation": "7099cae015c978c0153b1b8b1ec43f11ce2b222a8afa6347ccea00d1d045f623"
     },
-    "dependencyRevision": "2ad7b77553e9c279760df191dc3319ac51da3a50",
-    "releaseSha256": "29df58e184029130780f6cf458d8b201268d12d83ca48dd41f9c4dd5ba3f5267",
+    "dependencyRevision": "942e717413ab73b9d07da86051748330ac615610",
+    "releaseSha256": "b2023049cd3cced5911a8813efc26697147ef9277af81839a89f5d6893691d2d",
     "repository": "eppelas/aim-web-platform",
-    "revision": "2ad7b77553e9c279760df191dc3319ac51da3a50"
+    "revision": "942e717413ab73b9d07da86051748330ac615610"
   },
   "schemaVersion": 1
 }

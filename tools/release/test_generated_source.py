@@ -33,7 +33,7 @@ class GeneratedSourceTests(unittest.TestCase):
         files = {
             'src/page/index.html': '{{shared:learning}}{{source:src/page/runtime/example.js}}',
             'src/page/runtime/example.js': 'const value=1;',
-            'src/site-shell.js': '{{shared:navigation:json}}{{shared:footer:json}}',
+            'src/site-sections.json': '{}',
             'src/content/main.json': '{"fields":{}}',
             'src/content/original-text.json': '{}',
             'source-manifest.json': json.dumps({'blocks':[{'path':'src/page/runtime/example.js','tag':'script'}]}),
@@ -41,6 +41,8 @@ class GeneratedSourceTests(unittest.TestCase):
             'tools/source-build.py': (ROOT/'tools/source-build.py').read_text(),
             'tools/check-generated-source.py': (ROOT/'tools/check-generated-source.py').read_text(),
         }
+        files['assets/site/site-shell.css'] = ':root{color:black}'
+        files.update({name:'<main>Preserved page body</main><script src="../assets/site/site-shell.js?v=old"></script>' for name in fresh.SHELL_PAGES})
         for name, text in files.items():
             p=self.root/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(text)
         (self.platform/'components/approved').mkdir(parents=True)
@@ -54,6 +56,7 @@ class GeneratedSourceTests(unittest.TestCase):
             load_components=lambda p:self.components,
             materialize=lambda text,c:text.replace('{{shared:learning}}',c['learning']),
             materialize_shell=lambda text,c:text.replace('{{shared:navigation:json}}',c['navigation']).replace('{{shared:footer:json}}',c['footer']),
+            consumer_shell=lambda sections:self.components['navigation']+self.components['footer'],
             verify_outputs=lambda *args:self.calls.append('verify_outputs'),
             hashes=lambda c:{k:hashlib.sha256(v.encode()).hexdigest() for k,v in c.items()},
         )
@@ -69,6 +72,17 @@ class GeneratedSourceTests(unittest.TestCase):
         record=json.loads((self.root/fresh.RECORD).read_text())
         self.assertEqual(record['platform']['components'],self.shared.hashes(self.components))
         self.assertIn('tools/source-build.py',record['inputs'])
+
+    def test_shared_asset_revision_reaches_every_page_without_changing_body(self):
+        self.build()
+        expected = hashlib.sha256(b'NAVFOOT').hexdigest()[:10]
+        for name in fresh.SHELL_PAGES:
+            self.assertIn('site-shell.js?v='+expected,(self.root/name).read_text())
+            self.assertIn('<main>Preserved page body</main>',(self.root/name).read_text())
+        before=snapshot(self.root);self.build(check=True);self.assertEqual(snapshot(self.root),before)
+        self.components['navigation']='NEWNAV';self.build()
+        expected=hashlib.sha256(b'NEWNAVFOOT').hexdigest()[:10]
+        for name in fresh.SHELL_PAGES:self.assertIn('site-shell.js?v='+expected,(self.root/name).read_text())
 
     def test_source_drift_rejected(self):
         self.build()
