@@ -9,9 +9,9 @@
     "source-manifest.json": "1bb8c6fa1e0ac0f7585b85e6969faa17666bf54b114fdcd6484065abaeee0762",
     "src/content/main.json": "5992fb0383c7606f47140ba6459f8fd8668f02a0e0079c3e96e17880b76e8ee2",
     "src/content/original-text.json": "00150ea5240884519d823533ea19e9cce78c8bf2be44fc675d166e5dc0df0910",
-    "src/content/pages/ai-mindset-consulting.json": "247ea8edddc2d03b92eb38e44c57ad4cd714c44aac07967f4157650177ed75d1",
+    "src/content/pages/ai-mindset-consulting.json": "55dc070d38b3032e447aca573b49859b6c00aa098d8cbeecbc37d67ba56322ee",
     "src/content/pages/ai-mindset-consulting.original.json": "30d517f32726d5b7e92cf41ea8e7d2d52245c71e023c43ee145f8af17508f0f1",
-    "src/content/pages/non-profit.json": "a829f08467b86fc7da4ade098eeb2280ed7f97669269e74765935b7b8a83c513",
+    "src/content/pages/non-profit.json": "497f4a04add8198463f040313247603c528c1bad1e8ceee7ce25eca9674f049f",
     "src/content/pages/non-profit.original.json": "5f06273e87023f725c825867191e7353267e092063122fc7f1fdb2ca486b8b4d",
     "src/page/editor/overlay.css": "a5e6adeef1fb68a2a4b05a16c5f4db3a7aa5f45c4694f5f61a94e8bb12cdd7cf",
     "src/page/editor/toolbar.html": "1ce6624a94aa35cf01c5468e038d08ffe5cc1b3081e333540bc4c18180a3ae11",
@@ -97,19 +97,19 @@
     "src/page/styles/typography-system.css": "4043373371da13cb58806b577d1f6d65e21f856694986578cf9dd36f8a83a283",
     "src/pages/ai-mindset-consulting/index.html": "9aaaa78ccfb2e34bcc5cd15a3e6959129c156518e87d5b67719fad795687db8a",
     "src/pages/non-profit/index.html": "ac814a9469d06f37e7c4ee896093ee73c21a8d4bcad218689789139412cdb91b",
-    "src/site-sections.json": "2bd4798cc7e32280cf4794e1b5ddd34df20db02b28935ae446cd73caf044cfeb",
+    "src/site-sections.json": "842501cf85c918f8e9ce65adbf054e05b17f7290133d14aa43340235abfb242b",
     "tools/check-generated-source.py": "a7dd424ba68b141bb946273345e9128c2d9787a061357316c00a39a6c7fe9336",
     "tools/release/editor_pages.py": "ada7b10951daf3b08371dd71c32330188a746e778b6897a92bbe7cdb9e46f78e",
     "tools/release/import-google-save.py": "d67cb9eb5f8388292a293a981386bf0cbef20ac29b6dd2e281ca086d45031195",
     "tools/source-build.py": "14e87f0cc927774bfd0afc0382b23e3697378aa99594313b57cff0bde6b32f47"
   },
   "outputs": {
-    "ai-mindset-consulting/index.html": "5a956988c0f8f5d8d924b50d30a6cea8dc26ede114e7331b04d7747ba70d5a2d",
-    "assets/site/site-shell.js": "bd15f1623257aea88343ce0f3db44a9b9b1d6d03ca153d0d85dcd873f5d811a3",
-    "confpolicy/index.html": "39f8fd79f22d8f8921af57f1e6cb2a15f6174ea46076bf5ba95ed27d02f52cbf",
-    "index.html": "7b38eef15c7e96cdfea036f26c55ef4932e6f59b83478639318914e1360904ba",
-    "non-profit/index.html": "14a0e1b4e6a70f5104a17648dd09fccdc396b0c0bddc9f4dea08a401f47e78df",
-    "oferta/index.html": "20e7bf01f5c6b11c5f218c2da401eee2fc1901aeafe3e5f2fd66ab3419740d96"
+    "ai-mindset-consulting/index.html": "307102d33ee8f5ef0d8e3f9f52aefd82657d37463be6177c48e1fb11064bdaba",
+    "assets/site/site-shell.js": "aba3e70aeca4169ce0b448eaf99615cca24d6ea8984a636daa65efa40bd64405",
+    "confpolicy/index.html": "32f6eb8fe7037d00d47784d3512c72bff538438ab3add5603dd242b7c305533f",
+    "index.html": "f154ce3658881a20d02593d22f9dad46fc7abeaf5972a0c39f03099489f3b23d",
+    "non-profit/index.html": "d4ec8a7b2609b99503fb537b068b25574873e3ce5397fdf28a17f64f948f57f3",
+    "oferta/index.html": "66bb8f6d01d87687eb66fd32314b5af87802bdcdfd179db854545b713d5ed1fb"
   },
   "platform": {
     "compilerSha256": "df17d7678664c4be95f36f7322399da47c29b3fb6969627f066abdbf17e952d6",
