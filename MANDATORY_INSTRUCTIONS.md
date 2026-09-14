@@ -1,6 +1,6 @@
 <!-- Generated parent instruction mirror. Do not edit in this repository. -->
-> **MANDATORY — READ BEFORE ANY WORK.** [Canonical parent instruction](https://github.com/eppelas/aim-web-platform/blob/main/MANDATORY_INSTRUCTIONS.md) · [Exact source version](https://github.com/eppelas/aim-web-platform/blob/3fdea361f7807820bee2cf9fec925277c1962a41/MANDATORY_INSTRUCTIONS.md)
-> Parent commit: `3fdea361f7807820bee2cf9fec925277c1962a41`. Source SHA-256: `ae988acd66b1e41ee76b1f83c42b2ce70b5a5184294ad80846995b00beb9b383`.
+> **MANDATORY — READ BEFORE ANY WORK.** [Canonical parent instruction](https://github.com/eppelas/aim-web-platform/blob/main/MANDATORY_INSTRUCTIONS.md) · [Exact source version](https://github.com/eppelas/aim-web-platform/blob/3b9321fb3cf4a4530986f66ced80e98d2596fa7f/MANDATORY_INSTRUCTIONS.md)
+> Parent commit: `3b9321fb3cf4a4530986f66ced80e98d2596fa7f`. Source SHA-256: `c87afbac74eee2cc148662614d96fea787b5594cf815fd79ab6ad7063911748b`.
 
 # ОБЯЗАТЕЛЬНАЯ ИНСТРУКЦИЯ ДЛЯ ВСЕХ АГЕНТОВ AIM
 
@@ -57,7 +57,7 @@ aim-web-platform (private)
 
 ## Что передать агенту
 
-> Создай страницу AIM в этом репозитории. Сначала прочитай `MANDATORY_INSTRUCTIONS.md` и `skills/connect-page/SKILL.md` в `eppelas/aim-web-platform`, затем добавь правила из `templates/page/AGENTS.md`. Верхнее общее меню и футер подключи через родительский adapter. Подменю принадлежит странице и может отсутствовать. Их структуру, тексты, ссылки, порядок, действия и суть футера менять запрещено; локальные копии и исправления через CSS/JS запрещены. Оформление меняй только документированными параметрами `theme`. Изменение общих компонентов возможно только отдельной явной задачей в родителе через `skills/shared-content/SKILL.md`. Сборка и публикация должны останавливаться при нарушении контракта.
+> Создай страницу AIM в этом репозитории. Сначала прочитай `MANDATORY_INSTRUCTIONS.md` и `skills/connect-page/SKILL.md` в `eppelas/aim-web-platform`, затем добавь правила из `templates/page/AGENTS.md`. Верхнее общее меню и футер подключи через родительский adapter. Подменю принадлежит странице и может отсутствовать. Структуру, тексты, ссылки, порядок и действия верхнего общего меню и футера менять запрещено; локальные копии и исправления этих общих элементов через CSS/JS запрещены. Оформление общей оболочки меняй только документированными параметрами `theme`; собственное подменю оформляй в рамках задачи страницы. Изменение общих компонентов возможно только отдельной явной задачей в родителе через `skills/shared-content/SKILL.md`. Сборка и публикация должны останавливаться при нарушении контракта.
 
 ## Подключение
 
