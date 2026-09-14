@@ -9,6 +9,8 @@ import re, json, hashlib, datetime, sys
 
 HERE=Path(__file__).resolve().parent
 ROOT=HERE.parent.parent
+if any((ROOT/'src/pages'/page/'index.html').exists() for page in ['ai-mindset-consulting','non-profit']):
+    raise SystemExit('Marketing pages migrated to src/pages and src/content/pages. Use tools/source-build.py; historical generator cannot overwrite current text.')
 STAMP=datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%d-%H%M%S-%f')
 LOG=[]
 SOURCE={name:json.loads((HERE/'content'/f'{name}.json').read_text()) for name in ['non-profit','ai-mindset-consulting','oferta','confpolicy']}

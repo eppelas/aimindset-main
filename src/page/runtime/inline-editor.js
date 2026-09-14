@@ -15,10 +15,17 @@
   const status = document.getElementById("editStatus");
   const remoteApi = (document.querySelector('meta[name="aim-edit-api"]')?.content || "").replace(/\/+$/, "");
   const editorObject = document.querySelector('meta[name="aim-edit-object"]')?.content || "index.html";
+  const pageOwnedOnly = editorObject !== "wild/index.html" && !!document.body.dataset?.page;
+  const sourceLearningHosts = [...document.querySelectorAll('[data-learning-embed]')].map(host => host.cloneNode(true));
+  const sourceCaseToggle = document.querySelector('[data-case-toggle]')?.cloneNode(true);
+  const sourceCaseHidden = [...document.querySelectorAll('[data-case-id]')].map(card => [card.getAttribute('data-case-id'), card.hasAttribute('hidden')]);
   const mapFrame = document.querySelector(".ecosystem-embed-frame");
   const mapEditingAllowed = editorObject === "wild/index.html";
   let enabled = false;
   let dirty = false;
+  let editGeneration = 0;
+  let stopSyncWatch = null;
+  let syncRetryButton = null;
   let mapDirty = false;
   let mapReady = false;
   let mapRequestSeq = 0;
@@ -129,6 +136,8 @@
   function isEditableCandidate(node) {
     if (!(node instanceof HTMLElement) || node.matches("br, wbr")) return false;
     if (sectionLabelKey(node)) return hasLayoutBox(node);
+    if (node.closest('[data-learning-embed], [data-case-toggle], .program-card__morph[aria-hidden="true"]')) return false;
+    if (pageOwnedOnly && !node.closest('main')) return false;
     if (node.closest(".edit-bar, [data-editor-ui], header, footer, #learning, #aim-mobile-menu, script, style, svg, canvas, input, textarea, select, option, iframe, video, audio")) return false;
     const known = node.matches("p, h1, h2, h3, h4, h5, h6, summary, dt, dd, li, figcaption, blockquote, span, a, b, i, em, strong, button");
     if (!node.textContent.trim() && !known) return false;
@@ -171,6 +180,10 @@
     }))) return;
     clearTimeout(refreshTimer);
     refreshTimer = setTimeout(applyMarkers, 40);
+  });
+
+  document.addEventListener("click", ev => {
+    if (enabled && ev.target.closest('[data-case-toggle]')) setTimeout(applyMarkers, 0);
   });
 
   // ——— вставка текста/переноса ———
@@ -287,11 +300,11 @@
 
   // ——— capture-глушители: клики не переходят, summary не схлопывается, пробел печатается ———
   document.addEventListener("click", ev => {
-    if (!enabled || ev.target.closest(".edit-bar, .section-drag-handle, .product-block-drag-handle, .ecosystem-map-open, .ecosystem-map-dialog__close")) return;
+    if (!enabled || ev.target.closest(".edit-bar, .section-drag-handle, .product-block-drag-handle, .ecosystem-map-open, .ecosystem-map-dialog__close, [data-case-toggle]")) return;
     if (getEditableTarget(ev) || ev.target.closest(INTERACTIVE)) lock(ev);
   }, true);
   document.addEventListener("pointerdown", ev => {
-    if (!enabled || ev.target.closest(".edit-bar, .section-drag-handle, .product-block-drag-handle, .ecosystem-map-open, .ecosystem-map-dialog__close")) return;
+    if (!enabled || ev.target.closest(".edit-bar, .section-drag-handle, .product-block-drag-handle, .ecosystem-map-open, .ecosystem-map-dialog__close, [data-case-toggle]")) return;
     if (getEditableTarget(ev)) { ev.stopImmediatePropagation(); return; }
     if (ev.target.closest(INTERACTIVE)) lock(ev);
   }, true);
@@ -334,6 +347,7 @@
         if(link.getAttribute('href')==='#'+sectionKey)link.textContent=sectionLabels[sectionKey];
       });
     }
+    if (pageOwnedOnly && ev.target.closest('.hero-title')) dispatchEvent(new Event('resize'));
     markDirty();
   }, true);
   document.addEventListener("site:changed", ev => {
@@ -345,6 +359,7 @@
   });
 
   function markDirty(message = "● не сохранено — есть правки") {
+    editGeneration++;
     dirty = true;
     save.disabled = false;
     setStatus(message);
@@ -362,7 +377,7 @@
     sendMapState();
     if (on) {
       const wrong = location.protocol === "file:";
-      setStatus(wrong ? "⚠ открыто не через порт 4179 — сохранение может не сработать" : "текст страницы и карты редактируется · разделы двигаются справа · rev " + myRev());
+      setStatus(wrong ? "⚠ открыто не через порт 4179 — сохранение может не сработать" : (pageOwnedOnly ? "текст страницы редактируется · rev " : "текст страницы и карты редактируется · разделы двигаются справа · rev ") + myRev());
     } else if (!dirty) setStatus("");
   }
 
@@ -371,6 +386,14 @@
     validateSectionLabels();
     persistSectionLabels();
     const clone = document.documentElement.cloneNode(true);
+    if (pageOwnedOnly) {
+      clone.querySelectorAll('.approved-hero').forEach(hero => { hero.style.removeProperty('--review-size'); if (!hero.getAttribute('style')) hero.removeAttribute('style'); });
+      clone.querySelectorAll('[data-learning-embed]').forEach((host, index) => { if (sourceLearningHosts[index]) host.replaceWith(sourceLearningHosts[index].cloneNode(true)); });
+      const caseToggle = clone.querySelector('[data-case-toggle]');
+      if (caseToggle && sourceCaseToggle) caseToggle.replaceWith(sourceCaseToggle.cloneNode(true));
+      clone.querySelectorAll('[data-case-id]').forEach(card => { const original = sourceCaseHidden.find(([id]) => id === card.getAttribute('data-case-id')); if (original) card.toggleAttribute('hidden', original[1]); });
+    }
+    clone.querySelectorAll('.program-card__morph[aria-hidden="true"]').forEach(host => host.replaceChildren());
     const passwordStatusAttrs = {"id": "1p-menu-live-region", "role": "status", "aria-live": "polite", "aria-atomic": "true", "aria-relevant": "all", "style": "clip: rect(0px, 0px, 0px, 0px); clip-path: inset(50%); height: 1px; overflow: hidden; position: fixed; top: 0px; left: 0px; white-space: nowrap; width: 1px; overflow-wrap: normal;"};
     clone.querySelectorAll('body > div[id="1p-menu-live-region"]').forEach(el => {
       if (!el.children.length && el.textContent === "1Password menu is available. Press down arrow to select." && el.attributes.length === Object.keys(passwordStatusAttrs).length && Object.entries(passwordStatusAttrs).every(([key,value])=>el.getAttribute(key)===value)) el.remove();
@@ -482,10 +505,54 @@
     return !!current && current.rev === expectedRev && (!expectedSha || current.sha === expectedSha);
   }
 
+  function showSyncProgress(receipt, progress) {
+    const labels = {
+      queued: "Google: сохранено · GitHub: в очереди",
+      importing: "Google: сохранено · GitHub: переношу правки",
+      committed: "Google: сохранено · GitHub: коммит записан · публикация ожидается",
+      publishing: "Google: сохранено · GitHub: коммит записан · публикую сайт",
+      published: "Google и GitHub Pages: опубликовано",
+      superseded: "Google: сохранено · появилась более новая версия",
+      error: "Google: сохранено · синхронизация не завершена"
+    };
+    let text = labels[progress.state] || "Google: сохранено · статус публикации пока неизвестен";
+    if (progress.commit) text += " · " + String(progress.commit).slice(0, 7);
+    if (dirty) text = "● новые правки не сохранены · " + text;
+    setStatus(text, progress.state === 'error', progress.error || progress.runUrl || text);
+    if (progress.state === 'error' && window.AIMEditorSync?.retry) {
+      if (!syncRetryButton) {
+        syncRetryButton = document.createElement('button');
+        syncRetryButton.type = 'button';syncRetryButton.id = 'editSyncRetry';
+        syncRetryButton.setAttribute('data-editor-runtime', '');
+        syncRetryButton.textContent = 'повторить синхронизацию';
+        document.getElementById('editBar').appendChild(syncRetryButton);
+      }
+      syncRetryButton.hidden = false;
+      syncRetryButton.onclick = async () => {
+        syncRetryButton.disabled = true;
+        try {
+          const nextReceipt = await window.AIMEditorSync.retry(receipt);
+          beginSyncWatch(nextReceipt);
+        } catch (error) { showSyncProgress(receipt, {state:'error', error:String(error.message || error)}); }
+        finally { if (syncRetryButton) syncRetryButton.disabled = false; }
+      };
+    } else if (syncRetryButton) syncRetryButton.hidden = true;
+  }
+  function beginSyncWatch(receipt) {
+    stopSyncWatch?.();stopSyncWatch = null;
+    showSyncProgress(receipt, receipt.sync || {state:'queued'});
+    if (window.AIMEditorSync?.watch && receipt.sha) {
+      stopSyncWatch = window.AIMEditorSync.watch(receipt, progress => showSyncProgress(receipt, progress));
+    } else setStatus((dirty ? "● новые правки не сохранены · " : "") + "Google: сохранено · публикация ещё не подтверждена");
+  }
+
   let saving = false;
   save.addEventListener("click", async () => {
     if (!desktopEditing()) return;
     if (saving) return;
+    stopSyncWatch?.();stopSyncWatch = null;
+    if (syncRetryButton) syncRetryButton.hidden = true;
+    const savedGeneration = editGeneration;
     saving = true;
     save.disabled = true;
     clearTimeout(recheckTimer);
@@ -499,12 +566,12 @@
       }
       const html = serialize();
       const endpoints = editorEndpoints("/__save");
-      let ok = false, info = "", conflict = false, newRev = null, newSha = "";
+      let ok = false, info = "", conflict = false, newRev = null, newSha = "", saveReceipt = null;
       for (const ep of endpoints) {
         try {
           const r = await fetch(ep, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ html, rev: myRev(), object: editorObject }) });
           const j = await r.json().catch(() => ({}));
-          if (r.ok && j.ok) { ok = true; newRev = j.rev; newSha = j.sha || ""; info = j.backup || "изменений не было"; break; }
+          if (r.ok && j.ok) { saveReceipt = {...j, object:editorObject}; ok = true; newRev = j.rev; newSha = j.sha || ""; info = j.backup || "изменений не было"; break; }
           if (r.status === 409) { conflict = true; info = j.message || "конфликт версий"; break; }
           info = j.error || ("http " + r.status);
         } catch (e) { info = e.message; }
@@ -516,15 +583,8 @@
       setStatus("сервер ответил ок · проверяю файл…");
       const confirmed = await verify(newRev, newSha);
       if (confirmed) {
-        dirty = false;
-        setEditing(false);
-        setStatus("✓ точно записано в html · rev " + newRev + " · " + t());
-        recheckTimer = setTimeout(async () => {
-          const still = await verify(newRev, newSha);
-          setStatus(still
-            ? "✓ точно записано · rev " + newRev + " · перепроверено в " + t()
-            : "⚠ файл изменился после сохранения (rev ≠ " + newRev + ") — возможно, синк отката́л; проверьте backups/changelog.jsonl");
-        }, 5000);
+        if (editGeneration === savedGeneration) { dirty = false; setEditing(false); }
+        beginSyncWatch(saveReceipt);
       } else {
         setStatus("⚠ не уверен, что записалось: сервер сказал ок, но файл не подтверждён — попробуйте сохранить ещё раз, вкладку не закрывайте");
       }
@@ -532,7 +592,7 @@
     finally { saving = false; save.disabled = !dirty; }
   });
 
-  duplicate.addEventListener("click", async () => {
+  duplicate?.addEventListener("click", async () => {
     if (!desktopEditing()) return;
     if (duplicating) return;
     let html;

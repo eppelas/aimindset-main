@@ -1,0 +1,19 @@
+  .edit-bar{position:fixed;right:16px;bottom:16px;z-index:100;display:flex;gap:8px;align-items:center;
+    background:var(--bg);border:var(--frame) solid var(--ink);padding:8px 10px;font-size:11px}
+  .edit-bar button{font-family:var(--mono);font-size:11px;letter-spacing:.04em;background:var(--bg);color:var(--ink);
+    border:var(--frame) solid var(--ink);padding:6px 12px;cursor:pointer}
+  .edit-bar button:hover{background:var(--ink);color:var(--bg)}
+  .edit-bar button.primary{background:var(--ink);color:var(--bg)}
+  .edit-bar button.primary:hover{background:var(--bg);color:var(--ink)}
+  .edit-bar .duplicate-short{display:none}
+  .edit-bar .status{color:var(--muted);max-width:220px}
+  .edit-bar .status.is-error{color:#c02020}
+  .edit-bar .variant-link{font-size:var(--type-11);white-space:nowrap}
+  .edit-bar .variant-link[hidden]{display:none}
+  body.editing [data-editable]{outline:1px dashed #b5b5b5;outline-offset:3px;cursor:text;pointer-events:auto!important;white-space:pre-wrap;min-width:.5em;min-height:1em}
+  body.editing [data-editable]:hover,body.editing [data-editable]:focus{outline-color:var(--ink)}   /* При редактировании сохраняется фон, чтобы белый текст на плашках оставался видимым. */
+  body.editing summary[data-editable]{display:block;position:relative;padding-right:24px}
+  body.editing summary[data-editable]::after{position:absolute;right:2px;top:0}
+
+
+@media(max-width:1100px),(hover:none),(pointer:coarse){#editBar{display:none}}

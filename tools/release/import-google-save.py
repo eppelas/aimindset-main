@@ -81,11 +81,11 @@ def classes(node):
 SECTION_LABELS_ID = 'aim-section-labels'
 
 
-def section_labels(sections):
-    if not isinstance(sections,dict) or ('home' in sections and not isinstance(sections['home'],str)):
+def section_labels(sections,section_key='home'):
+    if not isinstance(sections,dict) or (section_key in sections and not isinstance(sections[section_key],str)):
         raise ImportRejected('Invalid local section source')
-    if not sections.get('home'):return {}
-    root=Document(sections['home']).root
+    if not sections.get(section_key):return {}
+    root=Document(sections[section_key]).root
     links=[n for n in root.children if isinstance(n,Node)]
     if any(isinstance(n,str) and n.strip() for n in root.children) or not links:
         raise ImportRejected('Invalid local section structure')
@@ -118,10 +118,10 @@ def read_section_labels(source):
     return values
 
 
-def merge_section_labels(base_sections,current_sections,base_html,edited_html):
-    base=section_labels(base_sections);current=section_labels(current_sections)
+def merge_section_labels(base_sections,current_sections,base_html,edited_html,section_key='home'):
+    base=section_labels(base_sections,section_key);current=section_labels(current_sections,section_key)
     def shape(sections):
-        root=Document(sections.get('home','')).root
+        root=Document(sections.get(section_key,'')).root
         return [(n.tag,n.attrs, n.text() if 'hidden' in n.attrs else None) for n in root.children if isinstance(n,Node)]
     if shape(base_sections)!=shape(current_sections):raise ImportRejected('Local section structure changed since Google base')
     baseline=read_section_labels(base_html);incoming=read_section_labels(edited_html)
@@ -139,9 +139,9 @@ def merge_section_labels(base_sections,current_sections,base_html,edited_html):
     def patch(match):
         key=re.search(r'href=["\']#([^"\']+)',match[1])[1]
         return match[1]+html.escape(changes[key],quote=False)+match[3] if key in changes else match[0]
-    updated=re.sub(r'(<a\b[^>]*>)([^<]*)(</a>)',patch,current_sections.get('home',''))
-    result={**current_sections,'home':updated} if 'home' in current_sections else dict(current_sections)
-    assert section_labels(result)=={**current,**changes}
+    updated=re.sub(r'(<a\b[^>]*>)([^<]*)(</a>)',patch,current_sections.get(section_key,''))
+    result={**current_sections,section_key:updated} if section_key in current_sections else dict(current_sections)
+    assert section_labels(result,section_key)=={**current,**changes}
     return result,{'changedFields':sorted(changes),'changes':{k:{'before':current[k],'after':v} for k,v in changes.items()}}
 
 
@@ -191,6 +191,8 @@ def normalize(node):
 
 def parse(source):
     root=Document(source).root;normalize(root)
+    # Browser serialization may add a terminal newline outside the HTML element.
+    root.children=[c for c in root.children if not isinstance(c,str) or c.strip()]
     ids={}
     for n in walk(root):
         ident=n.attrs.get('id')
@@ -326,6 +328,7 @@ def main():
     parser.add_argument('--base-content',type=Path,required=True)
     parser.add_argument('--current-content',type=Path,required=True)
     parser.add_argument('--base-source',required=True)
+    parser.add_argument('--section-key',default='home')
     parser.add_argument('--base-sections',type=Path)
     parser.add_argument('--current-sections',type=Path)
     parser.add_argument('--sections-output',type=Path)
@@ -339,7 +342,7 @@ def main():
     sections_result=sections_report=None
     if any((args.base_sections,args.current_sections,args.sections_output)):
         if not args.base_sections or not args.current_sections:parser.error('Both base/current sections required')
-        sections_result,sections_report=merge_section_labels(json.loads(args.base_sections.read_text()),json.loads(args.current_sections.read_text()),data.decode('utf-8'),args.edited_html.read_text())
+        sections_result,sections_report=merge_section_labels(json.loads(args.base_sections.read_text()),json.loads(args.current_sections.read_text()),data.decode('utf-8'),args.edited_html.read_text(),section_key=args.section_key)
     result,report=merge(args.base_template.read_text(),data.decode('utf-8'),args.edited_html.read_text(),json.loads(args.base_content.read_text()),json.loads(args.current_content.read_text()),section_labels_validated=sections_result is not None)
     if sections_report is not None:report['sections']=sections_report
     report['baseSourceSha']=args.base_source;report['baseHtmlSha256']=hashlib.sha256(data).hexdigest()

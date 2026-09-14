@@ -33,18 +33,10 @@ def build(platform, output=None, check=False, platform_revision=None):
     components = shared.load_components(platform)
     manifest = json.loads((ROOT / 'source-manifest.json').read_text())
     expected = [entry['path'] for entry in manifest['blocks']]
-    template = (ROOT / 'src/page/index.html').read_text()
-    text_fields = json.loads((ROOT / 'src/content/main.json').read_text())['fields']
-    original_text = json.loads((ROOT / 'src/content/original-text.json').read_text())
-    text_ids = re.findall(r'\{\{text:([^}]+)\}\}', template)
-    if set(text_ids) != set(text_fields) or len(text_ids) != len(set(text_ids)):
-        raise ValueError('Text fields must match source template exactly')
-    def text_value(match):
-        key = match[1]; value = text_fields[key]
-        if not isinstance(value, str): raise ValueError('Text value must be string')
-        raw = original_text.get(key)
-        return raw if raw is not None and html.unescape(raw) == value else html.escape(value, quote=False)
-    template = re.sub(r'\{\{text:([^}]+)\}\}', text_value, template)
+    page_spec = importlib.util.spec_from_file_location('editor_pages', ROOT / 'tools/release/editor_pages.py')
+    pages = importlib.util.module_from_spec(page_spec)
+    page_spec.loader.exec_module(pages)
+    template = pages.render_page(ROOT, 'home')
 
     actual = re.findall(r'\{\{source:([^}]+)\}\}', template)
     if actual != expected or len(set(actual)) != len(actual):
@@ -59,11 +51,33 @@ def build(platform, output=None, check=False, platform_revision=None):
     label_spec = importlib.util.spec_from_file_location('section_label_importer', ROOT / 'tools/release/import-google-save.py')
     labels = importlib.util.module_from_spec(label_spec)
     label_spec.loader.exec_module(labels)
-    payload = json.dumps(labels.section_labels(sections), ensure_ascii=False).replace('<', '\\u003c')
-    section_manifest = '<script id="aim-section-labels" type="application/json">' + payload + '</script>'
+    def label_manifest(page_key):
+        payload = json.dumps(labels.section_labels(sections, page_key), ensure_ascii=False).replace('<', '\\u003c')
+        return '<script id="aim-section-labels" type="application/json">' + payload + '</script>'
     if 'id="aim-section-labels"' in homepage:
         raise ValueError('Local section manifest is compiler-owned')
+    section_manifest = label_manifest('home')
     homepage = homepage.replace('</head>', section_manifest + '</head>', 1) if '</head>' in homepage else section_manifest + homepage
+    editor_runtime = (ROOT/'src/page/runtime/inline-editor.js').read_text()
+    sync_runtime = (ROOT/'src/page/runtime/editor-sync-status.js').read_text()
+    sync_script = '<script id="aim-editor-sync-runtime" data-editor-ui="">'+sync_runtime+'</script>'
+    editor_script = '<script>'+editor_runtime+'</script>'
+    if editor_script in homepage:
+        homepage = homepage.replace(editor_script, sync_script+editor_script, 1)
+    elif 'const toggle = document.getElementById("editToggle")' in homepage:
+        raise ValueError('Home editor runtime boundary differs')
+    editor_css = (ROOT/'src/page/editor/overlay.css').read_text()
+    editor_toolbar = (ROOT/'src/page/editor/toolbar.html').read_text()
+    api_match = re.search(r'<meta name="aim-edit-api" content="([^"]+)"', homepage)
+    editor_api = api_match[1] if api_match else 'https://aimindset-wild.web.app'
+    def editable_page(key):
+        page = pages.PAGES[key];text = pages.render_page(ROOT,key)
+        if 'id="editBar"' in text:raise ValueError('Page editor overlay is compiler-owned')
+        meta = '<meta name="aim-edit-api" content="'+html.escape(editor_api,quote=True)+'"><meta name="aim-edit-object" content="'+page['object']+'">'
+        head = meta+label_manifest(page['section_key'])+'<style id="aim-editor-overlay-styles" data-editor-ui="">'+editor_css+'</style>'
+        text = re.sub(r'<html\b', '<html data-rev="0"', text, count=1)
+        text = text.replace('</head>',head+'</head>',1)
+        return text.replace('</body>',editor_toolbar+sync_script+'<script id="aim-editor-overlay-runtime" data-editor-ui="">'+editor_runtime+'</script></body>',1)
     shell = shared.consumer_shell(sections)
     shared.verify_outputs(homepage, shell, components)
     destination = Path(output) if output else ROOT
@@ -73,7 +87,9 @@ def build(platform, output=None, check=False, platform_revision=None):
         return re.sub(r'(assets/site/site-shell\.(js|css))(?:\?v=[\w-]+)?',
                       lambda match: match[1] + '?v=' + versions[match[2]], text)
     outputs = {'index.html': shell_versions(homepage), 'assets/site/site-shell.js': shell}
-    outputs.update({name: shell_versions((ROOT / name).read_text()) for name in freshness.SHELL_PAGES})
+    migrated = {page['output'] for key,page in pages.PAGES.items() if key != 'home'}
+    outputs.update({page['output']: shell_versions(editable_page(key)) for key,page in pages.PAGES.items() if key != 'home'})
+    outputs.update({name: shell_versions((ROOT / name).read_text()) for name in freshness.SHELL_PAGES if name not in migrated})
     record = {
         'schemaVersion': 1,
         'inputs': input_hashes,

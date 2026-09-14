@@ -44,6 +44,15 @@ class GeneratedSourceTests(unittest.TestCase):
             'tools/source-build.py': (ROOT/'tools/source-build.py').read_text(),
             'tools/check-generated-source.py': (ROOT/'tools/check-generated-source.py').read_text(),
         }
+        files['src/page/editor/overlay.css']='.edit-bar{display:flex}'
+        files['src/page/editor/toolbar.html']='<div id="editBar"></div>'
+        files['src/page/runtime/editor-sync-status.js']='window.AIMEditorSync={};'
+        files['src/page/runtime/inline-editor.js']='// editor fixture'
+        files['tools/release/editor_pages.py']=(ROOT/'tools/release/editor_pages.py').read_text()
+        for slug in ['ai-mindset-consulting','non-profit']:
+            files[f'src/pages/{slug}/index.html']='<html><head></head><body><main>Preserved page body</main><script src="../assets/site/site-shell.js?v=old"></script></body></html>'
+            files[f'src/content/pages/{slug}.json']='{"fields":{}}'
+            files[f'src/content/pages/{slug}.original.json']='{}'
         files['assets/site/site-shell.css'] = ':root{color:black}'
         files.update({name:'<main>Preserved page body</main><script src="../assets/site/site-shell.js?v=old"></script>' for name in fresh.SHELL_PAGES})
         for name, text in files.items():
@@ -68,6 +77,24 @@ class GeneratedSourceTests(unittest.TestCase):
     def build(self, output=None, check=False, platform_revision=None, actual_revision=None):
         with patch.object(builder,'ROOT',self.root), patch.object(builder.importlib,'import_module',return_value=self.shared), patch.object(builder.subprocess,'check_output',return_value=(actual_revision or 'a'*40)+'\n'):
             return builder.build(self.platform,output,check,platform_revision)
+
+    def test_migrated_pages_share_runtime_and_keep_distinct_save_objects(self):
+        self.build()
+        for slug in ['ai-mindset-consulting','non-profit']:
+            text=(self.root/f'{slug}/index.html').read_text()
+            self.assertIn('content="wild/'+slug+'/index.html"',text)
+            self.assertEqual(text.count('id="editBar"'),1)
+            self.assertIn('id="aim-editor-overlay-runtime"',text)
+            self.assertIn('id="aim-editor-sync-runtime"',text)
+            self.assertNotIn('editDuplicate',text)
+
+    def test_migrated_page_uses_canonical_template_not_old_output(self):
+        self.build()
+        (self.root/'non-profit/index.html').write_text('stale output')
+        self.build()
+        self.assertIn('Preserved page body',(self.root/'non-profit/index.html').read_text())
+        self.assertNotIn('non-profit/index.html',fresh.inputs(self.root))
+        self.assertIn('src/pages/non-profit/index.html',fresh.inputs(self.root))
 
     def test_optional_submenu_absent_or_empty_builds(self):
         for sections in ({}, {'home':''}):

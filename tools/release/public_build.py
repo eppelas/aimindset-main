@@ -116,8 +116,8 @@ def public_text(source):
 
 
 def assert_public(source):
-    for pattern in [r'<meta\b[^>]*name=["\']aim-edit-', r'edit(?:Bar|Toggle|Save|Duplicate)',
-                    r'/__(?:save|duplicate|status)', r'contenteditable', r'data-editor-',
+    for pattern in [r'<meta\b[^>]*name=["\']aim-edit-', r'edit(?:Bar|Toggle|Save|Duplicate)', r'AIMEditorSync', r'aim-editor-(?:sync|overlay)' ,
+                    r'/__(?:save|duplicate|status|sync-status|sync-retry)', r'contenteditable', r'data-editor-',
                     r'aim-map:(?:state|save|dirty)', r'editEnabled', r'body\.editing', r'\.edit-bar']:
         if re.search(pattern,source): raise ValueError('Editor leaked into public output: '+pattern)
 
@@ -128,7 +128,7 @@ def public_html(source):
     for n in parser.nodes:
         attrs=n['attrs']; body=source[n['open_end']:n.get('end',n['open_end'])]
         editor_script=n['tag']=='script' and ('const toggle = document.getElementById("editToggle")' in body or 'ЛОКАЛЬНАЯ ПЕРЕСТАНОВКА ПРОДУКТОВ' in body)
-        if attrs.get('id') in ('editBar','sectionRail','aim-section-labels') or (n['tag']=='meta' and attrs.get('name','').startswith('aim-edit-')) or editor_script:
+        if attrs.get('id') in ('editBar','sectionRail','aim-section-labels','aim-editor-sync-runtime','aim-editor-overlay-runtime','aim-editor-overlay-styles') or (n['tag']=='meta' and attrs.get('name','').startswith('aim-edit-')) or editor_script:
             assert 'end' in n,'Unclosed editor element'
             cuts.append((n['start'],n['end'],''))
         elif n['tag']=='style':

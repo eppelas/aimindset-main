@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """Poll the existing Google editor and commit allowlisted text to Wild."""
 import argparse
+import importlib.util
+import sys
+from urllib.parse import quote
 import base64
 import hashlib
 from html.parser import HTMLParser
@@ -10,6 +13,7 @@ from pathlib import Path
 import re
 import subprocess
 import tempfile
+import time
 import urllib.request
 
 REPO = 'eppelas/aimindset-main'
@@ -23,6 +27,23 @@ INSTRUCTIONS = 'MANDATORY_INSTRUCTIONS.md'
 AGENTS = 'AGENTS.md'
 ALLOWED = {CONTENT, SECTIONS, DEPENDENCY, INSTRUCTIONS, AGENTS, 'index.html', 'assets/site/site-shell.js', 'source-build-record.json',
            'non-profit/index.html', 'ai-mindset-consulting/index.html', 'oferta/index.html', 'confpolicy/index.html'}
+
+
+def load_pages():
+    spec=importlib.util.spec_from_file_location('sync_editor_pages',Path(__file__).with_name('editor_pages.py'));m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m);return m.PAGES
+PAGES=load_pages()
+ALLOWED.update(page['content'] for page in PAGES.values())
+
+
+HANDLED_SNAPSHOTS=[]
+def report_snapshot(snapshot,state,commit=None,error=None):
+    helper=Path(__file__).with_name('sync-status.py')
+    if not helper.is_file():return
+    try:
+        spec=importlib.util.spec_from_file_location('google_sync_status',helper);m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
+        m.report(snapshot,state,commit=commit,error=error)
+    except Exception:
+        print('Google synchronization status reporting failed',file=sys.stderr)
 
 
 def run(args, cwd, data=None):
@@ -68,12 +89,15 @@ class SourceMeta(HTMLParser):
             self.revs.append(values.get('data-rev'))
 
 
-def cloud_snapshot(fetcher=fetch):
-    before = json.loads(fetcher(STATUS, 65536))
-    html = fetcher(ORIGIN + '/', 2_000_000)
-    after = json.loads(fetcher(STATUS, 65536))
+def cloud_snapshot(fetcher=fetch,page_id='home'):
+    page=PAGES[page_id]
+    status_url=ORIGIN+'/__status?object='+quote(page['object'],safe='')
+    public_url=ORIGIN+('/' if page_id=='home' else '/'+page_id+'/')
+    before = json.loads(fetcher(status_url, 65536))
+    html = fetcher(public_url, 2_000_000)
+    after = json.loads(fetcher(status_url, 65536))
     for status in (before, after):
-        if status.get('ok') is not True or status.get('object') != 'wild/index.html' or not isinstance(status.get('rev'), int) or isinstance(status['rev'], bool) or status['rev'] < 0 or not re.fullmatch('[a-f0-9]{16}', str(status.get('sha', ''))):
+        if status.get('ok') is not True or status.get('object') != page['object'] or not isinstance(status.get('rev'), int) or isinstance(status['rev'], bool) or status['rev'] < 0 or not re.fullmatch('[a-f0-9]{16}', str(status.get('sha', ''))):
             raise ValueError('Unexpected Google status contract')
     if any(before.get(key) != after.get(key) for key in ('rev', 'sha', 'generation', 'object')):
         raise ValueError('Google changed during fetch; retry on the next scheduled run')
@@ -120,6 +144,34 @@ def ensure_delivery(root, head, pin, cloud_base, api=None, reader=None, runner=N
     return 'release-dispatched'
 
 
+def wait_delivery(root,head,pin,snapshots,*,timeout=720,interval=15,api=None,reader=None,snapshotter=None,sleeper=None,clock=None,reporter=None):
+    """Confirm both hosts for this exact source; polling never commits or dispatches."""
+    api,reader=api or gh,reader or fetch
+    snapshotter,sleeper,clock=snapshotter or cloud_snapshot,sleeper or time.sleep,clock or time.monotonic
+    reporter=reporter or report_snapshot
+    deadline=clock()+timeout
+    for snapshot in snapshots.values():reporter(snapshot[0],'publishing',commit=head)
+    while True:
+        if api(root,'git/ref/heads/wild')['object']['sha']!=head:
+            raise ValueError('Delivery superseded by newer Wild HEAD')
+        delivered=False
+        try:
+            manifest=json.loads(reader(PAGES_MANIFEST,131072))
+            if manifest.get('sourceCommit')==head and manifest.get('platformCommit')==pin:
+                live={page_id:(snapshotter() if page_id=='home' else snapshotter(page_id=page_id)) for page_id in PAGES}
+                delivered=all(snapshot[2]==head for snapshot in live.values())
+        except (OSError,ValueError,AssertionError):
+            delivered=False
+        if delivered:
+            if api(root,'git/ref/heads/wild')['object']['sha']!=head:
+                raise ValueError('Delivery superseded before confirmation')
+            for snapshot in snapshots.values():reporter(snapshot[0],'published',commit=head)
+            return 'published'
+        remaining=deadline-clock()
+        if remaining<=0:raise TimeoutError('Timed out waiting for exact Google and Pages publication')
+        sleeper(min(interval,remaining))
+
+
 def assert_same_snapshot(before, after):
     if any(before[0].get(k) != after[0].get(k) for k in ('rev', 'sha', 'generation')) or before[1:] != after[1:]:
         raise ValueError('Google changed while validating; no commit written, retry next poll')
@@ -128,6 +180,7 @@ def assert_same_snapshot(before, after):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--self-test', action='store_true', help='Run deterministic polling safety tests without network')
+    parser.add_argument('--page',choices=list(PAGES),action='append',help='Read-only diagnosis of selected pages; publication always scans all pages')
     parser.add_argument('--platform', type=Path)
     parser.add_argument('--publish', action='store_true', help='Validate trusted source and commit validated text and dispatch its exact release')
     parser.add_argument('--dry-run', action='store_true', help='Read-only default: import into temporary output, never modify source or remote')
@@ -145,30 +198,32 @@ def main():
             raise ValueError('Publishing needs a clean trusted checkout and checked parent')
         if gh(root, 'git/ref/heads/wild')['object']['sha'] != head:
             raise ValueError('Checkout is not current Wild HEAD')
-    status, html, base = cloud_snapshot()
-    run(['git', 'merge-base', '--is-ancestor', base, head], root)
-    temp = Path(tempfile.mkdtemp(prefix='aim-google-sync-'))
-    for label, path in [('base-html', 'index.html'), ('base-template', 'src/page/index.html'), ('base-content', CONTENT), ('base-sections', SECTIONS)]:
-        (temp / label).write_bytes(run(['git', 'show', base + ':' + path], root))
-    (temp / 'edited.html').write_bytes(html)
-    output, report = temp / 'content.json', temp / 'report.json'
-    run(['python3', '-B', 'tools/release/import-google-save.py', '--base-html', str(temp / 'base-html'), '--base-template', str(temp / 'base-template'), '--base-content', str(temp / 'base-content'), '--current-content', str(root / CONTENT), '--edited-html', str(temp / 'edited.html'), '--output', str(output), '--report', str(report), '--base-source', base, '--base-sections', str(temp / 'base-sections'), '--current-sections', str(root / SECTIONS), '--sections-output', str(temp / 'sections.json')], root)
-    current, proposed = json.loads((root / CONTENT).read_text()), json.loads(output.read_text())
-    if set(current) != set(proposed) or set(current['fields']) != set(proposed['fields']):
-        raise ValueError('Importer changed content schema or field allowlist')
-    changed = sorted(key for key in current['fields'] if current['fields'][key] != proposed['fields'][key])
-    import_report = json.loads(report.read_text())
-    if import_report.get('baseSourceSha') != base or import_report.get('changedFields') != changed:
-        raise ValueError('Importer report differs from validated content delta')
-    section_current=json.loads((root / SECTIONS).read_text())
-    section_proposed=json.loads((temp / 'sections.json').read_text())
-    section_changed=import_report.get('sections',{}).get('changedFields',[])
-    if not isinstance(section_changed,list) or bool(section_changed)!=(section_proposed!=section_current):
-        raise ValueError('Section importer report differs from data delta')
-    summary = {'changed_sections': section_changed, 'cloud_revision': status['rev'], 'cloud_sha': status['sha'], 'base_source': base, 'current_source': head, 'changed_fields': changed, 'mode': 'publish' if args.publish else 'dry-run'}
-    print(json.dumps(summary))
-    if not args.publish:
-        return
+    if args.publish and args.page:parser.error('Publication must scan all editor pages')
+    snapshots={};proposals={};summaries={};section_current=json.loads((root/SECTIONS).read_text());section_proposed=dict(section_current)
+    importer_spec=importlib.util.spec_from_file_location('sync_importer',root/'tools/release/import-google-save.py');importer=importlib.util.module_from_spec(importer_spec);sys.modules[importer_spec.name]=importer;importer_spec.loader.exec_module(importer)
+    for page_id in (args.page or list(PAGES)):
+        page=PAGES[page_id]
+        snapshot=cloud_snapshot() if page_id=='home' else cloud_snapshot(page_id=page_id)
+        snapshots[page_id]=snapshot;status,html,base=snapshot
+        if args.publish:
+            HANDLED_SNAPSHOTS.append(status)
+            report_snapshot(status,'importing')
+        run(['git','merge-base','--is-ancestor',base,head],root)
+        def show(path):return run(['git','show',base+':'+path],root).decode()
+        base_html=show(page['output']);base_content=json.loads(show(page['content']));current=json.loads((root/page['content']).read_text())
+        section_proposed,section_report=importer.merge_section_labels(json.loads(show(SECTIONS)),section_proposed,base_html,html.decode(),section_key=page['section_key'])
+        proposed,report=importer.merge(show(page['template']),base_html,html.decode(),base_content,current,section_labels_validated=True)
+        if set(proposed)!=set(current) or set(proposed['fields'])!=set(current['fields']):raise ValueError('Importer changed content schema')
+        if report['changedFields']:proposals[page['content']]=proposed
+        summaries[page_id]={'changed_fields':report['changedFields'],'changed_sections':section_report['changedFields'],'cloud_revision':status['rev'],'cloud_sha':status['sha'],'base_source':base}
+    changed=[page_id+':'+key for page_id,summary in summaries.items() for key in summary['changed_fields']]
+    section_changed=[page_id+':'+key for page_id,summary in summaries.items() for key in summary['changed_sections']]
+    status,html,base=next(iter(snapshots.values()))
+    print(json.dumps({'pages':summaries,'changed_fields':changed,'changed_sections':section_changed,'current_source':head,'mode':'publish' if args.publish else 'dry-run'}))
+    if not args.publish:return
+    def recheck():
+        for page_id,before in snapshots.items():assert_same_snapshot(before,cloud_snapshot() if page_id=='home' else cloud_snapshot(page_id=page_id))
+    cloud_base=head if all(snapshot[2]==head for snapshot in snapshots.values()) else base if base!=head else '0'*40
     dependency = json.loads((root / DEPENDENCY).read_text())
     pin = dependency['revision']
     if dependency.get('repository') != 'eppelas/aim-web-platform' or not re.fullmatch('[a-f0-9]{40}', pin):
@@ -182,13 +237,17 @@ def main():
     if not parent_changed:
         run(instruction_command + ['--check'], root)
     if not changed and not section_changed and not parent_changed:
-        assert_same_snapshot((status, html, base), cloud_snapshot())
-        print(json.dumps({'status': ensure_delivery(root, head, pin, base), 'commit': head}))
+        recheck()
+        delivery=ensure_delivery(root,head,pin,cloud_base)
+        if delivery in ('release-dispatched','release-active'):
+            for snapshot in snapshots.values():report_snapshot(snapshot[0],'publishing',commit=head)
+        delivery=wait_delivery(root,head,pin,snapshots)
+        print(json.dumps({'status':delivery,'commit':head}))
         return
-    if changed:
-        (root / CONTENT).write_bytes(output.read_bytes())
+    for path,proposed in proposals.items():
+        (root/path).write_text(json.dumps(proposed,ensure_ascii=False,indent=2)+'\n')
     if section_changed:
-        (root / SECTIONS).write_bytes((temp / 'sections.json').read_bytes())
+        (root / SECTIONS).write_text(json.dumps(section_proposed,ensure_ascii=False,indent=2)+'\n')
     if parent_changed:
         (root / DEPENDENCY).write_text(json.dumps({**dependency, 'revision': latest}, indent=2) + '\n')
         run(instruction_command + ['--write'], root)
@@ -206,22 +265,26 @@ def main():
     run(instruction_command + ['--check'], root)
     files = sorted(set(run(['git', 'diff', 'HEAD', '--name-only'], root).decode().splitlines()) |
                    set(run(['git', 'ls-files', '--others', '--exclude-standard'], root).decode().splitlines()))
-    required = ({CONTENT} if changed else set()) | ({SECTIONS} if section_changed else set()) | ({DEPENDENCY, INSTRUCTIONS} if parent_changed else set())
+    required = set(proposals) | ({SECTIONS} if section_changed else set()) | ({DEPENDENCY, INSTRUCTIONS} if parent_changed else set())
     if not required.issubset(files) or set(files) - ALLOWED:
         raise ValueError('Generated changes escaped content/build allowlist')
-    assert_same_snapshot((status, html, base), cloud_snapshot())
-    commit = commit_text(root, head, {path: (root / path).read_bytes() for path in files}, status, base, changed, parent_revision=latest if parent_changed else None, section_changes=section_changed)
-    delivery = ensure_delivery(root, commit, latest, base)
+    recheck()
+    commit = commit_text(root, head, {path: (root / path).read_bytes() for path in files}, status, base, changed, parent_revision=latest if parent_changed else None, section_changes=section_changed,content_paths=set(proposals),snapshots=snapshots)
+    for snapshot in snapshots.values():report_snapshot(snapshot[0],'committed',commit=commit)
+    delivery = ensure_delivery(root, commit, latest, cloud_base)
+    if delivery in ('release-dispatched','release-active'):
+        for snapshot in snapshots.values():report_snapshot(snapshot[0],'publishing',commit=commit)
+    delivery=wait_delivery(root,commit,latest,snapshots)
     print(json.dumps({'status': delivery, 'commit': commit, 'url': 'https://github.com/' + REPO + '/commit/' + commit}))
 
 
-def commit_text(root, head, contents, status, base, changed, api=None, parent_revision=None, section_changes=None):
+def commit_text(root, head, contents, status, base, changed, api=None, parent_revision=None, section_changes=None, content_paths=None, snapshots=None):
     section_changes = section_changes or []
     if parent_revision is not None and not re.fullmatch('[a-f0-9]{40}', parent_revision):
         raise ValueError('Invalid parent commit')
     if not changed and not section_changes and not parent_revision:
         return None
-    required = ({CONTENT} if changed else set()) | ({SECTIONS} if section_changes else set()) | ({DEPENDENCY} if parent_revision else set())
+    required = (set(content_paths) if content_paths is not None else ({CONTENT} if changed else set())) | ({SECTIONS} if section_changes else set()) | ({DEPENDENCY} if parent_revision else set())
     if not required.issubset(contents) or set(contents) - ALLOWED:
         raise ValueError('Commit paths escaped the allowlist')
     api = api or gh
@@ -235,6 +298,8 @@ def commit_text(root, head, contents, status, base, changed, api=None, parent_re
     tree = api(root, 'git/trees', 'POST', {'base_tree': target['tree']['sha'], 'tree': entries})
     message = 'Import Google text revision ' + str(status['rev']) + '\n\nGoogle-Base-Source: ' + base + '\nChanged-Fields: ' + ', '.join(changed)
     message += '\nGoogle-Snapshot-Sha: ' + str(status.get('sha', ''))
+    if snapshots:
+        message += '\nGoogle-Page-Snapshots: ' + json.dumps({key:{'object':value[0]['object'],'rev':value[0]['rev'],'sha':value[0]['sha'],'baseSource':value[2]} for key,value in snapshots.items()},sort_keys=True)
     if section_changes:message += '\nSection-Labels: ' + ', '.join(section_changes)
     if parent_revision:
         message += '\nPlatform-Revision: ' + parent_revision
@@ -291,7 +356,7 @@ def self_test():
                 self.assertEqual(command[:3], ['python3', '-B', 'tools/release/import-google-save.py'])
                 return original_run(command, cwd, data)
             output = io.StringIO()
-            with patch.dict(globals(), {'run': fixture_run, 'cloud_snapshot': lambda: ({'rev': 3, 'sha': hashlib.sha256(html.encode()).hexdigest()[:16]}, html.encode(), 'a' * 40)}), patch.object(sys, 'argv', ['sync-google-save.py', '--dry-run']), contextlib.redirect_stdout(output):
+            with patch.dict(globals(), {'run': fixture_run, 'cloud_snapshot': lambda: ({'rev': 3, 'sha': hashlib.sha256(html.encode()).hexdigest()[:16]}, html.encode(), 'a' * 40)}), patch.object(sys, 'argv', ['sync-google-save.py', '--dry-run', '--page', 'home']), contextlib.redirect_stdout(output):
                 main()
             self.assertEqual(json.loads(output.getvalue())['changed_fields'], [])
             self.assertEqual((root / CONTENT).read_bytes(), source_before)
@@ -337,4 +402,7 @@ def self_test():
 
 
 if __name__ == '__main__':
-    main()
+    try:main()
+    except Exception:
+        for snapshot in HANDLED_SNAPSHOTS:report_snapshot(snapshot,'failed',error='Source validation or synchronization failed; inspect the GitHub run')
+        raise

@@ -33,3 +33,14 @@ test('section save validator rejects unfinished labels and permits corrected inp
   for(const value of ['кто мы', 'a'.repeat(200), '😀'.repeat(200)])vm.runInNewContext(validator+';validateSectionLabels();',{sectionLabels:{about:value}});
   vm.runInNewContext(validator+';validateSectionLabels();',{sectionLabels:null});
 });
+test('publication progress does not hide newer unsaved edits or claim queued as published',()=>{
+  const block=source.slice(source.indexOf('  function showSyncProgress('),source.indexOf('  let saving = false;'));
+  const messages=[];let callback,stops=0;const retry={hidden:true,setAttribute(){}};
+  const sandbox={dirty:true,stopSyncWatch:null,syncRetryButton:null,setStatus:(...args)=>messages.push(args),document:{createElement:()=>retry,getElementById:()=>({appendChild(){}})},window:{AIMEditorSync:{watch:(receipt,cb)=>{callback=cb;return()=>stops++},retry:async()=>{}}}};
+  vm.runInNewContext(block+';beginSyncWatch({rev:1,sha:"abc",sync:{state:"queued"}});',sandbox);
+  assert.match(messages.at(-1)[0],/новые правки не сохранены/);assert.doesNotMatch(messages.at(-1)[0],/опубликовано/);
+  callback({state:'committed',commit:'a'.repeat(40)});assert.match(messages.at(-1)[0],/коммит записан/);assert.doesNotMatch(messages.at(-1)[0],/опубликовано/);
+  callback({state:'error',error:'failed'});assert.equal(retry.hidden,false);assert.equal(sandbox.dirty,true);
+  callback({state:'published'});assert.match(messages.at(-1)[0],/Google и GitHub Pages: опубликовано/);assert.match(messages.at(-1)[0],/новые правки не сохранены/);
+  vm.runInNewContext('beginSyncWatch({rev:2,sha:"def"});',sandbox);assert.equal(stops,1);
+});

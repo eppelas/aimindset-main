@@ -105,18 +105,20 @@ class PublishGoogleTests(unittest.TestCase):
         manifest={'sourceCommit':SHA,'platformCommit':'b'*40,'files':{'index.html':{'sha256':google.digest(b'verified artifact'),'bytes':17}}}
         (artifact/'release-manifest.json').write_text(json.dumps(manifest))
         public=types.SimpleNamespace(verified_artifact=lambda p:None)
-        transform=types.SimpleNamespace(public_html=lambda t:t,public_text=lambda t:t,public_css=lambda t:t)
+        transform=types.SimpleNamespace(public_html=lambda t:t,public_text=lambda t:t,public_css=lambda t:t,oidc_token=lambda:'fixture-oidc')
         args=['publish-google.py','--root',str(root),'--artifact',str(artifact),'--source-sha',SHA,'--receipt',str(root/'receipt.json')]
         cloud=({'rev':1,'sha':'old','generation':'1'},b'old cloud')
-        with patch.object(sys,'argv',args),patch.object(google,'run',return_value=SHA),patch.object(google,'module',side_effect=lambda name,p:public if name=='google_public_contract' else transform),patch.object(google,'snapshot',return_value=cloud),patch.object(google,'check_pending'),patch.object(google,'json_request') as network:
+        with patch.object(sys,'argv',args),patch.object(google,'run',return_value=SHA),patch.object(google,'module',side_effect=lambda name,p:public if name=='google_public_contract' else transform),patch.object(google,'page_snapshot',return_value=cloud),patch.object(google,'check_pending'),patch.object(google,'json_request') as network:
             with self.assertRaisesRegex(AssertionError,'Index differs from verified artifact'):google.main()
             network.assert_not_called()
 
     def main_fixture(self, assets):
         root=Path(tempfile.mkdtemp(prefix='google-publish-flow-'));artifact=root/'artifact';artifact.mkdir()
         page='<html data-rev="1"><head></head><body>verified</body></html>'
-        (root/'index.html').write_text(page)
-        files={'index.html':{'sha256':google.digest(page.encode()),'bytes':len(page)}}
+        files={}
+        for config in google.PAGES.values():
+            file=root/config['output'];file.parent.mkdir(parents=True,exist_ok=True);file.write_text(page)
+            files[config['output']]={'sha256':google.digest(page.encode()),'bytes':len(page)}
         for name,data in assets.items():
             p=root/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(data)
             files[name]={'sha256':google.digest(data),'bytes':len(data)}
@@ -124,20 +126,72 @@ class PublishGoogleTests(unittest.TestCase):
         cloud_data=google.stamp(page,1,SHA).encode()
         cloud=({'rev':1,'sha':google.digest(cloud_data)[:16],'generation':'10'},cloud_data)
         public=types.SimpleNamespace(verified_artifact=lambda p:None)
-        transform=types.SimpleNamespace(public_html=lambda t:t,public_text=lambda t:t,public_css=lambda t:t)
+        transform=types.SimpleNamespace(public_html=lambda t:t,public_text=lambda t:t,public_css=lambda t:t,oidc_token=lambda:'fixture-oidc')
         args=['publish-google.py','--root',str(root),'--artifact',str(artifact),'--source-sha',SHA,'--publish','--receipt',str(root/'receipt.json')]
         return root,cloud,public,transform,args
 
+    def test_nested_bootstrap_exact_full_hash_and_object_allowlist(self):
+        page=google.PAGES['non-profit'];data=b'<html><head></head><body>legacy</body></html>';cloud=({'object':page['object'],'rev':0},data)
+        with self.assertRaises(AssertionError):google.check_pending(ROOT,cloud,SHA,page=page)
+        with self.assertRaises(AssertionError):google.check_pending(ROOT,cloud,SHA,page=page,bootstrap_pages={page['object']:{'sha256':'0'*64}})
+        google.check_pending(ROOT,cloud,SHA,page=page,bootstrap_pages={page['object']:{'sha256':google.digest(data)}})
+        path=Path(tempfile.mkdtemp(prefix='bootstrap-map-'))/'map.json';path.write_text(json.dumps({'wild/other.html':{'sha256':'0'*64}}))
+        with self.assertRaises(ValueError):google.load_bootstrap(path)
+
+    def test_missing_identity_prevents_all_publication_writes(self):
+        root,cloud,public,transform,args=self.main_fixture({'assets/a.css':b'asset'})
+        transform.oidc_token=lambda:None
+        with patch.object(sys,'argv',args),patch.object(google,'run',return_value='storage-access-token'),patch.object(google,'module',side_effect=lambda n,p:public if n=='google_public_contract' else transform),patch.object(google,'page_snapshot',return_value=cloud),patch.object(google,'check_pending'),patch.object(google,'json_request',return_value=None),patch.object(google,'upload') as upload,patch.object(google,'backup') as backup:
+            # Exact checkout check is distinct from the Google access-token lookup.
+            with patch.object(google,'run',side_effect=lambda command,root:SHA if command[:2]==['git','rev-parse'] else 'storage-access-token'):
+                with self.assertRaisesRegex(AssertionError,'workflow identity required'):google.main()
+            upload.assert_not_called();backup.assert_not_called()
+
+    def test_reverse_save_uses_oidc_and_exact_publication_source(self):
+        root,cloud,public,transform,args=self.main_fixture({})
+        old=({'rev':1,'sha':'old','generation':'10'},b'old html');calls=[]
+        def snapshot(page,token):
+            if calls and calls[-1][0].endswith('/__save'):
+                data=google.stamp((root/page['output']).read_text(),2,SHA).encode()
+                return {'object':page['object'],'rev':2,'sha':google.digest(data)[:16],'generation':'11'},data
+            return old
+        def network(url,*args,**kwargs):
+            calls.append((url,args,kwargs))
+            if url.endswith('/__save'):
+                payload=args[1];self.assertEqual(kwargs['token'],'fixture-oidc');self.assertEqual(payload['publicationSource'],SHA)
+                data=google.stamp(payload['html'],2,SHA).encode();return {'ok':True,'rev':2,'sha':google.digest(data)[:16]}
+            return {'generation':'10'}
+        with patch.object(sys,'argv',args),patch.object(google,'run',return_value=SHA),patch.object(google,'module',side_effect=lambda n,p:public if n=='google_public_contract' else transform),patch.object(google,'page_snapshot',side_effect=snapshot),patch.object(google,'check_pending'),patch.object(google,'json_request',side_effect=network),patch.object(google,'backup',return_value='wild/backup'):
+            google.main()
+        self.assertEqual(sum(url.endswith('/__save') for url,_,_ in calls),3)
+
+    def test_pending_child_blocks_all_uploads(self):
+        root,cloud,public,transform,args=self.main_fixture({'assets/a.css':b'asset'})
+        def pending(*args,**kwargs):
+            if kwargs['page']['id']=='non-profit':raise ValueError('pending child')
+        with patch.object(sys,'argv',args),patch.object(google,'run',return_value=SHA),patch.object(google,'module',side_effect=lambda n,p:public if n=='google_public_contract' else transform),patch.object(google,'page_snapshot',return_value=cloud),patch.object(google,'check_pending',side_effect=pending),patch.object(google,'json_request') as network,patch.object(google,'upload') as upload:
+            with self.assertRaisesRegex(ValueError,'pending child'):google.main()
+            network.assert_not_called();upload.assert_not_called()
+
+    def test_child_generation_race_blocks_uploads(self):
+        root,cloud,public,transform,args=self.main_fixture({});calls=[0]
+        def snapshot(*args):
+            calls[0]+=1
+            return ({**cloud[0],'generation':'11'},cloud[1]) if calls[0]==5 else cloud
+        with patch.object(sys,'argv',args),patch.object(google,'run',return_value=SHA),patch.object(google,'module',side_effect=lambda n,p:public if n=='google_public_contract' else transform),patch.object(google,'page_snapshot',side_effect=snapshot),patch.object(google,'check_pending'),patch.object(google,'upload') as upload:
+            with self.assertRaisesRegex(AssertionError,'changed before publishing'):google.main()
+            upload.assert_not_called()
+
     def test_same_source_and_same_cloud_has_no_reverse_publish_loop(self):
         root,cloud,public,transform,args=self.main_fixture({})
-        with patch.object(sys,'argv',args),patch.object(google,'run',return_value=SHA),patch.object(google,'module',side_effect=lambda n,p:public if n=='google_public_contract' else transform),patch.object(google,'snapshot',return_value=cloud),patch.object(google,'check_pending'),patch.object(google,'json_request') as network,patch.object(google,'upload') as upload:
+        with patch.object(sys,'argv',args),patch.object(google,'run',return_value=SHA),patch.object(google,'module',side_effect=lambda n,p:public if n=='google_public_contract' else transform),patch.object(google,'page_snapshot',return_value=cloud),patch.object(google,'check_pending'),patch.object(google,'json_request') as network,patch.object(google,'upload') as upload:
             google.main();network.assert_not_called();upload.assert_not_called()
         receipt=json.loads((root/'receipt.json').read_text())
         self.assertEqual(receipt['moves'],[]);self.assertEqual(receipt['newGoogle'],cloud[0])
 
     def test_partial_upload_failure_preserves_durable_plan_and_move_history(self):
         root,cloud,public,transform,args=self.main_fixture({'assets/one.css':b'one','assets/two.css':b'two'})
-        with patch.object(sys,'argv',args),patch.object(google,'run',return_value=SHA),patch.object(google,'module',side_effect=lambda n,p:public if n=='google_public_contract' else transform),patch.object(google,'snapshot',return_value=cloud),patch.object(google,'check_pending'),patch.object(google,'json_request',return_value={'generation':'2','md5Hash':'old'}),patch.object(google,'backup',side_effect=lambda name,*a:'backup/'+name),patch.object(google,'upload',side_effect=['3',RuntimeError('second upload failed')]):
+        with patch.object(sys,'argv',args),patch.object(google,'run',return_value=SHA),patch.object(google,'module',side_effect=lambda n,p:public if n=='google_public_contract' else transform),patch.object(google,'page_snapshot',return_value=cloud),patch.object(google,'check_pending'),patch.object(google,'json_request',return_value={'generation':'2','md5Hash':'old'}),patch.object(google,'backup',side_effect=lambda name,*a:'backup/'+name),patch.object(google,'upload',side_effect=['3',RuntimeError('second upload failed')]):
             with self.assertRaisesRegex(RuntimeError,'second upload failed'):google.main()
         events=[json.loads(line) for line in (root/'receipt.journal.jsonl').read_text().splitlines()]
         self.assertEqual([e['stage'] for e in events],['planned','before-upload','uploaded','before-upload'])

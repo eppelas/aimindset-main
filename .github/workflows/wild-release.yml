@@ -16,6 +16,10 @@ on:
         description: Exact parent commit (empty uses source dependency pin)
         type: string
         default: ''
+      bootstrap_pages_json:
+        description: Audited object/full-hash JSON for first editable nested page publication
+        type: string
+        default: ''
       bootstrap_google_rev:
         description: Audited Google revision for first publication only
         type: string
@@ -144,8 +148,14 @@ jobs:
           SOURCE_SHA: ${{ steps.revisions.outputs.source_sha }}
           BOOTSTRAP_REV: ${{ inputs.bootstrap_google_rev }}
           BOOTSTRAP_SHA: ${{ inputs.bootstrap_google_sha }}
+          BOOTSTRAP_PAGES_JSON: ${{ inputs.bootstrap_pages_json }}
         run: |
           args=()
+          if [ -n "$BOOTSTRAP_PAGES_JSON" ]; then
+            python -c 'import json,os; p=os.path.join(os.environ["RUNNER_TEMP"],"bootstrap-pages.json"); json.dump(json.loads(os.environ["BOOTSTRAP_PAGES_JSON"]),open(p,"w"))'
+            args+=(--bootstrap-pages "$RUNNER_TEMP/bootstrap-pages.json")
+          fi
+          if [ -z "$BOOTSTRAP_PAGES_JSON" ] && [ -f tools/release/editor-bootstrap-20260914.json ]; then args+=(--bootstrap-pages tools/release/editor-bootstrap-20260914.json); fi
           if [ -n "$BOOTSTRAP_REV" ]; then args+=(--bootstrap-rev "$BOOTSTRAP_REV" --bootstrap-sha "$BOOTSTRAP_SHA"); fi
           python -B tools/release/publish-google.py --artifact ../public-wild --source-sha "$SOURCE_SHA" --publish --receipt "$RUNNER_TEMP/wild-google-release.json" "${args[@]}"
         working-directory: source

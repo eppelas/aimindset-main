@@ -1,5 +1,6 @@
 """Check generated-file freshness without private platform access; not a trust attestation."""
 import argparse
+import importlib.util
 import hashlib
 import json
 import re
@@ -25,9 +26,13 @@ def inputs(root):
         path = PurePosixPath(name)
         if path.is_absolute() or str(path) != name or '\\' in name or '..' in path.parts or not name.startswith('src/page/'):
             raise ValueError('Invalid source manifest path')
+    spec = importlib.util.spec_from_file_location('freshness_editor_pages', root / 'tools/release/editor_pages.py')
+    pages = importlib.util.module_from_spec(spec);spec.loader.exec_module(pages)
+    migrated = {page['output'] for key,page in pages.PAGES.items() if key != 'home'}
     names = ['src/page/index.html', 'src/site-sections.json', 'source-manifest.json',
              'platform-dependency.json', 'MANDATORY_INSTRUCTIONS.md', 'AGENTS.md', 'tools/source-build.py', 'tools/check-generated-source.py', 'tools/release/import-google-save.py',
-             'assets/site/site-shell.css', *SHELL_PAGES]
+             'assets/site/site-shell.css', 'tools/release/editor_pages.py', 'src/page/editor/overlay.css', 'src/page/editor/toolbar.html', 'src/page/runtime/editor-sync-status.js', *[name for name in SHELL_PAGES if name not in migrated]]
+    names += [page['template'] for key,page in pages.PAGES.items() if key != 'home']
     names += includes
     names += [p.relative_to(root).as_posix() for p in (root / 'src/content').rglob('*.json') if p.is_file()]
     if len(names) != len(set(names)):
