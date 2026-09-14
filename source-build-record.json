@@ -28,7 +28,7 @@
     "src/page/runtime/direction-scenes.js": "8845e4fe990b9e6fdf599aec132751f953dcea7e8458db2738baf94a38d3d196",
     "src/page/runtime/ecosystem-dialog.js": "05a964cdfcb474152d0ff7bd1c421864c14a264374ad56e0578e38cb5ae33344",
     "src/page/runtime/ecosystem-graph.js": "f8e296c85e81f8b0c0db2127590069c31dee12ef6f653fb79877fcecd51042f6",
-    "src/page/runtime/editor-sync-status.js": "8c4bf105e7b854ee92c180d2e7fb7157508db6281f4abe6b47390cab3eddec73",
+    "src/page/runtime/editor-sync-status.js": "9421fcdc87c962c18b47e72d2cd9fb28ebe761859bf52f057e474bd835fe8dff",
     "src/page/runtime/hero-field.js": "10ff76a3020aa754ec7d11440bae216a29dd5347f67fd9f90210ecfc0f9ea03f",
     "src/page/runtime/inline-editor.js": "37310daf0e006801eb363e170f50e6f646bc007f8d8978ddd950d62e1dfba42b",
     "src/page/runtime/learning-card-click.js": "e545e7193b854a69b6e3aeacba8d1f8db6a5ef9b9e4824446accec2430d47ffd",
@@ -104,11 +104,11 @@
     "tools/source-build.py": "14e87f0cc927774bfd0afc0382b23e3697378aa99594313b57cff0bde6b32f47"
   },
   "outputs": {
-    "ai-mindset-consulting/index.html": "307102d33ee8f5ef0d8e3f9f52aefd82657d37463be6177c48e1fb11064bdaba",
+    "ai-mindset-consulting/index.html": "f743b4a5eddfdf64c4789296f6631a372dbd8e6d37926f7201b132b1c8398c91",
     "assets/site/site-shell.js": "aba3e70aeca4169ce0b448eaf99615cca24d6ea8984a636daa65efa40bd64405",
     "confpolicy/index.html": "32f6eb8fe7037d00d47784d3512c72bff538438ab3add5603dd242b7c305533f",
-    "index.html": "f154ce3658881a20d02593d22f9dad46fc7abeaf5972a0c39f03099489f3b23d",
-    "non-profit/index.html": "d4ec8a7b2609b99503fb537b068b25574873e3ce5397fdf28a17f64f948f57f3",
+    "index.html": "4207d497eefe9bf2e6eaaca6e9ac7f4299130d32820cd13d91eff8b9ada21fd4",
+    "non-profit/index.html": "92b22a3cfe1ea90fc964280c4f7fd5dec12ae807db5d5c83c61e57df99f6b0eb",
     "oferta/index.html": "66bb8f6d01d87687eb66fd32314b5af87802bdcdfd179db854545b713d5ed1fb"
   },
   "platform": {

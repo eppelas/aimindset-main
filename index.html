@@ -3203,8 +3203,8 @@ main{padding-bottom:0}
 
 <script id="aim-editor-sync-runtime" data-editor-ui="">(() => {
   const objects = new Set(['wild/index.html', 'wild/ai-mindset-consulting/index.html', 'wild/non-profit/index.html']);
-  const terminal = new Set(['published', 'superseded', 'error']);
-  const states = new Set(['queued', 'importing', 'committed', 'publishing', ...terminal]);
+  const terminal = new Set(['published', 'superseded']);
+  const states = new Set(['queued', 'importing', 'committed', 'publishing', 'error', ...terminal]);
   function identity(receipt) {
     const value = { object: receipt.object || document.querySelector('meta[name="aim-edit-object"]')?.content, rev: receipt.rev, sha: receipt.sha };
     if (!objects.has(value.object) || !Number.isSafeInteger(value.rev) || value.rev < 1 || !/^[a-f0-9]{16}$/.test(value.sha || '')) throw new Error('Не удалось определить сохранённую версию для GitHub.');

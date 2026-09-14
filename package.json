@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "check": "node tools/check-source.cjs",
-    "test:editor": "node --test tools/release/test_inline_editor.cjs"
+    "test:editor": "node --test tools/release/test_inline_editor.cjs tools/release/test_editor_sync_status.cjs"
   },
   "devDependencies": {
     "@babel/parser": "7.29.0",
