@@ -16,9 +16,12 @@ REPO = 'eppelas/aimindset-main'
 ORIGIN = 'https://aimindset-wild.web.app'
 STATUS = ORIGIN + '/__status?object=wild%2Findex.html'
 CONTENT = 'src/content/main.json'
+SECTIONS = 'src/site-sections.json'
 DEPENDENCY = 'platform-dependency.json'
 PAGES_MANIFEST = 'https://eppelas.github.io/aimindset-main/wild/release-manifest.json'
-ALLOWED = {CONTENT, DEPENDENCY, 'index.html', 'assets/site/site-shell.js', 'source-build-record.json',
+INSTRUCTIONS = 'MANDATORY_INSTRUCTIONS.md'
+AGENTS = 'AGENTS.md'
+ALLOWED = {CONTENT, SECTIONS, DEPENDENCY, INSTRUCTIONS, AGENTS, 'index.html', 'assets/site/site-shell.js', 'source-build-record.json',
            'non-profit/index.html', 'ai-mindset-consulting/index.html', 'oferta/index.html', 'confpolicy/index.html'}
 
 
@@ -145,11 +148,11 @@ def main():
     status, html, base = cloud_snapshot()
     run(['git', 'merge-base', '--is-ancestor', base, head], root)
     temp = Path(tempfile.mkdtemp(prefix='aim-google-sync-'))
-    for label, path in [('base-html', 'index.html'), ('base-template', 'src/page/index.html'), ('base-content', CONTENT)]:
+    for label, path in [('base-html', 'index.html'), ('base-template', 'src/page/index.html'), ('base-content', CONTENT), ('base-sections', SECTIONS)]:
         (temp / label).write_bytes(run(['git', 'show', base + ':' + path], root))
     (temp / 'edited.html').write_bytes(html)
     output, report = temp / 'content.json', temp / 'report.json'
-    run(['python3', '-B', 'tools/release/import-google-save.py', '--base-html', str(temp / 'base-html'), '--base-template', str(temp / 'base-template'), '--base-content', str(temp / 'base-content'), '--current-content', str(root / CONTENT), '--edited-html', str(temp / 'edited.html'), '--output', str(output), '--report', str(report), '--base-source', base], root)
+    run(['python3', '-B', 'tools/release/import-google-save.py', '--base-html', str(temp / 'base-html'), '--base-template', str(temp / 'base-template'), '--base-content', str(temp / 'base-content'), '--current-content', str(root / CONTENT), '--edited-html', str(temp / 'edited.html'), '--output', str(output), '--report', str(report), '--base-source', base, '--base-sections', str(temp / 'base-sections'), '--current-sections', str(root / SECTIONS), '--sections-output', str(temp / 'sections.json')], root)
     current, proposed = json.loads((root / CONTENT).read_text()), json.loads(output.read_text())
     if set(current) != set(proposed) or set(current['fields']) != set(proposed['fields']):
         raise ValueError('Importer changed content schema or field allowlist')
@@ -157,7 +160,12 @@ def main():
     import_report = json.loads(report.read_text())
     if import_report.get('baseSourceSha') != base or import_report.get('changedFields') != changed:
         raise ValueError('Importer report differs from validated content delta')
-    summary = {'cloud_revision': status['rev'], 'cloud_sha': status['sha'], 'base_source': base, 'current_source': head, 'changed_fields': changed, 'mode': 'publish' if args.publish else 'dry-run'}
+    section_current=json.loads((root / SECTIONS).read_text())
+    section_proposed=json.loads((temp / 'sections.json').read_text())
+    section_changed=import_report.get('sections',{}).get('changedFields',[])
+    if not isinstance(section_changed,list) or bool(section_changed)!=(section_proposed!=section_current):
+        raise ValueError('Section importer report differs from data delta')
+    summary = {'changed_sections': section_changed, 'cloud_revision': status['rev'], 'cloud_sha': status['sha'], 'base_source': base, 'current_source': head, 'changed_fields': changed, 'mode': 'publish' if args.publish else 'dry-run'}
     print(json.dumps(summary))
     if not args.publish:
         return
@@ -170,14 +178,20 @@ def main():
         raise ValueError('Parent checkout must be an exact clean commit')
     run(['git', 'merge-base', '--is-ancestor', pin, latest], args.platform)
     parent_changed = latest != pin
-    if not changed and not parent_changed:
+    instruction_command = ['python3', '-B', str(args.platform.resolve() / 'tools/sync-instructions.py'), '--root', str(root), '--base-ref', head]
+    if not parent_changed:
+        run(instruction_command + ['--check'], root)
+    if not changed and not section_changed and not parent_changed:
         assert_same_snapshot((status, html, base), cloud_snapshot())
         print(json.dumps({'status': ensure_delivery(root, head, pin, base), 'commit': head}))
         return
     if changed:
         (root / CONTENT).write_bytes(output.read_bytes())
+    if section_changed:
+        (root / SECTIONS).write_bytes((temp / 'sections.json').read_bytes())
     if parent_changed:
         (root / DEPENDENCY).write_text(json.dumps({**dependency, 'revision': latest}, indent=2) + '\n')
+        run(instruction_command + ['--write'], root)
     for command in [
         ['python3', '-B', 'tools/source-build.py', '--platform', str(args.platform.resolve())],
         ['python3', '-B', 'tools/source-build.py', '--platform', str(args.platform.resolve()), '--check'],
@@ -189,22 +203,25 @@ def main():
         ['npm', 'run', 'test:editor'],
     ]:
         run(command, root)
-    files = run(['git', 'diff', '--name-only'], root).decode().splitlines()
-    required = ({CONTENT} if changed else set()) | ({DEPENDENCY} if parent_changed else set())
+    run(instruction_command + ['--check'], root)
+    files = sorted(set(run(['git', 'diff', 'HEAD', '--name-only'], root).decode().splitlines()) |
+                   set(run(['git', 'ls-files', '--others', '--exclude-standard'], root).decode().splitlines()))
+    required = ({CONTENT} if changed else set()) | ({SECTIONS} if section_changed else set()) | ({DEPENDENCY, INSTRUCTIONS} if parent_changed else set())
     if not required.issubset(files) or set(files) - ALLOWED:
         raise ValueError('Generated changes escaped content/build allowlist')
     assert_same_snapshot((status, html, base), cloud_snapshot())
-    commit = commit_text(root, head, {path: (root / path).read_bytes() for path in files}, status, base, changed, parent_revision=latest if parent_changed else None)
+    commit = commit_text(root, head, {path: (root / path).read_bytes() for path in files}, status, base, changed, parent_revision=latest if parent_changed else None, section_changes=section_changed)
     delivery = ensure_delivery(root, commit, latest, base)
     print(json.dumps({'status': delivery, 'commit': commit, 'url': 'https://github.com/' + REPO + '/commit/' + commit}))
 
 
-def commit_text(root, head, contents, status, base, changed, api=None, parent_revision=None):
+def commit_text(root, head, contents, status, base, changed, api=None, parent_revision=None, section_changes=None):
+    section_changes = section_changes or []
     if parent_revision is not None and not re.fullmatch('[a-f0-9]{40}', parent_revision):
         raise ValueError('Invalid parent commit')
-    if not changed and not parent_revision:
+    if not changed and not section_changes and not parent_revision:
         return None
-    required = ({CONTENT} if changed else set()) | ({DEPENDENCY} if parent_revision else set())
+    required = ({CONTENT} if changed else set()) | ({SECTIONS} if section_changes else set()) | ({DEPENDENCY} if parent_revision else set())
     if not required.issubset(contents) or set(contents) - ALLOWED:
         raise ValueError('Commit paths escaped the allowlist')
     api = api or gh
@@ -218,6 +235,7 @@ def commit_text(root, head, contents, status, base, changed, api=None, parent_re
     tree = api(root, 'git/trees', 'POST', {'base_tree': target['tree']['sha'], 'tree': entries})
     message = 'Import Google text revision ' + str(status['rev']) + '\n\nGoogle-Base-Source: ' + base + '\nChanged-Fields: ' + ', '.join(changed)
     message += '\nGoogle-Snapshot-Sha: ' + str(status.get('sha', ''))
+    if section_changes:message += '\nSection-Labels: ' + ', '.join(section_changes)
     if parent_revision:
         message += '\nPlatform-Revision: ' + parent_revision
     commit = api(root, 'git/commits', 'POST', {'message': message, 'tree': tree['sha'], 'parents': [head]})['sha']

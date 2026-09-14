@@ -74,12 +74,12 @@ class PublishGoogleTests(unittest.TestCase):
                 google.check_pending(ROOT,cloud,SHA,rev,sha)
 
     def pending(self,edited,current=None):
-        files={p:(ROOT/p).read_bytes() for p in ('src/page/index.html','index.html','src/content/main.json')}
+        files={p:(ROOT/p).read_bytes() for p in ('src/page/index.html','index.html','src/content/main.json','src/site-sections.json')}
         original_module=google.module
         if current is not None:
             importer=original_module('pending_import_test',ROOT/'tools/release/import-google-save.py')
             real_merge=importer.merge
-            importer.merge=lambda template,base,cloud,base_content,_current:real_merge(template,base,cloud,base_content,current)
+            importer.merge=lambda template,base,cloud,base_content,_current,**kwargs:real_merge(template,base,cloud,base_content,current,**kwargs)
             modules=patch.object(google,'module',return_value=importer)
         else:modules=patch.object(google,'module',wraps=original_module)
         with patch.object(google.subprocess,'run') as ancestor,patch.object(google.subprocess,'check_output',side_effect=lambda args,**kw:files[args[2].split(':',1)[1]]),modules:

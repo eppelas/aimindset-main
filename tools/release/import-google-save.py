@@ -7,6 +7,7 @@ Only --output writes a new JSON file; the source document is never overwritten.
 import argparse
 from dataclasses import dataclass, field
 import hashlib
+import html
 from html.parser import HTMLParser
 import json
 from pathlib import Path
@@ -77,6 +78,77 @@ def classes(node):
     return set((node.attrs.get('class') or '').split())
 
 
+SECTION_LABELS_ID = 'aim-section-labels'
+
+
+def section_labels(sections):
+    if not isinstance(sections,dict) or ('home' in sections and not isinstance(sections['home'],str)):
+        raise ImportRejected('Invalid local section source')
+    if not sections.get('home'):return {}
+    root=Document(sections['home']).root
+    links=[n for n in root.children if isinstance(n,Node)]
+    if any(isinstance(n,str) and n.strip() for n in root.children) or not links:
+        raise ImportRejected('Invalid local section structure')
+    result={}
+    for n in links:
+        href=n.attrs.get('href','')
+        if n.tag!='a' or not re.fullmatch(r'#[a-z][a-z0-9-]*',href) or any(not isinstance(c,str) for c in n.children):
+            raise ImportRejected('Expected plain-text local section anchor')
+        key=href[1:]
+        if key in result:raise ImportRejected('Duplicate local section id')
+        if 'hidden' not in n.attrs:result[key]=n.text()
+    return result
+
+
+def read_section_labels(source):
+    nodes=[n for n in walk(Document(source).root) if n.attrs.get('id')==SECTION_LABELS_ID]
+    if not nodes:return None
+    if len(nodes)!=1 or nodes[0].tag!='script' or nodes[0].attrs!={'id':SECTION_LABELS_ID,'type':'application/json'}:
+        raise ImportRejected('Ambiguous local section manifest')
+    def unique(pairs):
+        out={}
+        for k,v in pairs:
+            if k in out:raise ImportRejected('Duplicate local section label')
+            out[k]=v
+        return out
+    try:values=json.loads(nodes[0].text(),object_pairs_hook=unique)
+    except (ValueError,TypeError) as e:raise ImportRejected('Invalid local section manifest') from e
+    if not isinstance(values,dict) or any(not isinstance(k,str) or not isinstance(v,str) or not v.strip() or len(v)>200 or any(ord(c)<32 for c in v) for k,v in values.items()):
+        raise ImportRejected('Local section labels must be short plain strings')
+    return values
+
+
+def merge_section_labels(base_sections,current_sections,base_html,edited_html):
+    base=section_labels(base_sections);current=section_labels(current_sections)
+    def shape(sections):
+        root=Document(sections.get('home','')).root
+        return [(n.tag,n.attrs, n.text() if 'hidden' in n.attrs else None) for n in root.children if isinstance(n,Node)]
+    if shape(base_sections)!=shape(current_sections):raise ImportRejected('Local section structure changed since Google base')
+    baseline=read_section_labels(base_html);incoming=read_section_labels(edited_html)
+    if baseline is not None and baseline!=base:raise ImportRejected('Local section base manifest/source mismatch')
+    if incoming is None:
+        if baseline is not None:raise ImportRejected('Local section manifest removed')
+        incoming=base
+    if set(incoming)!=set(base):raise ImportRejected('Unknown or protected local section label')
+    changes={};conflicts=[]
+    for key,value in incoming.items():
+        if value==base[key] or value==current[key]:continue
+        if current[key]!=base[key]:conflicts.append(key)
+        else:changes[key]=value
+    if conflicts:raise ImportRejected('Concurrent local section conflict: '+', '.join(sorted(conflicts)))
+    def patch(match):
+        key=re.search(r'href=["\']#([^"\']+)',match[1])[1]
+        return match[1]+html.escape(changes[key],quote=False)+match[3] if key in changes else match[0]
+    updated=re.sub(r'(<a\b[^>]*>)([^<]*)(</a>)',patch,current_sections.get('home',''))
+    result={**current_sections,'home':updated} if 'home' in current_sections else dict(current_sections)
+    assert section_labels(result)=={**current,**changes}
+    return result,{'changedFields':sorted(changes),'changes':{k:{'before':current[k],'after':v} for k,v in changes.items()}}
+
+
+ONEPASSWORD_STATUS_ATTRS = {'id': '1p-menu-live-region', 'role': 'status', 'aria-live': 'polite', 'aria-atomic': 'true', 'aria-relevant': 'all', 'style': 'clip: rect(0px, 0px, 0px, 0px); clip-path: inset(50%); height: 1px; overflow: hidden; position: fixed; top: 0px; left: 0px; white-space: nowrap; width: 1px; overflow-wrap: normal;'}
+ONEPASSWORD_STATUS_TEXT = '1Password menu is available. Press down arrow to select.'
+
+
 def normalize(node):
     """Only the explicit runtime seams already removed by inline-editor.serialize()."""
     children=node.children;node.children=[]
@@ -85,6 +157,9 @@ def normalize(node):
             append(node,child if node.tag in ('script','style') else child.replace('\u200b',''))
             continue
         ident=child.attrs.get('id','');cs=classes(child)
+        if node.tag=='body' and child.tag=='div' and child.attrs==ONEPASSWORD_STATUS_ATTRS and child.children==[ONEPASSWORD_STATUS_TEXT]:
+            continue
+        if child.attrs.get('id')==SECTION_LABELS_ID:continue
         if (child.tag=='meta' and child.attrs.get('name')=='aim-source-commit'):
             continue
         if (ident in CHROME_IDS or ident.startswith('codex-browser-') or 'data-editor-runtime' in child.attrs
@@ -185,7 +260,9 @@ def mappings(template, base_html, base_fields):
     return base,mapped,by_node
 
 
-def merge(template, base_html, edited_html, base_content, current_content):
+def merge(template, base_html, edited_html, base_content, current_content, *, section_labels_validated=False):
+    if not section_labels_validated and read_section_labels(base_html)!=read_section_labels(edited_html):
+        raise ImportRejected("Local section labels require validated section merge")
     for name,content in [('base',base_content),('current',current_content)]:
         if not isinstance(content,dict) or not isinstance(content.get('fields'),dict) or not all(isinstance(v,str) for v in content['fields'].values()):
             raise ImportRejected('Invalid '+name+' content')
@@ -249,6 +326,9 @@ def main():
     parser.add_argument('--base-content',type=Path,required=True)
     parser.add_argument('--current-content',type=Path,required=True)
     parser.add_argument('--base-source',required=True)
+    parser.add_argument('--base-sections',type=Path)
+    parser.add_argument('--current-sections',type=Path)
+    parser.add_argument('--sections-output',type=Path)
     parser.add_argument('--report',type=Path,help='New JSON report file')
     parser.add_argument('--output',type=Path,help='New content JSON file; omit for a read-only validation/plan')
     args=parser.parse_args()
@@ -256,13 +336,20 @@ def main():
     data=args.base_html.read_bytes()
     meta=[n.attrs.get('content') for n in walk(Document(args.edited_html.read_text()).root) if n.tag=='meta' and n.attrs.get('name')=='aim-source-commit']
     if meta != [args.base_source]:parser.error('Edited HTML requires one matching aim-source-commit meta')
-    result,report=merge(args.base_template.read_text(),data.decode('utf-8'),args.edited_html.read_text(),json.loads(args.base_content.read_text()),json.loads(args.current_content.read_text()))
+    sections_result=sections_report=None
+    if any((args.base_sections,args.current_sections,args.sections_output)):
+        if not args.base_sections or not args.current_sections:parser.error('Both base/current sections required')
+        sections_result,sections_report=merge_section_labels(json.loads(args.base_sections.read_text()),json.loads(args.current_sections.read_text()),data.decode('utf-8'),args.edited_html.read_text())
+    result,report=merge(args.base_template.read_text(),data.decode('utf-8'),args.edited_html.read_text(),json.loads(args.base_content.read_text()),json.loads(args.current_content.read_text()),section_labels_validated=sections_result is not None)
+    if sections_report is not None:report['sections']=sections_report
     report['baseSourceSha']=args.base_source;report['baseHtmlSha256']=hashlib.sha256(data).hexdigest()
-    destinations=[p for p in (args.output,args.report) if p is not None]
+    destinations=[p for p in (args.output,args.report,args.sections_output) if p is not None]
     if len({p.resolve() for p in destinations})!=len(destinations) or any(p.exists() for p in destinations):
         parser.error('Output and report must be distinct new files')
     if args.output:
         with args.output.open('x',encoding='utf-8',newline='\n') as out:out.write(json.dumps(result,ensure_ascii=False,indent=2)+'\n')
+    if args.sections_output:
+        with args.sections_output.open('x',encoding='utf-8') as out:out.write(json.dumps(sections_result,ensure_ascii=False,indent=2)+'\n')
     if args.report:
         with args.report.open('x',encoding='utf-8',newline='\n') as out:out.write(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
     print(json.dumps(report,ensure_ascii=False,indent=2))

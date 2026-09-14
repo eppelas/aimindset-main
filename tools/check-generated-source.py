@@ -26,7 +26,7 @@ def inputs(root):
         if path.is_absolute() or str(path) != name or '\\' in name or '..' in path.parts or not name.startswith('src/page/'):
             raise ValueError('Invalid source manifest path')
     names = ['src/page/index.html', 'src/site-sections.json', 'source-manifest.json',
-             'platform-dependency.json', 'tools/source-build.py', 'tools/check-generated-source.py',
+             'platform-dependency.json', 'MANDATORY_INSTRUCTIONS.md', 'AGENTS.md', 'tools/source-build.py', 'tools/check-generated-source.py', 'tools/release/import-google-save.py',
              'assets/site/site-shell.css', *SHELL_PAGES]
     names += includes
     names += [p.relative_to(root).as_posix() for p in (root / 'src/content').rglob('*.json') if p.is_file()]

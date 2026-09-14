@@ -27,6 +27,38 @@
   let recheckTimer = 0;
   let duplicating = false;
 
+  const sectionManifest = document.getElementById("aim-section-labels");
+  let sectionLabels = null;
+  if (sectionManifest) {
+    try {
+      const value = JSON.parse(sectionManifest.textContent);
+      if (value && !Array.isArray(value) && Object.entries(value).every(([key,label]) => /^[a-z][a-z0-9-]*$/.test(key) && typeof label === "string" && label.trim() && [...label].length <= 200)) sectionLabels = value;
+    } catch (_) {}
+  }
+  function sectionLabelKey(node) {
+    if (!sectionLabels || !node || !node.matches('a[href^="#"]') || !node.closest('aim-site-header .tabs') || node.hasAttribute('hidden')) return null;
+    const key = node.getAttribute('href').slice(1);
+    return Object.prototype.hasOwnProperty.call(sectionLabels,key) ? key : null;
+  }
+  function applySectionLabels() {
+    if (!sectionLabels) return;
+    document.querySelectorAll('aim-site-header .tabs a[href^="#"], aim-site-header .mobile-section-links a[href^="#"]').forEach(link => {
+      const key=link.getAttribute('href').slice(1);
+      if (!link.hasAttribute('hidden') && Object.prototype.hasOwnProperty.call(sectionLabels,key) && link.textContent!==sectionLabels[key]) link.textContent=sectionLabels[key];
+    });
+  }
+  function validateSectionLabels() {
+    for (const label of Object.values(sectionLabels || {})) {
+      if (typeof label !== "string" || !label.trim() || [...label].length > 200 || /[\u0000-\u001f]/.test(label)) {
+        throw new Error("Подпись подменю должна содержать от 1 до 200 символов в одной строке. Исправьте подпись и сохраните снова.");
+      }
+    }
+  }
+  function persistSectionLabels() {
+    if (sectionManifest && sectionLabels) sectionManifest.textContent=JSON.stringify(sectionLabels).replaceAll('<','\\u003c');
+  }
+  applySectionLabels();
+
   const myRev = () => Number(document.documentElement.dataset.rev || 0);
   const t = () => new Date().toTimeString().slice(0, 8);
   function setStatus(text, isError = false, detail = "") {
@@ -96,6 +128,7 @@
   }
   function isEditableCandidate(node) {
     if (!(node instanceof HTMLElement) || node.matches("br, wbr")) return false;
+    if (sectionLabelKey(node)) return hasLayoutBox(node);
     if (node.closest(".edit-bar, [data-editor-ui], header, footer, #learning, #aim-mobile-menu, script, style, svg, canvas, input, textarea, select, option, iframe, video, audio")) return false;
     const known = node.matches("p, h1, h2, h3, h4, h5, h6, summary, dt, dd, li, figcaption, blockquote, span, a, b, i, em, strong, button");
     if (!node.textContent.trim() && !known) return false;
@@ -293,6 +326,14 @@
   }, true);
   document.addEventListener("input", ev => {
     if (!enabled || !getEditableTarget(ev)) return;
+    const sectionTarget=getEditableTarget(ev),sectionKey=sectionLabelKey(sectionTarget);
+    if(sectionKey){
+      sectionLabels[sectionKey]=sectionTarget.textContent.replaceAll(ANCHOR, "");
+      persistSectionLabels();
+      document.querySelectorAll('aim-site-header .mobile-section-links a[href^="#"]').forEach(link=>{
+        if(link.getAttribute('href')==='#'+sectionKey)link.textContent=sectionLabels[sectionKey];
+      });
+    }
     markDirty();
   }, true);
   document.addEventListener("site:changed", ev => {
@@ -327,7 +368,13 @@
 
   // ——— сериализация: чистим служебное и мусор contenteditable ———
   function serialize() {
+    validateSectionLabels();
+    persistSectionLabels();
     const clone = document.documentElement.cloneNode(true);
+    const passwordStatusAttrs = {"id": "1p-menu-live-region", "role": "status", "aria-live": "polite", "aria-atomic": "true", "aria-relevant": "all", "style": "clip: rect(0px, 0px, 0px, 0px); clip-path: inset(50%); height: 1px; overflow: hidden; position: fixed; top: 0px; left: 0px; white-space: nowrap; width: 1px; overflow-wrap: normal;"};
+    clone.querySelectorAll('body > div[id="1p-menu-live-region"]').forEach(el => {
+      if (!el.children.length && el.textContent === "1Password menu is available. Press down arrow to select." && el.attributes.length === Object.keys(passwordStatusAttrs).length && Object.entries(passwordStatusAttrs).every(([key,value])=>el.getAttribute(key)===value)) el.remove();
+    });
     // DOM браузерных расширений (Grammarly, LastPass, 1Password…) в разметку не попадает — иначе он запекается в опубликованный HTML.
     clone.querySelectorAll("*").forEach(el => { const t = el.localName || ""; if (/^(grammarly-|lastpass-|com-1password-)/.test(t) || el.hasAttribute("data-grammarly-shadow-root") || el.hasAttribute("data-lastpass-icon-root")) el.remove(); });
     [clone, clone.querySelector("body")].forEach(el => { if (!el) return; [...el.attributes].forEach(a => { if (/^data-(gr-|lastpass-|1p-)/.test(a.name)) el.removeAttribute(a.name); }); });
@@ -444,6 +491,7 @@
     clearTimeout(recheckTimer);
     setStatus("сохраняю…");
     try {
+      validateSectionLabels();
       if (mapDirty) {
         setStatus("сохраняю карту…");
         await saveMapIfNeeded();
@@ -487,7 +535,9 @@
   duplicate.addEventListener("click", async () => {
     if (!desktopEditing()) return;
     if (duplicating) return;
-    const html = serialize();
+    let html;
+    try { html = serialize(); }
+    catch (e) { setStatus("⚠ ВАРИАНТ НЕ СОЗДАН: " + e.message, true); return; }
     duplicating = true;
     duplicate.disabled = true;
     variantLink.hidden = true;

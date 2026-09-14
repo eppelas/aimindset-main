@@ -24,3 +24,12 @@ function harness(answer,remoteRev=167){
 test('cancel and wrong password never fetch or enable',async()=>{for(const answer of [null,'bad']){const h=harness(answer);await h.toggle();assert.equal(h.body.classList.contains('editing'),false);assert.equal(h.metrics().fetches,0);}});
 test('correct password keeps shared components locked and can exit without prompting again',async()=>{const h=harness('0281');await h.toggle();assert.equal(h.body.classList.contains('editing'),true);assert.equal(h.fields[0].attrs.contenteditable,'true');for(const field of h.fields.slice(1))assert.equal(field.attrs.contenteditable,undefined);await h.toggle();assert.equal(h.body.classList.contains('editing'),false);assert.equal(h.metrics().prompts,1);});
 test('correct password preserves existing stale-version rejection',async()=>{const h=harness('0281',168);await h.toggle();assert.equal(h.body.classList.contains('editing'),false);assert.match(h.controls.editStatus.textContent,/rev 168/);assert.equal(h.controls.editToggle.disabled,false);});
+
+test('section save validator rejects unfinished labels and permits corrected input',()=>{
+  const validator=source.slice(source.indexOf('  function validateSectionLabels()'),source.indexOf('  function persistSectionLabels()'));
+  for(const value of ['', ' ', 'a'.repeat(201), 'bad\u0001label', 'line\nfeed']){
+    assert.throws(()=>vm.runInNewContext(validator+';validateSectionLabels();',{sectionLabels:{about:value}}),/Исправьте подпись/);
+  }
+  for(const value of ['кто мы', 'a'.repeat(200), '😀'.repeat(200)])vm.runInNewContext(validator+';validateSectionLabels();',{sectionLabels:{about:value}});
+  vm.runInNewContext(validator+';validateSectionLabels();',{sectionLabels:null});
+});

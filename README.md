@@ -1,5 +1,7 @@
 # AI Mindset Wild
 
+Перед любой работой прочитать [MANDATORY_INSTRUCTIONS.md](MANDATORY_INSTRUCTIONS.md). Это связанная копия правил родителя; она обновляется автоматически вместе с parent pin. Обычная работа не разрешает менять структуру, порядок, ссылки или содержание верхнего общего меню, футера и обучения. Локальные изменения зеркала блокируют сборку.
+
 Оригинальный сайт и его исходники. Рабочая папка остаётся на Яндекс.Диске; `.git` указывает на Git-метаданные в `~/Documents/Repos/aimindset-wild.git`. Другой редактируемой копии сайта нет.
 
 ## Источники
@@ -7,9 +9,10 @@
 | Что менять | Источник |
 | --- | --- |
 | Структура главной | `src/page/index.html` |
+| Подменю страницы | `src/site-sections.json` — необязательное, принадлежит странице; подписи Wild также редактируются в Google |
 | Тексты главной | `src/content/main.json` — 370 обычных текстовых полей |
 | CSS и поведение | `src/page/styles/`, `src/page/runtime/`; порядок — `source-manifest.json` |
-| Меню, футер, обучение | Приватный [aim-web-platform](https://github.com/eppelas/aim-web-platform), `components/approved/` |
+| Верхнее общее меню, футер, обучение | Приватный [aim-web-platform](https://github.com/eppelas/aim-web-platform), `components/approved/` |
 | Остальные четыре страницы | `tools/site-pages/` и страницы `non-profit/`, `ai-mindset-consulting/`, `oferta/`, `confpolicy/` |
 | Облачный редактор | Существующий `src/page/runtime/inline-editor.js` и Google `aim-v5-publisher` |
 

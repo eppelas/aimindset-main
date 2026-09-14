@@ -128,7 +128,7 @@ def public_html(source):
     for n in parser.nodes:
         attrs=n['attrs']; body=source[n['open_end']:n.get('end',n['open_end'])]
         editor_script=n['tag']=='script' and ('const toggle = document.getElementById("editToggle")' in body or 'ЛОКАЛЬНАЯ ПЕРЕСТАНОВКА ПРОДУКТОВ' in body)
-        if attrs.get('id') in ('editBar','sectionRail') or (n['tag']=='meta' and attrs.get('name','').startswith('aim-edit-')) or editor_script:
+        if attrs.get('id') in ('editBar','sectionRail','aim-section-labels') or (n['tag']=='meta' and attrs.get('name','').startswith('aim-edit-')) or editor_script:
             assert 'end' in n,'Unclosed editor element'
             cuts.append((n['start'],n['end'],''))
         elif n['tag']=='style':

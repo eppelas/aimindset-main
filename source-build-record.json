@@ -1,13 +1,15 @@
 {
   "inputs": {
+    "AGENTS.md": "d47d2f4311aa0829c091151574522e51805246646cfc6136752f0484e0d1b6ab",
+    "MANDATORY_INSTRUCTIONS.md": "56281bf4bd5e5f26eaf49f843fd0526c8cd4dd8b2a326a96b1be4203c8987efa",
     "ai-mindset-consulting/index.html": "d93b1ec8019f83edbfa7b43f983093c82c9c63e9f78dd4d53394a8813870b34d",
     "assets/site/site-shell.css": "8eb156095afb425e7dc4d8951b1ce68102c860215069a984c2d06e260db6487f",
     "confpolicy/index.html": "aa9279db9bf8ced6b9d8f4fb6ea7c41396823e8cdccb1cf64b727e49ee7c493b",
     "non-profit/index.html": "e60b060cad8a4d1ac6100ec6d47bc5465b5a6109af0c1b25620c2a488695a6a0",
     "oferta/index.html": "7ca43db582ad0814dc7a91684c145aeb56f8fcfe1396f03b8873820226220c6a",
-    "platform-dependency.json": "845020991485934bcaeaad254fa71a719e501f79ad7a8b6e8e270d4c7203447a",
+    "platform-dependency.json": "f71808959ed6c06c0a6d24a3696f1c719b1b5f6f5652d9307c7e2f2f0024f2b7",
     "source-manifest.json": "1bb8c6fa1e0ac0f7585b85e6969faa17666bf54b114fdcd6484065abaeee0762",
-    "src/content/main.json": "4965f61f883c5cabf6acfdf2e788e1bf12b68886cb7a63cf374c76fcb9e8fb37",
+    "src/content/main.json": "5992fb0383c7606f47140ba6459f8fd8668f02a0e0079c3e96e17880b76e8ee2",
     "src/content/original-text.json": "00150ea5240884519d823533ea19e9cce78c8bf2be44fc675d166e5dc0df0910",
     "src/page/index.html": "481dcc129f82271ffa88cd7b74df9eb6e914c47db16f7704e3428292f6f92d2e",
     "src/page/runtime/about-cursor.js": "33a76e06ad19aca6e2ff96959f43f64ec62fcc2363cefa81e03e4a9dec9abdb6",
@@ -23,7 +25,7 @@
     "src/page/runtime/ecosystem-dialog.js": "05a964cdfcb474152d0ff7bd1c421864c14a264374ad56e0578e38cb5ae33344",
     "src/page/runtime/ecosystem-graph.js": "f8e296c85e81f8b0c0db2127590069c31dee12ef6f653fb79877fcecd51042f6",
     "src/page/runtime/hero-field.js": "10ff76a3020aa754ec7d11440bae216a29dd5347f67fd9f90210ecfc0f9ea03f",
-    "src/page/runtime/inline-editor.js": "b6734e0c306904e94af9f9d26d80a1d10a88b60f16af58c70eef9e0590ce437a",
+    "src/page/runtime/inline-editor.js": "21edfa2c1ba15c107d214e07d55df93cedf33f5c307e3055883bb449a9803003",
     "src/page/runtime/learning-card-click.js": "e545e7193b854a69b6e3aeacba8d1f8db6a5ef9b9e4824446accec2430d47ffd",
     "src/page/runtime/learning-program-morph.js": "73e304b8f3b05c2f5fd76d6131c24ba11fef0a872c18ccdbcc1b9099d1bad6dc",
     "src/page/runtime/learning-waitlist.js": "56fe8a7aaf2b33dd53a00ed2e3b43cd4cf3c53112a37aa3b3a0b306bfd0c571c",
@@ -89,28 +91,29 @@
     "src/page/styles/type-scale.css": "bb8d771597a83c9cfed32714bf1a669e9666dd6af81be6afb91346a4de118973",
     "src/page/styles/typography-system.css": "4043373371da13cb58806b577d1f6d65e21f856694986578cf9dd36f8a83a283",
     "src/site-sections.json": "842501cf85c918f8e9ce65adbf054e05b17f7290133d14aa43340235abfb242b",
-    "tools/check-generated-source.py": "5f9bc52c01a0215ed32e5bda1c2f6127f4b5d5a434191e5ef6186595623fba55",
-    "tools/source-build.py": "38b6f45eb98c4c06835c939bffc865b2081370e04edf416aba8539337fabb45e"
+    "tools/check-generated-source.py": "f61f15bec48fac931687fb19c6fb4e2296ff599a513f97794a4fc3c391288530",
+    "tools/release/import-google-save.py": "8575ed48ff6a582c239a71377f11208538b657c7984f1010885c428f0adb5de8",
+    "tools/source-build.py": "ffe8b07c11ae707064a2526daeb605488d0aef140713108eda7c82f461d1c492"
   },
   "outputs": {
     "ai-mindset-consulting/index.html": "f0806f08f2fa8c53bf0fddc07df569957d0b167f0136e135037f1506e4bdd0f6",
     "assets/site/site-shell.js": "aba3e70aeca4169ce0b448eaf99615cca24d6ea8984a636daa65efa40bd64405",
     "confpolicy/index.html": "32f6eb8fe7037d00d47784d3512c72bff538438ab3add5603dd242b7c305533f",
-    "index.html": "b6545f57b0f6489f4240d41a787c7360cd0104b81f72c421cb4e46b407eefa98",
+    "index.html": "4aabd5168e5b29e1311a50ed72519da016ab35628f98a502b53b9f8610e7f26c",
     "non-profit/index.html": "94f13e48970e5c7a82b08af16de960e3f0f3264d05040287824e6465434abca4",
     "oferta/index.html": "66bb8f6d01d87687eb66fd32314b5af87802bdcdfd179db854545b713d5ed1fb"
   },
   "platform": {
-    "compilerSha256": "13d8afd9cc877e4df4516aaee6f7a7ac888f7c757fc76354cdd07498c5125eef",
+    "compilerSha256": "df17d7678664c4be95f36f7322399da47c29b3fb6969627f066abdbf17e952d6",
     "components": {
       "footer": "9f62c0f6b387475acfc91f53a9d1a4659e72cf631a037b5340bf4af8cd03836a",
       "learning": "c149c257fbbac5f6e27a2e63ba3f38860d879336ec5b9534ecba4f0fee5ee2d9",
       "navigation": "7099cae015c978c0153b1b8b1ec43f11ce2b222a8afa6347ccea00d1d045f623"
     },
-    "dependencyRevision": "942e717413ab73b9d07da86051748330ac615610",
+    "dependencyRevision": "bb95f16d5bf7e82b588f2a37a35450ef7ac16f39",
     "releaseSha256": "b2023049cd3cced5911a8813efc26697147ef9277af81839a89f5d6893691d2d",
     "repository": "eppelas/aim-web-platform",
-    "revision": "942e717413ab73b9d07da86051748330ac615610"
+    "revision": "bb95f16d5bf7e82b588f2a37a35450ef7ac16f39"
   },
   "schemaVersion": 1
 }

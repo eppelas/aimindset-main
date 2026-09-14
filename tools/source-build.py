@@ -25,6 +25,7 @@ def build(platform, output=None, check=False, platform_revision=None):
         raise ValueError('Platform revision override must be an exact lowercase 40-character SHA')
     if revision != (platform_revision or dependency['revision']):
         raise ValueError('Platform checkout differs from the explicitly selected revision')
+    shared.verify_instructions(ROOT)
     spec = importlib.util.spec_from_file_location('generated_freshness', ROOT / 'tools/check-generated-source.py')
     freshness = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(freshness)
@@ -54,7 +55,16 @@ def build(platform, output=None, check=False, platform_revision=None):
             raise ValueError('Source include outside src/page')
         return path.read_text()
     homepage = re.sub(r'\{\{source:([^}]+)\}\}', include, shared.materialize(template, components))
-    shell = shared.consumer_shell(json.loads((ROOT / 'src/site-sections.json').read_text()))
+    sections = json.loads((ROOT / 'src/site-sections.json').read_text())
+    label_spec = importlib.util.spec_from_file_location('section_label_importer', ROOT / 'tools/release/import-google-save.py')
+    labels = importlib.util.module_from_spec(label_spec)
+    label_spec.loader.exec_module(labels)
+    payload = json.dumps(labels.section_labels(sections), ensure_ascii=False).replace('<', '\\u003c')
+    section_manifest = '<script id="aim-section-labels" type="application/json">' + payload + '</script>'
+    if 'id="aim-section-labels"' in homepage:
+        raise ValueError('Local section manifest is compiler-owned')
+    homepage = homepage.replace('</head>', section_manifest + '</head>', 1) if '</head>' in homepage else section_manifest + homepage
+    shell = shared.consumer_shell(sections)
     shared.verify_outputs(homepage, shell, components)
     destination = Path(output) if output else ROOT
     versions = {'js': hashlib.sha256(shell.encode()).hexdigest()[:10],

@@ -33,11 +33,14 @@ class GeneratedSourceTests(unittest.TestCase):
         files = {
             'src/page/index.html': '{{shared:learning}}{{source:src/page/runtime/example.js}}',
             'src/page/runtime/example.js': 'const value=1;',
-            'src/site-sections.json': '{}',
+            'MANDATORY_INSTRUCTIONS.md': '# Mandatory fixture',
+            'AGENTS.md': '# Agent fixture',
+            'src/site-sections.json': json.dumps({'home':'<a href="#about">about</a>'}),
             'src/content/main.json': '{"fields":{}}',
             'src/content/original-text.json': '{}',
             'source-manifest.json': json.dumps({'blocks':[{'path':'src/page/runtime/example.js','tag':'script'}]}),
             'platform-dependency.json': json.dumps({'repository':'fixture/platform','revision':'a'*40,'components':['navigation','footer','learning']}),
+            'tools/release/import-google-save.py': (ROOT/'tools/release/import-google-save.py').read_text(),
             'tools/source-build.py': (ROOT/'tools/source-build.py').read_text(),
             'tools/check-generated-source.py': (ROOT/'tools/check-generated-source.py').read_text(),
         }
@@ -53,6 +56,7 @@ class GeneratedSourceTests(unittest.TestCase):
         self.shared=types.SimpleNamespace(
             __file__=str(self.platform/'shared.py'),
             verify_lock=lambda p:self.calls.append('lock'),
+            verify_instructions=lambda p:self.calls.append('instructions'),
             load_components=lambda p:self.components,
             materialize=lambda text,c:text.replace('{{shared:learning}}',c['learning']),
             materialize_shell=lambda text,c:text.replace('{{shared:navigation:json}}',c['navigation']).replace('{{shared:footer:json}}',c['footer']),
@@ -65,9 +69,15 @@ class GeneratedSourceTests(unittest.TestCase):
         with patch.object(builder,'ROOT',self.root), patch.object(builder.importlib,'import_module',return_value=self.shared), patch.object(builder.subprocess,'check_output',return_value=(actual_revision or 'a'*40)+'\n'):
             return builder.build(self.platform,output,check,platform_revision)
 
+    def test_optional_submenu_absent_or_empty_builds(self):
+        for sections in ({}, {'home':''}):
+            (self.root/'src/site-sections.json').write_text(json.dumps(sections))
+            self.build()
+            self.assertIn('<script id="aim-section-labels" type="application/json">{}</script>',(self.root/'index.html').read_text())
+
     def test_compiler_writes_record_after_verified_build(self):
         self.build()
-        self.assertEqual(self.calls,['lock','verify_outputs'])
+        self.assertEqual(self.calls,['lock','instructions','verify_outputs'])
         self.assertEqual(fresh.verify(self.root)['result'],'PASS')
         record=json.loads((self.root/fresh.RECORD).read_text())
         self.assertEqual(record['platform']['components'],self.shared.hashes(self.components))

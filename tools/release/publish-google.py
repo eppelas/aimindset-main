@@ -50,7 +50,10 @@ def check_pending(root,cloud,current_source,bootstrap_rev=None,bootstrap_sha=Non
     subprocess.run(['git','merge-base','--is-ancestor',base,current_source],cwd=root,check=True,timeout=30)
     def show(rel):return subprocess.check_output(['git','show',base+':'+rel],cwd=root,timeout=30).decode()
     current=json.loads((root/'src/content/main.json').read_text())
-    _,report=importer.merge(show('src/page/index.html'),show('index.html'),html,json.loads(show('src/content/main.json')),current)
+    _,section_report=importer.merge_section_labels(json.loads(show('src/site-sections.json')),json.loads((root/'src/site-sections.json').read_text()),show('index.html'),html)
+    if section_report['changedFields']:
+        raise ValueError('Google has unimported local section labels; sync first: '+','.join(section_report['changedFields']))
+    _,report=importer.merge(show('src/page/index.html'),show('index.html'),html,json.loads(show('src/content/main.json')),current,section_labels_validated=True)
     if report['changedFields']:
         raise ValueError('Google has unimported text; sync it first: '+','.join(report['changedFields']))
 def object_url(name):return API+'/storage/v1/b/'+BUCKET+'/o/'+quote(name,safe='')
