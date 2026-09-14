@@ -2,7 +2,7 @@
 # READ FIRST — MANDATORY INSTRUCTIONS
 
 Before any work, read [MANDATORY_INSTRUCTIONS.md](MANDATORY_INSTRUCTIONS.md). It is the linked, parent-owned contract for this repository, not optional onboarding.
-Ordinary page work never authorizes changes to the structure, content, links, order or actions of parent menu, footer or learning elements. Use only the allowed theme settings. Do not edit this instruction mirror or bypass its checks.
+Ordinary page work never authorizes changes to the structure, content, links, order or actions of the shared top-level menu, footer or learning elements. Use only allowed theme settings for that shared shell. The optional page-specific submenu belongs to this page; its presence, items, labels, links and order may change within the page task. Do not edit this instruction mirror or bypass its checks.
 <!-- AIM MANDATORY INSTRUCTIONS: END -->
 
 # Wild source ownership

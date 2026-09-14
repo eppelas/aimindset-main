@@ -1,13 +1,13 @@
 {
   "inputs": {
-    "AGENTS.md": "d47d2f4311aa0829c091151574522e51805246646cfc6136752f0484e0d1b6ab",
-    "MANDATORY_INSTRUCTIONS.md": "56281bf4bd5e5f26eaf49f843fd0526c8cd4dd8b2a326a96b1be4203c8987efa",
+    "AGENTS.md": "5b70e4ac6d46a5826725e8cb49d4ce257e2310aae998ff485affeb3fb0acfb49",
+    "MANDATORY_INSTRUCTIONS.md": "27b3bdd40b7f8136beb6af04aec55b9bbe9cd5c735c7f60e797f8a0bc1c42b39",
     "ai-mindset-consulting/index.html": "d93b1ec8019f83edbfa7b43f983093c82c9c63e9f78dd4d53394a8813870b34d",
     "assets/site/site-shell.css": "8eb156095afb425e7dc4d8951b1ce68102c860215069a984c2d06e260db6487f",
     "confpolicy/index.html": "aa9279db9bf8ced6b9d8f4fb6ea7c41396823e8cdccb1cf64b727e49ee7c493b",
     "non-profit/index.html": "e60b060cad8a4d1ac6100ec6d47bc5465b5a6109af0c1b25620c2a488695a6a0",
     "oferta/index.html": "7ca43db582ad0814dc7a91684c145aeb56f8fcfe1396f03b8873820226220c6a",
-    "platform-dependency.json": "f71808959ed6c06c0a6d24a3696f1c719b1b5f6f5652d9307c7e2f2f0024f2b7",
+    "platform-dependency.json": "bf262cc9bf8a43e0af24ce777de18e408f35a99c86d0887573992379acace210",
     "source-manifest.json": "1bb8c6fa1e0ac0f7585b85e6969faa17666bf54b114fdcd6484065abaeee0762",
     "src/content/main.json": "5992fb0383c7606f47140ba6459f8fd8668f02a0e0079c3e96e17880b76e8ee2",
     "src/content/original-text.json": "00150ea5240884519d823533ea19e9cce78c8bf2be44fc675d166e5dc0df0910",
@@ -110,10 +110,10 @@
       "learning": "c149c257fbbac5f6e27a2e63ba3f38860d879336ec5b9534ecba4f0fee5ee2d9",
       "navigation": "7099cae015c978c0153b1b8b1ec43f11ce2b222a8afa6347ccea00d1d045f623"
     },
-    "dependencyRevision": "bb95f16d5bf7e82b588f2a37a35450ef7ac16f39",
+    "dependencyRevision": "3fdea361f7807820bee2cf9fec925277c1962a41",
     "releaseSha256": "b2023049cd3cced5911a8813efc26697147ef9277af81839a89f5d6893691d2d",
     "repository": "eppelas/aim-web-platform",
-    "revision": "bb95f16d5bf7e82b588f2a37a35450ef7ac16f39"
+    "revision": "3fdea361f7807820bee2cf9fec925277c1962a41"
   },
   "schemaVersion": 1
 }
