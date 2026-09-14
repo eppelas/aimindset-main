@@ -1,5 +1,5 @@
 """Local navigation text import: real source, conflicts, protected structure, reverse guard."""
-import copy,importlib.util,json,sys,unittest,tempfile,shutil
+import copy,html,importlib.util,json,sys,unittest,tempfile,shutil
 from pathlib import Path
 from unittest.mock import patch
 ROOT=Path(__file__).resolve().parents[2]
@@ -11,7 +11,12 @@ public=load('section_public',ROOT/'tools/release/public_build.py')
 sync=load('section_sync',ROOT/'tools/release/sync-google-save.py')
 class SectionLabelsTests(unittest.TestCase):
  def setUp(self):
-  self.sections=json.loads((ROOT/'src/site-sections.json').read_text());self.labels=imp.section_labels(self.sections)
+  # User-editable source captions must not act as unit-test fixture identifiers.
+  self.sections={
+   'home':'<a href="#about">кто мы</a><a href="#team">команда</a><a href="#product-platform" data-sections="product-platform product-space">платформа</a><a href="#faq" hidden>вопросы</a>',
+   'ai-mindset-consulting':'<a href="#format">формат</a>',
+  }
+  self.labels=imp.section_labels(self.sections)
   self.base='<html><head>'+self.manifest(self.labels)+'</head><body><p id="copy">body</p></body></html>'
  def manifest(self,labels):return '<script id="aim-section-labels" type="application/json">'+json.dumps(labels,ensure_ascii=False).replace('<','\\u003c')+'</script>'
  def cloud(self,labels):return self.base.replace(self.manifest(self.labels),self.manifest(labels))
@@ -20,9 +25,24 @@ class SectionLabelsTests(unittest.TestCase):
   self.assertEqual(imp.section_labels({"home":""}),{})
   result,report=imp.merge_section_labels({}, {}, '<html></html>', '<html></html>')
   self.assertEqual(result,{});self.assertEqual(report['changedFields'],[])
- def test_actual_eleven_visible_labels_only(self):
-  self.assertEqual(len(self.labels),11);self.assertNotIn('faq',self.labels)
-  result,report=imp.merge_section_labels(self.sections,self.sections,self.base,self.base);self.assertEqual(result,self.sections);self.assertEqual(report['changedFields'],[])
+ def test_actual_source_roundtrip_without_caption_or_count_assumptions(self):
+  sections=json.loads((ROOT/'src/site-sections.json').read_text());labels=imp.section_labels(sections)
+  manifest=self.manifest(labels)
+  result,report=imp.merge_section_labels(sections,sections,manifest,manifest)
+  self.assertEqual(result,sections);self.assertEqual(report['changedFields'],[])
+  for node in imp.Document(sections.get('home','')).root.children:
+   if isinstance(node,imp.Node) and 'hidden' in node.attrs:self.assertNotIn(node.attrs['href'][1:],labels)
+ def test_renamed_base_labels_keep_threeway_and_already_imported_behavior(self):
+  for label in ['кто мы ', 'наша история', 'проект <AI> & люди']:
+   with self.subTest(label=label):
+    sections={**self.sections,'home':self.sections['home'].replace('>кто мы<','>'+html.escape(label,quote=False)+'<')}
+    labels=imp.section_labels(sections);base=self.manifest(labels);incoming=self.manifest({**labels,'about':label+' update'})
+    imported,report=imp.merge_section_labels(sections,sections,base,incoming)
+    self.assertEqual(report['changedFields'],['about']);self.assertEqual(imp.section_labels(imported)['about'],label+' update')
+    unchanged,report=imp.merge_section_labels(sections,imported,base,incoming)
+    self.assertEqual(unchanged,imported);self.assertEqual(report['changedFields'],[])
+    with self.assertRaisesRegex(ValueError,'Concurrent local'):
+     imp.merge_section_labels(sections,imported,base,self.manifest({**labels,'about':'a different Google edit'}))
  def test_threeway_keeps_existing_github_edits_and_escapes_text(self):
   current={**self.sections,'home':self.sections['home'].replace('команда','команда GitHub')};cloud={**self.labels,'about':'кто мы <сегодня> & AI'}
   result,report=imp.merge_section_labels(self.sections,current,self.base,self.cloud(cloud))
