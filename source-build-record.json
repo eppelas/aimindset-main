@@ -90,18 +90,18 @@
     "src/page/styles/state-stretch.css": "c955e4b4913d7fef9ddd3ed5553ec162af6deb0a439cc21a2b1e341dc5262e0e",
     "src/page/styles/type-scale.css": "bb8d771597a83c9cfed32714bf1a669e9666dd6af81be6afb91346a4de118973",
     "src/page/styles/typography-system.css": "4043373371da13cb58806b577d1f6d65e21f856694986578cf9dd36f8a83a283",
-    "src/site-sections.json": "2bd4798cc7e32280cf4794e1b5ddd34df20db02b28935ae446cd73caf044cfeb",
+    "src/site-sections.json": "842501cf85c918f8e9ce65adbf054e05b17f7290133d14aa43340235abfb242b",
     "tools/check-generated-source.py": "f61f15bec48fac931687fb19c6fb4e2296ff599a513f97794a4fc3c391288530",
     "tools/release/import-google-save.py": "8575ed48ff6a582c239a71377f11208538b657c7984f1010885c428f0adb5de8",
     "tools/source-build.py": "ffe8b07c11ae707064a2526daeb605488d0aef140713108eda7c82f461d1c492"
   },
   "outputs": {
-    "ai-mindset-consulting/index.html": "ef0b93dc03330579c80d2179ecd33c344eed6dcf483de764fa82a93248c0ad66",
-    "assets/site/site-shell.js": "bd15f1623257aea88343ce0f3db44a9b9b1d6d03ca153d0d85dcd873f5d811a3",
-    "confpolicy/index.html": "39f8fd79f22d8f8921af57f1e6cb2a15f6174ea46076bf5ba95ed27d02f52cbf",
-    "index.html": "64111a561df88ca855de025ed51d12277696aba308f964cb8fdb487216b3871a",
-    "non-profit/index.html": "1862ca9c49599c82ef3631561073d720d1b107c1531d53965bca81b12fb01738",
-    "oferta/index.html": "20e7bf01f5c6b11c5f218c2da401eee2fc1901aeafe3e5f2fd66ab3419740d96"
+    "ai-mindset-consulting/index.html": "f0806f08f2fa8c53bf0fddc07df569957d0b167f0136e135037f1506e4bdd0f6",
+    "assets/site/site-shell.js": "aba3e70aeca4169ce0b448eaf99615cca24d6ea8984a636daa65efa40bd64405",
+    "confpolicy/index.html": "32f6eb8fe7037d00d47784d3512c72bff538438ab3add5603dd242b7c305533f",
+    "index.html": "4aabd5168e5b29e1311a50ed72519da016ab35628f98a502b53b9f8610e7f26c",
+    "non-profit/index.html": "94f13e48970e5c7a82b08af16de960e3f0f3264d05040287824e6465434abca4",
+    "oferta/index.html": "66bb8f6d01d87687eb66fd32314b5af87802bdcdfd179db854545b713d5ed1fb"
   },
   "platform": {
     "compilerSha256": "df17d7678664c4be95f36f7322399da47c29b3fb6969627f066abdbf17e952d6",
