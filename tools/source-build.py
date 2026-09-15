@@ -72,6 +72,11 @@ def build(platform, output=None, check=False, platform_revision=None):
     editor_api = api_match[1] if api_match else 'https://aimindset-wild.web.app'
     def editable_page(key):
         page = pages.PAGES[key];text = pages.render_page(ROOT,key)
+        page_sources = manifest.get('pageSources', {}).get(key, [])
+        actual_sources = re.findall(r'\{\{source:([^}]+)\}\}', text)
+        if actual_sources != page_sources or len(set(page_sources)) != len(page_sources) or any(name not in expected for name in page_sources):
+            raise ValueError('Page source includes must match declared shared manifest blocks: ' + key)
+        text = re.sub(r'\{\{source:([^}]+)\}\}', include, text)
         if 'id="editBar"' in text:raise ValueError('Page editor overlay is compiler-owned')
         meta = '<meta name="aim-edit-api" content="'+html.escape(editor_api,quote=True)+'"><meta name="aim-edit-object" content="'+page['object']+'">'
         head = meta+label_manifest(page['section_key'])+'<style id="aim-editor-overlay-styles" data-editor-ui="">'+editor_css+'</style>'

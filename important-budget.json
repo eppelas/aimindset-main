@@ -238,9 +238,9 @@
         "#hero"
       ],
       "property": "padding-bottom",
-      "value": "190px",
+      "value": "40px",
       "role": "component-layout",
-      "reason": "Retains accepted component cascade; removal requires selector-specific visual verification."
+      "reason": "Homepage spacing after moving the decorative dot strip to the Team page."
     },
     {
       "file": "src/page/styles/about-project-typography.css",

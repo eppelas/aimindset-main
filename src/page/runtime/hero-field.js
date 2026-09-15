@@ -3,9 +3,14 @@
 (function(){
 
 /* Параметры плотности поля: cell=9, BRUSH=16. */
-    var cv=document.createElement('canvas'); cv.id='hero-kv'; cv.setAttribute('aria-hidden','true'); document.body.appendChild(cv);
-
-  var hero=document.getElementById('hero')||document.querySelector('main section')||document.body;             
+  var mount=document.querySelector('[data-hero-field-mount]'), embedded=!!mount;
+  var hero=mount||document.getElementById('hero')||document.querySelector('main section')||document.body;
+  var hideHero=hero.getAttribute('data-hero-field')==='off', fieldScope=mount||document;
+  var fieldVisible=!embedded, pointerX=-1, pointerY=-1;
+  var cv=document.createElement('canvas'); cv.id='hero-kv'; cv.setAttribute('aria-hidden','true'); (mount||document.body).appendChild(cv);
+  function localPoint(x,y){var b=mount&&mount.getBoundingClientRect();return {x:x-(b?b.left:0),y:y-(b?b.top:0)};}
+  function pointerInside(x,y){return x>=0&&x<W&&y>=0&&y<H;}
+  function fieldScroll(){return embedded?0:(scrollY||0);}
   if(!cv) return; var ctx=cv.getContext('2d'); if(!ctx) return;
   var mobileField=innerWidth<=960, motionPreference=matchMedia("(prefers-reduced-motion:reduce)"), mobileStill=motionPreference.matches, mobilePainted=false;
   var DPR=Math.min(devicePixelRatio||1,2), W=0,H=0, cell=9, BRUSH=16, cols=0, rows=0, heat=null, dis=null, solid=null, solidMode=0, aheat=null, t=0, SEED=Math.random()*1000;
@@ -29,10 +34,11 @@
     TOUCH=mobileField || !matchMedia('(hover:hover) and (pointer:fine)').matches;
     var nd=Math.min(devicePixelRatio||1,mobileField?1.5:(dprGov||2));
     var lead=hero.querySelector(':scope > .lead');
-    var nh=mobileField&&lead?Math.ceil(lead.getBoundingClientRect().top+(scrollY||0)):innerHeight;
-    cv.style.height=mobileField?nh+'px':'';
-    if(W===innerWidth&&H===nh&&DPR===nd&&heat) return;                                                /* guard для предпросмотра */
-    mobilePainted=false; DPR=nd; W=innerWidth; H=nh; cv.width=Math.round(W*DPR); cv.height=Math.round(H*DPR); ctx.setTransform(DPR,0,0,DPR,0,0);
+    var bounds=mount&&mount.getBoundingClientRect(), nw=bounds?bounds.width:innerWidth;
+    var nh=bounds?bounds.height:(mobileField&&lead?Math.ceil(lead.getBoundingClientRect().top+(scrollY||0)):innerHeight);
+    cv.style.height=embedded||mobileField?nh+'px':'';
+    if(W===nw&&H===nh&&DPR===nd&&heat) return;
+    mobilePainted=false; DPR=nd; W=nw; H=nh; cv.width=Math.round(W*DPR); cv.height=Math.round(H*DPR); ctx.setTransform(DPR,0,0,DPR,0,0);
     var nc=Math.ceil(W/cell)+1, nr=Math.ceil(H/cell)+1;
     if(!heat||nc!==cols||nr!==rows){ cols=nc; rows=nr; heat=new Float32Array(cols*rows); dis=new Float32Array(cols*rows); solid=new Uint8Array(cols*rows); aheat=new Float32Array(cols*rows); smask.width=cols; smask.height=rows; }
     sData=null; }
@@ -40,10 +46,15 @@
   var hrTop=0, hrH=0, fhb=-1;
   /* Текстовые блоки хиро и шапка исключаются из поля. */
   var pxsafeEls=[], pxsafeRects=[], heroRectDoc=null, heroTitleDoc=null;
-  function collectSafeEls(){ pxsafeEls=[].slice.call(document.querySelectorAll('.top, header, h1, h2, h3, h4, p, li, blockquote, table, a.btn, button, .stats, [class*=card] , img, video')); refreshSafeRects(); }
+  function collectSafeEls(){ pxsafeEls=[].slice.call(fieldScope.querySelectorAll('.top, header, h1, h2, h3, h4, p, li, blockquote, table, a.btn, button, .stats, [class*=card] , img, video')); refreshSafeRects(); }
   /* Геометрия safe-зон кэшируется в координатах документа: 242 getBoundingClientRect
      каждый кадр форсировали layout (~11мс/кадр на Air). В кадре — только сдвиг на scrollY. */
-  function refreshSafeRects(){ if(document.body.style.position==='fixed')return; if(innerWidth<=960)size(); var sy=scrollY||0;
+  function refreshSafeRects(){ if(document.body.style.position==='fixed')return; if(embedded||innerWidth<=960)size(); var sy=fieldScroll();
+    if(embedded){
+      var origin=mount.getBoundingClientRect();
+      pxsafeRects=pxsafeEls.map(function(el){var b=el.getBoundingClientRect();return {l:b.left-origin.left,t:b.top-origin.top,r:b.right-origin.left,b:b.bottom-origin.top,w:b.width};});
+      heroRectDoc={l:0,t:0,r:W,b:H,w:W,h:H};heroTitleDoc=null;return;
+    }
     pxsafeRects=pxsafeEls.filter(function(el){return !mobileField||!el.closest('aim-site-header');}).map(function(el){ var b=el.getBoundingClientRect(); return {l:b.left,t:b.top+sy,r:b.right,b:b.bottom+sy,w:b.width}; });
     var hbb=hero.getBoundingClientRect(); heroRectDoc={l:hbb.left,t:hbb.top+sy,r:hbb.right,b:hbb.bottom+sy,w:hbb.width,h:hbb.height};
     var ttl=document.querySelector('#hero>h1');
@@ -54,11 +65,11 @@
   function invalidateSafeGeometry(){ safeGeometryDirty=true; mobilePainted=false; wakeField(); }
   collectSafeEls();
   addEventListener('load',function(){ collectSafeEls(); invalidateSafeGeometry(); });
-  setInterval(collectSafeEls,3000); // discover editor-added elements
+  if(!embedded)setInterval(collectSafeEls,3000); // discover editor-added elements
   addEventListener('resize',invalidateSafeGeometry);
   if(window.ResizeObserver){
     var safeObserver=new ResizeObserver(invalidateSafeGeometry);
-    [hero,hero.querySelector(':scope > h1'),hero.querySelector(':scope > .lead'),document.querySelector('aim-site-header')].forEach(function(el){if(el)safeObserver.observe(el);});
+    (embedded?[mount]:[hero,hero.querySelector(':scope > h1'),hero.querySelector(':scope > .lead'),document.querySelector('aim-site-header')]).forEach(function(el){if(el)safeObserver.observe(el);});
   }
   if(document.fonts&&document.fonts.ready)document.fonts.ready.then(invalidateSafeGeometry);
   function hsh(c,r){ var n=Math.sin(c*127.1+r*311.7+SEED*0.13)*43758.5453; return n-Math.floor(n); }
@@ -90,7 +101,7 @@
      ошибки, ни знака — поле рисовалось пустым. Поэтому три повтора с
      обходом возможного отрицательного кэша. */
   var logoTries=0;
-  logoImg.onerror=function(){ if(++logoTries<=3) setTimeout(function(){ logoImg.src='assets/ai-mindset-logo.png?r='+logoTries; },600); };
+  logoImg.onerror=function(){ if(++logoTries<=3) setTimeout(function(){ logoImg.src=(embedded?'../':'')+'assets/ai-mindset-logo.png?r='+logoTries; },600); };
   /* Логотип зашит data-URI: сетевой запрос был единственной причиной, по которой
      знак иногда не собирался вовсе (см. историю с onerror). Файл в assets остаётся
      запасным путём для ретраев. */
@@ -98,6 +109,13 @@
   /* Это ровно один якорь — рядом с h1 в hero. Canvas fixed только технически;
      как только h1 выходит из viewport, маска не существует вовсе. */
   function logoBox(hb){
+    if(hideHero)return null;
+    if(embedded){
+      // Keep the source poster scale; only its anchor becomes local to the host.
+      var figure=W<=960?Math.min(220,Math.max(120,W*0.58)):(W>1180?392:260);
+      var localMark=Math.max(96,figure-24)*1.4*560/680;
+      return {x:W<=960?(W-localMark)/2:W-localMark-24,y:(H-localMark)/2,w:localMark,h:localMark};
+    }
     var tr=heroTitleDoc?{top:heroTitleDoc.t-(mobileField?0:(scrollY||0)),bottom:heroTitleDoc.b-(mobileField?0:(scrollY||0))}:hb;
     if(!hb||hb.bottom<=0||hb.top>=H||tr.bottom<=0||tr.top>=H) return null;
     if(W<=960){
@@ -185,10 +203,10 @@
     heat[id]=0.34 + w*0.56 + (hsh(c,r)-0.5)*0.12; }
   /* Safe-маска строится по client rects DOM-заголовка хиро. */
   function measureType(){ if(!heat)return; smc.setTransform(1,0,0,1,0,0); smc.clearRect(0,0,cols,rows); smc.fillStyle='#000';
-    var h1=document.querySelector('#hero h1, h1');
-    if(h1){ var rects=h1.getClientRects();
+    var h1=embedded?mount.querySelector('h1'):document.querySelector('#hero h1, h1');
+    if(h1){ var rects=h1.getClientRects(), typeOrigin=embedded?mount.getBoundingClientRect():{left:0,top:0};
       for(var i=0;i<rects.length;i++){ var rc=rects[i];
-        smc.fillRect((rc.left-6)/cell,(rc.top+(mobileField?(scrollY||0):0)-4)/cell,(rc.width+12)/cell,(rc.height+8)/cell); } }
+        smc.fillRect((rc.left-typeOrigin.left-6)/cell,(rc.top-typeOrigin.top+(mobileField?fieldScroll():0)-4)/cell,(rc.width+12)/cell,(rc.height+8)/cell); } }
     sData=smc.getImageData(0,0,cols,rows).data; }
   function clamp01(x){ return x<0?0:(x>1?1:x); }
   function clearAt(c,r,x,y){
@@ -205,10 +223,10 @@
     return el.closest('#follow, footer') ? 'text' : ''; }                                                  
   var hoverEls=[], headEls=[];
   function collectTargets(){
-    hoverEls=[].slice.call(document.querySelectorAll('a.btn, button, [class*=card]'));                           
+    hoverEls=[].slice.call(fieldScope.querySelectorAll('a.btn, button, [class*=card]'));
     /* стрелка показывает на КОНКРЕТНЫЕ вещи (контекст/экзоскелет/создавать/замедление,
        названия тем и людей, плашки секций), не на абзацы; в хиро и «про нас» её нет. */
-    headEls=[].slice.call(document.querySelectorAll('#approach .rows .row .key, .learning-topic h3, .team-member h3, .project-card h3, .ecosystem-direction-card h3, .product-block h3, .sec-head .num:first-child')).filter(function(el){ return !el.closest('#hero') && !el.closest('#about'); });
+    headEls=[].slice.call(fieldScope.querySelectorAll('#approach .rows .row .key, .learning-topic h3, .team-member h3, .project-card h3, .ecosystem-direction-card h3, .product-block h3, .sec-head .num:first-child')).filter(function(el){ return !el.closest('#hero') && !el.closest('#about'); });
   }
   collectTargets(); addEventListener('load',collectTargets);
   function nearHeadline(x,y,list){ var best=null,bd=1e9,i,r,M=150; for(i=0;i<list.length;i++){ r=list[i].getBoundingClientRect(); if(r.width<2||r.bottom<-40||r.top>H+40)continue;
@@ -217,9 +235,20 @@
       var cx=r.left+r.width/2, cy=r.top+r.height/2, d=Math.hypot(x-cx,y-cy); if(d<bd){ bd=d; best={x:cx,y:cy,idx:i,d:d}; } }
     if(best&&best.d<BRUSH*4) return null;                                        /* совсем рядом — тоже не рисуем: не тыкаем в точку */
     return best; }
-  addEventListener('pointermove',function(e){ if(TOUCH) return; lastMove=performance.now()/1000; moveT=lastMove; pacOn=false; mx=e.clientX; my=e.clientY; hov=true; cursorZone=zoneOf(e.target); });
-  addEventListener('scroll',function(){ if(TOUCH||!hov||mx<0)return; lastMove=performance.now()/1000; pacOn=false; cursorZone=zoneOf(document.elementFromPoint(mx,my)); }, {passive:true});
-  document.querySelectorAll('a.btn, button').forEach(function(m){          /* волна-рамка только на кнопках: на больших карточках читается как случайные квадраты */
+  addEventListener('pointermove',function(e){
+    if(TOUCH)return;pointerX=e.clientX;pointerY=e.clientY;
+    var p=localPoint(pointerX,pointerY);mx=p.x;my=p.y;hov=!embedded||pointerInside(mx,my);
+    if(!hov){mx=my=-1;return;}
+    lastMove=performance.now()/1000;moveT=lastMove;pacOn=false;cursorZone=zoneOf(e.target);
+  });
+  addEventListener('pointerout',function(e){if(!e.relatedTarget){hov=false;mx=my=-1;}});
+  addEventListener('scroll',function(){
+    if(TOUCH||pointerX<0)return;
+    var p=localPoint(pointerX,pointerY);mx=p.x;my=p.y;hov=!embedded||pointerInside(mx,my);
+    if(!hov){mx=my=-1;return;}
+    lastMove=performance.now()/1000;pacOn=false;cursorZone=zoneOf(document.elementFromPoint(pointerX,pointerY));
+  },{passive:true});
+  fieldScope.querySelectorAll('a.btn, button').forEach(function(m){          /* волна-рамка только на кнопках: на больших карточках читается как случайные квадраты */
     if(m.closest('aim-site-header')||m.offsetWidth>420) return;
     m.addEventListener('mouseenter',function(){ hoverSlide=m; });
     m.addEventListener('mouseleave',function(){ if(hoverSlide===m) hoverSlide=null; }); });
@@ -230,7 +259,7 @@
   var SNIPS=['const context = build(you);','await lab.run({ people, ai });','let mind = attention.keep();','while(alive){ create(); slow(); }','export default mindset;','git commit -m "life: after"','import { craft } from "hands";','return self.rewrite(self);','if(!sure) explore(); else ship();','for(const week of lab) make();','ai.limit(power) && you.grow();','const rhythm = yours;','npx aim-mindset init --season s26','> context > prompt > mind > life'];
   /* Строки печатаются по очереди, сдвигаются вверх и растворяются в шум. */
   var TERM=['$ aim lab --season s26','> loading context... ok','> people: 14 connected','> agents: 3 idle, 1 thinking','$ git commit -m "life: after"','> building your own system','> attention.keep()','$ npx mindset init','> week 1: context','> week 2: hands, not notes','> week 3: slow down','> week 4: ship it','> return self.rewrite(self)','$ open {space}','> done. see you inside'];
-  function heroLinesFor(px,py,scope){ var k=scope==='deep'?14:scope==='wide'?12:9, r0=Math.floor((py+(scrollY||0))/cell), c0=Math.max(1,Math.min(cols-40,Math.floor(px/cell)-6)), start=(Math.random()*TERM.length)|0, lines=[];
+  function heroLinesFor(px,py,scope){ var k=scope==='deep'?14:scope==='wide'?12:9, r0=Math.floor((py+fieldScroll())/cell), c0=Math.max(1,Math.min(cols-40,Math.floor(px/cell)-6)), start=(Math.random()*TERM.length)|0, lines=[];
     for(var i=0;i<k;i++) lines.push(TERM[(start+i)%TERM.length]);
     return {r0:r0,c0:c0,lines:lines,vis:7,lineMs:150,charMs:9}; }
   var heroPress=null, heroPending=0, heroImpulse=null, heroRerollSerial=0;
@@ -242,14 +271,15 @@
   }
   window.__w19Reroll=launchHeroReroll;
   addEventListener('pointerdown',function(e){ var hb=hero.getBoundingClientRect();
-    if((e.button&&e.button!==0)||e.clientY<hb.top||e.clientY>hb.bottom||rerollTarget(e.target)) return;
+    if(hideHero||(e.button&&e.button!==0)||e.clientX<hb.left||e.clientX>hb.right||e.clientY<hb.top||e.clientY>hb.bottom||rerollTarget(e.target)) return;
     heroPress={x:e.clientX,y:e.clientY,sy:scrollY,t0:performance.now()}; });
   function releaseHero(e){
     if(!heroPress) return;
     var p=heroPress; heroPress=null;
     if(Math.hypot(e.clientX-p.x,e.clientY-p.y)>12||Math.abs(scrollY-p.sy)>8) return;
-    if(performance.now()-p.t0>350) launchHeroReroll('deep',p.x,p.y);
-    else { clearTimeout(heroPending); heroPending=setTimeout(function(){ launchHeroReroll('normal',p.x,p.y); },230); }
+    var point=localPoint(p.x,p.y);
+    if(performance.now()-p.t0>350) launchHeroReroll('deep',point.x,point.y);
+    else { clearTimeout(heroPending); heroPending=setTimeout(function(){ launchHeroReroll('normal',point.x,point.y); },230); }
   }
   addEventListener('pointerup',releaseHero); addEventListener('pointercancel',function(){ heroPress=null; });
   var cursorZone='', agentLens=null;
@@ -261,7 +291,7 @@
       var v = hsh(c*1.7+0.3, r*1.1+fk*3.7) < 0.18 ? ACCV[(hsh(c+fk*2.1, r-fk*1.3)*3)|0] : val+0.03*Math.sin((c*0.7+r*0.7)-t*0.01);
       heat[r*cols+c]=v; } }
   var smileyEls=[];
-  function collectSmileys(){ smileyEls=[].slice.call(document.querySelectorAll('#w19-smileys .smiley')).map(function(el){ return {el:el, val: el.getAttribute('data-base')==='#1FB6D1' ? 0.56 : 1.0}; }); }
+  function collectSmileys(){ smileyEls=[].slice.call(fieldScope.querySelectorAll('#w19-smileys .smiley')).map(function(el){ return {el:el, val: el.getAttribute('data-base')==='#1FB6D1' ? 0.56 : 1.0}; }); }
   collectSmileys(); addEventListener('load',collectSmileys);
   /* Курсорное лицо собирается из того же постера, что и знак в hero: без ручной геометрии. */
   var CUR_SOLID=[], CUR_DOTS=[], CUR_COLS=21, CUR_ROWS=28;
@@ -314,12 +344,12 @@
   function burst(n,pow){ var b=performance.now()/1000; for(var i=0;i<n;i++) waves.push({x:Math.random()*W, y:Math.random()*H, t0:b, pow:pow*(0.6+Math.random())}); shake=Math.max(shake,1.6); }
   function fireWild(){ buildWord('WILD'); eggUntil=performance.now()/1000+3.4; burst(12,1.1); }
   var KON=[38,38,40,40,37,39,37,39,66,65], ki=0, typed='';
-  addEventListener('keydown',function(e){ var k=e.keyCode;
+  addEventListener('keydown',function(e){ if(embedded&&!fieldVisible)return; var k=e.keyCode;
     if(k===KON[ki]){ ki++; if(ki===KON.length){ ki=0; fireWild(); } } else { ki=(k===KON[0])?1:0; }
     if(e.key&&e.key.length===1){ typed=(typed+e.key.toLowerCase()).slice(-4); if(typed==='wild') fireWild(); } });
   addEventListener('dblclick',function(e){ var hb=hero.getBoundingClientRect();
-    if(e.clientY<hb.top||e.clientY>hb.bottom||rerollTarget(e.target)) return;
-    clearTimeout(heroPending); heroPress=null; launchHeroReroll('wide',e.clientX,e.clientY); });
+    if(hideHero||e.clientX<hb.left||e.clientX>hb.right||e.clientY<hb.top||e.clientY>hb.bottom||rerollTarget(e.target)) return;
+    var p=localPoint(e.clientX,e.clientY);clearTimeout(heroPending); heroPress=null; launchHeroReroll('wide',p.x,p.y); });
   /* ── Каретка: поле = исходник; курсор — каретка редактора, которая
      «выделяет» строку по сетке и на мгновение проявляет в ней читаемый код.
      Никакой тепловой кляксы: прямоугольное выделение + красная каретка справа
@@ -327,7 +357,7 @@
   var revealRows=[], caretRowLast=-1;
   function caretReveal(x,y,ns,hb){
     var r=Math.floor(y/cell), c=Math.floor((x+5)/cell)+1, len=(y<hb.bottom?22:12);   /* Смещение каретки вправо от курсора — 5 px. */
-    if(r!==caretRowLast){ caretRowLast=r; revealRows.push({r:r,c0:c,c1:c+len,t0:ns,caret:c,doc:r+Math.floor((scrollY||0)/cell)}); if(revealRows.length>8) revealRows.shift(); }
+    if(r!==caretRowLast){ caretRowLast=r; revealRows.push({r:r,c0:c,c1:c+len,t0:ns,caret:c,doc:r+Math.floor(fieldScroll()/cell)}); if(revealRows.length>8) revealRows.shift(); }
     else { var cur=revealRows[revealRows.length-1]; if(cur){ cur.t0=ns; cur.c0=c; cur.c1=c+len; cur.caret=c; } }   /* сниппет едет вместе с кареткой, не остаётся позади */
   }
   function drawCaret(ns,lb,sy){
@@ -360,7 +390,7 @@
      (контекст → экзоскелет → создавать → замедление; манифест → отчёт → …) стрелка от курсора
      показывает на них по очереди (1.8с), плавно появляется и гаснет; заголовки не показывает. */
   var guide={keys:[],sec:'',list:null,i:0,since:0,x:0,y:0,a:0}, arrowAmp=1;
-  function collectKeys(){ guide.keys=[].slice.call(document.querySelectorAll('.row .key')); }
+  function collectKeys(){ guide.keys=[].slice.call(fieldScope.querySelectorAll('.row .key')); }
   collectKeys(); addEventListener('load',collectKeys);
   function arrowGuide(ns){
     if(TOUCH||window.__w19CompanionOut||!hov||mx<0){ guide.a*=0.85; return; }
@@ -448,7 +478,7 @@
     logoMotionVelocity+=(Math.abs((scrollY||0)-logoMotionY)-logoMotionVelocity)*0.15;
     logoMotionY=scrollY||0;
     if(solid)solid.fill(0);                              /* плотные клетки живут один кадр: никаких залипших квадратов */
-    var syV=mobileField?0:(scrollY||0); if(!heroRectDoc) refreshSafeRects();
+    var syV=embedded||mobileField?0:(scrollY||0); if(!heroRectDoc) refreshSafeRects();
     var hb={left:heroRectDoc.l,right:heroRectDoc.r,width:heroRectDoc.w,height:heroRectDoc.h,top:heroRectDoc.t-syV,bottom:heroRectDoc.b-syV};
     hrTop=hb.top; hrH=hb.height;
     if(!sData || ns-lastMask>0.5){ measureType(); lastMask=ns; }                           /* маска DOM-заголовка; сразу после resize */
@@ -465,9 +495,9 @@
         else { heat[i]=Math.max(heat[i]*0.95, 0.9); } }
       else { if(dis[i]>0)dis[i]=0; heat[i]*=decMul; if(heat[i]<.003){heat[i]=0; solid[i]=0;} } }
     var teamCardAtPointer=false;
-    if(hov&&mx>0&&document.elementFromPoint){ var pointerEl=document.elementFromPoint(mx,my); teamCardAtPointer=!!(pointerEl&&pointerEl.closest&&pointerEl.closest('#team .team-member')); }
+    if(hov&&mx>0&&document.elementFromPoint){ var pointerEl=document.elementFromPoint(pointerX,pointerY); teamCardAtPointer=!!(pointerEl&&pointerEl.closest&&pointerEl.closest('#team .team-member')); }
     var inAboutZone=!!(pointerEl&&pointerEl.closest&&pointerEl.closest('#about'));       /* в «про нас» живёт лицо: ни стрелки, ни кисти под курсором */
-    if(hov&&mx>0&&!teamCardAtPointer&&!inAboutZone){
+    if(hov&&mx>0&&!teamCardAtPointer&&!inAboutZone&&(!hideHero||my>hb.bottom)){
       /* Курсор проявляет строку через caretReveal; стрелка рисуется отдельным обработчиком arrowTour. */
       if(!(pointerEl&&pointerEl.closest&&pointerEl.closest('a,button'))) caretReveal(mx,my,ns,hb);   /* над кнопками и ссылками код не рисуем */
       /* Кольца и орбита подсказок рисуются вокруг меток ЧЕЛОВЕК/АГЕНТ. */
@@ -477,7 +507,7 @@
         if(qp>spL){ spL=qp; sgL={val:smileyEls[qi].val}; } }
       if(sgL&&spL>0.1) agentLens={x:mx,y:my,r:70+spL*60,p:spL,who:sgL.val>0.9?'human':'agent'};
     }
-    arrowGuide(ns);
+    if(!embedded)arrowGuide(ns);
     if(sayNow){ sayT-=0.008; if(sayT<=0){sayNow=null;} else sayWord(sayNow,sayAt[0],sayAt[1],Math.min(1,sayT*2)); }
     var mqBand=W19_TXT_OFF?null:document.getElementById('w19-marquee-band');               /* marquee живёт в пустой полосе */
     if(mqBand){ var _mr=mqBand.getBoundingClientRect();
@@ -493,7 +523,8 @@
     shake=0;
     ctx.save(); if(shake>0.01){ shake*=0.9; ctx.translate((Math.random()-0.5)*shake*20,(Math.random()-0.5)*shake*20); } else shake=0;
     ctx.clearRect(-40,-40,W+80,H+80);
-    var sy=TOUCH?0:Math.round(scrollY*DPR)/DPR, s=cell-1;   /* без субпиксельного смаза */
+    if(hideHero){ctx.beginPath();ctx.rect(0,Math.max(0,hb.bottom),W,Math.max(0,H-Math.max(0,hb.bottom)));ctx.clip();}
+    var sy=embedded||TOUCH?0:Math.round(scrollY*DPR)/DPR, s=cell-1;   /* без субпиксельного смаза */
     var fontBase='500 '+(cell+2)+'px "JetBrains Mono", ui-monospace, monospace';
     ctx.font=fontBase;   /* знак чуть крупнее клетки */
     ctx.textAlign='center'; ctx.textBaseline='middle';
@@ -513,12 +544,13 @@
     var hAmp=H*0.14, heroBottom=fhb+sy, heroEnd=heroBottom*0.55, fadeSpan=Math.max(1, heroBottom*0.18);
     for(var dr=drStart; dr<=drEnd; dr++){
       var vy=dr*cell-sy, ccyView=vy+cell*0.5, vr=Math.floor(ccyView/cell), inRow=(vr>=0&&vr<rows);
+      if(hideHero&&ccyView<hb.bottom)continue;
       var dd2=dr*cell, ny=(dr*cell)/H;
       var hardRow=[], fuzzyRow=[];
       for(var si0=0;si0<safes.length;si0++){ var sf0=safes[si0], fz0=sf0[4];
         if(ccyView>=sf0[1]&&ccyView<=sf0[3]) hardRow.push(sf0);
         if(ccyView>=sf0[1]-fz0&&ccyView<=sf0[3]+fz0) fuzzyRow.push(sf0); }
-      for(var c2=0;c2<cols;c2++){ var ccx=(c2+.5)*cell, nx=(c2*cell)/innerWidth;
+      for(var c2=0;c2<cols;c2++){ var ccx=(c2+.5)*cell, nx=(c2*cell)/W;
         var co=coFor(c2,dr), depthN=dd2+co*hAmp;
         var regThr=depthN<=heroEnd?0:Math.min(1,(depthN-heroEnd)/fadeSpan);
         var safe=false; for(var si=0;si<hardRow.length;si++){ var sf=hardRow[si]; if(ccx>=sf[0]&&ccx<=sf[2]){ safe=true; break; } }
@@ -649,11 +681,14 @@
   }
   var fieldRaf=null, fieldReady=true;
   function fieldCanRun(){
+    if(embedded)return !document.hidden&&fieldVisible&&document.body.style.position!=='fixed'&&!(mobileStill&&mobilePainted);
+    if(hideHero&&(mobileField||hero.getBoundingClientRect().bottom>=innerHeight))return false;
     return !document.hidden&&(!mobileField||(document.body.style.position!=='fixed'&&scrollY<=H+80&&!(mobileStill&&mobilePainted)));
   }
   function sleepField(){
     if(fieldRaf!==null)cancelAnimationFrame(fieldRaf);
     fieldRaf=null; loop.l=0; loop.mobileTs=0;
+    if(hideHero)ctx.clearRect(0,0,W,H);
   }
   function wakeField(){
     if(!fieldReady)return;
@@ -674,6 +709,7 @@
       loop.mobileTs=ts;
       if(mobileStill)introT=3;
     }
+    if(embedded&&mobileStill)introT=3;
     if(!loop.l)loop.l=ts; var d=ts-loop.l; loop.l=ts; t+=d; typeT+=d/1000; introT+=d/1000;
     if(!mobileField&&d>0&&d<200) perfEma+=(d-perfEma)*0.04;
     var want=perfEma>24?Math.max(0.45,1-(perfEma-24)/28):1;
@@ -683,10 +719,18 @@
     window.__w19Perf={ema:perfEma,scale:perfScale,dpr:DPR};
     var paintStart=performance.now();
     render();
-    if(mobileField){perfEma+=(performance.now()-paintStart-perfEma)*0.04;if(logoData)mobilePainted=true;}
+    if(mobileField)perfEma+=(performance.now()-paintStart-perfEma)*0.04;
+    if((mobileField||embedded)&&logoData)mobilePainted=true;
     wakeField(); }
   (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(function(){ size(); });
   wakeField();
+  if(embedded){
+    function updateFieldVisibility(){var b=mount.getBoundingClientRect();fieldVisible=b.bottom>0&&b.top<innerHeight&&b.right>0&&b.left<innerWidth;wakeField();}
+    if(window.IntersectionObserver)new IntersectionObserver(updateFieldVisibility).observe(mount);
+    addEventListener('scroll',updateFieldVisibility,{passive:true});
+    addEventListener('resize',updateFieldVisibility);
+    updateFieldVisibility();
+  }
   addEventListener('scroll',wakeField,{passive:true});
   addEventListener('resize',wakeField);
   document.addEventListener('visibilitychange',wakeField);

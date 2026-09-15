@@ -9,7 +9,7 @@
   const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
   const lerp = (a, b, t) => a + (b - a) * t;
   const easeOut = t => 1 - Math.pow(1 - t, 3);
-  const reduced = false;  /* Обработка prefers-reduced-motion снята намеренно: страница показывает одно и то же на любой машине. */
+  const reduced = !!document.querySelector("[data-dot-strip]") && matchMedia("(prefers-reduced-motion:reduce)").matches;
 
   /* Прогресс «вход→выход» элемента: 0 — верх элемента у нижней кромки
      вьюпорта, 1 — центр элемента дошёл до центра экрана. Для блоков,
@@ -117,7 +117,7 @@
   }
 
   /* ── 3. Точечный силуэт A→B в хиро ────────────────────────────────── */
-  const hero = document.getElementById("hero");
+  const hero = document.querySelector("[data-dot-strip]");
   const DOT_N = 400, DOT_H = 120;
   let canvas = null, ctx = null, dots = [], cw = 0;
   if (hero) {
@@ -130,7 +130,7 @@
     ctx = canvas.getContext("2d");
   }
   function buildDots() {
-    if (!ctx || innerWidth<=960) return;
+    if (!ctx) return;
     cw = hero.clientWidth;
     const dpr = Math.min(devicePixelRatio || 1, 2); // потолок DPR = 2
     canvas.width = Math.round(cw * dpr);
@@ -161,7 +161,7 @@
     }
   }
   const heroProg = () => hero
-    ? clamp(scrollY / Math.max(1, hero.offsetHeight - innerHeight * 0.35), 0, 1)
+    ? prog(hero)
     : 0;
 
   /* Прогресс секции остаётся частью скролл-анимации, но правый датчик

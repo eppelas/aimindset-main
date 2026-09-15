@@ -209,6 +209,26 @@
       teamStates.push(state);
     });
   }
+  // Keep the reading layout stable while the same words change places.
+  const reserveTeamTextHeights = () => teamStates.forEach(state => {
+    const order = state.order.slice(), canonical = state.tokens.map((_, index) => index);
+    state.text.style.height = "";
+    placeTeamTokens(state, canonical, false);
+    const natural = state.text.getBoundingClientRect().height;
+    let tallest = natural;
+    // These cards contain three activity phrases: rotations in both directions
+    // cover all six orders. Measure only on layout changes, never during animation.
+    [canonical, canonical.slice().reverse()].forEach(sequence => sequence.forEach((_, shift) => {
+      placeTeamTokens(state, sequence.slice(shift).concat(sequence.slice(0, shift)), false);
+      tallest = Math.max(tallest, state.text.getBoundingClientRect().height);
+    }));
+    const bottomPadding = parseFloat(getComputedStyle(state.card).paddingBottom) || 0;
+    state.text.style.height = Math.ceil(Math.max(natural, tallest - bottomPadding + 2)) + "px";
+    placeTeamTokens(state, order, false);
+  });
+  reserveTeamTextHeights();
+  if(document.fonts && document.fonts.ready)document.fonts.ready.then(reserveTeamTextHeights);
+  addEventListener("resize", reserveTeamTextHeights);
   let teamReset=0;
   document.addEventListener('aim:team-effect',e=>{
     if(e.detail.hint)return;

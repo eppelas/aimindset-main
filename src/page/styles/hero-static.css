@@ -12,7 +12,6 @@
 @media(max-width:1180px){#hero>.stats{max-width:calc(100% - 272px);gap:22px 34px}}
 @media(max-width:960px){
   #hero>.stats{max-width:none;margin-top:120px}
-  #hero>h1{margin-bottom:240px}
 }
 @media(max-width:640px){#hero>.stats{margin-top:72px;gap:20px 28px}}
 

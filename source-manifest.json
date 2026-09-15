@@ -716,5 +716,11 @@
       "start": 761472,
       "end": 761795
     }
-  ]
+  ],
+  "pageSources": {
+    "ai-mindset-consulting": [
+      "src/page/styles/hero-dot-field.css",
+      "src/page/runtime/state-stretch-engine.js"
+    ]
+  }
 }

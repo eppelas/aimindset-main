@@ -60,7 +60,7 @@
 .project-card:hover h3{color:#c50d17}
 /* Вертикальный ритм: секции 64–96 px; группы 48/64/96 px. */
 main>section,main>section:not(#hero){padding-top:clamp(64px,7vw,96px)!important;padding-bottom:clamp(64px,7vw,96px)!important}
-#hero{padding-bottom:190px!important}
+#hero{padding-bottom:40px!important}
 .team-inline{margin-top:0}
 #approach .approach-context{margin-bottom:var(--space-96,96px)}
 .space-schedule-quote{padding:var(--space-24,24px) 0 var(--space-32,32px)}

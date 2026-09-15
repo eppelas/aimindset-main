@@ -27,3 +27,7 @@
   /* Пунктуация живёт в той же неразрывной группе, но вне измеряемого
      поля набираемого слова: финальная буква никогда не наезжает на запятую. */
   .v1x-punctuation{display:inline-block;vertical-align:baseline}
+
+/* The same 400-dot strip and its separator follow the Team page statistics. */
+.v1x-dot-strip{position:relative;grid-column:1/-1;min-width:0;width:100%;height:180px;margin-top:24px;border-bottom:var(--frame,1px) solid var(--ink,#000)}
+@media(max-width:960px){.v1x-dot-strip{margin-top:16px}}
