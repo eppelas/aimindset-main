@@ -8,9 +8,9 @@
 @media(min-width:961px) and (hover:hover){
   .direction-continuity-guide__link{display:inline;cursor:pointer;outline:none}
   .direction-continuity-guide .direction-continuity-guide__hit{stroke:transparent;stroke-width:28;pointer-events:stroke}
-  .direction-continuity-guide g.is-line-hot .direction-continuity-guide__main,.direction-continuity-guide g:focus-within .direction-continuity-guide__main{stroke:#c50d17}
+  .direction-continuity-guide g.is-line-hot .direction-continuity-guide__main,.direction-continuity-guide g:focus-within .direction-continuity-guide__main{stroke:#bf0909}
   .direction-minimap.is-line-open{opacity:1;pointer-events:auto}
-  .direction-minimap a.is-line-target{color:#c50d17}
+  .direction-minimap a.is-line-target{color:#bf0909}
 }
 @media(min-width:961px) and (max-width:1599px) and (hover:hover){
   .direction-minimap.is-line-open{display:flex;top:var(--line-menu-y,112px);left:var(--line-menu-x,16px);width:200px;box-sizing:border-box;transform:none;padding:16px;background:#fff;border:1px solid var(--hair);transition:none}

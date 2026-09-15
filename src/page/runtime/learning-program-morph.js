@@ -135,9 +135,9 @@
     network: { style:'complex-ascii', ids:['ascii-3','network'], color:'#00ffff', bg:'#08080a' },
     torus: { style:'blueprint', ids:['ascii-2','torus'], color:'#ffffff', bg:'#0a1a3a' },
     // Catalogue sequences retain the gallery's geometry and morph law.
-    marketing: { style:'technical', ids:['ascii-20','ascii-5','ascii-13'], color:'#C50D17', bg:'transparent' },
+    marketing: { style:'technical', ids:['ascii-20','ascii-5','ascii-13'], color:'#bf0909', bg:'transparent' },
     design: { style:'blueprint', ids:['ascii-12','ascii-24'], color:'#0E8AA0', bg:'transparent' },
-    health: { style:'blueprint', ids:['ascii-19','ascii-15'], color:'#C50D17', bg:'transparent' }
+    health: { style:'blueprint', ids:['ascii-19','ascii-15'], color:'#bf0909', bg:'transparent' }
   };
 
   const toSegmentObjects = lines => {

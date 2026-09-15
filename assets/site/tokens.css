@@ -1,6 +1,6 @@
 @font-face{font-family:"AIM Brand";src:url("../brand/aim-brand-mono-700.ttf") format("truetype");font-weight:700;font-style:normal;font-display:swap}
 :root{
---bg:#ffffff;--ink:#000000;--soft:#d9d9d9;--hair:#ececec;--pale:#f7f7f7;--muted:#8a8a8a;--acid:#c50d17;--on-acid:#ffffff;--frame:1px;
+--bg:#ffffff;--ink:#000000;--soft:#d9d9d9;--hair:#ececec;--pale:#f7f7f7;--muted:#8a8a8a;--acid:#bf0909;--on-acid:#ffffff;--frame:1px;
 --red-wine:#9e1727;--red-carmine:#b4212f;--red-signal:#c02020;
 --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
 --top-height:58px;--page-shell-max:1320px;--page-gutter:clamp(32px,4.6vw,64px);--grid-gap:clamp(18px,1.8vw,24px);--pxu:5px;--pxu2:10px;

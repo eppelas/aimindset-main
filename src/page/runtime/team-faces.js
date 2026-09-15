@@ -9,7 +9,7 @@
   function hsh(a,b){ var n=Math.sin(a*127.1+b*311.7)*43758.5453; return n-Math.floor(n); }
   [].slice.call(document.querySelectorAll('#w19-smileys canvas.smiley')).forEach(function(cv){
     var ctx=cv.getContext('2d'), mood=cv.getAttribute('data-mood'), agent=mood==='agent';
-    var col=agent?'#1FB6D1':'#C50D17', seed=1, hover=0, nod=0;
+    var col=agent?'#1FB6D1':'#bf0909', seed=1, hover=0, nod=0;
     var item=cv.closest('.team-ai-pair__item'), reduce=matchMedia('(prefers-reduced-motion:reduce)'), painted=false, lastPaint=0;
     var raf=null;
     function canPaint(){

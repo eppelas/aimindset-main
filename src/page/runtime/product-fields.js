@@ -11,11 +11,11 @@
   const reduced = false;  /* Обработка prefers-reduced-motion снята намеренно: страница показывает одно и то же на любой машине. */
   const finePointer = matchMedia("(hover:hover) and (pointer:fine)").matches;
   const C = {
-    ink: "#05070a", paper: "#f4f4ef", acid: "#0E8AA0", platformAcid: "#c50d17",
+    ink: "#05070a", paper: "#f4f4ef", acid: "#0E8AA0", platformAcid: "#bf0909",
     blue: "#0E8AA0", ice: "#1FB6D1", violet: "#9E1727",
     space: "#7b55ad", spaceLight: "#9a7bc8",   /* цвет space/комьюнити — фиолетовый чипа {s} */
-    mint: "#6B7280", amber: "#9E1727", gold: "#C50D17",
-    red: "#C50D17", pink: "#9E1727", bank: "#e2e2dc"
+    mint: "#6B7280", amber: "#9E1727", gold: "#bf0909",
+    red: "#bf0909", pink: "#9E1727", bank: "#e2e2dc"
   };
   const TAU = Math.PI * 2;
   const clamp = (n, a = 0, b = 1) => Math.max(a, Math.min(b, n));
@@ -140,7 +140,7 @@
       s.data.press = { read: 0, registration: .35, rotation: 0, cycle: 0 };
       s.data.rhizome = [
         { x:.18, y:.29, phase:r()*TAU, tone:'#1F2937' },
-        { x:.46, y:.76, phase:r()*TAU, tone:'#C50D17' },
+        { x:.46, y:.76, phase:r()*TAU, tone:'#bf0909' },
         { x:.79, y:.34, phase:r()*TAU, tone:'#1F2937' }
       ];
       s.data.rhizomePulses = [];
@@ -433,13 +433,13 @@
       const a = i * 2.399 + Math.sin(time * .00017 + i) * .08;
       const rr = (5 + (i % 7) * 1.7) * (1 + s.hit * .12);
       const x = rootX + Math.cos(a) * rr * 1.5, y = rootY + Math.sin(a) * rr * .55;
-      ctx.fillStyle = i % 8 === 0 ? 'rgba(197,13,23,.72)' : 'rgba(23,56,46,.78)';
+      ctx.fillStyle = i % 8 === 0 ? 'rgba(191,9,9,.72)' : 'rgba(23,56,46,.78)';
       ctx.fillRect(x - 1.5, y - 1.5, 3, 3);
     }
     tips.forEach((tip, i) => {
       const cp1 = { x: mix(rootX, tip.x, .20) + (i - 1) * w * .13, y: rootY - h * (.10 + i * .02) };
       const cp2 = { x: mix(rootX, tip.x, .72) - (i - 1) * w * .055, y: tip.y + h * .14 };
-      ctx.strokeStyle = tip.care > .22 ? 'rgba(197,13,23,.94)' : 'rgba(23,56,46,.82)';
+      ctx.strokeStyle = tip.care > .22 ? 'rgba(191,9,9,.94)' : 'rgba(23,56,46,.82)';
       ctx.lineWidth = 1.3 + tip.care * 1.35; ctx.lineCap = 'round';
       ctx.beginPath(); ctx.moveTo(rootX, rootY); ctx.bezierCurveTo(cp1.x, cp1.y, cp2.x, cp2.y, tip.x, tip.y); ctx.stroke();
       for (let j = 1; j < 5; j++) {
@@ -451,7 +451,7 @@
       }
       ctx.save(); ctx.translate(tip.x, tip.y); ctx.rotate((i - 1) * .11 + Math.sin(time * .0006 + i) * .07);
       const leaf = 10 + tip.care * 8;
-      ctx.fillStyle = i === s.mode % 3 && s.active ? '#C50D17' : '#1F2937';
+      ctx.fillStyle = i === s.mode % 3 && s.active ? '#bf0909' : '#1F2937';
       [-1, 1].forEach(side => { ctx.beginPath(); ctx.moveTo(0, 0); ctx.quadraticCurveTo(side * leaf * .88, -leaf * .95, side * leaf * 1.16, -leaf * .04); ctx.quadraticCurveTo(side * leaf * .46, leaf * .15, 0, 0); ctx.fill(); });
       ctx.fillStyle = '#f4f4ef'; ctx.fillRect(-2.4, -2.4, 4.8, 4.8); ctx.restore();
     });
@@ -462,16 +462,16 @@
       const q = phase < .5 ? phase * 2 : 2 - phase * 2;
       const p = bezier({x:rootX,y:rootY}, cp1, cp2, tip, q);
       const side = (m.offset + Math.sin(time * .001 + i) * .012) * w;
-      ctx.fillStyle = m.plant === s.mode % 3 && s.active ? 'rgba(197,13,23,.95)' : 'rgba(23,56,46,.46)';
+      ctx.fillStyle = m.plant === s.mode % 3 && s.active ? 'rgba(191,9,9,.95)' : 'rgba(23,56,46,.46)';
       ctx.fillRect(p.x + side - m.size * .5, p.y - m.size * .5, m.size, m.size);
     });
     if (s.active) {
       const r = Math.min(w, h) * (.09 + smooth(1 - Math.hypot(px - rootX, py - rootY) / Math.max(w, h)) * .12);
-      ctx.strokeStyle = 'rgba(197,13,23,.60)'; ctx.lineWidth = 1; ctx.setLineDash([2, 3]); ctx.beginPath(); ctx.arc(px, py, r, 0, TAU); ctx.stroke(); ctx.setLineDash([]);
+      ctx.strokeStyle = 'rgba(191,9,9,.60)'; ctx.lineWidth = 1; ctx.setLineDash([2, 3]); ctx.beginPath(); ctx.arc(px, py, r, 0, TAU); ctx.stroke(); ctx.setLineDash([]);
     }
     data.pulses.forEach(pulse => {
       pulse.age += .018; const q = clamp(pulse.age / 1.2), from = tips[pulse.plant];
-      ctx.strokeStyle = `rgba(197,13,23,${(1 - q) * .76})`; ctx.lineWidth = 1.2;
+      ctx.strokeStyle = `rgba(191,9,9,${(1 - q) * .76})`; ctx.lineWidth = 1.2;
       ctx.beginPath(); ctx.arc(from.x, from.y, q * Math.min(w, h) * .72, 0, TAU); ctx.stroke();
       ctx.strokeStyle = `rgba(23,56,46,${(1 - q) * .38})`; ctx.beginPath(); ctx.arc(rootX, rootY, q * Math.min(w, h) * .46, 0, TAU); ctx.stroke();
     });
@@ -489,7 +489,7 @@
     const left = w * .14, right = w * .88, top = h * .17, bottom = h * .81;
     const cx = w * .54, cy = h * .49;
     const pull = s.active ? .82 : .16;
-    const ink = '#1F2937', sage = '#6B7280', warm = '#C50D17';
+    const ink = '#1F2937', sage = '#6B7280', warm = '#bf0909';
     ctx.fillStyle = '#ebeeed'; ctx.fillRect(0, 0, w, h);
 
     /* The soft, irregular boundary makes the structure a piece of fabric,
@@ -518,7 +518,7 @@
         const gathering = (cy - (base + flow)) * near * .36 + (py - (base + flow)) * near * .16;
         pts.push({ x, y: base + flow + gathering });
       }
-      ctx.strokeStyle = row === 3 ? 'rgba(197,13,23,.80)' : `rgba(23,56,46,${.16 + (row % 3) * .055})`;
+      ctx.strokeStyle = row === 3 ? 'rgba(191,9,9,.80)' : `rgba(23,56,46,${.16 + (row % 3) * .055})`;
       ctx.lineWidth = row === 3 ? 1.25 + s.hit * .45 : .65 + (row % 3) * .12;
       ctx.beginPath(); pts.forEach((p, i) => i ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y)); ctx.stroke();
     }
@@ -534,7 +534,7 @@
         const targetX = px + (u - .5) * w * .11;
         pts.push({ x: mix(left, right, u) + drift + (targetX - (mix(left, right, u) + drift)) * near * .26, y });
       }
-      ctx.strokeStyle = col % 4 === 0 ? 'rgba(197,13,23,.46)' : 'rgba(23,56,46,.20)';
+      ctx.strokeStyle = col % 4 === 0 ? 'rgba(191,9,9,.46)' : 'rgba(23,56,46,.20)';
       ctx.lineWidth = .55 + (col % 3) * .10;
       ctx.beginPath(); pts.forEach((p, i) => i ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y)); ctx.stroke();
     }
@@ -564,7 +564,7 @@
     }
     data.commonsPulses.forEach(pulse => {
       pulse.age += dt * .001; const q = clamp(pulse.age / 1.15);
-      ctx.strokeStyle = `rgba(197,13,23,${(1 - q) * .58})`; ctx.lineWidth = 1;
+      ctx.strokeStyle = `rgba(191,9,9,${(1 - q) * .58})`; ctx.lineWidth = 1;
       ctx.beginPath(); ctx.arc(pulse.x * w, pulse.y * h, q * Math.min(w, h) * .72, 0, TAU); ctx.stroke();
     });
     data.commonsPulses = data.commonsPulses.filter(pulse => pulse.age < 1.15);
@@ -578,7 +578,7 @@
   function drawNonprofitBraid(s, dt) {
     const { ctx, w, h, data, time } = s;
     const px = s.pointer.x * w, py = s.pointer.y * h;
-    const dark = '#1F2937', paper = '#f4f4ef', warm = '#C50D17';
+    const dark = '#1F2937', paper = '#f4f4ef', warm = '#bf0909';
     const starts = [.25, .50, .75], ends = [.63, .28, .52];
     const bezier = (a, b, c, d, u) => {
       const v = 1 - u;
@@ -671,7 +671,7 @@
      existing marks are gathered and translated, never replaced by icons. */
   function drawNonprofitImprint(s, dt) {
     const { ctx, w, h, data, time } = s;
-    const ink = '#1F2937', paper = '#f4f4ef', warm = '#C50D17';
+    const ink = '#1F2937', paper = '#f4f4ef', warm = '#bf0909';
     const px = s.pointer.x * w, py = s.pointer.y * h;
     data.imprintRead = mix(data.imprintRead, s.active ? 1 : 0, reduced ? 1 : .055);
     const read = data.imprintRead;
@@ -750,7 +750,7 @@
         if (n % 6) return;
         const b = { x: w * (.54 + ((mark.rank * 2 + mark.voice * 3) % 7) * .049), y: h * (.20 + ((mark.rank + mark.voice) % 4) * .18) };
         const a = sourceOrigin[mark.voice], p = curve(a, b, q);
-        ctx.fillStyle = `rgba(197,13,23,${(1 - q) * .85})`; ctx.fillRect(p.x - 1.8, p.y - 1.8, 3.6, 3.6);
+        ctx.fillStyle = `rgba(191,9,9,${(1 - q) * .85})`; ctx.fillRect(p.x - 1.8, p.y - 1.8, 3.6, 3.6);
       });
     });
     data.commonsPulses = data.commonsPulses.filter(pulse => pulse.age < 1.15);
@@ -763,7 +763,7 @@
      through marks that already exist. */
   function drawNonprofitClearing(s, dt) {
     const { ctx, w, h, data, time } = s;
-    const ink = '#1F2937', paper = '#f4f4ef', warm = '#C50D17';
+    const ink = '#1F2937', paper = '#f4f4ef', warm = '#bf0909';
     const px = s.pointer.x * w, py = s.pointer.y * h;
     const openings = [
       { x: .28, y: .34, sx: .115, sy: .19, kind: 0 },
@@ -842,7 +842,7 @@
      than a grant icon, a gate, or a field of anonymous data. */
   function drawNonprofitMobile(s, dt) {
     const { ctx, w, h, data, time } = s;
-    const ink = '#1F2937', paper = '#f4f4ef', warm = '#C50D17', pale = '#ebeeed';
+    const ink = '#1F2937', paper = '#f4f4ef', warm = '#bf0909', pale = '#ebeeed';
     const px = s.pointer.x * w, py = s.pointer.y * h;
     const mobile = data.mobile;
     const pointerTilt = s.active ? (s.pointer.x - .5) * .26 + (s.pointer.y - .5) * .05 : -.035;
@@ -904,7 +904,7 @@
      runs one calm edition and leaves all three initiatives in place. */
   function drawNonprofitPress(s, dt) {
     const { ctx, w, h, data, time } = s;
-    const ink = '#1F2937', paper = '#f4f4ef', warm = '#C50D17', muted = '#9aafa4';
+    const ink = '#1F2937', paper = '#f4f4ef', warm = '#bf0909', muted = '#9aafa4';
     const px = s.pointer.x * w, py = s.pointer.y * h;
     const press = data.press;
     const rollerX = w * .53, rollerW = Math.max(16, w * .135), rollerTop = h * .14, rollerH = h * .70;
@@ -990,7 +990,7 @@
      bends the actual roots, and a click travels through existing growth. */
   function drawNonprofitRhizome(s, dt) {
     const { ctx, w, h, data, time } = s;
-    const ink='#1F2937', pale='#ebeeed', warm='#C50D17', paper='#f4f4ef';
+    const ink='#1F2937', pale='#ebeeed', warm='#bf0909', paper='#f4f4ef';
     const px=s.pointer.x*w, py=s.pointer.y*h;
     const origin={x:w*.52,y:h*.52};
     const bezier=(a,b,c,d,u)=>{const v=1-u;return{x:v*v*v*a.x+3*v*v*u*b.x+3*v*u*u*c.x+u*u*u*d.x,y:v*v*v*a.y+3*v*v*u*b.y+3*v*u*u*c.y+u*u*u*d.y}};
@@ -1040,7 +1040,7 @@
      the cursor; its roots are not a passive background. */
   function drawNonprofitMycelium(s, dt) {
     const { ctx, w, h, data, time } = s;
-    const ink='#1F2937', pale='#ebeeed', warm='#C50D17', paper='#f4f4ef';
+    const ink='#1F2937', pale='#ebeeed', warm='#bf0909', paper='#f4f4ef';
     const px=s.pointer.x*w,py=s.pointer.y*h;
     const cx=w*.51,cy=h*.39;
     const pointerForce=s.active?smooth(1-Math.hypot(cx-px,cy-py)/Math.max(48,w*.48)):0;
@@ -1085,7 +1085,7 @@
      and every bud follows it; click sends one visible growth pulse through it. */
   function drawNonprofitNursery(s, dt) {
     const {ctx,w,h,data,time}=s;
-    const ink='#1F2937',pale='#ebeeed',warm='#C50D17',paper='#f4f4ef';
+    const ink='#1F2937',pale='#ebeeed',warm='#bf0909',paper='#f4f4ef';
     const px=s.pointer.x*w,py=s.pointer.y*h;
     const rootY=h*.68;
     data.nursery.wave=mix(data.nursery.wave,s.active?1:0,reduced?1:.045);
@@ -1127,7 +1127,7 @@
      existing stems; no leaf or flower is randomly introduced into the field. */
   function drawNonprofitGarden(s, dt) {
     const {ctx,w,h,data,time}=s;
-    const ink='#1F2937',warm='#C50D17',paper='#f4f4ef';
+    const ink='#1F2937',warm='#bf0909',paper='#f4f4ef';
     const px=s.pointer.x*w,py=s.pointer.y*h;
     const rootY=h*.68, ease=t=>1-Math.pow(1-clamp(t),3);
     const nursery=data.nursery;
@@ -1187,7 +1187,7 @@
   function drawNonprofitGardenBloom(s, dt) {
     drawNonprofitGarden(s, dt);
     const {ctx,w,h,data,time}=s;
-    const ink='#1F2937',warm='#C50D17',paper='#f4f4ef';
+    const ink='#1F2937',warm='#bf0909',paper='#f4f4ef';
     const px=s.pointer.x*w,py=s.pointer.y*h,rootY=h*.68;
     const ease=t=>1-Math.pow(1-clamp(t),3);
     const rootPoint=u=>{
@@ -1235,7 +1235,7 @@
   function drawNonprofitGardenBloomV2(s, dt) {
     drawNonprofitGardenBloom(s, dt);
     const {ctx,w,h,data,time}=s;
-    const ink='#1F2937',warm='#C50D17',paper='#f4f4ef';
+    const ink='#1F2937',warm='#bf0909',paper='#f4f4ef';
     const px=s.pointer.x*w,py=s.pointer.y*h,rootY=h*.68;
     const ease=t=>1-Math.pow(1-clamp(t),3);
     const rootPoint=u=>{
@@ -1282,7 +1282,7 @@
   function drawNonprofitGardenMotion(s, dt) {
     drawNonprofitGardenBloomV2(s, dt);
     const {ctx,w,h,data,time}=s;
-    const ink='#1F2937',warm='#C50D17',paper='#f4f4ef';
+    const ink='#1F2937',warm='#bf0909',paper='#f4f4ef';
     const px=s.pointer.x*w,py=s.pointer.y*h,rootY=h*.68;
     const nursery=data.nursery;
     nursery.energy=mix(nursery.energy||0,s.active?1:0,reduced?1:(s.active?.105:.028));
@@ -1329,7 +1329,7 @@
      no stacked roots, and no shapes that appear detached from the plant. */
   function drawNonprofitGardenCoherent(s, dt) {
     const {ctx,w,h,data,time}=s;
-    const ink='#1F2937',warm='#C50D17',paper='#f4f4ef';
+    const ink='#1F2937',warm='#bf0909',paper='#f4f4ef';
     const nursery=data.nursery;
     const px=s.pointer.x*w,py=s.pointer.y*h,rootY=h*.69;
     const ease=t=>1-Math.pow(1-clamp(t),3);
@@ -1402,7 +1402,7 @@
   function drawNonprofitGardenCanopy(s, dt) {
     drawNonprofitGardenEstablished(s, dt);
     const {ctx,w,h,data,time}=s;
-    const ink='#1F2937',warm='#C50D17',paper='#f4f4ef';
+    const ink='#1F2937',warm='#bf0909',paper='#f4f4ef';
     const nursery=data.nursery;
     const px=s.pointer.x*w,py=s.pointer.y*h,rootY=h*.69;
     const canopy=nursery.canopy||(nursery.canopy=[0,0,0]);

@@ -38,7 +38,7 @@
         var ta=(ti/tags.length)*6.2832+t*0.00025, tr=AL.r*0.62*(0.6+0.4*hsh(ti,3));
         var tx=AL.x+Math.cos(ta)*tr, ty2=AL.y+Math.sin(ta)*tr*0.8;
         if(Math.hypot(tx-AL.x,ty2-AL.y)>AL.r-10) continue;
-        ctx.globalAlpha=0.55+0.4*AL.p; ctx.fillStyle=AL.who==='human'?((ti%3===0)?'#c50d17':'#111210'):((ti%3===0)?'#1FB6D1':'#111210');
+        ctx.globalAlpha=0.55+0.4*AL.p; ctx.fillStyle=AL.who==='human'?((ti%3===0)?'#bf0909':'#111210'):((ti%3===0)?'#1FB6D1':'#111210');
         ctx.fillText(tags[ti], tx, ty2);
       }
       ctx.restore(); ctx.globalAlpha=1;

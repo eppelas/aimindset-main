@@ -452,7 +452,7 @@
         const pool = lane > 1 ? POOL_MID : POOL_LOW;
         const glyph = pool[(hash(cx * 11 + seed, cy * 17 - seed + step) * pool.length) | 0];
         const chroma = hash(cx * 19 + lane, cy * 23 + seed) > .88;
-        ctx.fillStyle = chroma ? (lane % 2 ? "#1FB6D1" : "#C50D17") : INK;
+        ctx.fillStyle = chroma ? (lane % 2 ? "#1FB6D1" : "#bf0909") : INK;
         ctx.globalAlpha = appear * (.18 + .34 * (1 - Math.abs(.5 - u)));
         ctx.fillText(glyph, x, y);
         if (gate < .16 && u > .18) {
@@ -514,7 +514,7 @@
         ctx.globalAlpha = Math.min(impulseAlpha, 0.1 + m * (0.38 + (rr ? rr.power * 0.3 : 0)));
         /* Цвет — только на третьем быстром клике, редко и только пока длится пересчёт. */
         const chroma = rr && rr.color && m >= BANDS[1][0] && hash(cx * 11 + rk, cy * 17 - rk) > 0.972;
-        ctx.fillStyle = chroma ? (hash(cx + rk, cy - rk) > 0.5 ? "#0E8AA0" : "#C50D17") : INK;
+        ctx.fillStyle = chroma ? (hash(cx + rk, cy - rk) > 0.5 ? "#0E8AA0" : "#bf0909") : INK;
         const weightNearMouse = rr && rr.scope === "hold" && rr.origin &&
           Math.hypot(cx * CELL_W - rr.origin.x, y - rr.origin.y) < 132 && hash(cx * 5 + rk, cy * 7 - rk) > 0.38;
         if (weightNearMouse) { ctx.font = '700 12px "JetBrains Mono", ui-monospace, monospace'; ctx.globalAlpha = Math.min(0.9, ctx.globalAlpha + 0.16); }

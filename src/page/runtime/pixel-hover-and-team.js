@@ -1,7 +1,7 @@
 
 /* ═══ кнопки: пиксельное мерцание на ховер (референс inline-3, __pxHover) ═══ */
 (function(){
-  var ACC=['#C50D17'], CELL=9;   /* один цвет хайлайта, без второго */
+  var ACC=['#bf0909'], CELL=9;   /* один цвет хайлайта, без второго */
   function attach(b){
     if(!b||b.__pxd) return; b.__pxd=true;
     b.classList.add('w19-px');

@@ -2,7 +2,7 @@
   @font-face{font-family:"AIM Brand";src:url("assets/brand/aim-brand-mono-700.ttf") format("truetype");font-weight:700;font-style:normal;font-display:swap}
   :root{
     --bg:#ffffff; --ink:#000000; --soft:#d9d9d9; --hair:#ececec; --pale:#f7f7f7;
-    --muted:#8a8a8a; --acid:#c50d17; --on-acid:#ffffff; --frame:1px;
+    --muted:#8a8a8a; --acid:#bf0909; --on-acid:#ffffff; --frame:1px;
     --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
     --top-height:58px;
     --page-shell-max:1320px;
@@ -181,7 +181,7 @@
   .product-secondary-links a{border-bottom:1px solid var(--soft)}
   .product-secondary-links a:hover,.product-secondary-links a:focus-visible{color:var(--ink);border-color:var(--ink);outline:none}
   .product-direction-gfx{--metaphor-accent:#9E1727;--metaphor-grid:rgba(146,81,0,.10);position:relative;min-height:86px;border:0;background:#f7f3e9;color:#05070a;overflow:hidden;isolation:isolate}
-  #product-consulting .product-direction-gfx{--metaphor-accent:#C50D17;--metaphor-grid:rgba(184,32,50,.09)}
+  #product-consulting .product-direction-gfx{--metaphor-accent:#bf0909;--metaphor-grid:rgba(184,32,50,.09)}
   .product-direction-copy{display:flex;min-width:0;flex-direction:column;align-items:flex-start;padding:24px 26px 27px}
   .product-direction-copy .product-meta{margin-bottom:12px}
   .product-block--direction h3{margin-bottom:12px}
@@ -395,7 +395,7 @@
   .project-gfx-line{fill:none;stroke:currentColor;stroke-width:1.4;vector-effect:non-scaling-stroke}
   .project-gfx-hair{fill:none;stroke:currentColor;stroke-width:.8;opacity:.42;vector-effect:non-scaling-stroke}
   .project-gfx-fill{fill:currentColor}
-  .project-gfx-lime{fill:#c50d17;stroke:#000;stroke-width:1}
+  .project-gfx-lime{fill:#bf0909;stroke:#000;stroke-width:1}
   .project-gfx-red{fill:#e6372f;stroke:#000;stroke-width:1}
   .project-gfx-paper{fill:#f4f4ef;stroke:#000;stroke-width:1}
   .project-gfx-ink{fill:#000}
@@ -585,7 +585,7 @@
   .eco-tree{padding:24px;background-image:linear-gradient(#ddddda 1px,transparent 1px),linear-gradient(90deg,#ddddda 1px,transparent 1px);background-size:40px 40px}
   .eco-root-wrap{position:relative;display:flex;justify-content:center;padding:12px 0 58px}
   .eco-root-wrap::after{content:"";position:absolute;left:50%;bottom:0;width:1px;height:58px;background:#111}
-  .eco-root{position:relative;z-index:2;width:min(520px,62%);min-height:164px;display:flex;flex-direction:column;justify-content:space-between;padding:22px 24px;border:1px solid #000;border-bottom-color:#000;background:#050505;color:#fff;box-shadow:9px 9px 0 #c50d17}
+  .eco-root{position:relative;z-index:2;width:min(520px,62%);min-height:164px;display:flex;flex-direction:column;justify-content:space-between;padding:22px 24px;border:1px solid #000;border-bottom-color:#000;background:#050505;color:#fff;box-shadow:9px 9px 0 #bf0909}
   .eco-root:hover{border-bottom-color:#000}
   .eco-root:focus-visible,.eco-card:focus-visible{outline:3px solid #e6372f;outline-offset:3px}
   .eco-root .eco-kicker{font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:#aaa}
@@ -600,7 +600,7 @@
   .eco-branch-head .eco-index{display:block;margin-bottom:10px;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:#777}
   .eco-branch-head h3{margin:0 0 5px;font-size:16px;line-height:1.15;text-transform:uppercase;overflow-wrap:anywhere}
   .eco-branch-head p{font-size:9.5px;line-height:1.4;color:#666}
-  .eco-branch--learning .eco-branch-head{background:#c50d17;color:var(--on-acid)}
+  .eco-branch--learning .eco-branch-head{background:#bf0909;color:var(--on-acid)}
   .eco-items{display:grid;gap:1px;background:#c7c7c3}
   .eco-branch--learning .eco-items{grid-template-columns:repeat(2,minmax(0,1fr))}
   .eco-card{position:relative;min-width:0;min-height:116px;display:flex;flex-direction:column;justify-content:space-between;padding:13px 14px;border:0;border-bottom:0;background:#fff;transition:background .18s ease,color .18s ease}
@@ -612,7 +612,7 @@
   .eco-card--active{background:#111;color:#fff}
   .eco-card--active:hover{background:#1d1d1d}
   .eco-card--active .eco-type,.eco-card--active .eco-note,.eco-card--active .eco-arrow{color:#bdbdbd}
-  .eco-card--active::before{content:"";position:absolute;left:9px;top:9px;width:7px;height:7px;background:#c50d17;border:1px solid #000;animation:pulse 2.4s infinite}
+  .eco-card--active::before{content:"";position:absolute;left:9px;top:9px;width:7px;height:7px;background:#bf0909;border:1px solid #000;animation:pulse 2.4s infinite}
   .eco-card--active .eco-type{padding-left:13px}
   .eco-card--wide{grid-column:1/-1;min-height:86px}
   .eco-branch--research .eco-card{min-height:166px}
@@ -621,7 +621,7 @@
     .eco-tree{padding:14px 12px;background-size:28px 28px}
     .eco-root-wrap{justify-content:flex-start;padding:4px 0 28px}
     .eco-root-wrap::after{left:18px;height:28px}
-    .eco-root{width:100%;min-height:150px;padding:18px;box-shadow:6px 6px 0 #c50d17}
+    .eco-root{width:100%;min-height:150px;padding:18px;box-shadow:6px 6px 0 #bf0909}
     .eco-root strong{font-size:23px}
     .eco-branches{display:grid;grid-template-columns:1fr;gap:16px;padding:16px 0 0 38px}
     .eco-branches::before{left:18px;right:auto;top:0;bottom:24px;width:1px;height:auto}
@@ -642,7 +642,7 @@
   .ecosystem-direction-card{--direction-accent:var(--acid);--direction-surface:#f6f9ea;display:grid;aspect-ratio:1.72/1;grid-template-rows:1fr;border:1px solid #deded9;background:var(--direction-surface);color:var(--ink);box-shadow:0 5px 0 var(--direction-accent);transition:transform .18s ease,box-shadow .18s ease}
   .ecosystem-direction-card--learning{--direction-accent:var(--acid);--direction-surface:#f6f9ea}
   .ecosystem-direction-card--platform{--direction-accent:#1FB6D1;--direction-surface:#eef4f5}
-  .ecosystem-direction-card--research{--direction-accent:#C50D17;--direction-surface:#f4f4ef}
+  .ecosystem-direction-card--research{--direction-accent:#bf0909;--direction-surface:#f4f4ef}
   .ecosystem-direction-card--consulting{--direction-accent:#f4f4ef;--direction-surface:#050505;color:#f4f4ef}
   .ecosystem-direction-card--platform::before,.ecosystem-direction-card--consulting::before{animation-direction:reverse;animation-delay:-2.3s}
   .ecosystem-direction-card--research::before{animation-delay:-4.1s}

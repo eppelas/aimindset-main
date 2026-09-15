@@ -1,6 +1,6 @@
 /* Exact selected round-3 rules, scoped to approved heroes. User approval 2026-09-11. */
 @font-face{font-family:"JetBrains Mono";src:url("fonts/jetbrains-extrabold.woff2") format("woff2");font-weight:800;font-display:swap}
-.approved-hero{font-synthesis:none;--hero-face:"JetBrains Mono",monospace;--hero-weight:800;--hero-track:-.055em;--hero-scale:1;--hero-cyan:#1fb6d1;--hero-red:#c50d17;--review-size:100px;--review-leading:.95;--review-weight:800}
+.approved-hero{font-synthesis:none;--hero-face:"JetBrains Mono",monospace;--hero-weight:800;--hero-track:-.055em;--hero-scale:1;--hero-cyan:#1fb6d1;--hero-red:#bf0909;--review-size:100px;--review-leading:.95;--review-weight:800}
 .approved-hero.hero-ngo{--hero-face:"JetBrains Mono",monospace;--hero-weight:800;--hero-track:-.035em;--hero-scale:1.04;--review-leading:.94;--review-weight:800}
 .approved-hero{--title-size: clamp(44px,5.45vw,82px); display: grid; grid-template-columns: repeat(8, minmax(0px, 1fr)); gap: 24px; align-items: start; align-content: start; padding-block: 8px 20px;}
 .approved-hero > *{min-width: 0px;}

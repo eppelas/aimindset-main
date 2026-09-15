@@ -315,9 +315,9 @@
     // The Weaver → Neural Loom → Recursive Feedback
     workflow: {"style":"technical","ids":["ascii-6","ascii-11","ascii-13"],"color":"#666","bg":"#fff"},
 
-    marketing: { style:'technical', ids:['ascii-20','ascii-5','ascii-13'], color:'#C50D17', bg:'transparent' },
+    marketing: { style:'technical', ids:['ascii-20','ascii-5','ascii-13'], color:'#bf0909', bg:'transparent' },
     design: { style:'blueprint', ids:['ascii-12','ascii-24'], color:'#0E8AA0', bg:'transparent' },
-    health: { style:'blueprint', ids:['ascii-19','ascii-15'], color:'#C50D17', bg:'transparent' },
+    health: { style:'blueprint', ids:['ascii-19','ascii-15'], color:'#bf0909', bg:'transparent' },
 
     // Semantic illustrations use original, deliberately sparse gallery frames.
     // These are selections of source art, not new glyphs or redrawn geometry.

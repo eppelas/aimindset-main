@@ -36,7 +36,7 @@
 
   /* palette (ported from `dL`) */
   var INK = '#1F2937';
-  var PALETTE = [INK, '#6B7280', '#C50D17', '#f4f4ef', '#374151', '#9CA3AF', 'rgba(197,13,23,0.48)'];
+  var PALETTE = [INK, '#6B7280', '#bf0909', '#f4f4ef', '#374151', '#9CA3AF', 'rgba(191,9,9,0.48)'];
 
   var PROMPTS = [
     'начни с одной задачи',

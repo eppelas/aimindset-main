@@ -12,5 +12,5 @@
 #w19-proc .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:10px;font:12px "JetBrains Mono",ui-monospace,monospace;}
 #w19-proc .step{position:relative;padding:10px 0 14px;cursor:default;color:#555;}
 #w19-proc .step b{color:#000;font-weight:700;}
-#w19-proc .step::after{content:"";position:absolute;left:var(--lx,0);bottom:0;width:62px;height:3px;background:#C50D17;opacity:0;transition:opacity .2s;}
+#w19-proc .step::after{content:"";position:absolute;left:var(--lx,0);bottom:0;width:62px;height:3px;background:#bf0909;opacity:0;transition:opacity .2s;}
 #w19-proc .step:hover::after{opacity:1;}

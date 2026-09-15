@@ -9,7 +9,7 @@
 .direction-minimap a::before{content:"";position:absolute;top:50%;left:6px;width:10px;height:1px;background:rgba(17,18,16,.18)}
 .direction-minimap a:hover,.direction-minimap a:focus-visible{color:rgba(17,18,16,.8);outline:none}
 .direction-minimap a.is-current{color:var(--ink);font-weight:700}
-.direction-minimap a.is-current::before{background:#c50d17;height:2px}
+.direction-minimap a.is-current::before{background:#bf0909;height:2px}
 .direction-minimap .direction-minimap-root{padding-left:0;margin-bottom:2px;color:rgba(17,18,16,.62);letter-spacing:.13em}
 .direction-minimap .direction-minimap-root::before{content:none}
 @media(max-width:1599px){.direction-minimap{display:none}}   /* на 13" не помещается рядом с линиями */

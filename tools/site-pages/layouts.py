@@ -39,7 +39,7 @@ def render_pages(api):
     body+=section('format','Как это работает',outcomes+'<div class="quote-break quote-break--right">'+quote(p,7)+'</div>',b(2),cls='team-format')
     support=''
     for title,ids,preset in [(9,[10,11],'semantic-strategy'),(12,[13],'semantic-setup'),(14,[15],'semantic-team-chat'),(16,[17],'semantic-progress')]:
-        support+='<article class="support-item"><div class="support-title">'+b(title)+morph(preset,['#c50d17','#519b8b','#7651b8','#555'][[9,12,14,16].index(title)],26000+[9,12,14,16].index(title)*3000,title*.031)+'</div>'+''.join(bullets(p,i) if '▪' in source[p]['blocks'][i]['text'] else b(i) for i in ids)+'</article>'
+        support+='<article class="support-item"><div class="support-title">'+b(title)+morph(preset,['#bf0909','#519b8b','#7651b8','#555'][[9,12,14,16].index(title)],26000+[9,12,14,16].index(title)*3000,title*.031)+'</div>'+''.join(bullets(p,i) if '▪' in source[p]['blocks'][i]['text'] else b(i) for i in ids)+'</article>'
     follow='<div class="support-after"><div><h3 data-source-block="18">поддержка после лаборатории<br><span class="team-ink">от 2 до 12 недель</span></h3><ul class="plain-list">'+''.join(f'<li data-source-block="{i}">{escape(source[p]["blocks"][i]["text"].lstrip("▪︎ "))}</li>' for i in [19,20,21])+'</ul></div><div class="supporting-visual">'+b(22)+'</div></div>'
     body+=section('support','Сопровождение команды','<div class="support-grid">'+support+'</div>'+follow,'<p>Сверх базовой программы лаборатории</p>',cls='team-support')
     cards=json.loads((here/'content/cases.json').read_text())['cards']
@@ -54,7 +54,7 @@ def render_pages(api):
     videos=json.loads((here/'content/videos.json').read_text())['videos']
     media='<div class="video-grid">'+''.join(f'<article class="video-card"><a class="video-cover" href="{escape(v["watch_url"],quote=True)}" target="_blank" rel="noopener noreferrer" aria-label="{escape(v["title"],quote=True)} — с {v["start_label"]}, новая вкладка"><img src="{v["thumbnail_url"]}" alt="" width="1280" height="720" loading="lazy"><span class="video-time">с {v["start_label"]}</span></a><h3>{escape(v["title"])}</h3><a class="product-cta" href="{escape(v["watch_url"],quote=True)}" target="_blank" rel="noopener noreferrer" aria-label="Смотреть фрагмент: {escape(v["title"],quote=True)} — новая вкладка"><span>смотреть фрагмент</span><span class="go-arrow" aria-hidden="true">↗</span></a></article>' for v in videos)+'</div>'
     body+=section('cases','Что создают команды<br>за 4 недели',gallery+'<div class="showcase-head"><h3>внутри рабочих проектов</h3><p>фрагменты Founder OS Showcase</p></div>'+media,b(32),cls='team-cases')
-    contexts=''.join('<article class="context-item">'+morph(preset,color,27000+n*2500,n*.2)+bullets(p,i,'h3')+'</article>' for n,(i,preset,color) in enumerate([(26,'semantic-product','#c50d17'),(27,'semantic-marketing','#519b8b'),(28,'semantic-hr','#7651b8'),(29,'semantic-operations','#555')]))
+    contexts=''.join('<article class="context-item">'+morph(preset,color,27000+n*2500,n*.2)+bullets(p,i,'h3')+'</article>' for n,(i,preset,color) in enumerate([(26,'semantic-product','#bf0909'),(27,'semantic-marketing','#519b8b'),(28,'semantic-hr','#7651b8'),(29,'semantic-operations','#555')]))
     body+=section('practice','Практика в контексте<br>вашего бизнеса','<div class="context-grid">'+contexts+'</div>',b(25),cls='team-practice')
     community='<div class="community-grid"><div class="community-copy"><h3>'+heading(p,38)+'</h3>'+b(39)+b(42,cls='result')+morph('semantic-community','#519b8b',36000,.47)+'</div><div class="community-quotes">'+quote(p,40)+quote(p,41)+'</div></div>'
     community+='<div class="reason-cards"><article class="reason-card"><div><h3>'+heading(p,43)+'</h3>'+b(44)+b(45,cls='result')+'</div>'+morph('semantic-personal','#7651b8',31000,.27)+'</article><article class="reason-card reason-card--visual"><div><h3>'+heading(p,46)+'</h3>'+b(47)+b(49,cls='result')+'</div><div class="synergy-visual">'+b(48)+'</div></article></div>'
@@ -83,7 +83,7 @@ def render_pages(api):
     offer='<div class="participation-grid"><article class="participation-offer">'+editorial(b(5),True)+'<ul class="offer-list" data-source-block="6">'+''.join('<li>'+editorial(item['html'],True)+'</li>' for item in source[p]['blocks'][6]['items'])+'</ul></article><article class="participation-exchange">'+editorial(b(7),True)+editorial(b(8,cls='plain-list'))+'</article></div>'
     body+=section('participation','участие в лаборатории',offer,cls='nonprofit-participation')
     criteria=''
-    for n,(i,preset,color) in enumerate([(10,'np-benefit','#519b8b'),(12,'np-ai-project','#c50d17'),(14,'np-sharing','#7651b8'),(16,'np-active-learning','#519b8b')]):
+    for n,(i,preset,color) in enumerate([(10,'np-benefit','#519b8b'),(12,'np-ai-project','#bf0909'),(14,'np-sharing','#7651b8'),(16,'np-active-learning','#519b8b')]):
         detail=source[p]['blocks'][i+1]['text'].replace('"посмотреть в записи"','«посмотреть в записи»')
         # Keep every source sentence; paragraph breaks provide reading pauses.
         sentences=re.split(r'(?<=[.!?]) +',detail)
@@ -92,7 +92,7 @@ def render_pages(api):
         criteria+='<article class="criterion criterion--'+str(n+1)+'"><div class="criterion-head"><div><span class="criterion-number" aria-hidden="true">0'+str(n+1)+'</span>'+editorial(b(i,tag='h3'),True)+'</div>'+morph(preset,color,26000+n*3000,n*.173)+'</div><div class="criterion-copy" data-source-block="'+str(i+1)+'">'+copy+'</div></article>'
     body+=section('criteria','критерии отбора','<div class="criteria-grid">'+criteria+'</div>',cls='nonprofit-criteria')
     principles='<ul class="principles-grid">'
-    for n,(item,preset,color) in enumerate(zip(source[p]['blocks'][1]['items'],['np-benefit','np-active-learning','semantic-community','semantic-personal'],['#c50d17','#519b8b','#7651b8','#555'])):
+    for n,(item,preset,color) in enumerate(zip(source[p]['blocks'][1]['items'],['np-benefit','np-active-learning','semantic-community','semantic-personal'],['#bf0909','#519b8b','#7651b8','#555'])):
         head,detail=re.split(r' [—–] ',item['text'],maxsplit=1)
         principles+='<li><div><h3>'+editorial(escape(head),True)+'</h3><p>'+editorial(escape(detail),True)+'</p></div>'+morph(preset,color,27000+n*3000,n*.19)+'</li>'
     principles+='</ul>'

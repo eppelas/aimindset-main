@@ -19,7 +19,7 @@
      #hero-kv получают исходную пружинную физику main-current и всегда
      возвращаются в свою маску. */
   var logoMotion=Object.create(null), logoMotionY=scrollY||0, logoMotionVelocity=0;
-  var BANDS=[[0.30,'#9CA3AF'],[0.46,'#1FB6D1'],[0.62,'#C50D17'],[0.78,'#9E1727']];                             /* Цветовые полосы по уровню тепла. */
+  var BANDS=[[0.30,'#9CA3AF'],[0.46,'#1FB6D1'],[0.62,'#bf0909'],[0.78,'#9E1727']];                             /* Цветовые полосы по уровню тепла. */
   /* эстетика знаков: вместо квадратов — моноширинные глифы; плотность знака растёт с теплом,
      глиф стабилен по клетке (не мерцает) */
   /* язык знаков из v17-ruslo-main: вода · ~ ≈, горячее — ≋/#; глиф стабилен по клетке */
@@ -373,7 +373,7 @@
         ctx.fillStyle='#fff'; ctx.fillRect(c*cell,y,cell,cell); ctx.fillStyle=selCol; ctx.fillRect(c*cell,y,cell,cell);
         var ch=snip.charAt((c-rv.c0)%snip.length); if(ch===' ') continue;
         ctx.fillStyle=inkCol; ctx.fillText(ch,cx,cy+1); }
-      if(i===revealRows.length-1&&((ns*0.22)%1)<0.62){ ctx.fillStyle='#C50D17';   /* Частота мигания каретки задаётся множителем времени 0.22. */ ctx.fillRect(rv.caret*cell,y,Math.max(2,Math.round(cell*0.45)),cell); }
+      if(i===revealRows.length-1&&((ns*0.22)%1)<0.62){ ctx.fillStyle='#bf0909';   /* Частота мигания каретки задаётся множителем времени 0.22. */ ctx.fillRect(rv.caret*cell,y,Math.max(2,Math.round(cell*0.45)),cell); }
     }
     ctx.restore(); }   /* save/restore возвращает шрифт и выравнивание поля */
   /* Стрелка-гид: выбор целей и проверка свободного пути. */
@@ -644,7 +644,7 @@
             ctx.font=(logoLeft?'700 ':'600 ')+(cell+3)+'px "JetBrains Mono", ui-monospace, monospace';
           } else if(lineCh){ var readable=heroRun.phase<0.82;   /* печатается и читается, в конце растворяется в шум */
             g=readable?lineCh:GL_B[band][(hsh(c2*3.1+heroRun.step*0.79,dr*1.9-heroRun.step*0.37)*GL_B[band].length)|0];
-            if(readable) ctx.fillStyle=(lineCh==='\u258c')?'#C50D17':'#111210'; }
+            if(readable) ctx.fillStyle=(lineCh==='\u258c')?'#bf0909':'#111210'; }
           else g=glyphFor(band,neon,c2,dr,heroRun);
           ctx.fillText(g,gx,gy);
           if(inLogo)ctx.font=fontBase;
@@ -661,7 +661,7 @@
         var ta=(ti/tags.length)*6.2832+t*0.00025, tr=AL.r*0.62*(0.6+0.4*hsh(ti,3));
         var tx=AL.x+Math.cos(ta)*tr, ty2=AL.y+Math.sin(ta)*tr*0.8;
         if(Math.hypot(tx-AL.x,ty2-AL.y)>AL.r-10) continue;
-        ctx.globalAlpha=0.55+0.4*AL.p; ctx.fillStyle=AL.who==='human'?((ti%3===0)?'#c50d17':'#111210'):((ti%3===0)?'#1FB6D1':'#111210');
+        ctx.globalAlpha=0.55+0.4*AL.p; ctx.fillStyle=AL.who==='human'?((ti%3===0)?'#bf0909':'#111210'):((ti%3===0)?'#1FB6D1':'#111210');
         ctx.fillText(tags[ti], tx, ty2);
       }
       ctx.restore(); ctx.globalAlpha=1; ctx.textAlign='center'; ctx.textBaseline='middle'; }

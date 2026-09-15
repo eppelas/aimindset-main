@@ -1,6 +1,6 @@
 <!-- Generated parent instruction mirror. Do not edit in this repository. -->
-> **MANDATORY — READ BEFORE ANY WORK.** [Canonical parent instruction](https://github.com/eppelas/aim-web-platform/blob/main/MANDATORY_INSTRUCTIONS.md) · [Exact source version](https://github.com/eppelas/aim-web-platform/blob/abc1304e65bf52ac46c61f2fde3a7be23bb2c8cd/MANDATORY_INSTRUCTIONS.md)
-> Parent commit: `abc1304e65bf52ac46c61f2fde3a7be23bb2c8cd`. Source SHA-256: `c87afbac74eee2cc148662614d96fea787b5594cf815fd79ab6ad7063911748b`.
+> **MANDATORY — READ BEFORE ANY WORK.** [Canonical parent instruction](https://github.com/eppelas/aim-web-platform/blob/main/MANDATORY_INSTRUCTIONS.md) · [Exact source version](https://github.com/eppelas/aim-web-platform/blob/287cdfae233b49ab1fa6b99c37301f96334bbb75/MANDATORY_INSTRUCTIONS.md)
+> Parent commit: `287cdfae233b49ab1fa6b99c37301f96334bbb75`. Source SHA-256: `c87afbac74eee2cc148662614d96fea787b5594cf815fd79ab6ad7063911748b`.
 
 # ОБЯЗАТЕЛЬНАЯ ИНСТРУКЦИЯ ДЛЯ ВСЕХ АГЕНТОВ AIM
 

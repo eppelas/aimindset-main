@@ -19,9 +19,9 @@ body.show-back-to-top:not(.editing) .back-to-top{opacity: 1; pointer-events: aut
  .back-to-top:hover, .back-to-top:focus-visible{color: var(--on-acid,#fff) !important;}
 @media (max-width: 700px) {#backToTop.back-to-top{min-height: 44px; padding: 10px; background: var(--bg); bottom: calc(64px + env(safe-area-inset-bottom));}
 #backToTop.back-to-top:hover, #backToTop.back-to-top:focus-visible{background: var(--bg);}}
-#backToTop.back-to-top:hover, #backToTop.back-to-top:focus-visible{background: var(--bg); color: rgb(197, 13, 23) !important;}
-#backToTop.back-to-top:hover *, #backToTop.back-to-top:focus-visible *{color: rgb(197, 13, 23) !important;}
+#backToTop.back-to-top:hover, #backToTop.back-to-top:focus-visible{background: var(--bg); color: rgb(191, 9, 9) !important;}
+#backToTop.back-to-top:hover *, #backToTop.back-to-top:focus-visible *{color: rgb(191, 9, 9) !important;}
 @media (max-width: 960px) {#backToTop.back-to-top{padding: 12px 16px; min-height: 44px; font-weight: 600; border: 0px; background: rgb(0, 0, 0) !important; color: rgb(255, 255, 255) !important;}
 #backToTop.back-to-top *{color: rgb(255, 255, 255) !important;}
-#backToTop.back-to-top:is(:hover, :focus-visible, :active){background: rgb(197, 13, 23) !important; color: rgb(255, 255, 255) !important;}
+#backToTop.back-to-top:is(:hover, :focus-visible, :active){background: rgb(191, 9, 9) !important; color: rgb(255, 255, 255) !important;}
 #backToTop.back-to-top:is(:hover, :focus-visible, :active) *{color: rgb(255, 255, 255) !important;}}

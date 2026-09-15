@@ -56,8 +56,8 @@
 .project-card h3{font-size:var(--type-16);line-height:var(--leading-card);padding-top:6px}
 .project-card>p{font-size:var(--type-12);line-height:var(--leading-small);padding:8px 13px 14px}
 .project-card .project-art::after{content:"";position:absolute;inset:0;z-index:2}
-.project-card h3::after{content:" ↗";color:#c50d17;font-weight:500}
-.project-card:hover h3{color:#c50d17}
+.project-card h3::after{content:" ↗";color:#bf0909;font-weight:500}
+.project-card:hover h3{color:#bf0909}
 /* Вертикальный ритм: секции 64–96 px; группы 48/64/96 px. */
 main>section,main>section:not(#hero){padding-top:clamp(64px,7vw,96px)!important;padding-bottom:clamp(64px,7vw,96px)!important}
 #hero{padding-bottom:40px!important}
@@ -100,13 +100,13 @@ footer{padding:var(--space-48,48px) 0 var(--space-96,96px)}
 .hero-lab-card{position:relative}
 .hero-lab-card__title a::after{content:"";position:absolute;inset:0;z-index:1}
 .hero-lab-card:has(.hero-lab-card__title a){cursor:pointer}
-.hero-lab-card:has(.hero-lab-card__title a:hover) .hero-lab-card__title a{color:#c50d17}
+.hero-lab-card:has(.hero-lab-card__title a:hover) .hero-lab-card__title a{color:#bf0909}
 /* Низ карточки направления — одна ссылка (h2 и стрелка); списки проектов видны постоянно. */
 .ecosystem-direction-copy{grid-template-rows:auto}
 .ecosystem-direction-copy .ecosystem-direction-jump{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;width:100%;grid-column:1/-1;grid-row:1;padding-top:2px;color:inherit;text-decoration:none}
 .ecosystem-direction-copy .ecosystem-direction-jump h2{margin:0;grid-column:auto;grid-row:auto}
 .ecosystem-direction-copy .ecosystem-direction-jump .ecosystem-direction-arrow{grid-column:auto;grid-row:auto;font-size:0}
-.ecosystem-direction-copy .ecosystem-direction-jump:hover h2,.ecosystem-direction-copy .ecosystem-direction-jump:focus-visible h2{color:#c50d17}
+.ecosystem-direction-copy .ecosystem-direction-jump:hover h2,.ecosystem-direction-copy .ecosystem-direction-jump:focus-visible h2{color:#bf0909}
 .ecosystem-direction-branch .ecosystem-children{opacity:.4;transition:none} /* muted until the branch is active */
 .ecosystem-direction-branch:is(:hover,:focus-within,.is-open) .ecosystem-children{opacity:1}
 .ecosystem-tree-lines{overflow:visible}
