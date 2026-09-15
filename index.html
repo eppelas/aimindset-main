@@ -145,9 +145,20 @@
   .research-thumb{position:relative;width:128px;height:82px;overflow:hidden;border:var(--frame) solid var(--ink);background:#111}
   .research-thumb img{position:absolute;inset:0;display:block;width:100%;height:100%;
     object-fit:cover;object-position:top;filter:saturate(.92) contrast(1.04);transition:filter .22s ease}
-  @media(hover:hover) and (pointer:fine){
-    #research .row:hover .research-thumb img,#research .row:focus-within .research-thumb img{filter:saturate(1.04) contrast(1.08)}
+  .research-preview{position:absolute;inset:0;display:block;overflow:hidden;background:#111}
+  @media(min-width:901px) and (hover:hover){
+    #research .row{position:relative}
+    .research-preview{transform-origin:0 0;transition:transform .28s cubic-bezier(.2,.8,.2,1),box-shadow .28s ease;pointer-events:none}
+    #research .row.is-project-preview{z-index:30}
+    #research .row.is-project-preview .research-thumb{overflow:visible}
+    #research .row.is-project-preview .research-preview{transform:translate(var(--preview-x,0px),var(--preview-y,0px)) scale(var(--preview-scale,1.18));outline:var(--frame) solid var(--ink);box-shadow:0 9px 18px rgba(0,0,0,.18)}
+    #research .row.is-project-preview .research-thumb img{filter:saturate(1.04) contrast(1.08)}
   }
+  @media(min-width:901px) and (hover:hover) and (prefers-reduced-motion:no-preference){
+    #research .row.is-project-preview .research-thumb img{animation:research-preview-scroll 5.8s cubic-bezier(.36,0,.18,1) both}
+  }
+  @keyframes research-preview-scroll{0%,10%{object-position:50% 0%}90%,100%{object-position:50% var(--research-preview-end,100%)}}
+  @media(prefers-reduced-motion:reduce){.research-preview,.research-thumb img{transition:none}}
   @media(max-width:700px){
     #research .row{grid-template-columns:104px minmax(0,1fr);gap:8px 12px;align-items:start;padding:14px 2px}
     #research .row>.key{grid-column:1/-1;grid-row:1}
@@ -2873,14 +2884,14 @@ main{padding-bottom:0}
 </section><section id="research">
   <div class="sec-head"><span class="num"><span class="section-number">08</span><span class="section-name">{исследования}</span></span><span class="num">каждый вопрос&nbsp;– артефакт</span></div>
   <div class="rows" id="researchProjects" data-expanded="false">
-    <div class="row"><span class="key">манифест</span><figure class="research-thumb" data-editor-ui=""><img src="assets/ecosystem-previews/manifest.jpg" alt="Скриншот AI MINDSET {manifest}" loading="lazy" decoding="async"></figure><div><h3>манифест AI Mindset</h3><p>соберите собственную систему работы с&nbsp;ИИ: запрос&nbsp;→ внимание&nbsp;→ мышление&nbsp;→ жизнь. Контекстные системы и&nbsp;карта экосистемы</p></div><a class="go" href="https://manifest.aimindset.org">открыть ↗</a></div>
-    <div class="row"><span class="key">отчёт</span><figure class="research-thumb" data-editor-ui=""><img src="assets/ecosystem-previews/gap.jpg" alt="Скриншот The Context Gap" loading="lazy" decoding="async"></figure><div><h3>The Context Gap</h3><p>что на&nbsp;самом деле произошло в&nbsp;ИИ за&nbsp;год. 72 первоисточника</p></div><a class="go" href="https://gap.aimindset.org">открыть ↗</a></div>
-    <div class="row"><span class="key">психика</span><figure class="research-thumb" data-editor-ui=""><img src="assets/ecosystem-previews/selfdev.jpg" alt="Скриншот deep self development w/ ai {sprint}" loading="lazy" decoding="async"></figure><div><h3>deep self development w/ ai {sprint}</h3><p>с&nbsp;Алексеем Ивановым: модель внутренних семейных систем и&nbsp;ИИ, защита психики в&nbsp;эпоху машинной близости</p></div><a class="go" href="https://selfdev.aimindset.org">открыть ↗</a></div>
-    <div class="row"><span class="key">философия</span><figure class="research-thumb" data-editor-ui=""><img src="assets/ecosystem-previews/spiridonov.jpg" alt="Скриншот проекта «Прагматичный Романтизм»" loading="lazy" decoding="async"></figure><div><h3>Прагматичный Романтизм</h3><p>с&nbsp;Максимом Спиридоновым: защита от&nbsp;холодной машинной логики</p></div><a class="go" href="https://spiridonov.aimindset.org">открыть ↗</a></div>
-    <div class="row"><span class="key">усилие</span><figure class="research-thumb" data-editor-ui=""><img src="assets/ecosystem-previews/osokin.jpg" alt="Скриншот проекта «Философия усилия»" loading="lazy" decoding="async"></figure><div><h3>спорт и&nbsp;AI</h3><p>с&nbsp;Виктором Осокиным: ИИ как усилитель человека, трансформация, дисциплина и&nbsp;спорт как бизнес</p></div><a class="go" href="https://osokin.aimindset.org">открыть ↗</a></div>
-    <div class="row"><span class="key">внимание</span><figure class="research-thumb" data-editor-ui=""><img src="assets/ecosystem-previews/intention.jpg" alt="Скриншот Intention OS" loading="lazy" decoding="async"></figure><div><h3>Intention OS</h3><p>с&nbsp;Майком Яном: управление вниманием, когда контекст взрывается</p></div><a class="go" href="https://intention.aimindset.org">открыть ↗</a></div>
-    <div class="row"><span class="key">основатели</span><figure class="research-thumb" data-editor-ui=""><img src="assets/ecosystem-previews/founder-os.jpg" alt="Скриншот Founder OS" loading="lazy" decoding="async"></figure><div><h3>для фаундеров</h3><p>серия разговоров с&nbsp;основателями о&nbsp;том, как они собирают собственные ИИ-системы</p></div><a class="go" href="https://www.youtube.com/@A-I-Mindset">открыть ↗</a></div>
-    <div class="row"><span class="key">карта</span><figure class="research-thumb" data-editor-ui=""><img src="assets/ecosystem-previews/future.jpg" alt="Скриншот проекта «Карта Реальностей × AI»" loading="lazy" decoding="async"></figure><div><h3>методологии будущего</h3><p>с&nbsp;Олей Ерёминой: навыки, ценности, система, сообщество&nbsp;– четыре логики одного вопроса</p></div><a class="go" href="https://future.aimindset.org">открыть ↗</a></div>
+    <div class="row"><span class="key">манифест</span><figure class="research-thumb" data-editor-ui=""><span class="research-preview" style="--research-preview-end:5%"><img src="assets/ecosystem-previews/manifest.jpg" alt="Скриншот AI MINDSET {manifest}" loading="lazy" decoding="async"></span></figure><div><h3>манифест AI Mindset</h3><p>соберите собственную систему работы с&nbsp;ИИ: запрос&nbsp;→ внимание&nbsp;→ мышление&nbsp;→ жизнь. Контекстные системы и&nbsp;карта экосистемы</p></div><a class="go" href="https://manifest.aimindset.org">открыть ↗</a></div>
+    <div class="row"><span class="key">отчёт</span><figure class="research-thumb" data-editor-ui=""><span class="research-preview" style="--research-preview-end:5%"><img src="assets/ecosystem-previews/gap.jpg" alt="Скриншот The Context Gap" loading="lazy" decoding="async"></span></figure><div><h3>The Context Gap</h3><p>что на&nbsp;самом деле произошло в&nbsp;ИИ за&nbsp;год. 72 первоисточника</p></div><a class="go" href="https://gap.aimindset.org">открыть ↗</a></div>
+    <div class="row"><span class="key">психика</span><figure class="research-thumb" data-editor-ui=""><span class="research-preview" style="--research-preview-end:100%"><img src="assets/ecosystem-previews/selfdev.jpg" alt="Скриншот deep self development w/ ai {sprint}" loading="lazy" decoding="async"></span></figure><div><h3>deep self development w/ ai {sprint}</h3><p>с&nbsp;Алексеем Ивановым: модель внутренних семейных систем и&nbsp;ИИ, защита психики в&nbsp;эпоху машинной близости</p></div><a class="go" href="https://selfdev.aimindset.org">открыть ↗</a></div>
+    <div class="row"><span class="key">философия</span><figure class="research-thumb" data-editor-ui=""><span class="research-preview" style="--research-preview-end:5%"><img src="assets/ecosystem-previews/spiridonov.jpg" alt="Скриншот проекта «Прагматичный Романтизм»" loading="lazy" decoding="async"></span></figure><div><h3>Прагматичный Романтизм</h3><p>с&nbsp;Максимом Спиридоновым: защита от&nbsp;холодной машинной логики</p></div><a class="go" href="https://spiridonov.aimindset.org">открыть ↗</a></div>
+    <div class="row"><span class="key">усилие</span><figure class="research-thumb" data-editor-ui=""><span class="research-preview" style="--research-preview-end:10%"><img src="assets/ecosystem-previews/osokin.jpg" alt="Скриншот проекта «Философия усилия»" loading="lazy" decoding="async"></span></figure><div><h3>спорт и&nbsp;AI</h3><p>с&nbsp;Виктором Осокиным: ИИ как усилитель человека, трансформация, дисциплина и&nbsp;спорт как бизнес</p></div><a class="go" href="https://osokin.aimindset.org">открыть ↗</a></div>
+    <div class="row"><span class="key">внимание</span><figure class="research-thumb" data-editor-ui=""><span class="research-preview" style="--research-preview-end:8%"><img src="assets/ecosystem-previews/intention.jpg" alt="Скриншот Intention OS" loading="lazy" decoding="async"></span></figure><div><h3>Intention OS</h3><p>с&nbsp;Майком Яном: управление вниманием, когда контекст взрывается</p></div><a class="go" href="https://intention.aimindset.org">открыть ↗</a></div>
+    <div class="row"><span class="key">основатели</span><figure class="research-thumb" data-editor-ui=""><span class="research-preview" style="--research-preview-end:100%"><img src="assets/ecosystem-previews/founder-os.jpg" alt="Скриншот Founder OS" loading="lazy" decoding="async"></span></figure><div><h3>для фаундеров</h3><p>серия разговоров с&nbsp;основателями о&nbsp;том, как они собирают собственные ИИ-системы</p></div><a class="go" href="https://www.youtube.com/@A-I-Mindset">открыть ↗</a></div>
+    <div class="row"><span class="key">карта</span><figure class="research-thumb" data-editor-ui=""><span class="research-preview" style="--research-preview-end:5%"><img src="assets/ecosystem-previews/future.jpg" alt="Скриншот проекта «Карта Реальностей × AI»" loading="lazy" decoding="async"></span></figure><div><h3>методологии будущего</h3><p>с&nbsp;Олей Ерёминой: навыки, ценности, система, сообщество&nbsp;– четыре логики одного вопроса</p></div><a class="go" href="https://future.aimindset.org">открыть ↗</a></div>
   </div>
 
   <button class="learning-action research-more" type="button" aria-expanded="false" aria-controls="researchProjects">ещё</button>
@@ -9096,7 +9107,7 @@ document.querySelectorAll('.ecosystem-direction-card .ecosystem-direction-copy')
 /* Общий медиапросмотр: hover/фокус, без изменения размеров самой карточки. */
 (function(){
   var desktop=matchMedia('(min-width:901px) and (hover:hover)'), reduced=matchMedia('(prefers-reduced-motion:reduce)');
-  var cards=[].slice.call(document.querySelectorAll('.project-card'));
+  var cards=[].slice.call(document.querySelectorAll('.project-card, #research .row'));
   function close(card){
     card.classList.remove('is-project-preview','is-motion-playing');
     var video=card.querySelector('.project-motion');
@@ -9104,8 +9115,9 @@ document.querySelectorAll('.ecosystem-direction-card .ecosystem-direction-copy')
   }
   function closeAll(){cards.forEach(close);}
   function position(card){
-    var art=card.querySelector('.project-art'),r=art.getBoundingClientRect(),pad=16;
-    var scale=Math.min(2,640/r.width,(innerWidth-pad*2)/r.width,(innerHeight-pad*2)/r.height);
+    var art=card.querySelector('.project-art, .research-thumb'),r=art.getBoundingClientRect(),pad=16;
+    var maxScale=art.classList.contains('research-thumb')?1.18:2;
+    var scale=Math.min(maxScale,640/r.width,(innerWidth-pad*2)/r.width,(innerHeight-pad*2)/r.height);
     var x=Math.max(pad,Math.min(r.left+r.width*(1-scale)/2,innerWidth-pad-r.width*scale));
     var y=Math.max(pad,Math.min(r.top+r.height*(1-scale)/2,innerHeight-pad-r.height*scale));
     card.style.setProperty('--preview-scale',scale);
@@ -9133,7 +9145,7 @@ document.querySelectorAll('.ecosystem-direction-card .ecosystem-direction-copy')
   addEventListener('scroll',function(){
     cards.forEach(function(card){
       if(card.classList.contains('is-project-preview')){
-        var r=card.querySelector('.project-art').getBoundingClientRect();
+        var r=card.querySelector('.project-art, .research-thumb').getBoundingClientRect();
         if(r.bottom<=0||r.top>=innerHeight)close(card);
         else position(card);
       }else close(card);

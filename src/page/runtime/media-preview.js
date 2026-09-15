@@ -2,7 +2,7 @@
 /* Общий медиапросмотр: hover/фокус, без изменения размеров самой карточки. */
 (function(){
   var desktop=matchMedia('(min-width:901px) and (hover:hover)'), reduced=matchMedia('(prefers-reduced-motion:reduce)');
-  var cards=[].slice.call(document.querySelectorAll('.project-card'));
+  var cards=[].slice.call(document.querySelectorAll('.project-card, #research .row'));
   function close(card){
     card.classList.remove('is-project-preview','is-motion-playing');
     var video=card.querySelector('.project-motion');
@@ -10,8 +10,9 @@
   }
   function closeAll(){cards.forEach(close);}
   function position(card){
-    var art=card.querySelector('.project-art'),r=art.getBoundingClientRect(),pad=16;
-    var scale=Math.min(2,640/r.width,(innerWidth-pad*2)/r.width,(innerHeight-pad*2)/r.height);
+    var art=card.querySelector('.project-art, .research-thumb'),r=art.getBoundingClientRect(),pad=16;
+    var maxScale=art.classList.contains('research-thumb')?1.18:2;
+    var scale=Math.min(maxScale,640/r.width,(innerWidth-pad*2)/r.width,(innerHeight-pad*2)/r.height);
     var x=Math.max(pad,Math.min(r.left+r.width*(1-scale)/2,innerWidth-pad-r.width*scale));
     var y=Math.max(pad,Math.min(r.top+r.height*(1-scale)/2,innerHeight-pad-r.height*scale));
     card.style.setProperty('--preview-scale',scale);
@@ -39,7 +40,7 @@
   addEventListener('scroll',function(){
     cards.forEach(function(card){
       if(card.classList.contains('is-project-preview')){
-        var r=card.querySelector('.project-art').getBoundingClientRect();
+        var r=card.querySelector('.project-art, .research-thumb').getBoundingClientRect();
         if(r.bottom<=0||r.top>=innerHeight)close(card);
         else position(card);
       }else close(card);
