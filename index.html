@@ -113,7 +113,7 @@
   .hero-lab-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:22px;width:100%;max-width:720px}
   .hero-lab-card{min-height:0;display:grid;grid-template-rows:auto 1fr;background:#fff;box-shadow:0 0 0 1px var(--hair),5px 5px 0 rgba(0,0,0,.08)}
   .hero-lab-card__status{padding:9px 14px 8px;background:#7FD9E8;color:var(--ink);font-size:9.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase}
-.hero-lab-card--recruiting .hero-lab-card__status{background:#9E1727;color:#fff}
+.hero-lab-card--recruiting .hero-lab-card__status{background:var(--acid);color:var(--on-acid)}
  .hero-lab-card--slate .hero-lab-card__status{background:var(--slate);color:var(--on-slate)}
   .hero-lab-card__body{display:flex;flex-direction:column;justify-content:flex-start;gap:14px;padding:16px 16px 14px}
   .hero-lab-card__title{margin:0;font-size:20px;font-weight:700;line-height:1.15;letter-spacing:-.02em}
@@ -1661,7 +1661,7 @@ span.hang{margin-right:var(--hang-width,0px)}
 .product-block-drag-handle,.follow-link:hover,.follow-link:focus-visible,.space-schedule__toggle:hover,.space-schedule__toggle:focus-visible,.space-schedule__all:hover,.space-schedule__all:focus-visible{color:var(--on-acid,#fff) !important}
 </style>
 <style id="red-palette-use">
-/* Дополнительные красные оттенки для отдельных смысловых акцентов. */
+/* Обе карточки хиро используют акцент --acid. */
 :root{--red-wine:#9e1727;--red-carmine:#9E1727;--red-signal:#c02020}
 </style>
 <style id="space-schedule-controls-fix">
@@ -1968,6 +1968,10 @@ body.editing .direction-minimap{display:none}
 #learning .program-trio{align-items:stretch}
 #learning .program-card__meta{flex-wrap:wrap}
 #learning .program-card__morph{color:var(--ink)}
+#learning .program-card--main{--learning-card-accent:var(--slate);border-color:color-mix(in srgb,var(--slate) 38%,var(--hair));background:color-mix(in srgb,var(--slate) 7%,var(--bg))}
+#learning .program-card--main .program-card__meta,#learning .program-card--main .program-card__morph{color:var(--slate)}
+#learning .program-card--current .program-card__status,#learning .program-card--current .program-card__morph{color:var(--acid)}
+#learning .program-card--current .aim-button{--skin-accent:var(--acid)}
 #learning .aim-button-outline{--px-fill:var(--bg)}
 #learning .program-card--main .aim-button-outline{--px-fill:var(--bg)}
 
@@ -2266,7 +2270,7 @@ main{padding-bottom:0}
  #reviews .company-proof{margin-top:72px!important}
 }
 </style>
-<link rel="stylesheet" href="assets/site/site-return.css?v=0f41a92105">
+<link rel="stylesheet" href="assets/site/site-return.css?v=5e2abcbf13">
 <style>@media(max-width:960px){#team>.team-inline-head{display:none}}</style>
 <style id="learning-card-actions">
 #learning .program-card{cursor:pointer}
@@ -2286,7 +2290,7 @@ main{padding-bottom:0}
 <body class="">
 
 <aim-site-header page="home" data-editor-ui=""></aim-site-header>
-<script src="assets/site/site-shell.js?v=954701a35b"></script>
+<script src="assets/site/site-shell.js?v=e2a33e31f0"></script>
 
 
 
@@ -2443,16 +2447,18 @@ main{padding-bottom:0}
       <nav class="project-links" aria-label="Ссылки MYTH TRACE"><a href="https://mythtrace.lab.aimindset.org/" target="_blank" rel="noopener noreferrer">mythtrace.lab.aimindset.org ↗</a></nav>
     </article>
     <article class="project-card">
-      <a class="project-art" href="https://claude-buddies.netlify.app/" target="_blank" rel="noopener noreferrer" aria-label="Открыть Claude Buddies в новой вкладке"><img src="assets/cases/claude-buddies.png" alt="Галерея цифровых питомцев Claude Buddies" loading="lazy"><video class="project-motion" src="assets/cases/motion/buddies-preview.mp4" muted loop playsinline preload="none" aria-hidden="true"></video></a>
-      <span class="project-meta">веб-игрушка</span><h3>Claude Buddies</h3>
-      <p>«детерминированный цифровой питомец, привязанный к&nbsp;аккаунту»&nbsp;– и&nbsp;галерея компаньонов сообщества</p>
-      <nav class="project-links" aria-label="Ссылки Claude Buddies"><a href="https://claude-buddies.netlify.app/" target="_blank" rel="noopener noreferrer">claude-buddies.netlify.app ↗</a><a class="project-link--post" href="https://t.me/ai_mind_set/338">пост ↗</a></nav>
+      <!-- Image source: https://apps.aimindset.org/assets/voxel-calendar.svg; original SVG, no modifications -->
+      <a class="project-art" href="https://apps.aimindset.org/calendar/" target="_blank" rel="noopener noreferrer" aria-label="Открыть Calendar Control в новой вкладке"><img src="assets/cases/calendar.svg" alt="Воксельный символ Calendar Control" loading="lazy" style="object-fit:contain;background:#f7f7f3"></a>
+      <span class="project-meta">календари и напоминания</span><h3>Calendar Control</h3>
+      <p>все календари Mac в&nbsp;одном окне: неделя, месяц, события и&nbsp;напоминания. Данные остаются на&nbsp;устройстве</p>
+      <nav class="project-links" aria-label="Ссылки Calendar Control"><a href="https://apps.aimindset.org/calendar/" target="_blank" rel="noopener noreferrer">открыть инструмент ↗</a></nav>
     </article>
     <article class="project-card">
-      <a class="project-art" href="https://pos-pipelines.netlify.app/naming.html" target="_blank" rel="noopener noreferrer" aria-label="Открыть Personal OS в новой вкладке"><img src="assets/cases/personal-os.png" alt="Интерфейс Personal OS" loading="lazy"><video class="project-motion" src="assets/cases/motion/personal-os-preview.mp4" muted loop playsinline preload="none" aria-hidden="true"></video></a>
-      <span class="project-meta">сборка скиллов</span><h3>Personal OS</h3>
-      <p>«не&nbsp;знаю, какой интерфейс приживётся… но&nbsp;строить&nbsp;– уже способ думать»: каждый скил&nbsp;– из&nbsp;повторяющегося действия</p>
-      <nav class="project-links" aria-label="Ссылки Personal OS"><a href="https://pos-pipelines.netlify.app/naming.html" target="_blank" rel="noopener noreferrer">pos-pipelines.netlify.app ↗</a><a class="project-link--post" href="https://t.me/ai_mind_set/331">пост ↗</a></nav>
+      <!-- Image source: https://apps.aimindset.org/assets/voxel-prism.svg; original SVG, no modifications -->
+      <a class="project-art" href="https://apps.aimindset.org/mem-prism/" target="_blank" rel="noopener noreferrer" aria-label="Открыть MEM PRISM в новой вкладке"><img src="assets/cases/mem-prism.svg" alt="Воксельный символ MEM PRISM" loading="lazy" style="object-fit:contain;background:#f7f7f3"></a>
+      <span class="project-meta">монитор памяти</span><h3>MEM PRISM</h3>
+      <p>нагрузка на&nbsp;память, подкачка и&nbsp;ресурсоёмкие процессы в&nbsp;одном окне. Нативная бета работает локально на&nbsp;Mac</p>
+      <nav class="project-links" aria-label="Ссылки MEM PRISM"><a href="https://apps.aimindset.org/mem-prism/" target="_blank" rel="noopener noreferrer">открыть инструмент ↗</a></nav>
     </article>
   </div>
 </section><section id="products">
@@ -2688,7 +2694,7 @@ main{padding-bottom:0}
               <div class="program-card__meta"><span>раз в&nbsp;сезон</span></div>
               <h3>f26 fall</h3>
               <p>четыре недели практики на&nbsp;своих задачах: контекст, агенты, прототипы и&nbsp;финальный показ</p>
-              <div class="program-card__morph" data-morph-preset="practice" data-morph-neutral data-morph-color="#C66A2B" aria-hidden="true"></div>
+              <div class="program-card__morph" data-morph-preset="practice" data-morph-neutral data-morph-color="#5e7492" aria-hidden="true"></div>
               <div class="program-card__footer"><button class="aim-button-outline waitlist-open" type="button" data-waitlist-topic="f26 fall" data-waitlist-code="f26-main-lab">waitlist <span aria-hidden="true">↗</span></button></div>
             </article>
             <article class="program-card program-card--current">
