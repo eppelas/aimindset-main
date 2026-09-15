@@ -1,4 +1,3 @@
 
 /* Красные заголовки секций с белым текстом. */
 .sec-head .num:first-child{background:var(--acid);color:#fff}
-.hero-lab-card__status{background:var(--red-wine);color:var(--on-acid)}

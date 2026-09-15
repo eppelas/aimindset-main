@@ -1,6 +1,5 @@
 
 /* Правило: на красном акцентном фоне текст ВСЕГДА белый — включая зачёркивания и вложенные слова. */
 .sec-head .num:first-child,.sec-head .num:first-child *{color:#fff !important}
-.hero-lab-card__status,.hero-lab-card__status *{color:#f4f4ef !important}
 .eco-branch--learning .eco-branch-head,.eco-branch--learning .eco-branch-head *{color:#f4f4ef !important}
 .product-block-drag-handle,.follow-link:hover,.follow-link:focus-visible,.space-schedule__toggle:hover,.space-schedule__toggle:focus-visible,.space-schedule__all:hover,.space-schedule__all:focus-visible{color:var(--on-acid,#fff) !important}

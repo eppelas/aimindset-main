@@ -413,16 +413,6 @@
     {
       "file": "src/page/styles/accent-text.css",
       "context": [
-        ".hero-lab-card__status,.hero-lab-card__status *"
-      ],
-      "property": "color",
-      "value": "#f4f4ef",
-      "role": "accent-contrast",
-      "reason": "Retains white text on accent surfaces, including nested elements."
-    },
-    {
-      "file": "src/page/styles/accent-text.css",
-      "context": [
         ".eco-branch--learning .eco-branch-head,.eco-branch--learning .eco-branch-head *"
       ],
       "property": "color",
