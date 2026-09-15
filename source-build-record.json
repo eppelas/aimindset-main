@@ -1,11 +1,11 @@
 {
   "inputs": {
     "AGENTS.md": "5b70e4ac6d46a5826725e8cb49d4ce257e2310aae998ff485affeb3fb0acfb49",
-    "MANDATORY_INSTRUCTIONS.md": "6f17999c8c35fd20d8f5e84bec2af74767c693c0386b807af93f90031e89e3ed",
+    "MANDATORY_INSTRUCTIONS.md": "d0279912d6dc5da1c7149a764f7f08e0714cbcbe5b991a7bc9fd87b900bae6cf",
     "assets/site/site-shell.css": "918958e9fc63e6e6bbd654f43b122528c24eda0ed20fe040ad5d169751e5931b",
     "confpolicy/index.html": "aa9279db9bf8ced6b9d8f4fb6ea7c41396823e8cdccb1cf64b727e49ee7c493b",
     "oferta/index.html": "7ca43db582ad0814dc7a91684c145aeb56f8fcfe1396f03b8873820226220c6a",
-    "platform-dependency.json": "71e5c1915a003c0a974d9b4d7d3847dbab337a70a58e97791de8214345798c51",
+    "platform-dependency.json": "e65d4912ace3d4f56e2e684b81a0f8ff871616cb5e5d77050d70e06f1711e2b4",
     "source-manifest.json": "ed8fbfbd90fb111c36667c5f0e690972a628a1c1d5e643e87c7f2ec1a1f7e5d9",
     "src/content/main.json": "5992fb0383c7606f47140ba6459f8fd8668f02a0e0079c3e96e17880b76e8ee2",
     "src/content/original-text.json": "00150ea5240884519d823533ea19e9cce78c8bf2be44fc675d166e5dc0df0910",
@@ -104,24 +104,24 @@
     "tools/source-build.py": "367dabba3bf5399d8594d1076e6dc4985f5850922d5de4d52eee0148e51b5abf"
   },
   "outputs": {
-    "ai-mindset-consulting/index.html": "b1349becc7fb00154ef2863b647734509366a60df5e6a0152e90a5fcb5975e5b",
-    "assets/site/site-shell.js": "aba3e70aeca4169ce0b448eaf99615cca24d6ea8984a636daa65efa40bd64405",
-    "confpolicy/index.html": "4b9bdb214a186dbab6909f34a46b3e0c0fc7292ece12fbad011332a21e0350d9",
-    "index.html": "5e5e913518589411530bf159ff066d6eeb784cbe729834298349f069f8efca65",
-    "non-profit/index.html": "c3744347da95d46899864c660fc7dcaff6d2bb9a4ac8a331fefcf4bd2b2841ee",
-    "oferta/index.html": "056df1421931b243308bbcc341714335c33907feefabb1e0475cb7b85e2adbf5"
+    "ai-mindset-consulting/index.html": "32fc03927dc123a2d43343e1ecd0a8c2d6c95c6c11790c0115443603a997704f",
+    "assets/site/site-shell.js": "954701a35b93572b120c28ec7f2ec9b17994fa5da7c4004ffee462ce24ee0833",
+    "confpolicy/index.html": "f964fc2c22f1bef64759dc00b16896f2c12c18745662a26d86e794b387c738b8",
+    "index.html": "78d0fe76f5e295ae6ff500f668b0bd140b977b5004f27158762338d6590d0b35",
+    "non-profit/index.html": "bbacdee1699b72bbf533afc047c93857a7ff6a1e3ed327156b594052967575ba",
+    "oferta/index.html": "55668bb2d21fa6e428ba35b4bb6bcba7593cf6f08c82f9341e3378054bdf21d6"
   },
   "platform": {
     "compilerSha256": "df17d7678664c4be95f36f7322399da47c29b3fb6969627f066abdbf17e952d6",
     "components": {
-      "footer": "9f62c0f6b387475acfc91f53a9d1a4659e72cf631a037b5340bf4af8cd03836a",
+      "footer": "bfea38e103b5c5a89dd0295316a1b467c4aff7f953f7cf86a8f77896e3122bf6",
       "learning": "df1c746c251637c4addfab0cf4b234a525bf94a5f3c816f1a0ec1e232b9f7367",
       "navigation": "7099cae015c978c0153b1b8b1ec43f11ce2b222a8afa6347ccea00d1d045f623"
     },
-    "dependencyRevision": "287cdfae233b49ab1fa6b99c37301f96334bbb75",
-    "releaseSha256": "907a9f45f9c085d25f4e3df3cbb129cd87a7909d318f3fff0fbafa4a26e17155",
+    "dependencyRevision": "2430ffad7ccdc2a8172abc012004c1e05e3687bf",
+    "releaseSha256": "0257924d965a1b664c292ae258307a7ba58ddf3877ee1567f4f0d0a880459828",
     "repository": "eppelas/aim-web-platform",
-    "revision": "287cdfae233b49ab1fa6b99c37301f96334bbb75"
+    "revision": "2430ffad7ccdc2a8172abc012004c1e05e3687bf"
   },
   "schemaVersion": 1
 }
