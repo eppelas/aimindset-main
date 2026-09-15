@@ -7217,14 +7217,16 @@ main{padding-bottom:0}
     placeTeamTokens(state, canonical, false);
     const natural = state.text.getBoundingClientRect().height;
     let tallest = natural;
-    // These cards contain three activity phrases: rotations in both directions
-    // cover all six orders. Measure only on layout changes, never during animation.
+    // Sample cyclic/reversed orders only on layout changes, never during animation.
     [canonical, canonical.slice().reverse()].forEach(sequence => sequence.forEach((_, shift) => {
       placeTeamTokens(state, sequence.slice(shift).concat(sequence.slice(0, shift)), false);
       tallest = Math.max(tallest, state.text.getBoundingClientRect().height);
     }));
     const bottomPadding = parseFloat(getComputedStyle(state.card).paddingBottom) || 0;
-    state.text.style.height = Math.ceil(Math.max(natural, tallest - bottomPadding + 2)) + "px";
+    const lineHeight = parseFloat(getComputedStyle(state.text).lineHeight) || 0;
+    // One extra wrapped line may use the padding; keep a 2px inset at the edge.
+    const wrapAllowance = Math.max(0, lineHeight - bottomPadding + 2);
+    state.text.style.height = Math.ceil(Math.max(natural + wrapAllowance, tallest - bottomPadding + 2)) + "px";
     placeTeamTokens(state, order, false);
   });
   reserveTeamTextHeights();

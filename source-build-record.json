@@ -17,7 +17,7 @@
     "src/page/editor/toolbar.html": "1ce6624a94aa35cf01c5468e038d08ffe5cc1b3081e333540bc4c18180a3ae11",
     "src/page/index.html": "0aeb414d62a54ae3506510c87f050e6d00b452b36cb1906066bddbfce04f7bbc",
     "src/page/runtime/about-cursor.js": "33a76e06ad19aca6e2ff96959f43f64ec62fcc2363cefa81e03e4a9dec9abdb6",
-    "src/page/runtime/ascii-river.js": "5d91d7e32f490c98101ed6c52c033db8c4f4771302b2a747c5d7454b97b45f0f",
+    "src/page/runtime/ascii-river.js": "39643752b0082b6d0ce80006680eaf7938378f9de0bfbceae0847676ff280094",
     "src/page/runtime/astro-client-only.js": "5b1d1d93166b21221abf9b01f256ee7d05501f3b417bdd5427d4141549ce0856",
     "src/page/runtime/astro-island-runtime.js": "53b6bbda82ae145cfc0fb1941cb035359d1c8b298798339cf53f5a543836ad65",
     "src/page/runtime/astro-load.js": "433585662f852c8c76ded9e6f52054e1a120c78c7c0ecb8048fd3b99faa897f7",
@@ -107,7 +107,7 @@
     "ai-mindset-consulting/index.html": "ed94d7b289879ce80b6596641d16bafbc9ab729d759846dd1652ffa3cd190c27",
     "assets/site/site-shell.js": "aba3e70aeca4169ce0b448eaf99615cca24d6ea8984a636daa65efa40bd64405",
     "confpolicy/index.html": "32f6eb8fe7037d00d47784d3512c72bff538438ab3add5603dd242b7c305533f",
-    "index.html": "7d62f2c3c7324dbf7ababd05356d1c5217e91e9eafcdd4704bae7f6a5f97b0b8",
+    "index.html": "987ec0512eb5165c0e715bfe42124ea14638a7550a3ce9c6ddb546d7b9d46fc1",
     "non-profit/index.html": "92b22a3cfe1ea90fc964280c4f7fd5dec12ae807db5d5c83c61e57df99f6b0eb",
     "oferta/index.html": "66bb8f6d01d87687eb66fd32314b5af87802bdcdfd179db854545b713d5ed1fb"
   },
