@@ -84,6 +84,10 @@
 #learning .program-trio{align-items:stretch}
 #learning .program-card__meta{flex-wrap:wrap}
 #learning .program-card__morph{color:var(--ink)}
+#learning .program-card--main{--learning-card-accent:var(--slate);border-color:color-mix(in srgb,var(--slate) 38%,var(--hair));background:color-mix(in srgb,var(--slate) 7%,var(--bg))}
+#learning .program-card--main .program-card__meta,#learning .program-card--main .program-card__morph{color:var(--slate)}
+#learning .program-card--current .program-card__status,#learning .program-card--current .program-card__morph{color:var(--acid)}
+#learning .program-card--current .aim-button{--skin-accent:var(--acid)}
 #learning .aim-button-outline{--px-fill:var(--bg)}
 #learning .program-card--main .aim-button-outline{--px-fill:var(--bg)}
 
