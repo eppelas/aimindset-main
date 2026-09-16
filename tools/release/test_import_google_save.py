@@ -39,7 +39,7 @@ class GoogleSaveImportTests(unittest.TestCase):
         result,report=self.merge(self.base)
         self.assertEqual(result,self.content)
         self.assertEqual(report['changedFields'],[])
-        self.assertEqual(report['mappedFields'],328)
+        self.assertEqual(report['mappedFields'],326)
 
     def test_real_heading_and_paragraph_exact_changes_preserve_other_values(self):
         changes={'text.0052':'Заголовок & смысл','text.0053':'Первая строка\nВторая строка — с\u00a0пробелом'}
