@@ -4,5 +4,8 @@
   },
   "wild/non-profit/index.html": {
     "sha256": "94f13e48970e5c7a82b08af16de960e3f0f3264d05040287824e6465434abca4"
+  },
+  "wild/index.html": {
+    "sha256": "bb3b35ec6eb5c2b11ca57de997f5cc2062c019222543c695c650ca557557a05b"
   }
 }

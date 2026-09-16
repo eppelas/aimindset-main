@@ -85,7 +85,14 @@ def check_pending(root,cloud,current_source,bootstrap_rev=None,bootstrap_sha=Non
     _,section_report=importer.merge_section_labels(json.loads(show('src/site-sections.json')),json.loads((root/'src/site-sections.json').read_text()),show(page['output']),html,**section_args)
     if section_report['changedFields']:
         raise ValueError('Google has unimported local section labels; sync first: '+','.join(section_report['changedFields']))
-    _,report=importer.merge(show(page['template']),show(page['output']),html,json.loads(show(page['content'])),current,section_labels_validated=True)
+    try:
+        _,report=importer.merge(show(page['template']),show(page['output']),html,json.loads(show(page['content'])),current,section_labels_validated=True)
+    except importer.ImportRejected as exc:
+        audited=(bootstrap_pages or {}).get(page['object'])
+        if audited and str(exc).startswith('Base HTML/content mismatch'):
+            assert digest(cloud[1])==audited['sha256'],'Bootstrap live bytes differ from audited object hash'
+            return
+        raise
     if report['changedFields']:
         raise ValueError('Google has unimported text; sync it first: '+','.join(report['changedFields']))
 def object_url(name):return API+'/storage/v1/b/'+BUCKET+'/o/'+quote(name,safe='')

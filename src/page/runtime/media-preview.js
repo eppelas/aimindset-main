@@ -19,6 +19,15 @@
     card.style.setProperty('--preview-x',(x-r.left)+'px');
     card.style.setProperty('--preview-y',(y-r.top)+'px');
   }
+  function isPlainPrimaryClick(event){
+    return event.button===0&&!event.metaKey&&!event.ctrlKey&&!event.shiftKey&&!event.altKey;
+  }
+  function openPrimaryCaseLink(card){
+    var link=card.querySelector('.project-art[href]');
+    if(!link)return;
+    var win=window.open(link.href,'_blank','noopener');
+    if(win)win.opener=null;
+  }
   function open(card){
     if(!desktop.matches||document.hidden)return;
     cards.forEach(function(other){if(other!==card)close(other);});
@@ -28,6 +37,14 @@
     if(video&&!reduced.matches){video.muted=true;video.defaultMuted=true;video.playsInline=true;video.play().then(function(){if(card.classList.contains('is-project-preview'))card.classList.add('is-motion-playing');else video.pause();}).catch(function(){card.classList.remove('is-motion-playing');});}
   }
   cards.forEach(function(card){
+    if(card.closest('#cases')){
+      card.addEventListener('click',function(e){
+        if(!isPlainPrimaryClick(e))return;
+        if(e.target.closest('a,button,input,textarea,select,label,[role="button"]'))return;
+        e.preventDefault();
+        openPrimaryCaseLink(card);
+      });
+    }
     card.addEventListener('pointerenter',function(e){if(e.pointerType==='mouse')open(card);});
     card.addEventListener('pointermove',function(e){if(e.pointerType==='mouse'&&!card.classList.contains('is-project-preview'))open(card);});
     card.addEventListener('pointerleave',function(){if(!card.contains(document.activeElement))close(card);});
