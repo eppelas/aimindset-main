@@ -1,5 +1,5 @@
 (() => {
-  const objects = new Set(['wild/index.html', 'wild/ai-mindset-consulting/index.html', 'wild/non-profit/index.html']);
+  const objects = new Set(['wild/index.html', 'wild/ai-mindset-consulting/index.html', 'wild/non-profit/index.html', 'wild/oferta/index.html', 'wild/confpolicy/index.html']);
   const terminal = new Set(['published', 'superseded']);
   const states = new Set(['queued', 'importing', 'committed', 'publishing', 'error', ...terminal]);
   function identity(receipt) {

@@ -86,11 +86,15 @@ def build(platform, output=None, check=False, platform_revision=None):
     shell = shared.consumer_shell(sections)
     shared.verify_outputs(homepage, shell, components)
     destination = Path(output) if output else ROOT
-    versions = {'js': hashlib.sha256(shell.encode()).hexdigest()[:10],
-                'css': freshness.digest(ROOT / 'assets/site/site-shell.css')[:10]}
+    asset_versions = {
+        'site-shell.js': hashlib.sha256(shell.encode()).hexdigest()[:10],
+        'site-shell.css': freshness.digest(ROOT / 'assets/site/site-shell.css')[:10],
+        'site-return.js': freshness.digest(ROOT / 'assets/site/site-return.js')[:10],
+        'site-return.css': freshness.digest(ROOT / 'assets/site/site-return.css')[:10],
+    }
     def shell_versions(text):
-        return re.sub(r'(assets/site/site-shell\.(js|css))(?:\?v=[\w-]+)?',
-                      lambda match: match[1] + '?v=' + versions[match[2]], text)
+        return re.sub(r'(assets/site/((?:site-shell|site-return)\.(?:js|css)))(?:\?v=[\w-]+)?',
+                      lambda match: match[1] + '?v=' + asset_versions[match[2]], text)
     outputs = {'index.html': shell_versions(homepage), 'assets/site/site-shell.js': shell}
     migrated = {page['output'] for key,page in pages.PAGES.items() if key != 'home'}
     outputs.update({page['output']: shell_versions(editable_page(key)) for key,page in pages.PAGES.items() if key != 'home'})

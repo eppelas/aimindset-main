@@ -163,7 +163,7 @@ class PublishGoogleTests(unittest.TestCase):
             return {'generation':'10'}
         with patch.object(sys,'argv',args),patch.object(google,'run',return_value=SHA),patch.object(google,'module',side_effect=lambda n,p:public if n=='google_public_contract' else transform),patch.object(google,'page_snapshot',side_effect=snapshot),patch.object(google,'check_pending'),patch.object(google,'json_request',side_effect=network),patch.object(google,'backup',return_value='wild/backup'):
             google.main()
-        self.assertEqual(sum(url.endswith('/__save') for url,_,_ in calls),3)
+        self.assertEqual(sum(url.endswith('/__save') for url,_,_ in calls),len(google.PAGES))
 
     def test_pending_child_blocks_all_uploads(self):
         root,cloud,public,transform,args=self.main_fixture({'assets/a.css':b'asset'})
@@ -177,7 +177,7 @@ class PublishGoogleTests(unittest.TestCase):
         root,cloud,public,transform,args=self.main_fixture({});calls=[0]
         def snapshot(*args):
             calls[0]+=1
-            return ({**cloud[0],'generation':'11'},cloud[1]) if calls[0]==5 else cloud
+            return ({**cloud[0],'generation':'11'},cloud[1]) if calls[0]==len(google.PAGES)+2 else cloud
         with patch.object(sys,'argv',args),patch.object(google,'run',return_value=SHA),patch.object(google,'module',side_effect=lambda n,p:public if n=='google_public_contract' else transform),patch.object(google,'page_snapshot',side_effect=snapshot),patch.object(google,'check_pending'),patch.object(google,'upload') as upload:
             with self.assertRaisesRegex(AssertionError,'changed before publishing'):google.main()
             upload.assert_not_called()

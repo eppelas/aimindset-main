@@ -1,7 +1,54 @@
 """Canonical editor page routes and entity-preserving text rendering."""
 import html,json,re
 from pathlib import Path
-PAGES = {'home': {'id': 'home', 'object': 'wild/index.html', 'output': 'index.html', 'template': 'src/page/index.html', 'content': 'src/content/main.json', 'original': 'src/content/original-text.json', 'section_key': 'home'}, 'ai-mindset-consulting': {'id': 'ai-mindset-consulting', 'object': 'wild/ai-mindset-consulting/index.html', 'output': 'ai-mindset-consulting/index.html', 'template': 'src/pages/ai-mindset-consulting/index.html', 'content': 'src/content/pages/ai-mindset-consulting.json', 'original': 'src/content/pages/ai-mindset-consulting.original.json', 'section_key': 'ai-mindset-consulting'}, 'non-profit': {'id': 'non-profit', 'object': 'wild/non-profit/index.html', 'output': 'non-profit/index.html', 'template': 'src/pages/non-profit/index.html', 'content': 'src/content/pages/non-profit.json', 'original': 'src/content/pages/non-profit.original.json', 'section_key': 'non-profit'}}
+
+PAGES = {
+    'home': {
+        'id': 'home',
+        'object': 'wild/index.html',
+        'output': 'index.html',
+        'template': 'src/page/index.html',
+        'content': 'src/content/main.json',
+        'original': 'src/content/original-text.json',
+        'section_key': 'home',
+    },
+    'ai-mindset-consulting': {
+        'id': 'ai-mindset-consulting',
+        'object': 'wild/ai-mindset-consulting/index.html',
+        'output': 'ai-mindset-consulting/index.html',
+        'template': 'src/pages/ai-mindset-consulting/index.html',
+        'content': 'src/content/pages/ai-mindset-consulting.json',
+        'original': 'src/content/pages/ai-mindset-consulting.original.json',
+        'section_key': 'ai-mindset-consulting',
+    },
+    'non-profit': {
+        'id': 'non-profit',
+        'object': 'wild/non-profit/index.html',
+        'output': 'non-profit/index.html',
+        'template': 'src/pages/non-profit/index.html',
+        'content': 'src/content/pages/non-profit.json',
+        'original': 'src/content/pages/non-profit.original.json',
+        'section_key': 'non-profit',
+    },
+    'oferta': {
+        'id': 'oferta',
+        'object': 'wild/oferta/index.html',
+        'output': 'oferta/index.html',
+        'template': 'src/pages/oferta/index.html',
+        'content': 'src/content/pages/oferta.json',
+        'original': 'src/content/pages/oferta.original.json',
+        'section_key': 'oferta',
+    },
+    'confpolicy': {
+        'id': 'confpolicy',
+        'object': 'wild/confpolicy/index.html',
+        'output': 'confpolicy/index.html',
+        'template': 'src/pages/confpolicy/index.html',
+        'content': 'src/content/pages/confpolicy.json',
+        'original': 'src/content/pages/confpolicy.original.json',
+        'section_key': 'confpolicy',
+    },
+}
 
 def render_text(template, fields, original):
     ids=re.findall(r'\{\{text:([^}]+)\}\}',template)

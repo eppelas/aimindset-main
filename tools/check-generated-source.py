@@ -44,7 +44,7 @@ def inputs(root):
             raise ValueError('Missing or non-local compiler input: ' + name)
         # These pages retain their current body; only generated shell cache keys vary.
         if name in SHELL_PAGES:
-            content = re.sub(r'(assets/site/site-shell\.(?:js|css))(?:\?v=[\w-]+)?', r'\1', path.read_text())
+            content = re.sub(r'(assets/site/(?:site-shell|site-return)\.(?:js|css))(?:\?v=[\w-]+)?', r'\1', path.read_text())
             result[name] = hashlib.sha256(content.encode()).hexdigest()
         else:
             result[name] = digest(path)

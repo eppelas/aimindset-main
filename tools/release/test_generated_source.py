@@ -49,11 +49,13 @@ class GeneratedSourceTests(unittest.TestCase):
         files['src/page/runtime/editor-sync-status.js']='window.AIMEditorSync={};'
         files['src/page/runtime/inline-editor.js']='// editor fixture'
         files['tools/release/editor_pages.py']=(ROOT/'tools/release/editor_pages.py').read_text()
-        for slug in ['ai-mindset-consulting','non-profit']:
+        for slug in ['ai-mindset-consulting','non-profit','oferta','confpolicy']:
             files[f'src/pages/{slug}/index.html']='<html><head></head><body><main>Preserved page body</main><script src="../assets/site/site-shell.js?v=old"></script></body></html>'
             files[f'src/content/pages/{slug}.json']='{"fields":{}}'
             files[f'src/content/pages/{slug}.original.json']='{}'
         files['assets/site/site-shell.css'] = ':root{color:black}'
+        files['assets/site/site-return.js'] = 'window.AIMSiteReturn={};'
+        files['assets/site/site-return.css'] = '.site-return{display:block}'
         files.update({name:'<main>Preserved page body</main><script src="../assets/site/site-shell.js?v=old"></script>' for name in fresh.SHELL_PAGES})
         for name, text in files.items():
             p=self.root/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(text)
@@ -80,7 +82,7 @@ class GeneratedSourceTests(unittest.TestCase):
 
     def test_migrated_pages_share_runtime_and_keep_distinct_save_objects(self):
         self.build()
-        for slug in ['ai-mindset-consulting','non-profit']:
+        for slug in ['ai-mindset-consulting','non-profit','oferta','confpolicy']:
             text=(self.root/f'{slug}/index.html').read_text()
             self.assertIn('content="wild/'+slug+'/index.html"',text)
             self.assertEqual(text.count('id="editBar"'),1)

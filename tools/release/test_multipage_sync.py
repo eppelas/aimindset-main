@@ -48,7 +48,7 @@ class MultiTests(unittest.TestCase):
   snapshots={key:({'object':p['object'],'rev':1,'sha':'c'*16},b'',head) for key,p in sync.PAGES.items()}
   def reader(*args):return json.dumps({'sourceCommit':head if ticks[0]>=15 else 'c'*40,'platformCommit':pin}).encode()
   result=sync.wait_delivery(ROOT,head,pin,snapshots,api=lambda *args:{'object':{'sha':head}},reader=reader,snapshotter=lambda page_id='home':snapshots[page_id],sleeper=lambda n:ticks.__setitem__(0,ticks[0]+n),clock=lambda:ticks[0],reporter=lambda snap,state,**kw:events.append(state))
-  self.assertEqual(result,'published');self.assertEqual(ticks[0],15);self.assertEqual(events.count('published'),3)
+  self.assertEqual(result,'published');self.assertEqual(ticks[0],15);self.assertEqual(events.count('published'),len(sync.PAGES))
  def test_wait_timeout_and_superseded_never_report_published(self):
   for advanced in [False,True]:
    ticks=[0];events=[];head='a'*40
