@@ -1,11 +1,8 @@
 {
-  "wild/ai-mindset-consulting/index.html": {
-    "sha256": "f0806f08f2fa8c53bf0fddc07df569957d0b167f0136e135037f1506e4bdd0f6"
+  "wild/oferta/index.html": {
+    "sha256": "55668bb2d21fa6e428ba35b4bb6bcba7593cf6f08c82f9341e3378054bdf21d6"
   },
-  "wild/non-profit/index.html": {
-    "sha256": "94f13e48970e5c7a82b08af16de960e3f0f3264d05040287824e6465434abca4"
-  },
-  "wild/index.html": {
-    "sha256": "bb3b35ec6eb5c2b11ca57de997f5cc2062c019222543c695c650ca557557a05b"
+  "wild/confpolicy/index.html": {
+    "sha256": "f964fc2c22f1bef64759dc00b16896f2c12c18745662a26d86e794b387c738b8"
   }
 }
